@@ -153,3 +153,6 @@ def home_view(request):
 def sondagem(request):
     # Sua lógica para a view aqui
     return render(request, 'sondagem.html') 
+
+def politicas_privacidade(request):
+    return render(request, 'politicas_privacidade.html') 
