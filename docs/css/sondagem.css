@@ -82,7 +82,7 @@ header {
 
 /* Estilo da Informação */
 #informacao-conteudo {
-    font-size: 12px;
+    font-size: 20px;
     background-color: #C9E957; /* Ajuste conforme necessário */
     padding: 5px 15px; /* Padding lateral reduzido */
     border-radius: 20px;       
@@ -209,3 +209,17 @@ header {
     margin-bottom: 10px; /* Espaço entre os parágrafos */
 }
 
+.referencias{
+    max-width: 100%; /* Altera para uma largura máxima de 100% */
+   height: auto; /* Mantém a altura automática */
+   position: relative; 
+   opacity: 1; 
+   font-family: 'Roboto', sans-serif; 
+   font-size: 16px; 
+   font-weight: 400; 
+   line-height: 30px; 
+   text-align: justify; /* Justifica o texto */
+   margin: 40px auto; /* Centraliza horizontalmente */
+   padding: 20px; /* Adiciona um padding para evitar que o texto grude nas bordas */
+
+}
