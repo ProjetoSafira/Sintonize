@@ -13,12 +13,7 @@
     <header id="header">
         <div class="header-banner" id="header-banner">
             <img src="{% static 'images/home1.png' %}" alt="Imagem de apoio" id="header-image">
-            <nav class="menu" id="menu">
-                <ul id="menu-list">
-                    <li><a href="/" id="menu-home">Home</a></li>
-                    <li><a href="{% url 'sondagem' %}" id="menu-formulario">Sondagem sobre Burnout</a></li>
-                </ul>
-            </nav>
+            {% include 'header.html' %}
             <div class="header-content" id="header-content">
                 <h1 id="header-title">Olá! Como você está?</h1>
                 <p id="header-description">
@@ -76,7 +71,7 @@
             <a href="{% url 'sondagem' %}" class="botao-burnout" id="botao-burnout">Entenda mais sobre o Burnout</a>
         </div>
     </section>
-
+    {% include 'footer.html' %}  <!-- Incluindo o rodapé -->
     <script>
         window.onload = () => {
             const imagem = document.getElementById('imagem-principal');

@@ -9,5 +9,6 @@ urlpatterns = [
     path('escolha3/', views.escolha3_view, name = 'escolha3'),
     path('escolha4/', views.escolha4_view, name = 'escolha4'),
     path('resultado/', views.resultado_view, name='resultado'),
-     path('sondagem/', views.sondagem, name='sondagem')
+    path('sondagem/', views.sondagem, name='sondagem'), 
+    path('politicas/privacidade/', views.politicas_privacidade, name='politicas.privacidade')
 ]
