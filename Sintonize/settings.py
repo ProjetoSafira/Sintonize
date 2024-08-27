@@ -50,7 +50,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "sintonize.urls"
+ROOT_URLCONF = "Sintonize.urls"
 
 TEMPLATES = [
     {
@@ -68,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "sintonize.wsgi.application"
+WSGI_APPLICATION = "Sintonize.wsgi.application"
 
 
 # Database
