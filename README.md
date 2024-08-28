@@ -1,4 +1,4 @@
-# Reequilibra
+# Sintonize
 O Sintonize é um espaço que oferece funcionalidades focadas na saúde mental em relação ao trabalho. Nossa plataforma ajuda você a identificar e gerenciar o estresse, além de fornecer ferramentas práticas para melhorar sua saúde mental e manter o equilíbrio entre sua vida pessoal e profissional.
 
 # Dependências
