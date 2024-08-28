@@ -7,7 +7,7 @@ Instalar o Python - https://www.python.org/downloads/
 # Instalação
 - Clone do projeto
 ```ruby
-git clone https://github.com/egmoraes14/safira-1.0.git
+git clone[ https://github.com/ProjetoSafira/Sintonize.git
 ```
 
 # No windows
