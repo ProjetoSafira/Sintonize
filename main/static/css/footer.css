@@ -38,7 +38,7 @@ footer p {
     margin-left: auto; /* Empurrar a logo para a direita */
     text-align: center; /* Alinhar texto e imagem ao centro */
     margin-right: 30px;
-    margin-top: -30px;
+    margin-top: -50px;
 }
 
 footer img { 
@@ -49,8 +49,8 @@ footer img {
 }
 
 .logo-container p {
-    font-size: 12px; /* Tamanho da fonte abaixo da logo */
+    font-size: 15px; /* Tamanho da fonte abaixo da logo */
     color: #000000; /* Cor do texto */
-    margin-top: 10px; /* Margem superior */
+    margin-top: -5px; /* Margem superior */
     text-align: center; /* Texto centralizado */
 }
