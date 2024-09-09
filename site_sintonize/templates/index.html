@@ -4,20 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sintonize</title>
-    <link rel="stylesheet" href="css/estilos.css">
-    <link rel="stylesheet" href="css/footer.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Home.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@600&display=swap" rel="stylesheet">
+    
 </head>
 <body>
     <header id="header">
         <div class="header-banner" id="header-banner">
-            <img src="images/home1.png" alt="Imagem de apoio" id="header-image">
-            <nav class="menu" id="menu">
-                <ul id="menu-list">
-                    <li><a href="index.html" id="menu-home">Home</a></li>
-                    <li><a href="sondagem.html" id="menu-formulario">Sondagem sobre Burnout</a></li>
-                </ul>
-            </nav>
+            <img src="{% static 'images/home1.png' %}" alt="Imagem de apoio" id="header-image">
+            {% include 'header.html' %}
             <div class="header-content" id="header-content">
                 <h1 id="header-title">Olá! Como você está?</h1>
                 <p id="header-description">
@@ -37,13 +34,13 @@
                 e encontre ferramentas eficazes para melhorar sua saúde mental e bem-estar.
             </p>
             <div class="botao-container" id="botao-container-principal">
-                <a href="sondagem.html" class="botao-sondagem" id="botao-sondagem">
+                <a href="{% url 'sondagem' %}" class="botao-sondagem" id="botao-sondagem">
                     Clique aqui para fazer a sondagem de burnout
                 </a>
             </div>
         </div>
         <div class="imagem" id="imagem-container">
-            <img src="images/mulher.png" alt="Ilustração sobre Burnout" class="imagem" id="imagem-principal">
+            <img src="{% static 'images/mulher.png' %}" alt="Ilustração sobre Burnout" class="imagem" id="imagem-principal">
         </div>
     </div>
 
@@ -72,35 +69,10 @@
             </div>
         </div>
         <div class="botao-container" id="botao-container-burnout">
-            <a href="sondagem.html" class="botao-burnout" id="botao-burnout">Entenda mais sobre o Burnout</a>
+            <a href="{% url 'sondagem' %}" class="botao-burnout" id="botao-burnout">Entenda mais sobre o Burnout</a>
         </div>
     </section>
-
-    <script>
-        window.onload = () => {
-            const imagem = document.getElementById('imagem-principal');
-            setTimeout(() => {
-                imagem.classList.add('visible');
-            }, 100);
-        };
-    </script>
-    <footer>
-        <div class="botao-container">
-            <a href="politicas_privacidade" class="botao-termos">Termos e condições de uso do site</a>
-        </div>
-        <div class="footer-content">
-            <div class="texto">
-                <p><b>Atenção:</b> Este site e seus conteúdos têm o objetivo de informar e auxiliar na compreensão do <br> burnout e do estresse.  
-                   No entanto, eles não substituem o diagnóstico e o tratamento realizado <br> por profissionais qualificados.  
-                   Recomendamos que, em caso de sintomas persistentes ou <br> preocupações com sua saúde mental, você procure 
-                   orientação médica ou psicológica.</p>
-            </div>
-            <div class="logo-container">
-                <img src="images/podcast-logo.png" alt="Logo">
-                <p>Simulação de Projetos Ágeis,<br> iniciativa do podcast Pipoca Ágil.</p>
-            </div>
-        </div>
-    </footer>
+    {% include 'footer.html' %}  <!-- Incluindo o rodapé -->
     
 </body>
 </html>

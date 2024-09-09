@@ -1,3 +1,72 @@
+
+
+/* Reset básico para evitar inconsistências em diferentes navegadores */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos Globais */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #ffffff;
+}
+
+/* Estilos do Header */
+.header {
+    background-color: #ffffff;
+    text-align: center;
+}
+
+/* Outros estilos globais aqui... */
+/* Menu de Navegação */
+.menu {
+    position: absolute;
+    top: 20px;
+    left: 220px;
+    z-index: 2;
+    display: flex;
+}
+
+.menu ul {
+    display: flex;
+    padding: 0;
+    list-style: none;
+}
+
+.menu li {
+    margin: 0 10px;
+}
+
+.menu a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 141px; 
+    height: 40px;
+    padding: 10px;
+    text-decoration: none;
+    color: #000000;
+    background: #F8F6F3;
+    transition: background 0.3s;
+    text-align: center;
+}
+
+.menu a:hover {
+    background: #E0E0E0;
+}
+
+
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .pagina {
+        flex-direction: column;
+        align-items: center;
+    }
+}
 footer { 
     background-color: #b1b5b9; /* Cor de fundo cinza claro */
     padding: 20px; /* Espaçamento interno */
