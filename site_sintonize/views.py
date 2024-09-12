@@ -10,3 +10,6 @@ def politicas_privacidade (request):
 
 def sondagem (requests):
     return render (requests, 'sondagem.html')
+
+def sobre_nos (request):
+    return render(request, 'sobre_nos.html') 

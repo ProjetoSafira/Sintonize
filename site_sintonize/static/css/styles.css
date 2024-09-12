@@ -1,25 +1,8 @@
-
-
-/* Reset básico para evitar inconsistências em diferentes navegadores */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-
-/* Estilos Globais */
-body {
-    font-family: 'Roboto', sans-serif;
-    background: #ffffff;
-}
-
-/* Estilos do Header */
-.header {
-    background-color: #ffffff;
-    text-align: center;
-}
-
-/* Outros estilos globais aqui... */
 /* Menu de Navegação */
 .menu {
     position: absolute;
@@ -27,6 +10,7 @@ body {
     left: 220px;
     z-index: 2;
     display: flex;
+    font-family: 'Roboto', sans-serif; 
 }
 
 .menu ul {
@@ -51,13 +35,12 @@ body {
     background: #F8F6F3;
     transition: background 0.3s;
     text-align: center;
+  
 }
 
 .menu a:hover {
     background: #E0E0E0;
 }
-
-
 
 
 /* Responsividade */
@@ -67,59 +50,27 @@ body {
         align-items: center;
     }
 }
-footer { 
-    background-color: #b1b5b9; /* Cor de fundo cinza claro */
-    padding: 20px; /* Espaçamento interno */
+
+.botao {
+    display: inline-block; /* Para permitir espaçamento */
+    background-color: #38184C; /* Cor do botão */
+    color:#FFFFFF;
+    ; /* Cor do texto do botão */
+    padding: 15px 30px; /* Espaçamento interno do botão */
+    border-radius: 5px; /* Bordas arredondadas do botão */
+    text-decoration: none; /* Sem decoração no texto */
+    font-weight: bold; /* Negrito */
+    text-align: center; /* Centraliza o texto */
+    margin-top: 20px; /* Margem superior */
+    transition: background-color 0.3s ease; /* Transição suave para hover */
 }
 
-.botao-container { 
-    margin-bottom: 15px; /* Espaço abaixo do botão */
-    text-align: center; /* Centralizar o botão */
+.botao:hover {
+    background-color: #4E2A6A; /* Cor do botão ao passar o mouse */
+    cursor: pointer; /* Muda o cursor para indicar interatividade */
 }
-
-.footer-content { 
-    display: flex; /* Usar flexbox para o layout */
-    align-items: flex-start; /* Alinhar itens no topo */
-    justify-content: space-between; /* Espaço entre os elementos */
-    max-width: 1200px; /* Largura máxima do rodapé */
-    margin: 0 auto; /* Centralizar o rodapé */
-    flex-wrap: wrap; /* Permitir quebra de linha */
-}
-
-.texto { 
-    flex: 1; /* O texto ocupará o espaço restante */
-    text-align: left; /* Alinhar o texto à esquerda */
-    margin-right: 20px; /* Espaço à direita do texto */
-}
-
-footer a { 
-    text-decoration: none; /* Remove o sublinhado do texto dos links */
-    color: #003366; /* Mantenha a cor do texto do link */
-}
-
-footer p { 
-    font-size: 15px; /* Tamanho da fonte do texto */
-    color: #000000; /* Cor do texto */
-    margin: 10px 0; /* Margem vertical */
-}
-
-.logo-container { 
-    margin-left: auto; /* Empurrar a logo para a direita */
-    text-align: center; /* Alinhar texto e imagem ao centro */
-    margin-right: 30px;
-    margin-top: -50px;
-}
-
-footer img { 
-    max-width: 100px; /* Largura máxima da imagem */
-    height: auto; /* Altura automática para manter a proporção */
-    display: block; /* Make image a block element */
-    margin: 0 auto; /* Centralizar a imagem */
-}
-
-.logo-container p {
-    font-size: 15px; /* Tamanho da fonte abaixo da logo */
-    color: #000000; /* Cor do texto */
-    margin-top: -5px; /* Margem superior */
-    text-align: center; /* Texto centralizado */
+.botao-container-equipe {
+    display: flex; /* Usar flexbox */
+    justify-content: center; /* Centraliza horizontalmente */
+    margin-top: 20px; /* Margem superior para espaçamento */
 }

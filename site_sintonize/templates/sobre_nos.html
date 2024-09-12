@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós!</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sobre_nos.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+    {% include 'header.html' %}
+    <header>
+        <div class="content">
+            <div class="text-container">
+                <h1>Bem-vindo ao Sintonize!</h1>
+                <p>
+                    Nosso objetivo é ajudar profissionais a encontrar harmonia entre suas rotinas de autocuidado e o trabalho. 
+                    Acreditamos que a saúde mental e física são fundamentais para uma vida equilibrada e produtiva.
+                </p>
+            </div>
+        </div>
+        <img class="header-img-visible" src="{% static 'images/coracao.png' %}" alt="Ilustração">
+    </header>
+
+    <main>
+        <section>
+            <h2 class="projeto-titulo">O Projeto</h2> 
+            <ul class="projeto">
+                <li>O Sintonize é um espaço online desenvolvido dentro da iniciativa “Simulação de Projetos Ágeis” do Pipoca Ágil. Nosso objetivo é oferecer funcionalidades focadas na saúde mental em relação ao trabalho, integrando facetas da qualidade de vida de forma personalizada para profissionais. O Sintonize proporciona uma abordagem holística que abrange saúde mental, física e digital.</li>
+            </ul>
+        </section>
+    
+        <section>
+            <h2 class="missao-titulo">Missão</h2>
+            <ul class="missao">
+                <li>
+                    <img src="{% static 'images/icone1.png' %}" alt="Ícone de Missão 1" class="missao-icon"> 
+                    Queremos ser o seu parceiro na jornada para uma vida mais equilibrada e saudável, ajudando você a sintonizar suas necessidades pessoais com suas responsabilidades profissionais.
+                </li>
+                <li>
+                    <img src="{% static 'images/icone2.png' %}" alt="Ícone de Missão 2" class="missao-icon"> 
+                    Nossa missão é melhorar a saúde mental e física dos profissionais, oferecendo ferramentas e recursos que promovam o bem-estar integral.
+                </li>
+            </ul>
+        </section>
+    
+        <div class="botao-container-equipe">
+            <a href="#" class="botao">Conheça a nossa equipe</a>
+        </div>
+    </main>
+    
+
+    {% include 'footer.html' %}
+</body>
+</html>

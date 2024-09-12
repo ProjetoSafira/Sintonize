@@ -1,5 +1,4 @@
 
-/* Estilo do Título da Qualidade de Vida */
 #titulo-qualidade-vida {
     width: 945px; /* Largura do título */
     height: 51.3px; /* Altura do título */
@@ -10,13 +9,16 @@
     line-height: 51px; /* Altura da linha (ajustada para centralizar verticalmente) */
     text-align: center; /* Alinhamento do texto centrado */
     margin: 40px auto; /* Centraliza com margem acima e abaixo */
-    padding: 40px;
+    padding: 40px ;
+    color:#1C646D;
+    ;
 }
 
 /* Estilo da Informação */
 #informacao-conteudo {
     font-size: 20px;
-    background-color: #C9E957; /* Ajuste conforme necessário */
+    background-color:#CEF09D;
+    ; /* Ajuste conforme necessário */
     padding: 5px 15px; /* Padding lateral reduzido */
     border-radius: 20px;       
     text-align: center;      
@@ -84,19 +86,25 @@
 /* Imagem do container */
 .image-container {
     display: flex;
-    justify-content: center; /* Centraliza a imagem */
-    margin: 20px 0; /* Espaçamento vertical */
+    justify-content: center; /* Centraliza a imagem horizontalmente */
+    align-items: center; /* Centraliza a imagem verticalmente, se necessário */
+    margin: 20px auto; /* Espaçamento vertical e centraliza horizontalmente */
+    width: 756px; /* Largura do container */
+    height: 208px; /* Altura do container */
 }
 
 .image-container img {
-    max-width: 100%; /* Garante que a imagem não ultrapasse os limites do container */
+    max-width: 100%; /* Faz a imagem ocupar toda a largura do container */
     height: auto; /* Mantém a proporção */
+    opacity: 1; /* Se desejar manter a imagem visível, use 1 */
 }
+
+
 
 /* Informação Geral */
 .informacao {
     font-size: 12px;
-    background-color: #C9E957; /* Ajuste conforme necessário */
+    background-color:#CEF09D; /* Ajuste conforme necessário */
     padding: 10px;             
     border-radius: 5px;       
     text-align: center;      
@@ -140,3 +148,4 @@
     padding: 20px; /* Adiciona um padding para evitar que o texto grude nas bordas */
 
 }
+
