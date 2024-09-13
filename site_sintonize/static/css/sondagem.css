@@ -148,4 +148,9 @@
     padding: 20px; /* Adiciona um padding para evitar que o texto grude nas bordas */
 
 }
+#container-principal {
+    max-width: 1440px; /* Defina a largura máxima desejada */
+    margin: 0 auto; /* Centraliza o contêiner horizontalmente */
+    padding: 20px; /* Adiciona um pouco de preenchimento */
+}
 
