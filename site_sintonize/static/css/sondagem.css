@@ -68,6 +68,7 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve opcional */
     opacity: 1; /* Tornar o item visível */
     text-align: left; /* Justifica o texto dentro do item */
+    font-family: 'Roboto', sans-serif; /* Fonte Roboto */
 }
 
 /* Para garantir textos organizados */
