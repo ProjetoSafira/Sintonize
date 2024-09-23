@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sintonia - Nossa Equipe</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/equipe.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    {% include 'header.html' %}
+    <div class="container">
+        {% for membro in membros %}
+        <div class="membro-container">
+            <div class="membro">
+                <img src="{% static membro.imagem %}" alt="{{ membro.nome }}" class="foto-membro">
+                <div class="info">
+                    <h2>{{ membro.nome }}</h2>
+                    <h3>{{ membro.cargo }}</h3>
+                    <p>{{ membro.descricao }}</p>
+                </div>
+                <a href="{{ membro.linkedin }}" class="botao-linkedin" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div> 
+    {% include 'footer.html' %}
+</body>
+</html>

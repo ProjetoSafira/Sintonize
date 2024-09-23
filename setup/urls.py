@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from site_sintonize.views import index, politicas_privacidade, sondagem, sobre_nos
+from site_sintonize.views import index, politicas_privacidade, sondagem, sobre_nos, equipe
 
 
 urlpatterns = [
@@ -10,4 +10,5 @@ urlpatterns = [
     path('sondagem.html',sondagem, name='sondagem' ),
     path('politicas_privacidade', politicas_privacidade, name='politicas_privacidade'), 
     path('sobre_nos/', sobre_nos, name='sobre_nos'),
+    path('equipe/', equipe, name='equipe'),
 ]

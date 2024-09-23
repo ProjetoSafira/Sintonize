@@ -1,0 +1,119 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    /* Remover padding da body */
+}
+
+.container {
+    max-width: 1, 440px;
+    margin: auto;
+    padding-top: 80px;
+    /* Adiciona espaço entre o menu e o conteúdo abaixo */
+}
+
+.membro-container {
+    width: 100%;
+    margin: 0;
+    /* Remove margin entre os membro containers */
+    padding: 1px;
+    /* Ajuste no padding para menos espaço */
+}
+
+.membro {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Espaço entre texto e botão */
+    background: #f2f0ff;
+    /* Cor de fundo */
+    border: 1px solid #CEF09D;
+    /* Borda verde */
+    border-radius: 5px;
+    /* Bordas arredondadas */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra */
+    margin-bottom: -20px;
+    /* Reduzir espaço entre os membros */
+    width: 100%;
+    height: Hug (268px);
+    padding: 60px 170px 60px 170px;
+    gap: 40px;
+    opacity: 0px;
+
+}
+
+.foto-membro {
+    width: 80px;
+    /* Tamanho da imagem */
+    height: 80px;
+    /* Tamanho da imagem */
+    border-radius: 50%;
+    /* Imagem redonda */
+    margin-right: 20px;
+    /* Espaçamento à direita */
+    object-fit: cover;
+    /* Cobre o espaço do container */
+}
+
+.info {
+    flex-grow: 1;
+}
+
+
+h2 {
+    margin: 0;
+    /* Remove margens */
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    text-align: left;
+    width: 835px;
+    height: 32px;
+    gap: 0px;
+    opacity: 0px;
+    color: #1C646D;
+}
+
+h3 {
+    margin: 0;
+    display: inline-block; /* Faz com que a borda se ajuste ao texto */
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    color: #1F0802;
+    background: #D9D9D9 50%; /* Fundo com opacidade */
+    padding: 2px 4px; /* Padding definido */
+    border: 0.5px solid rgba(0, 0, 0, 0.1); /* Borda leve */
+    border-radius: 2px 0 0 0; /* Arrendondamento desejado */
+    opacity: 1; /* Garantir que o elemento seja totalmente visível */
+}
+
+
+p {
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+text-align: left;
+color: #1F0802;
+font-family: Roboto;
+
+
+}
+
+.botao-linkedin {
+    background-color: #0A66C2;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    /* Efeito de transição */
+}
+
+.botao-linkedin:hover {
+    background-color: #0056b3;
+    /* Cor ao passar o mouse */
+}
