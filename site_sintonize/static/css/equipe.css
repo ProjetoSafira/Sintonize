@@ -7,7 +7,7 @@ body {
 }
 
 .container {
-    max-width: 1, 440px;
+    max-width: 1,440px;
     margin: auto;
     padding-top: 80px;
     /* Adiciona espaço entre o menu e o conteúdo abaixo */
@@ -59,11 +59,12 @@ body {
 
 .info {
     flex-grow: 1;
+    width: 100%;
 }
 
 
 h2 {
-    margin: 0;
+    margin: 0 0 5px 0;
     /* Remove margens */
     font-family: Roboto;
     font-size: 24px;
@@ -71,36 +72,40 @@ h2 {
     line-height: 32px;
     text-align: left;
     width: 835px;
-    height: 32px;
     gap: 0px;
     opacity: 0px;
     color: #1C646D;
 }
 
 h3 {
-    margin: 0;
-    display: inline-block; /* Faz com que a borda se ajuste ao texto */
+    margin: 0 0 5px 0;
+    display: inline-block;
+    /* Faz com que a borda se ajuste ao texto */
     font-size: 12px;
     font-weight: 600;
     line-height: 16px;
     color: #1F0802;
-    background: #D9D9D9 50%; /* Fundo com opacidade */
-    padding: 2px 4px; /* Padding definido */
-    border: 0.5px solid rgba(0, 0, 0, 0.1); /* Borda leve */
-    border-radius: 2px 0 0 0; /* Arrendondamento desejado */
-    opacity: 1; /* Garantir que o elemento seja totalmente visível */
+    background: #D9D9D980 50%;
+    padding: 2px 4px;
+    /* Padding definido */
+    border: 0.5px solid rgba(0, 0, 0, 0.1);
+    /* Borda leve */
+    border-radius: 2px 0 0 0;
+    /* Arrendondamento desejado */
+    opacity: 1;
+    /* Garantir que o elemento seja totalmente visível */
 }
 
 
 p {
-font-size: 16px;
-font-weight: 400;
-line-height: 24px;
-text-align: left;
-color: #1F0802;
-font-family: Roboto;
-
-
+    margin: 0;
+    margin-top: 5px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    color: #1F0802;
+    font-family: Roboto;
 }
 
 .botao-linkedin {
