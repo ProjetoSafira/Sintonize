@@ -23,7 +23,7 @@ header {
 .header-content {
     position: absolute;
     top: 75%;
-    left: 50%; 
+    left: 50%;
     transform: translate(-50%, -50%);
     padding: 40px;
     background: #FFFFFF;
@@ -42,7 +42,7 @@ header {
 .header-content p {
     font-size: 18px;
     line-height: 1.5;
-    color: #211C33;    
+    color: #211C33;
 }
 
 
@@ -73,18 +73,23 @@ header {
     font-size: 18px;
     line-height: 1.6;
     margin-bottom: 20px;
-    color:#1F0802;
+    color: #1F0802;
 }
 
 
 /* Estilos da Imagem */
 .imagem-container {
-    width: 612px; /* Altere de max-width para width */
-    height: 584px; /* Especifique a altura */
-    position: absolute; /* Adicione isso para posicionar a imagem */
-    left: 712px; /* Posição X */
-    top: 642px; /* Posição Y */
-    
+    width: 612px;
+    /* Altere de max-width para width */
+    height: 584px;
+    /* Especifique a altura */
+    position: absolute;
+    /* Adicione isso para posicionar a imagem */
+    left: 712px;
+    /* Posição X */
+    top: 642px;
+    /* Posição Y */
+
 }
 
 .imagem-container .imagem.visible {
@@ -115,13 +120,14 @@ header {
 }
 
 .dado {
-    background-color: #ffffff; /* Altere esta linha para branco */
+    background-color: #ffffff;
+    /* Altere esta linha para branco */
     padding: 20px;
     border-radius: 30px;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
     flex: 1;
     min-width: 200px;
-    max-width: 200px;  
+    max-width: 200px;
 }
 
 .numero {
@@ -135,8 +141,9 @@ header {
 
 .texto-dado {
     font-size: 1em;
-    color: #666;  
-    text-align: left; /* Alinha o texto à esquerda */
+    color: #666;
+    text-align: left;
+    /* Alinha o texto à esquerda */
 }
 
 /* Botões */
@@ -146,23 +153,111 @@ header {
 
 .botao-sondagem,
 .botao-burnout {
-    display: inline-block; /* Para permitir espaçamento */
-    background-color: #38184C; /* Cor do botão */
-    color: #fff; /* Cor do texto do botão */
-    padding: 15px 30px; /* Espaçamento interno do botão */
-    border-radius: 5px; /* Bordas arredondadas do botão */
-    text-decoration: none; /* Sem decoração no texto */
-    font-weight: bold; /* Negrito */
-    text-align: center; /* Centraliza o texto */
-    margin-top: 20px; /* Margem superior */
-    transition: background-color 0.3s ease; /* Transição suave para hover */
+    display: inline-block;
+    /* Para permitir espaçamento */
+    background-color: #38184C;
+    /* Cor do botão */
+    color: #fff;
+    /* Cor do texto do botão */
+    padding: 15px 30px;
+    /* Espaçamento interno do botão */
+    border-radius: 5px;
+    /* Bordas arredondadas do botão */
+    text-decoration: none;
+    /* Sem decoração no texto */
+    font-weight: bold;
+    /* Negrito */
+    text-align: center;
+    /* Centraliza o texto */
+    margin-top: 20px;
+    /* Margem superior */
+    transition: background-color 0.3s ease;
+    /* Transição suave para hover */
 }
 
 .botao-sondagem:hover,
 .botao-burnout:hover {
-    background-color: #4E2A6A; /* Cor do botão ao passar o mouse */
-    cursor: pointer; /* Muda o cursor para indicar interatividade */
+    background-color: #4E2A6A;
+    /* Cor do botão ao passar o mouse */
+    cursor: pointer;
+    /* Muda o cursor para indicar interatividade */
+}
+.conteudo-consequencia {
+    display: flex; /* Usa flexbox para alinhar imagem e texto */
+    align-items: center; /* Alinha verticalmente ao centro */
+    gap: 16px; /* Espaçamento entre imagem e texto */
+}
+.consequencias-burnout {
+    background-color: #CEF09D; /* Verde claro */
+    text-align: center;
+    padding: 40px; /* Espaçamento interno aumentado para dar um visual mais 'clean' */
+    margin-top: 40px;
+    border-radius: 20px; /* Adicionando bordas arredondadas */
 }
 
+.titulo-consequencias {
+    color: #1C646D; /* Cor do título */
+    font-family: 'Roboto', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 48px;
+    margin-bottom: 20px; /* Margem inferior para espaçamento */
+}
 
+.container-consequencias {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espaçamento entre os cards */
+    flex-wrap: wrap; /* Permite quebra de linha se necessário */
+    padding: 20px; /* Espaçamento interno */
+}
 
+.consequencia {
+    background-color: #CEF09D; /* Fundo branco */
+    height: auto;
+    padding: 16px;
+    border-radius: 6px; /* Bordas arredondadas */
+    border: 1px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    width: 472px; /* Largura dos cards */
+    text-align: left; /* Alinha texto à esquerda */
+    transition: transform 0.2s; /* Transição suave para hover */
+    gap: 16px;
+}
+
+.consequencia:hover {
+    transform: scale(1.05); /* Aumenta o tamanho ao passar o mouse */
+}
+
+.consequencia h3 {
+    font-size: 24px; /* Tamanho do título do card */
+    color: #1C646D; /* Cor do título */
+    margin-bottom: 10px; /* Margem abaixo do título */
+}
+
+.consequencia p {
+    font-size: 16px; /* Tamanho do texto do corpo */
+    color: #666; /* Cor do texto */
+}
+
+.imagem-consequencias {
+    width: 100px;
+    /* Largura fixa */
+    height: 100px;
+    /* Altura fixa */
+    margin-bottom: 10px;
+    left: 2px;
+    
+
+}
+.texto-consequencia {
+    text-align: left; /* Alinha o texto à esquerda */
+}
+
+.titulo-card {
+    font-size: 20px; /* Tamanho do título do card */
+    font-weight: 500;
+    line-height: 28px;
+    color: #000000/* Cor do título */
+    margin-bottom: 10px; /* Margem abaixo do título */
+}
