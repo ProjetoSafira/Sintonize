@@ -148,7 +148,11 @@ header {
 
 /* Botões */
 .botao-container {
-    margin-top: 20px;
+    margin-top: 20px; /* Espaçamento acima do botão */
+    /* adicione esta propriedade para garantir que fique alinhado embaixo */
+    width: 100%; /* Para que ocupe toda a largura, se necessário */
+    text-align: center; /* Centraliza o botão */
+
 }
 
 .botao-sondagem,
@@ -182,62 +186,90 @@ header {
     cursor: pointer;
     /* Muda o cursor para indicar interatividade */
 }
+
 .conteudo-consequencia {
-    display: flex; /* Usa flexbox para alinhar imagem e texto */
-    align-items: center; /* Alinha verticalmente ao centro */
-    gap: 16px; /* Espaçamento entre imagem e texto */
+    display: flex;
+    /* Usa flexbox para alinhar imagem e texto */
+    align-items: center;
+    /* Alinha verticalmente ao centro */
+    gap: 16px;
+    /* Espaçamento entre imagem e texto */
 }
+
 .consequencias-burnout {
-    background-color: #CEF09D; /* Verde claro */
+    background-color: #CEF09D;
+    /* Verde claro */
     text-align: center;
-    padding: 40px; /* Espaçamento interno aumentado para dar um visual mais 'clean' */
+    padding: 40px;
+    /* Espaçamento interno aumentado para dar um visual mais 'clean' */
     margin-top: 40px;
-    border-radius: 20px; /* Adicionando bordas arredondadas */
+    border-radius: 6px;
+    border: 1px;
+    /* Adicionando bordas arredondadas */
 }
 
 .titulo-consequencias {
-    color: #1C646D; /* Cor do título */
+    color: #1C646D;
+    /* Cor do título */
     font-family: 'Roboto', sans-serif;
     font-size: 40px;
     font-weight: 700;
     line-height: 48px;
-    margin-bottom: 20px; /* Margem inferior para espaçamento */
+    margin-bottom: 20px;
+    /* Margem inferior para espaçamento */
 }
 
 .container-consequencias {
     display: flex;
     justify-content: center;
-    gap: 20px; /* Espaçamento entre os cards */
-    flex-wrap: wrap; /* Permite quebra de linha se necessário */
-    padding: 20px; /* Espaçamento interno */
+    gap: 20px;
+    /* Espaçamento entre os cards */
+    flex-wrap: wrap;
+    /* Permite quebra de linha se necessário */
+    padding: 20px;
+    /* Espaçamento interno */
 }
 
 .consequencia {
-    background-color: #CEF09D; /* Fundo branco */
-    height: auto;
+    background-color: #CEF09D;
+    height: 152px;
     padding: 16px;
-    border-radius: 6px; /* Bordas arredondadas */
-    border: 1px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra suave */
-    width: 472px; /* Largura dos cards */
-    text-align: left; /* Alinha texto à esquerda */
-    transition: transform 0.2s; /* Transição suave para hover */
+    width: 556px;
+    text-align: left;
+    /* Alinha texto à esquerda */
+    transition: transform 0.2s;
+    /* Transição suave para hover */
     gap: 16px;
+    border: 1px solid #2A2EDE33;
+    border-radius: 6px;
+    display: inline-block;
 }
 
+
 .consequencia:hover {
-    transform: scale(1.05); /* Aumenta o tamanho ao passar o mouse */
+    transform: scale(1.05);
+    /* Aumenta o tamanho ao passar o mouse */
 }
 
 .consequencia h3 {
-    font-size: 24px; /* Tamanho do título do card */
-    color: #1C646D; /* Cor do título */
-    margin-bottom: 10px; /* Margem abaixo do título */
+    font-size: 24px;
+    /* Tamanho do título do card */
+    /* Cor do título */
+    margin-bottom: 10px;
+    /* Margem abaixo do título */
 }
 
 .consequencia p {
-    font-size: 16px; /* Tamanho do texto do corpo */
-    color: #666; /* Cor do texto */
+    width: 408px;
+    height: auto;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    color: #1F0802;
+    /* Cor do texto */
+    padding: 0 0 10px 0;
 }
 
 .imagem-consequencias {
@@ -247,17 +279,49 @@ header {
     /* Altura fixa */
     margin-bottom: 10px;
     left: 2px;
-    
+
 
 }
+
 .texto-consequencia {
-    text-align: left; /* Alinha o texto à esquerda */
+    text-align: left;
+    /* Alinha o texto à esquerda */
 }
 
 .titulo-card {
-    font-size: 20px; /* Tamanho do título do card */
+    font-size: 20px;
+    /* Tamanho do título do card */
     font-weight: 500;
     line-height: 28px;
-    color: #000000/* Cor do título */
-    margin-bottom: 10px; /* Margem abaixo do título */
+    color: #000000
+        /* Cor do título */
+        margin-bottom: 10px;
+    /* Margem abaixo do título */
+}
+
+.label {
+
+    height: 20px;
+    /* Altura fixa */
+    padding: 2px 4px;
+    /* Espaçamento interno */
+    margin: 2px;
+    /* Espaçamento entre os rótulos */
+    background: #D9D9D980;
+
+    /* Cor de fundo */
+    border: 0.5px solid #990069 10%;
+    display: inline-block;
+    /* Para que a altura e largura funcionem corretamente */
+    text-align: center;
+    /* Centraliza o texto dentro do rótulo */
+    font-weight: bold;
+    /* Negrito para os textos das labels */
+    border-radius: 6px;
+    /* Bordas arredondadas (opcional) */
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    text-align: left;
 }
