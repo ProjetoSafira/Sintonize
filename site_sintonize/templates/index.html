@@ -71,13 +71,17 @@
       
     </section>
     <section class="consequencias-burnout">
-        <img src="{% static 'images/consequencia.png' %}" alt="Imagem Representativa" class="imagem-consequencias-lateral">
-        <h2 class="titulo-consequencias">Consequências do Burnout</h2>
-        <p>Descubra como o burnout pode impactar sua saúde e bem-estar.</p>
+        <div class="consequencias-header">
+            <img src="{% static 'images/consequencia.png' %}" alt="Imagem Representativa" class="imagem-consequencias-lateral">
+            <div class="consequencias-texto">
+                <h2 class="titulo-consequencias">Consequências do Burnout</h2>
+                <p class="descricao-impactar">Descubra como o burnout pode impactar sua saúde e bem-estar.</p>
+            </div>            
+        </div>
         <div class="container-consequencias">
             <div class="consequencia" id="impacto-saude-mental">
                 <div class="conteudo-consequencia">
-                    <img src="{% static 'images/impacto.png' %}" alt="Impacto na saúde mental" class="imagem-consequencias">
+                    <img src="{% static 'images/impactos.png' %}" alt="Impacto na saúde mental" class="imagem-consequencias">
                     <div class="texto-consequencia">
                         <h3 class="titulo-card">Impacto na saúde mental</h3>
                         <p>O Burnout pode levar a depressão, ansiedade e outros problemas de saúde mental.</p>
@@ -96,11 +100,13 @@
                         <div class="label"><strong>Estresse</strong></div>
                     </div>
                 </div>
-            </div>           
+            </div>
+        </div>
         <div class="botao-container" id="botao-container-burnout">
             <a href="{% url 'sondagem' %}" class="botao-burnout" id="botao-burnout">Entenda mais sobre o Burnout</a>
         </div>
     </section>
+    
     {% include 'footer.html' %}  <!-- Incluindo o rodapé -->
     
 </body>

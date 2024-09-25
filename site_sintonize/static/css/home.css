@@ -44,9 +44,6 @@ header {
     line-height: 1.5;
     color: #211C33;
 }
-
-
-
 /* Estilos Gerais da Página */
 .pagina {
     width: 100%;
@@ -197,37 +194,48 @@ header {
 }
 
 .consequencias-burnout {
-    background-color: #CEF09D;
-    /* Verde claro */
-    text-align: center;
+    background-color: #CEF09D; /* Verde claro */
     padding: 40px;
-    /* Espaçamento interno aumentado para dar um visual mais 'clean' */
     margin-top: 40px;
     border-radius: 6px;
-    border: 1px;
-    /* Adicionando bordas arredondadas */
+
 }
 
+.consequencias-header {
+    display: flex; /* Usa flex para alinhar a imagem e o texto */
+    align-items: center; /* Alinha a imagem e o texto no topo */
+  margin-left: 400px;
+   
+}
+
+.imagem-consequencias-lateral {
+    width: 180px; /* Largura da imagem */
+    height: 180px; /* Altura da imagem */
+    margin-right: 40px; /* Espaçamento à direita da imagem */
+}
+
+.consequencias-texto {
+    display: flex; /* Flex para alinhar o título e a descrição */
+    flex-direction: column; /* Coloca título acima da descrição */
+}
+
+
 .titulo-consequencias {
-    color: #1C646D;
-    /* Cor do título */
+    color: #1C646D; /* Cor do título */
     font-family: 'Roboto', sans-serif;
     font-size: 40px;
     font-weight: 700;
     line-height: 48px;
-    margin-bottom: 20px;
-    /* Margem inferior para espaçamento */
+    margin-bottom: 10px; /* Ajuste de margem inferior */
 }
+
 
 .container-consequencias {
     display: flex;
     justify-content: center;
     gap: 20px;
-    /* Espaçamento entre os cards */
     flex-wrap: wrap;
-    /* Permite quebra de linha se necessário */
     padding: 20px;
-    /* Espaçamento interno */
 }
 
 .consequencia {
@@ -336,13 +344,19 @@ header {
     padding: 4px; 
     opacity: 1;   
 }
-.imagem-consequencias-lateral {
-    width: 180px; /* Largura da imagem */
-    height: 180px; /* Altura da imagem */   
-    margin-left: 20px;
-    
-    
-} 
 
+.descricao-impactar {
+    width: 860px; /* Largura fixa */
+    height: 24px; /* Altura fixa */
+    gap: 0; /* Sem espaçamento */
+    opacity: 1; /* Opacidade visível */
+    
+    font-family: 'Roboto', sans-serif; /* Tipografia */
+    font-size: 20px; /* Tamanho da fonte */
+    font-weight: 400; /* Peso da fonte */
+    line-height: 24px; /* Altura da linha */
+    text-align: left; /* Alinhamento à esquerda */
+    margin-top: 10px; /* Espaco acima, se necessário */
+}
 
 
