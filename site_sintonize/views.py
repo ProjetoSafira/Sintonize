@@ -84,6 +84,19 @@ def equipe(request):
             'linkedin': 'https://www.linkedin.com/in/moniquedahora/',
             'imagem': 'images/monique.png',  # URL da imagem do membro
         },
-         
+        {
+          'nome': 'Rhaíssa Alessi Manzini',
+            'cargo': 'UX/UI Design',
+            'descricao': '"Profissional com 10 anos de experiência na área Jurídica e Compliance em transição de carreira para UX/UI Design. Apaixonada por Design desde criança, hoje aplico minha paixão e expertise para criar soluções estratégicas alinhadas aos valores da companhia e objetivos do negócio."',
+            'linkedin': 'https://www.linkedin.com/in/rha%C3%ADssa-manzini/',
+            'imagem': 'images/rhaissa.png',  # URL da imagem do membro
+        },
+        {
+            'nome': 'Myrella da Silva Pinto',
+            'cargo': 'Scrum Master',
+            'descricao': '"Atualmente estou em transição de carreira para a agilidade e, ajudar equipes a alcançar seu máximo potencial por meio da adoção das práticas ágeis se tornou uma paixão. Meu propósito é o de ser uma agente de transformação, criando soluções, gerando valor e, promovendo uma cultura de melhoria contínua dentro das equipes."',
+            'linkedin': 'https://www.linkedin.com/in/mysilva/',
+            'imagem': 'images/myrella.png',  # URL da imagem do membro
+        },
     ]
     return render(request, 'equipe.html', {'membros': membros})

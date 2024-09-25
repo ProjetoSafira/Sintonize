@@ -279,8 +279,7 @@ header {
     /* Altura fixa */
     margin-bottom: 10px;
     left: 2px;
-
-
+  
 }
 
 .texto-consequencia {
@@ -295,7 +294,7 @@ header {
     line-height: 28px;
     color: #000000
         /* Cor do título */
-        margin-bottom: 10px;
+     margin-bottom: 10px;
     /* Margem abaixo do título */
 }
 
@@ -325,3 +324,25 @@ header {
     line-height: 16px;
     text-align: left;
 }
+.descricao-impacto {
+    width: 860px; /* Largura fixa */
+    height: 24px; /* Altura fixa */
+    font-family: 'Roboto', sans-serif; /* Tipografia */
+    font-size: 20px; /* Tamanho da fonte */
+    font-weight: 400; /* Peso da fonte */
+    line-height: 24px; /* Altura da linha */
+    text-align: center; /* Alinhamento do texto */
+    color: #1F0802; /* Cor de fundo */
+    padding: 4px; 
+    opacity: 1;   
+}
+.imagem-consequencias-lateral {
+    width: 180px; /* Largura da imagem */
+    height: 180px; /* Altura da imagem */   
+    margin-left: 20px;
+    
+    
+} 
+
+
+
