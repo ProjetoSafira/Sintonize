@@ -166,31 +166,22 @@ header {
     /* Bordas arredondadas do botão */
     text-decoration: none;
     /* Sem decoração no texto */
-    font-weight: bold;
-    /* Negrito */
-    text-align: center;
-    /* Centraliza o texto */
-    margin-top: 20px;
-    /* Margem superior */
-    transition: background-color 0.3s ease;
-    /* Transição suave para hover */
+    font-weight: bold;/* Negrito */
+    text-align: center;/* Centraliza o texto */
+    margin-top: 20px;/* Margem superior */
+    transition: background-color 0.3s ease; /* Transição suave para hover */
 }
 
 .botao-sondagem:hover,
 .botao-burnout:hover {
-    background-color: #4E2A6A;
-    /* Cor do botão ao passar o mouse */
-    cursor: pointer;
-    /* Muda o cursor para indicar interatividade */
+    background-color: #4E2A6A; /* Cor do botão ao passar o mouse */
+    cursor: pointer; /* Muda o cursor para indicar interatividade */
 }
 
 .conteudo-consequencia {
-    display: flex;
-    /* Usa flexbox para alinhar imagem e texto */
-    align-items: center;
-    /* Alinha verticalmente ao centro */
-    gap: 16px;
-    /* Espaçamento entre imagem e texto */
+    display: flex; /* Usa flexbox para alinhar imagem e texto */
+    align-items: center; /* Alinha verticalmente ao centro */
+    gap: 16px;/* Espaçamento entre imagem e texto */
 }
 
 .consequencias-burnout {
@@ -204,7 +195,7 @@ header {
 .consequencias-header {
     display: flex; /* Usa flex para alinhar a imagem e o texto */
     align-items: center; /* Alinha a imagem e o texto no topo */
-  margin-left: 400px;
+    margin-left: 325px;
    
 }
 
@@ -243,28 +234,21 @@ header {
     height: 152px;
     padding: 16px;
     width: 556px;
-    text-align: left;
-    /* Alinha texto à esquerda */
-    transition: transform 0.2s;
-    /* Transição suave para hover */
+    text-align: left;/* Alinha texto à esquerda */
+    transition: transform 0.2s;/* Transição suave para hover */
     gap: 16px;
     border: 1px solid #2A2EDE33;
     border-radius: 6px;
     display: inline-block;
 }
 
-
 .consequencia:hover {
-    transform: scale(1.05);
-    /* Aumenta o tamanho ao passar o mouse */
+    transform: scale(1.05);/* Aumenta o tamanho ao passar o mouse */
 }
 
 .consequencia h3 {
-    font-size: 24px;
-    /* Tamanho do título do card */
-    /* Cor do título */
-    margin-bottom: 10px;
-    /* Margem abaixo do título */
+    font-size: 24px;/* Tamanho do título do card */
+    margin-bottom: 10px;/* Margem abaixo do título */
 }
 
 .consequencia p {
@@ -275,19 +259,15 @@ header {
     font-weight: 400;
     line-height: 24px;
     text-align: left;
-    color: #1F0802;
-    /* Cor do texto */
+    color: #1F0802;/* Cor do texto */
     padding: 0 0 10px 0;
 }
 
 .imagem-consequencias {
-    width: 100px;
-    /* Largura fixa */
-    height: 100px;
-    /* Altura fixa */
+    width: 100px;/* Largura fixa */
+    height: 100px;/* Altura fixa */
     margin-bottom: 10px;
-    left: 2px;
-  
+    left: 2px; 
 }
 
 .texto-consequencia {
@@ -296,36 +276,22 @@ header {
 }
 
 .titulo-card {
-    font-size: 20px;
-    /* Tamanho do título do card */
+    font-size: 20px;/* Tamanho do título do card */
     font-weight: 500;
     line-height: 28px;
-    color: #000000
-        /* Cor do título */
-     margin-bottom: 10px;
-    /* Margem abaixo do título */
+    color: #000000 /* Cor do título */
+     margin-bottom: 10px;/* Margem abaixo do título */
 }
 
 .label {
-
-    height: 20px;
-    /* Altura fixa */
-    padding: 2px 4px;
-    /* Espaçamento interno */
-    margin: 2px;
-    /* Espaçamento entre os rótulos */
-    background: #D9D9D980;
-
-    /* Cor de fundo */
+    height: 20px;/* Altura fixa */
+    padding: 2px 4px;/* Espaçamento interno */
+    margin: 2px;/* Espaçamento entre os rótulos */
+    background: #D9D9D980;/* Cor de fundo */
     border: 0.5px solid #990069 10%;
-    display: inline-block;
-    /* Para que a altura e largura funcionem corretamente */
-    text-align: center;
-    /* Centraliza o texto dentro do rótulo */
-    font-weight: bold;
-    /* Negrito para os textos das labels */
-    border-radius: 6px;
-    /* Bordas arredondadas (opcional) */
+    display: inline-block;/* Para que a altura e largura funcionem corretamente */
+    text-align: center;/* Centraliza o texto dentro do rótulo */
+    border-radius: 6px;/* Bordas arredondadas (opcional) */
     font-family: Roboto;
     font-size: 12px;
     font-weight: 600;
@@ -350,7 +316,6 @@ header {
     height: 24px; /* Altura fixa */
     gap: 0; /* Sem espaçamento */
     opacity: 1; /* Opacidade visível */
-    
     font-family: 'Roboto', sans-serif; /* Tipografia */
     font-size: 20px; /* Tamanho da fonte */
     font-weight: 400; /* Peso da fonte */
