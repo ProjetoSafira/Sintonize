@@ -46,7 +46,7 @@ def equipe(request):
             'nome': 'Fernanda Giglio',
             'cargo': 'UX/UI Design',
             'descricao': '"Profissional com 10 anos de experiência em atendimento ao cliente e área comercial, formada em Publicidade e Propaganda. Estou em transição para o Design UX/UI, onde utilizo minhas habilidades de comunicação, empatia e resolução de problemas para melhorar a experiência dos usuários. Com passagens por startups de tecnologia, tenho uma visão estratégica voltada para resultados e estou sempre em busca de novas oportunidades para crescer. Além disso, tenho experiência em marketing, vendas e suporte a franqueados, sempre priorizando a satisfação do cliente',
-            'linkedin"': 'https://www.linkedin.com/in/fernandagiglio/',
+            'linkedin': 'https://www.linkedin.com/in/fernandagiglio/',
             'imagem': 'images/fer.png',  # URL da imagem do membro
         },
           {
