@@ -36,7 +36,7 @@ body {
     margin-bottom: -20px;
     /* Reduzir espaço entre os membros */
     width: 100%;
-    height: Hug (268px);
+    height: auto;
     padding: 60px 170px 60px 170px;
     gap: 40px;
     opacity: 0px;
@@ -120,4 +120,52 @@ p {
 .botao-linkedin:hover {
     background-color: #0056b3;
     /* Cor ao passar o mouse */
+}
+@media (max-width: 768px) {
+    .container {
+        padding: 20px; /* Ajusta o padding para telas pequenas */
+    }
+
+    .membro {
+        display: flex; /* Adiciona o display flex */
+        flex-direction: column; /* Muda o layout para coluna */
+        align-items: flex-start; /* Faz com que os itens fiquem à esquerda */
+        padding: 20px; /* Reduz o padding */
+        width: 100%; /* Largura total */
+    }
+
+    .foto-membro {
+        width: 60px; /* Tamanho reduzido da imagem */
+        height: 60px; /* Tamanho reduzido da imagem */
+        margin-bottom: -10px; /* Adiciona margem abaixo da imagem */
+    }
+
+    h2 {
+        font-size: 20px; /* Reduz o tamanho da fonte */
+        line-height: 28px; /* Ajusta a linha */
+        margin: 0; /* Remove margens */
+        
+
+    }
+
+    h3 {
+        font-size: 14px; /* Reduz o tamanho do cargo */
+        line-height: 20px; /* Deixa a linha mais espaçada */
+        margin: 0; /* Remove margens */
+    }
+
+    p {
+        font-size: 14px; /* Redução do texto no parágrafo */
+        line-height: 20px; /* Ajusta a linha do texto */
+    }
+
+    .botao-linkedin {
+        width:22%; /* Botão ocupa toda a largura */
+        margin-top: 10px; /* Margem acima do botão */
+    }
+
+    .info {
+        text-align: left; /* Alinha o texto à esquerda */
+    
+    }
 }
