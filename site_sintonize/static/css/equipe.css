@@ -161,7 +161,10 @@ p {
 
     .botao-linkedin {
         width:22%; /* Botão ocupa toda a largura */
-        margin-top: 10px; /* Margem acima do botão */
+        margin-top: -10px; /* Margem acima do botão */
+        margin-bottom: 10px;
+        flex-direction: center;
+        
     }
 
     .info {
