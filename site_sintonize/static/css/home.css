@@ -8,7 +8,10 @@ body {
 header {
     position: relative;
     text-align: center;
-    background-color: #ffffff;
+    background-color: #f2f0ff;
+    margin-top: 80px;
+    
+    
 }
 
 .header-banner {
@@ -16,34 +19,52 @@ header {
 }
 
 .header-banner img {
-    width: 100%;
-    display: block;
+    width: 590px;
+    height: 506px;
+    top: 82px;
+    left: 700px;
+    margin-left: 750px;
+  
 }
 
 .header-content {
-    position: absolute;
-    top: 60%; /* Ajuste para 60% para telas menores, se necessário */
-    left: 50%;
+    width: 650px;
+    flex: 1; /* Permite que o conteúdo ocupe espaço flexível */
+     position: absolute;
+    top: 60%;
+    /* Ajuste para 60% para telas menores, se necessário */
+    padding-left: 700px; /* Espaçamento à esquerda */
+   
     transform: translate(-50%, -50%);
-    padding: 40px;
-    background: rgba(255, 255, 255, 0.9); /* Adiciona um fundo semi-transparente */
-    border-radius: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    max-width: 90%;
     text-align: left;
     color: #1C646D;
+    overflow-wrap: break-word;
+    /* Faz o texto quebrar se necessário */
+    
+    
 }
+
 
 .header-content h1 {
     font-size: 48px;
-    line-height: 1.2;
+    width: 566px;
+    height: 48px;
+    gap: 0px;
+    opacity: 0px;
 }
 
 .header-content p {
-    font-size: 18px;
-    line-height: 1.5;
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
     color: #211C33;
+    width: 566px;
+    height: 120px;
+    margin-top: 20px;
 }
+
 /* Estilos Gerais da Página */
 .pagina {
     width: 100%;
@@ -145,10 +166,13 @@ header {
 
 /* Botões */
 .botao-container {
-    margin-top: 20px; /* Espaçamento acima do botão */
+    margin-top: 20px;
+    /* Espaçamento acima do botão */
     /* adicione esta propriedade para garantir que fique alinhado embaixo */
-    width: 100%; /* Para que ocupe toda a largura, se necessário */
-    text-align: center; /* Centraliza o botão */
+    width: 100%;
+    /* Para que ocupe toda a largura, se necessário */
+    text-align: center;
+    /* Centraliza o botão */
 
 }
 
@@ -166,26 +190,36 @@ header {
     /* Bordas arredondadas do botão */
     text-decoration: none;
     /* Sem decoração no texto */
-    font-weight: bold;/* Negrito */
-    text-align: center;/* Centraliza o texto */
-    margin-top: 20px;/* Margem superior */
-    transition: background-color 0.3s ease; /* Transição suave para hover */
+    font-weight: bold;
+    /* Negrito */
+    text-align: center;
+    /* Centraliza o texto */
+    margin-top: 20px;
+    /* Margem superior */
+    transition: background-color 0.3s ease;
+    /* Transição suave para hover */
 }
 
 .botao-sondagem:hover,
 .botao-burnout:hover {
-    background-color: #4E2A6A; /* Cor do botão ao passar o mouse */
-    cursor: pointer; /* Muda o cursor para indicar interatividade */
+    background-color: #4E2A6A;
+    /* Cor do botão ao passar o mouse */
+    cursor: pointer;
+    /* Muda o cursor para indicar interatividade */
 }
 
 .conteudo-consequencia {
-    display: flex; /* Usa flexbox para alinhar imagem e texto */
-    align-items: center; /* Alinha verticalmente ao centro */
-    gap: 16px;/* Espaçamento entre imagem e texto */
+    display: flex;
+    /* Usa flexbox para alinhar imagem e texto */
+    align-items: center;
+    /* Alinha verticalmente ao centro */
+    gap: 16px;
+    /* Espaçamento entre imagem e texto */
 }
 
 .consequencias-burnout {
-    background-color: #CEF09D; /* Verde claro */
+    background-color: #CEF09D;
+    /* Verde claro */
     padding: 40px;
     margin-top: 40px;
     border-radius: 6px;
@@ -193,31 +227,40 @@ header {
 }
 
 .consequencias-header {
-    display: flex; /* Usa flex para alinhar a imagem e o texto */
-    align-items: center; /* Alinha a imagem e o texto no topo */
+    display: flex;
+    /* Usa flex para alinhar a imagem e o texto */
+    align-items: center;
+    /* Alinha a imagem e o texto no topo */
     margin-left: 325px;
-   
+
 }
 
 .imagem-consequencias-lateral {
-    width: 180px; /* Largura da imagem */
-    height: 180px; /* Altura da imagem */
-    margin-right: 40px; /* Espaçamento à direita da imagem */
+    width: 180px;
+    /* Largura da imagem */
+    height: 180px;
+    /* Altura da imagem */
+    margin-right: 40px;
+    /* Espaçamento à direita da imagem */
 }
 
 .consequencias-texto {
-    display: flex; /* Flex para alinhar o título e a descrição */
-    flex-direction: column; /* Coloca título acima da descrição */
+    display: flex;
+    /* Flex para alinhar o título e a descrição */
+    flex-direction: column;
+    /* Coloca título acima da descrição */
 }
 
 
 .titulo-consequencias {
-    color: #1C646D; /* Cor do título */
+    color: #1C646D;
+    /* Cor do título */
     font-family: 'Roboto', sans-serif;
     font-size: 40px;
     font-weight: 700;
     line-height: 48px;
-    margin-bottom: 10px; /* Ajuste de margem inferior */
+    margin-bottom: 10px;
+    /* Ajuste de margem inferior */
 }
 
 
@@ -234,8 +277,10 @@ header {
     height: 152px;
     padding: 16px;
     width: 556px;
-    text-align: left;/* Alinha texto à esquerda */
-    transition: transform 0.2s;/* Transição suave para hover */
+    text-align: left;
+    /* Alinha texto à esquerda */
+    transition: transform 0.2s;
+    /* Transição suave para hover */
     gap: 16px;
     border: 1px solid #2A2EDE33;
     border-radius: 6px;
@@ -243,12 +288,15 @@ header {
 }
 
 .consequencia:hover {
-    transform: scale(1.05);/* Aumenta o tamanho ao passar o mouse */
+    transform: scale(1.05);
+    /* Aumenta o tamanho ao passar o mouse */
 }
 
 .consequencia h3 {
-    font-size: 24px;/* Tamanho do título do card */
-    margin-bottom: 10px;/* Margem abaixo do título */
+    font-size: 24px;
+    /* Tamanho do título do card */
+    margin-bottom: 10px;
+    /* Margem abaixo do título */
 }
 
 .consequencia p {
@@ -259,15 +307,18 @@ header {
     font-weight: 400;
     line-height: 24px;
     text-align: left;
-    color: #1F0802;/* Cor do texto */
+    color: #1F0802;
+    /* Cor do texto */
     padding: 0 0 10px 0;
 }
 
 .imagem-consequencias {
-    width: 100px;/* Largura fixa */
-    height: 100px;/* Altura fixa */
+    width: 100px;
+    /* Largura fixa */
+    height: 100px;
+    /* Altura fixa */
     margin-bottom: 10px;
-    left: 2px; 
+    left: 2px;
 }
 
 .texto-consequencia {
@@ -276,83 +327,108 @@ header {
 }
 
 .titulo-card {
-    font-size: 20px;/* Tamanho do título do card */
+    font-size: 20px;
+    /* Tamanho do título do card */
     font-weight: 500;
     line-height: 28px;
-    color: #000000 /* Cor do título */
-     margin-bottom: 10px;/* Margem abaixo do título */
+    color: #000000
+        /* Cor do título */
+        margin-bottom: 10px;
+    /* Margem abaixo do título */
 }
 
 .label {
-    height: 20px;/* Altura fixa */
-    padding: 2px 4px;/* Espaçamento interno */
-    margin: 2px;/* Espaçamento entre os rótulos */
-    background: #D9D9D980;/* Cor de fundo */
+    height: 20px;
+    /* Altura fixa */
+    padding: 2px 4px;
+    /* Espaçamento interno */
+    margin: 2px;
+    /* Espaçamento entre os rótulos */
+    background: #D9D9D980;
+    /* Cor de fundo */
     border: 0.5px solid #990069 10%;
-    display: inline-block;/* Para que a altura e largura funcionem corretamente */
-    text-align: center;/* Centraliza o texto dentro do rótulo */
-    border-radius: 6px;/* Bordas arredondadas (opcional) */
+    display: inline-block;
+    /* Para que a altura e largura funcionem corretamente */
+    text-align: center;
+    /* Centraliza o texto dentro do rótulo */
+    border-radius: 6px;
+    /* Bordas arredondadas (opcional) */
     font-family: Roboto;
     font-size: 12px;
     font-weight: 600;
     line-height: 16px;
     text-align: left;
 }
+
 .descricao-impacto {
-    width: 860px; /* Largura fixa */
-    height: 24px; /* Altura fixa */
-    font-family: 'Roboto', sans-serif; /* Tipografia */
-    font-size: 20px; /* Tamanho da fonte */
-    font-weight: 400; /* Peso da fonte */
-    line-height: 24px; /* Altura da linha */
-    text-align: center; /* Alinhamento do texto */
-    color: #1F0802; /* Cor de fundo */
-    padding: 4px; 
-    opacity: 1;   
+    width: 860px;
+    /* Largura fixa */
+    height: 24px;
+    /* Altura fixa */
+    font-family: 'Roboto', sans-serif;
+    /* Tipografia */
+    font-size: 20px;
+    /* Tamanho da fonte */
+    font-weight: 400;
+    /* Peso da fonte */
+    line-height: 24px;
+    /* Altura da linha */
+    text-align: center;
+    /* Alinhamento do texto */
+    color: #1F0802;
+    /* Cor de fundo */
+    padding: 4px;
+    opacity: 1;
 }
 
 .descricao-impactar {
-    width: 860px; /* Largura fixa */
-    height: 24px; /* Altura fixa */
-    gap: 0; /* Sem espaçamento */
-    opacity: 1; /* Opacidade visível */
-    font-family: 'Roboto', sans-serif; /* Tipografia */
-    font-size: 20px; /* Tamanho da fonte */
-    font-weight: 400; /* Peso da fonte */
-    line-height: 24px; /* Altura da linha */
-    text-align: left; /* Alinhamento à esquerda */
-    margin-top: 10px; /* Espaco acima, se necessário */
+    width: 860px;
+    /* Largura fixa */
+    height: 24px;
+    /* Altura fixa */
+    gap: 0;
+    /* Sem espaçamento */
+    opacity: 1;
+    /* Opacidade visível */
+    font-family: 'Roboto', sans-serif;
+    /* Tipografia */
+    font-size: 20px;
+    /* Tamanho da fonte */
+    font-weight: 400;
+    /* Peso da fonte */
+    line-height: 24px;
+    /* Altura da linha */
+    text-align: left;
+    /* Alinhamento à esquerda */
+    margin-top: 10px;
+    /* Espaco acima, se necessário */
 }
 
 /* Responsividade */
-/* Responsividade */
 @media (max-width: 768px) {
     header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        display: flex; /* Mantenha flexbox */
+        flex-direction: column; /* Coluna */
+        align-items: center; /* Centralização */
+        padding: 20px; /* Mantenha o padding */
     }
 
     .header-content {
-        padding: 1rem; /* Ajustado para menor padding */
-        margin-top: 25px; /* Ajustado para melhor espaçamento */
-        max-width: 90%; /* Limita a largura do conteúdo */
-        width: 100%;
+        padding: 1rem; /* Menor padding */
+        margin-top: 25px; /* Melhor espaçamento */
+        width: 90%; /* Ajuste para caber melhor */
         background: rgba(255, 255, 255, 0.9);
-        border-radius: 15px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        text-align: left; /* Alinhamento à esquerda */
     }
 
     .header-content h1 {
-        font-size: 1.125rem; /* Menor para caber melhor no banner */
-        text-align: center; /* Centralizando o texto */
+        font-size: 1.5rem; /* Ajuste o tamanho para que fique legível */
+        margin-bottom: 10px; /* Espaço abaixo do título */
     }
 
     .header-content p {
-        font-size: 0.625rem; /* Texto menor */
-        text-align: center; /* Centralizando o texto */
+        font-size: 1rem; /* Tamanho confortável */
     }
-
     .pagina {
         padding: 2rem 1rem;
         flex-direction: column;
@@ -361,62 +437,93 @@ header {
 
     .container {
         max-width: 100%;
-        padding: 0 1rem; /* Padding responsivo */
+        padding: 0 1rem;
+        /* Padding responsivo */
+        overflow-wrap: break-word;
+        /* Faz o texto quebrar se necessário */
     }
 
     .dados-burnout h2,
     .dados-burnout p {
-        font-size: 1.5rem; /* Ajustar tamanho do texto em dispositivos móveis */
-        text-align: center; /* Centraliza textos */
-        width: 100%; /* Garante que os textos não ultrapassem */
+        font-size: 1.5rem;
+        /* Ajustar tamanho do texto em dispositivos móveis */
+        text-align: center;
+        /* Centraliza textos */
+        width: 100%;
+        /* Garante que os textos não ultrapassem */
+        overflow-wrap: break-word;
+        /* Faz o texto quebrar se necessário */
     }
 
     .consequencia {
         width: 100%;
-        margin: 10px 0; /* Margem vertical */
-        text-align: left; /* Texto à esquerda */
+        margin: 10px 0;
+        /* Margem vertical */
+        text-align: left;
+        /* Texto à esquerda */
     }
 
     .consequencias-header {
         flex-direction: column;
-        align-items: center; /* Centraliza os itens */
+        align-items: center;
+        /* Centraliza os itens */
     }
 
     .titulo-consequencias {
-        font-size: 1.8rem; /* Ajusta o tamanho da fonte */
+        font-size: 1.8rem;
+        /* Ajusta o tamanho da fonte */
     }
 
     .texto-consequencia h3 {
-        font-size: 1.5rem; /* Ajusta tamanho do título do card */
+        font-size: 1.5rem;
+        /* Ajusta tamanho do título do card */
     }
 
     .texto-consequencia p {
-        font-size: 0.9rem; /* Ajuste de tamanho do texto */
+        font-size: 0.9rem;
+        /* Ajuste de tamanho do texto */
+    }
+
+    .imagem-principal {
+        width: 90%;
+        /* Garante que a imagem não ultrapasse o contêiner */
+        max-width: 700px; /* Limite para telas maiores */
     }
 }
 
 @media (max-width: 480px) {
     .header-content {
-        margin-top: 10px; /* Reduzido para celulares pequenos */
+        margin-top: 10px; /* Melhorar o espaçamento em telas pequenas */
+        width: 95%; /* Limita a largura em telas menores */
     }
 
     .header-content h1 {
-        font-size: 1rem; /* Menor ainda para telas pequenas */
-        margin-bottom: 10px; /* Espaço abaixo do título */
+        font-size: 1.2rem; /* Redução adequada para smartphones */
     }
 
     .header-content p {
-        font-size: 0.5rem; /* Texto ainda menor */
+        font-size: 0.9rem; /* Texto com tamanho adequado */
+        max-width: 100%; /* Melhorar a largura */
+        line-height: 1.4; /* Melhora a legibilidade */
     }
+
 
     .pagina {
         padding: 1rem; /* Menor padding em telas pequenas */
+        display: flex; /* Verifique se está permitindo flexão adequada */
+        flex-direction: column; /* Para a coluna */
+        align-items: center; /* Centralizar */
+    }
     }
 
     .titulo-card {
-        font-size: 1.2rem; /* Ajustar título do cartão */
-        text-align: center; /* Centraliza textos */
+        font-size: 1.2rem;
+        /* Ajustar título do cartão */
+        text-align: center;
+        /* Centraliza textos */
     }
-}
 
-
+    .imagem-principal {
+        width: 100%;
+        /* Faz com que a imagem ocupe toda a largura disponível */
+    }
