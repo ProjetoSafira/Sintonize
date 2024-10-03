@@ -230,13 +230,10 @@ header {
 
 }
 
+.imagem-consequencias,
 .imagem-consequencias-lateral {
-    width: 180px;
-    /* Largura da imagem */
-    height: 180px;
-    /* Altura da imagem */
-    margin-right: 40px;
-    /* Espaçamento à direita da imagem */
+    max-width: 100%;  /* A imagem nunca deve exceder a largura do contêiner */
+    height: auto;      /* Mantém a proporção da imagem */
 }
 
 .consequencias-texto {
@@ -269,7 +266,7 @@ header {
 
 .consequencia {
     background-color: #CEF09D;
-    height: 152px;
+    height: auto;
     padding: 16px;
     width: 556px;
     text-align: left;
@@ -307,14 +304,6 @@ header {
     padding: 0 0 10px 0;
 }
 
-.imagem-consequencias {
-    width: 100px;
-    /* Largura fixa */
-    height: 100px;
-    /* Altura fixa */
-    margin-bottom: 10px;
-    left: 2px;
-}
 
 .texto-consequencia {
     text-align: left;
@@ -426,38 +415,12 @@ header {
         overflow-wrap: break-word; 
     }
 
-    .consequencia {
-        width: 100%;
-        margin: 10px 0; 
-        text-align: center; /* Centralize se necessário */
+
+    .botao-burnout {
+        padding: 10px 20px;    /* Ajusta o padding do botão para telas menores */
+        font-size: 14px;        /* Reduz o tamanho da fonte do botão */
     }
 
-    .consequencias-header {
-        display: flex; 
-        flex-direction: column; 
-        align-items: center; 
-    }
-
-    .titulo-consequencias {
-        font-size: 1.8rem; 
-        text-align: center;  /* Centralize */
-    }
-
-    .texto-consequencia h3 {
-        font-size: 1.5rem; 
-        text-align: center; /* Centralize */
-    }
-
-    .texto-consequencia p {
-        font-size: 0.9rem; 
-        text-align: center; /* Centralize */
-    }
-
-    .imagem-principal {
-        width: 100%;
-        max-width: 600px; 
-        
-    }
 }
 
 
@@ -469,10 +432,6 @@ header {
         align-items: center; 
     }
 
-    .titulo-card {
-        font-size: 1.2rem; 
-        text-align: center; 
-    }
 
     .imagem-principal {
         width: 80%; 
@@ -514,12 +473,13 @@ header {
 @media (max-width: 1024px) {
     .header-content {
         width: 90%; /* Aumenta a largura */
-        margin: 0 auto;
+        margin: 0 0px;
+        text-align: left;
     }
 
     .header-content h1 {
         font-size: 40px; /* Tamanho atrativo para tablets */
-        margin: 15px 0;
+        margin: 15px 0;-
     }
 
     .header-content p {
@@ -527,4 +487,32 @@ header {
         margin: 10px 0;
         width: 100%; /* Altera para 100% */
     }
+}
+/* Responsividade dos cards */
+@media (max-width: 768px) {
+    .consequencia {
+        width: 45%; /* Cards ocupam bem do espaço disponível */
+        max-width: none; /* Largura máxima dos cards */
+    }
+}
+
+@media (max-width: 480px) {
+    .consequencia {
+        width: 100%; /* Cada card ocupa 100% */
+    }
+}
+
+/* Imagens responsivas */
+.imagem-consequencias {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Ajustes nos textos */
+.titulo-card {
+    font-size: 1.5rem; /* Ajustes com rem para responsividade */
+}
+
+.descricao-impacto {
+    font-size: 1rem; /* Ajustes com rem para responsividade */
 }
