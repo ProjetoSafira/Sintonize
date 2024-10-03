@@ -1,56 +1,51 @@
 body {
     font-family: 'Roboto', sans-serif;
     background: #FFFFFF;
+    max-width: 1440px;
+    width: 100%;
 }
-
 
 /* Estilos do Header */
 header {
     position: relative;
-    text-align: center;
+    text-align: left; /* Alinha o texto à esquerda */
     background-color: #f2f0ff;
     margin-top: 80px;
-    
-    
+    flex-direction: column;
+    display:flex;
+    align-items: flex-start; 
 }
 
 .header-banner {
     width: 100%;
+    margin-top: 20px;
 }
 
 .header-banner img {
-    width: 590px;
-    height: 506px;
-    top: 82px;
-    left: 700px;
-    margin-left: 750px;
-  
+    width: 100%;
+    max-width: 590px; /* Limita a largura máxima */
+    height: auto;
+    margin-left: 600px; /* Pode ajustar ou remover conforme necessário */
+    
+    
 }
 
 .header-content {
-    width: 650px;
-    flex: 1; /* Permite que o conteúdo ocupe espaço flexível */
-     position: absolute;
-    top: 60%;
-    /* Ajuste para 60% para telas menores, se necessário */
-    padding-left: 700px; /* Espaçamento à esquerda */
-   
-    transform: translate(-50%, -50%);
-    text-align: left;
+    width: 90%;
+    max-width: 650px;
+    position: absolute;
+    top: 30%;
+    left: 40px; /* Certifique-se de que o conteúdo comece no lado esquerdo */
+    text-align: left; /* Alinhamento do texto à esquerda */
     color: #1C646D;
-    overflow-wrap: break-word;
-    /* Faz o texto quebrar se necessário */
-    
-    
+    overflow-wrap: break-word; /* Quebrar texto se necessário */
 }
-
 
 .header-content h1 {
     font-size: 48px;
-    width: 566px;
-    height: 48px;
-    gap: 0px;
-    opacity: 0px;
+    width: auto; /* Definindo como automático para ocupar o espaço corretamente */
+    height: auto; /* Removido para ajuste automático */
+    opacity: 1; /* Se desejar visibilidade, configure como 1 */
 }
 
 .header-content p {
@@ -58,12 +53,13 @@ header {
     font-size: 20px;
     font-weight: 400;
     line-height: 24px;
-    text-align: left;
+    text-align: left; /* Alinhamento do texto à esquerda */
     color: #211C33;
-    width: 566px;
-    height: 120px;
+    width: 566px; /* Definindo como automático para ocupar o espaço corretamente */
+    height: auto; /* Removido para ajuste automático */
     margin-top: 20px;
 }
+
 
 /* Estilos Gerais da Página */
 .pagina {
@@ -97,17 +93,16 @@ header {
 
 /* Estilos da Imagem */
 .imagem-container {
-    width: 612px;
+    width: 610px;
     /* Altere de max-width para width */
     height: 584px;
     /* Especifique a altura */
-    position: absolute;
+    position: relative;
     /* Adicione isso para posicionar a imagem */
     left: 712px;
     /* Posição X */
     top: 642px;
     /* Posição Y */
-
 }
 
 .imagem-container .imagem.visible {
@@ -231,7 +226,7 @@ header {
     /* Usa flex para alinhar a imagem e o texto */
     align-items: center;
     /* Alinha a imagem e o texto no topo */
-    margin-left: 325px;
+    margin-left: 100px;
 
 }
 
@@ -406,124 +401,130 @@ header {
 
 /* Responsividade */
 @media (max-width: 768px) {
-    header {
-        display: flex; /* Mantenha flexbox */
-        flex-direction: column; /* Coluna */
-        align-items: center; /* Centralização */
-        padding: 20px; /* Mantenha o padding */
-    }
-
-    .header-content {
-        padding: 1rem; /* Menor padding */
-        margin-top: 25px; /* Melhor espaçamento */
-        width: 90%; /* Ajuste para caber melhor */
-        background: rgba(255, 255, 255, 0.9);
-        text-align: left; /* Alinhamento à esquerda */
-    }
-
-    .header-content h1 {
-        font-size: 1.5rem; /* Ajuste o tamanho para que fique legível */
-        margin-bottom: 10px; /* Espaço abaixo do título */
-    }
-
-    .header-content p {
-        font-size: 1rem; /* Tamanho confortável */
-    }
+    
     .pagina {
         padding: 2rem 1rem;
-        flex-direction: column;
-        align-items: center;
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
     }
 
     .container {
         max-width: 100%;
-        padding: 0 1rem;
-        /* Padding responsivo */
-        overflow-wrap: break-word;
-        /* Faz o texto quebrar se necessário */
+        padding: 0 1rem; 
+        overflow-wrap: break-word; 
+        display: flex; /* Mantenha a consistência no layout */
+        flex-direction: column;
+        align-items: center; /* Certifique-se de centralizar sempre */
     }
 
     .dados-burnout h2,
     .dados-burnout p {
-        font-size: 1.5rem;
-        /* Ajustar tamanho do texto em dispositivos móveis */
-        text-align: center;
-        /* Centraliza textos */
-        width: 100%;
-        /* Garante que os textos não ultrapassem */
-        overflow-wrap: break-word;
-        /* Faz o texto quebrar se necessário */
+        font-size: 1.5rem; 
+        text-align: center; 
+        width: 100%; 
+        overflow-wrap: break-word; 
     }
 
     .consequencia {
         width: 100%;
-        margin: 10px 0;
-        /* Margem vertical */
-        text-align: left;
-        /* Texto à esquerda */
+        margin: 10px 0; 
+        text-align: center; /* Centralize se necessário */
     }
 
     .consequencias-header {
-        flex-direction: column;
-        align-items: center;
-        /* Centraliza os itens */
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
     }
 
     .titulo-consequencias {
-        font-size: 1.8rem;
-        /* Ajusta o tamanho da fonte */
+        font-size: 1.8rem; 
+        text-align: center;  /* Centralize */
     }
 
     .texto-consequencia h3 {
-        font-size: 1.5rem;
-        /* Ajusta tamanho do título do card */
+        font-size: 1.5rem; 
+        text-align: center; /* Centralize */
     }
 
     .texto-consequencia p {
-        font-size: 0.9rem;
-        /* Ajuste de tamanho do texto */
-    }
-
-    .imagem-principal {
-        width: 90%;
-        /* Garante que a imagem não ultrapasse o contêiner */
-        max-width: 700px; /* Limite para telas maiores */
-    }
-}
-
-@media (max-width: 480px) {
-    .header-content {
-        margin-top: 10px; /* Melhorar o espaçamento em telas pequenas */
-        width: 95%; /* Limita a largura em telas menores */
-    }
-
-    .header-content h1 {
-        font-size: 1.2rem; /* Redução adequada para smartphones */
-    }
-
-    .header-content p {
-        font-size: 0.9rem; /* Texto com tamanho adequado */
-        max-width: 100%; /* Melhorar a largura */
-        line-height: 1.4; /* Melhora a legibilidade */
-    }
-
-
-    .pagina {
-        padding: 1rem; /* Menor padding em telas pequenas */
-        display: flex; /* Verifique se está permitindo flexão adequada */
-        flex-direction: column; /* Para a coluna */
-        align-items: center; /* Centralizar */
-    }
-    }
-
-    .titulo-card {
-        font-size: 1.2rem;
-        /* Ajustar título do cartão */
-        text-align: center;
-        /* Centraliza textos */
+        font-size: 0.9rem; 
+        text-align: center; /* Centralize */
     }
 
     .imagem-principal {
         width: 100%;
-        /* Faz com que a imagem ocupe toda a largura disponível */
+        max-width: 600px; 
+        
     }
+}
+
+
+@media (max-width: 480px) {
+    .pagina {
+        padding: 1rem; 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+    }
+
+    .titulo-card {
+        font-size: 1.2rem; 
+        text-align: center; 
+    }
+
+    .imagem-principal {
+        width: 80%; 
+        max-width: none; /* Ou ajuste conforme necessário */
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        text-align: center;
+        padding: 28px;
+        width: 100%; /* Continua 100% */
+        position: relative;
+    }
+    
+    .header-banner {
+        margin-top: 20px;
+    }
+
+    .header-banner img {
+        width: 90%;
+        margin: auto;
+       
+    }
+
+    .header-content h1 {
+        font-size: 32px; /* Aumenta o tamanho do h1 */
+        margin: 10px 0;
+    }
+
+    .header-content p {
+        font-size: 18px; /* Ajusta o tamanho do texto */
+        line-height: 1.5;
+        margin: 5px 0;
+        width: 100%; /* Altera para 100% */
+    }
+}
+
+@media (max-width: 1024px) {
+    .header-content {
+        width: 90%; /* Aumenta a largura */
+        margin: 0 auto;
+    }
+
+    .header-content h1 {
+        font-size: 40px; /* Tamanho atrativo para tablets */
+        margin: 15px 0;
+    }
+
+    .header-content p {
+        font-size: 20px; /* Tamanho adequado */
+        margin: 10px 0;
+        width: 100%; /* Altera para 100% */
+    }
+}
