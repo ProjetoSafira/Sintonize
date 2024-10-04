@@ -1,33 +1,40 @@
 body {
     font-family: 'Roboto', sans-serif;
     background: #FFFFFF;
-    max-width: 1440px;
-    width: 100%;
+    margin: 0;
+    overflow-x: hidden; /* Previne rolagem horizontal indesejada */
+  
 }
 
 /* Estilos do Header */
 header {
     position: relative;
-    text-align: left; /* Alinha o texto à esquerda */
+    text-align: left;
+    /* Alinha o texto à esquerda */
     background-color: #f2f0ff;
     margin-top: 80px;
     flex-direction: column;
-    display:flex;
-    align-items: flex-start; 
+    display: flex;
+    align-items:flex-start;
 }
 
 .header-banner {
     width: 100%;
     margin-top: 20px;
+    max-width: 1440px;
+    /* Para garantir que não estoure */
+  
 }
 
+
 .header-banner img {
-    width: 100%;
-    max-width: 590px; /* Limita a largura máxima */
+    width: auto;
+    
+    /* Limita a largura máxima */
     height: auto;
-    margin-left: 600px; /* Pode ajustar ou remover conforme necessário */
-    
-    
+    margin-left: 950px;
+    /* Pode ajustar ou remover conforme necessário */
+    display: block;
 }
 
 .header-content {
@@ -35,17 +42,23 @@ header {
     max-width: 650px;
     position: absolute;
     top: 30%;
-    left: 40px; /* Certifique-se de que o conteúdo comece no lado esquerdo */
-    text-align: left; /* Alinhamento do texto à esquerda */
+    left: 300px;
+    /* Certifique-se de que o conteúdo comece no lado esquerdo */
+    text-align: left;
+    /* Alinhamento do texto à esquerda */
     color: #1C646D;
-    overflow-wrap: break-word; /* Quebrar texto se necessário */
+    overflow-wrap: break-word;
+    /* Quebrar texto se necessário */
 }
 
 .header-content h1 {
     font-size: 48px;
-    width: auto; /* Definindo como automático para ocupar o espaço corretamente */
-    height: auto; /* Removido para ajuste automático */
-    opacity: 1; /* Se desejar visibilidade, configure como 1 */
+    width: auto;
+    /* Definindo como automático para ocupar o espaço corretamente */
+    height: auto;
+    /* Removido para ajuste automático */
+    opacity: 1;
+    /* Se desejar visibilidade, configure como 1 */
 }
 
 .header-content p {
@@ -53,17 +66,20 @@ header {
     font-size: 20px;
     font-weight: 400;
     line-height: 24px;
-    text-align: left; /* Alinhamento do texto à esquerda */
+    text-align: left;
+    /* Alinhamento do texto à esquerda */
     color: #211C33;
-    width: 566px; /* Definindo como automático para ocupar o espaço corretamente */
-    height: auto; /* Removido para ajuste automático */
+    width: 566px;
+    /* Definindo como automático para ocupar o espaço corretamente */
+    height: auto;
+    /* Removido para ajuste automático */
     margin-top: 20px;
 }
 
 
 /* Estilos Gerais da Página */
 .pagina {
-    width: 100%;
+     max-width: 100%; /* Alinhar com a largura do layout */
     background: #CEF09D;
     display: flex;
     align-items: center;
@@ -72,8 +88,8 @@ header {
 }
 
 .container {
-    max-width: 600px;
-    text-align: left;
+    max-width: 100%;
+    text-align: left;  
 }
 
 .pagina h2 {
@@ -81,6 +97,7 @@ header {
     font-weight: bold;
     margin-bottom: 10px;
     color: #1C646D;
+    margin-left: 200px;
 }
 
 .pagina p {
@@ -88,21 +105,24 @@ header {
     line-height: 1.6;
     margin-bottom: 20px;
     color: #1F0802;
+   margin-left: 200px;
 }
 
 
 /* Estilos da Imagem */
-.imagem-container {
-    width: 610px;
-    /* Altere de max-width para width */
-    height: 584px;
-    /* Especifique a altura */
-    position: relative;
-    /* Adicione isso para posicionar a imagem */
-    left: 712px;
-    /* Posição X */
-    top: 642px;
-    /* Posição Y */
+#imagem-container {
+    width: 100%;
+    /* Para ocupar 100% do contêiner pai */
+    display: flex;
+    /* Para centralizar a imagem */
+    justify-content: center;
+}
+
+#imagem-principal {
+    max-width: 100%;
+    /* Para que a imagem não exceda a largura do contêiner */
+    height: auto;
+    /* Para manter a proporção da imagem */
 }
 
 .imagem-container .imagem.visible {
@@ -208,8 +228,6 @@ header {
     /* Usa flexbox para alinhar imagem e texto */
     align-items: center;
     /* Alinha verticalmente ao centro */
-    gap: 16px;
-    /* Espaçamento entre imagem e texto */
 }
 
 .consequencias-burnout {
@@ -226,14 +244,17 @@ header {
     /* Usa flex para alinhar a imagem e o texto */
     align-items: center;
     /* Alinha a imagem e o texto no topo */
-    margin-left: 100px;
+    margin-left: 300px;
 
 }
 
 .imagem-consequencias,
 .imagem-consequencias-lateral {
-    max-width: 100%;  /* A imagem nunca deve exceder a largura do contêiner */
-    height: auto;      /* Mantém a proporção da imagem */
+    max-width: 100%;
+    /* A imagem nunca deve exceder a largura do contêiner */
+    height: auto;
+    /* Mantém a proporção da imagem */
+
 }
 
 .consequencias-texto {
@@ -241,6 +262,7 @@ header {
     /* Flex para alinhar o título e a descrição */
     flex-direction: column;
     /* Coloca título acima da descrição */
+    margin-left: 30px;
 }
 
 
@@ -253,6 +275,7 @@ header {
     line-height: 48px;
     margin-bottom: 10px;
     /* Ajuste de margem inferior */
+ 
 }
 
 
@@ -276,7 +299,11 @@ header {
     gap: 16px;
     border: 1px solid #2A2EDE33;
     border-radius: 6px;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    /* Coloca a imagem em cima do texto */
+    padding: 16px;
+    /* Adiciona espaçamento interno */ 
 }
 
 .consequencia:hover {
@@ -302,23 +329,22 @@ header {
     color: #1F0802;
     /* Cor do texto */
     padding: 0 0 10px 0;
+    
 }
 
 
 .texto-consequencia {
-    text-align: left;
-    /* Alinha o texto à esquerda */
+    width: 100%;
+    /* Garante que o texto ocupe toda a largura do card */
+    padding: 10px;
+    /* Adiciona espaçamento interno */
 }
 
 .titulo-card {
-    font-size: 20px;
-    /* Tamanho do título do card */
-    font-weight: 500;
-    line-height: 28px;
-    color: #000000
-        /* Cor do título */
-        margin-bottom: 10px;
-    /* Margem abaixo do título */
+    font-size: 1.5rem;
+    /* Ajusta o tamanho do título */
+    margin-bottom: 10px;
+    /* Espaçamento entre o título e a descrição */
 }
 
 .label {
@@ -351,7 +377,7 @@ header {
     /* Altura fixa */
     font-family: 'Roboto', sans-serif;
     /* Tipografia */
-    font-size: 20px;
+    font-size: 1rem px;
     /* Tamanho da fonte */
     font-weight: 400;
     /* Peso da fonte */
@@ -363,6 +389,8 @@ header {
     /* Cor de fundo */
     padding: 4px;
     opacity: 1;
+    margin-bottom: 10px;
+    /* Espaçamento entre a descrição e as labels */
 }
 
 .descricao-impactar {
@@ -390,63 +418,34 @@ header {
 
 /* Responsividade */
 @media (max-width: 768px) {
-    
+
     .pagina {
         padding: 2rem 1rem;
-        display: flex; 
-        flex-direction: column; 
-        align-items: center; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .container {
         max-width: 100%;
-        padding: 0 1rem; 
-        overflow-wrap: break-word; 
-        display: flex; /* Mantenha a consistência no layout */
+        padding: 0 1rem;
+        overflow-wrap: break-word;
+        display: flex;
+        /* Mantenha a consistência no layout */
         flex-direction: column;
-        align-items: center; /* Certifique-se de centralizar sempre */
+        align-items: center;
+        /* Certifique-se de centralizar sempre */
     }
 
-    .dados-burnout h2,
-    .dados-burnout p {
-        font-size: 1.5rem; 
-        text-align: center; 
-        width: 100%; 
-        overflow-wrap: break-word; 
-    }
-
-
-    .botao-burnout {
-        padding: 10px 20px;    /* Ajusta o padding do botão para telas menores */
-        font-size: 14px;        /* Reduz o tamanho da fonte do botão */
-    }
-
-}
-
-
-@media (max-width: 480px) {
-    .pagina {
-        padding: 1rem; 
-        display: flex; 
-        flex-direction: column; 
-        align-items: center; 
-    }
-
-
-    .imagem-principal {
-        width: 80%; 
-        max-width: none; /* Ou ajuste conforme necessário */
-    }
-}
-
-@media (max-width: 768px) {
     .header-content {
         text-align: center;
         padding: 28px;
-        width: 100%; /* Continua 100% */
+        width: 100%;
+        /* Continua 100% */
         position: relative;
+        left: 10px;
     }
-    
+
     .header-banner {
         margin-top: 20px;
     }
@@ -454,65 +453,178 @@ header {
     .header-banner img {
         width: 90%;
         margin: auto;
-       
+
     }
 
     .header-content h1 {
-        font-size: 32px; /* Aumenta o tamanho do h1 */
+        font-size: 32px;
+        /* Aumenta o tamanho do h1 */
         margin: 10px 0;
     }
 
     .header-content p {
-        font-size: 18px; /* Ajusta o tamanho do texto */
+        font-size: 18px;
+        /* Ajusta o tamanho do texto */
         line-height: 1.5;
         margin: 5px 0;
-        width: 100%; /* Altera para 100% */
+        width: 100%;
+        /* Altera para 100% */
+    }
+
+    .dados-burnout h2,
+    .dados-burnout p {
+        font-size: 1.5rem;
+        text-align: center;
+        width: 100%;
+        overflow-wrap: break-word;
+    }
+
+
+    .botao-burnout {
+        padding: 10px 20px;
+        /* Ajusta o padding do botão para telas menores */
+        font-size: 14px;
+        /* Reduz o tamanho da fonte do botão */
+    }
+
+    .consequencias-header {
+        flex-direction: column;
+        /* Coloca a imagem em cima do texto */
+        align-items: center;
+        /* Centraliza a imagem e texto */
+        margin-left: 10px;
+        /* Remove a margem esquerda */
+    }
+
+    .imagem-consequencias-lateral {
+        width: 100%;
+        /* Ajusta a largura da imagem lateral */
+        max-width: 300px;
+        /* Limita a largura máxima da imagem */
+        margin-bottom: 10px;
+        /* Espaço entre a imagem e o texto */
+        
+    }
+
+    .imagem-consequencias {
+        width: 45%;
+        /* Ajusta a largura da imagem lateral */
+        max-width: 70px;
+        /* Limita a largura máxima da imagem */
+        margin-bottom: 10px;
+        /* Espaço entre a imagem e o texto */
+        margin-right: 10px;
+    }
+
+    .consequencias-texto {
+        text-align: center;
+        /* Centraliza o texto */
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .consequencias-texto p {
+        text-align: center;
+        /* Centraliza o texto */
+        width: 100%;
+        margin-right: 100px;
+    }
+
+    .texto-consequencia p {
+        text-align: 10px;
+        /* Centraliza o texto */
+        width: 100%;
+    }
+
+    .container-consequencias {
+        flex-direction: column;
+        /* Para que os cards se empilhem em dispositivos menores */
+        align-items: center;
+        /* Centraliza os cards */
+    }
+
+    .consequencia {
+        width: 100%;
+        /* Ajusta a largura dos cards para 90% do contêiner */
+        max-width: none;
+        /* Remove a largura máxima */
+        padding: 26px;
+        /* Adiciona espaçamento interno */
+    }
+
+    .descricao-impacto {
+        width: 100%;
+        /* Garante que a descrição ocorra 100% do card */
+    }
+    .pagina h2,  
+    .pagina p{
+       
+        margin-left: 10px;
+    }
+    
+}
+
+
+@media (max-width: 480px) {
+    .pagina {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .imagem-container {
+        width: 40%;
+        /* Altere de max-width para width */
+        height: auto;
+        /* Especifique a altura */
+    }
+
+    .consequencia {
+        width: 100%;
+        /* Cada card ocupa 100% */
+    }
+
+    .imagem-consequencias-lateral {
+        width: 100%;
+        /* Imagem ocupa 100% na tela pequena */
+    }
+
+    /* Ajustes nos textos */
+    .titulo-card {
+        font-size: 1.5rem;
+        /* Ajustes com rem para responsividade */
+
+    }
+
+    .consequencia {
+        width: 100%;
+        /* Cada card ocupa 100% na tela pequena */
+    }
+    .header-banner{
+        width: 100%;
     }
 }
 
 @media (max-width: 1024px) {
     .header-content {
-        width: 90%; /* Aumenta a largura */
+        width: 90%;
+        /* Aumenta a largura */
         margin: 0 0px;
         text-align: left;
     }
 
     .header-content h1 {
-        font-size: 40px; /* Tamanho atrativo para tablets */
-        margin: 15px 0;-
+        font-size: 40px;
+        /* Tamanho atrativo para tablets */
+        margin: 15px 0;
     }
 
     .header-content p {
-        font-size: 20px; /* Tamanho adequado */
+        font-size: 20px;
+        /* Tamanho adequado */
         margin: 10px 0;
-        width: 100%; /* Altera para 100% */
+        width: 100%;
+        /* Altera para 100% */
     }
-}
-/* Responsividade dos cards */
-@media (max-width: 768px) {
-    .consequencia {
-        width: 45%; /* Cards ocupam bem do espaço disponível */
-        max-width: none; /* Largura máxima dos cards */
-    }
-}
-
-@media (max-width: 480px) {
-    .consequencia {
-        width: 100%; /* Cada card ocupa 100% */
-    }
-}
-
-/* Imagens responsivas */
-.imagem-consequencias {
-    max-width: 100%;
-    height: auto;
-}
-
-/* Ajustes nos textos */
-.titulo-card {
-    font-size: 1.5rem; /* Ajustes com rem para responsividade */
-}
-
-.descricao-impacto {
-    font-size: 1rem; /* Ajustes com rem para responsividade */
 }

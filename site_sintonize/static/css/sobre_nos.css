@@ -75,8 +75,8 @@ header p {
 
 /* Estilo da Imagem */
 header img {
-    width: 675px; 
-    height: 486px; 
+    max-width: 100%;  /* A imagem não ultrapassará a largura do contêiner */
+    height: auto;     /* Ajusta a altura automaticamente para manter a proporção */
     opacity: 1; 
 }
 
@@ -102,7 +102,7 @@ font-weight: 400;
 line-height: 24px;
 text-align: left;
 list-style-type: none; /* Remove a marcação padrão da lista */
-co: #000000;
+color: #000000;
 
 }
 
@@ -133,6 +133,31 @@ co: #000000;
     align-items: center; /* Alinha verticalmente o conteúdo */
     gap: 16px;
 }
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5em; /* Reduz o tamanho da fonte em telas menores */
+    }
+    
+    header {
+        padding: 40px 0; /* Menos padding pode ajudar em telas pequenas */
+    }
+    header img {
+        position: absolute;
+        width: 85%;
+        margin-top: 250px;
+       
+        
+    }
+    .text-container {
+        max-width: 90%; /* Aumentar a largura do texto em telas pequenas */
+        margin-top: -200px;
+        margin-left: auto;
+        
+        
+    }
 
-
+    .projeto, .missao {
+        font-size: 1.2em; /* Ajusta tamanho para leitura em telas pequenas */
+    }
+}
 
