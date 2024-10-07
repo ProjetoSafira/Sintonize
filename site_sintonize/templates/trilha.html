@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trilha do conhecimento</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/trilha.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    {% include 'header.html' %}
+    <header></header>
+    <div class="pagina" id="pagina">
+        <div class="container" id="container-principal">
+            <div class="textos">
+                <h2 id="titulo-principal">O que é a Síndrome de Burnout?</h2>
+                <div class="textos-principais" id="texto-principal">
+                    <h3 id="sindrome-burnout">Síndrome de Burnout
+                    </h3>
+                    <p id="descricao-principal">
+                        A Síndrome de Burnout é uma condição resultante de estresse crônico no trabalho, levando a
+                        exaustão emocional, mental e física.
+                    </p>
+                </div>
+            </div>
+            <div class="imagem-dormindo" id="imagem-container">
+                <img src="{% static 'images/dormindo.png' %}" alt="Ilustração sobre Burnout" class="imagem"
+                    id="imagem-principal">
+            </div>
+        </div>
+    </div>
