@@ -486,22 +486,18 @@ header {
         width: 90%;
         margin: auto;
         max-width: 350px;
-       
+        justify-content: left; /* Centraliza os elementos */
     }
 
     .header-content h1 {
-        font-size: 1.8em;
-      
-      
-       
+        font-size: 1.8em;   
     }
 
     .header-content p {
-        font-size: 1em;
+        font-size: 1.0rem;
         /* Ajusta o tamanho do texto */
         line-height: 1.5;
-        
-       
+   
     }
 
     .dados-burnout h2,
@@ -561,7 +557,7 @@ header {
     }
 
     .consequencias-texto p {
-        text-align: center;
+        text-align: left;
         /* Centraliza o texto */
         width: 100%;
         margin-right: 100px;
