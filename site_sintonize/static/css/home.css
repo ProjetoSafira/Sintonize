@@ -9,42 +9,49 @@ body {
 /* Estilos do Header */
 header {
     position: relative;
-    text-align: left;
+    text-align: center;
     /* Alinha o texto à esquerda */
     background-color: #f2f0ff;
     margin-top: 80px;
     flex-direction: column;
     display: flex;
-    align-items:flex-start;
+    align-items:center;
 }
 
 .header-banner {
-    width: 100%;
-    margin-top: 20px;
-    max-width: 1440px;
-    /* Para garantir que não estoure */
+    display:flex;
+    flex-direction: row; /* Mantenha os elementos em coluna */
+    align-items: center; /* Centraliza conteúdo */
+    justify-content: center; /* Centraliza verticalmente */
+    padding: 20px; /* Adiciona espaçamento */
+    max-width: 90%; /* Limita a largura do header */
+    margin: auto; /* Centraliza horizontalmente */
+    background-color: f2f0ff; /* Cor de fundo, se necessário */
+    gap: 20px;
   
 }
 
 
 .header-banner img {
-    width: auto;
-    
+    width: 40%;
+    max-width: 400px
     /* Limita a largura máxima */
     height: auto;
     margin-left: 950px;
     /* Pode ajustar ou remover conforme necessário */
-    display: block;
+    display:flex;
+
 }
 
 .header-content {
-    width: 90%;
+    width: 60%;
     max-width: 650px;
     position: absolute;
     top: 30%;
-    left: 300px;
+    left: 250px;
     /* Certifique-se de que o conteúdo comece no lado esquerdo */
     text-align: left;
+    margin-bottom: 20px; 
     /* Alinhamento do texto à esquerda */
     color: #1C646D;
     overflow-wrap: break-word;
@@ -52,28 +59,22 @@ header {
 }
 
 .header-content h1 {
-    font-size: 48px;
+    font-size: 2em;
     width: auto;
     /* Definindo como automático para ocupar o espaço corretamente */
     height: auto;
     /* Removido para ajuste automático */
     opacity: 1;
     /* Se desejar visibilidade, configure como 1 */
+    margin: 10px 0; 
 }
 
 .header-content p {
     font-family: Roboto;
     font-size: 20px;
-    font-weight: 400;
     line-height: 24px;
-    text-align: left;
-    /* Alinhamento do texto à esquerda */
     color: #211C33;
     width: 566px;
-    /* Definindo como automático para ocupar o espaço corretamente */
-    height: auto;
-    /* Removido para ajuste automático */
-    margin-top: 20px;
 }
 
 
@@ -123,6 +124,7 @@ header {
     /* Para que a imagem não exceda a largura do contêiner */
     height: auto;
     /* Para manter a proporção da imagem */
+    margin-right: 2mnj,vcb14¿0px;
 }
 
 .imagem-container .imagem.visible {
@@ -245,8 +247,12 @@ header {
     align-items: center;
     /* Alinha a imagem e o texto no topo */
     margin-left: 300px;
-
+    flex-direction:row; /* Lado a lado por padrão */
+    justify-content: center; /* Centraliza os elementos */
+    margin-bottom: 10px; /* Espaço entre o header e a próxima seção */
+    font-size:15rem;
 }
+
 
 .imagem-consequencias,
 .imagem-consequencias-lateral {
@@ -264,8 +270,6 @@ header {
     /* Coloca título acima da descrição */
     margin-left: 30px;
 }
-
-
 .titulo-consequencias {
     color: #1C646D;
     /* Cor do título */
@@ -417,6 +421,31 @@ header {
 }
 
 /* Responsividade */
+@media (max-width: 1024px) {
+    .header-content {
+        width: 100%; /* Para telas menores, o texto ocupa completamente */
+        margin-right: 10px; /* Remove a margem */
+        text-align:left; /* Centraliza o texto */
+
+    }
+  
+    .header-content p {
+        font-size: 18px;
+       width: 70%;
+        /* Ajusta o tamanho do texto */
+        line-height: 1.5; 
+    }
+    
+    .header-banner {
+        flex-direction: column; /* Muda para coluna em dispositivos pequenos */
+        align-items: center; /* Centraliza tudo em coluna */
+    }
+
+    .header-banner img {
+        width: 90%; /* Imagem ocupa 90% em dispositivos pequenos */
+        max-width: 350px; /* Limita a largura máxima da imagem */
+    }
+}
 @media (max-width: 768px) {
 
     .pagina {
@@ -438,37 +467,41 @@ header {
     }
 
     .header-content {
-        text-align: center;
-        padding: 28px;
-        width: 100%;
+        text-align: left;
+        padding: 10px;
+        width: 90%;
         /* Continua 100% */
         position: relative;
         left: 10px;
+        flex-direction: column;
     }
 
     .header-banner {
-        margin-top: 20px;
+        flex-direction: column; /* Altera para coluna em telas menores */
+        align-items: center;
+       
     }
 
     .header-banner img {
         width: 90%;
         margin: auto;
-
+        max-width: 350px;
+       
     }
 
     .header-content h1 {
-        font-size: 32px;
-        /* Aumenta o tamanho do h1 */
-        margin: 10px 0;
+        font-size: 1.8em;
+      
+      
+       
     }
 
     .header-content p {
-        font-size: 18px;
+        font-size: 1em;
         /* Ajusta o tamanho do texto */
         line-height: 1.5;
-        margin: 5px 0;
-        width: 100%;
-        /* Altera para 100% */
+        
+       
     }
 
     .dados-burnout h2,
@@ -501,9 +534,13 @@ header {
         /* Ajusta a largura da imagem lateral */
         max-width: 300px;
         /* Limita a largura máxima da imagem */
-        margin-bottom: 10px;
+        margin-bottom: 20px;
         /* Espaço entre a imagem e o texto */
         
+    }
+    .conteudo-consequencia {
+        flex-direction: column; /* Coloca imagem acima do texto */
+        align-items: center; /* Centraliza os itens */
     }
 
     .imagem-consequencias {
@@ -556,10 +593,8 @@ header {
         width: 100%;
         /* Garante que a descrição ocorra 100% do card */
     }
-    .pagina h2,  
-    .pagina p{
-       
-        margin-left: 10px;
+    .pagina {
+        padding: 2rem 1rem; 
     }
     
 }
@@ -598,33 +633,26 @@ header {
     }
 
     .consequencia {
-        width: 100%;
+        width: 40%;
         /* Cada card ocupa 100% na tela pequena */
     }
-    .header-banner{
-        width: 100%;
+    .header-banner {
+        padding: 15px; /* Menos padding em telas menores */
     }
-}
-
-@media (max-width: 1024px) {
-    .header-content {
-        width: 90%;
-        /* Aumenta a largura */
-        margin: 0 0px;
-        text-align: left;
-    }
-
+  
     .header-content h1 {
-        font-size: 40px;
-        /* Tamanho atrativo para tablets */
-        margin: 15px 0;
+        font-size: 1.6em; /* Ajusta para telas pequenas */
+     } 
+    .header-content p {
+        font-size: 0.9em; /* Texto menor para dispositivos pequenos */
+    }
+    
+    .titulo-consequencias {
+        font-size: 1.5rem; /* Tamanho do título em telas pequenas */
     }
 
-    .header-content p {
-        font-size: 20px;
-        /* Tamanho adequado */
-        margin: 10px 0;
-        width: 100%;
-        /* Altera para 100% */
+    .texto-consequencia p {
+        font-size: 0.9rem; /* Texto menor em telas pequenas */
     }
 }
+
