@@ -1,0 +1,108 @@
+/* Estilos Gerais da Página */
+.pagina {
+    max-width: 100%;
+    background: #CEF09D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    /* Reduzido para melhorar responsividade */
+    margin-top: 80px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    /* Alinhamento em linha */
+    align-items: center;
+    justify-content: space-between;
+    /* Espaço entre texto e imagem */
+    width: 100%;
+    /* Garantir que o container use toda a largura */
+    max-width: 1200px;
+    /* Limitar a largura máxima */
+}
+
+/* Ajustes de Responsividade */
+.textos {
+    flex: 1;
+    /* O texto ocupará o espaço disponível */
+    padding-right: 20px;
+    /* Espaço entre texto e imagem */
+}
+
+.textos-principais {
+    display: flexbox;
+    padding: 16px;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 16px;
+    flex: 1 0 0;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    margin-top: 20px;
+}
+
+#titulo-principal {
+    color: #1C646D;
+    font-family: Roboto;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 48px;
+}
+
+#sindrome-burnout {
+    color: #000;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28px;
+}
+
+#descricao-principal {
+
+    overflow: hidden;
+    color: #000;
+    text-overflow: ellipsis;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    height: 72px;
+    align-self: stretch;
+    padding-top: 10px;
+}
+
+.imagem-dormindo {
+    flex: 0 0 auto;
+    /* A imagem manterá seu tamanho natural */
+}
+
+#imagem-container img {
+    max-width: 100%;
+    /* A imagem ocupará a largura do contêiner */
+    height: auto;
+    /* Manter a proporção da imagem */
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        /* Alinhar em coluna em telas menores */
+        align-items: center;
+    }
+
+    .textos {
+        padding-right: 0;
+        /* Remover espaço entre texto e imagem */
+        text-align: center;
+        /* Centralizar texto em telas menores */
+    }
+}
+@media (max-width: 500px) {
+    .text-container {
+        font-size: 14px; /* Ajuste a fonte */
+        padding: 10px;   /* Ajuste o padding */
+    }
+}

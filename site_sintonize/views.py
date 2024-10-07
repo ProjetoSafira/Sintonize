@@ -17,6 +17,9 @@ def sobre_nos (request):
 def equipe (request):
     return render(request, 'equipe.html') 
 
+def trilha (request):
+    return render(request, 'trilha.html') 
+
 def equipe(request):
     membros = [
         {
