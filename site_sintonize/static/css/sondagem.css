@@ -1,3 +1,6 @@
+* {
+    box-sizing: border-box; /* Inclui padding e borda na largura/altura total */
+}
 
 #titulo-qualidade-vida {
     width: 100%; /* Largura do título */
@@ -155,48 +158,7 @@
 }
 
 /* Estilos gerais para telas pequenas */
-@media (max-width: 768px) {
-    #titulo-qualidade-vida {
-        font-size: 30px; /* Diminuir o tamanho da fonte em telas menores */
-        padding: 20px; /* Reduzir o padding */
-    }
 
-    #informacao-conteudo {
-        font-size: 18px; /* Ajustar o tamanho da fonte */
-        padding: 10px; /* Reduzir o padding */
-        margin: 15px auto; /* Ajustar a margem */
-    
-    }
-
-    #descricao-perguntas {
-        font-size: 18px; /* Ajustar o tamanho da fonte */
-        padding: 15px; /* Ajustar o padding */
-    }
-
-    .questions-container {
-        grid-template-columns: 1fr; /* Exibir uma coluna em telas pequenas */
-        padding: 10px; /* Ajustar o padding */
-    }
-
-    .question-item {
-        margin: 10px 0; /* Ajustare a margem vertical */
-    }
-
-    .image-container {
-        width: auto; /* Permitir que a imagem ocupe a largura disponível */
-    }
-
-    .text-color,
-    .importante,
-    .referencias {
-        font-size: 18px; /* Ajustar o tamanho da fonte */
-        padding: 10px; /* Reduzir o padding */
-    }
-
-    .informacao {
-        font-size: 10px; /* Ajustar o tamanho da fonte para informação */
-    }
-}
 
 /* Estilos para telas médias */
 /* Estilos gerais para telas pequenas */
@@ -226,7 +188,7 @@
     .question-item {
         padding: 10px; /* Reduzindo padding em telas menores */
     }
-}
+
 
 
     .image-container {
@@ -242,6 +204,10 @@
 
     .informacao {
         font-size: 14px; /* Ajustar o tamanho da fonte para informação */
+    }
+    .button-linkedin {
+        font-size: 10px; /* Diminuir o tamanho da fonte */
+        padding: 8px 15px; /* Ajustar o padding */
     }
 }
 
