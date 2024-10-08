@@ -41,6 +41,8 @@
     border-radius: 6px;
     border: 1px solid rgba(0, 0, 0, 0.10);
     margin-top: 20px;
+    word-break: break-word; /* Quebrar palavras longas */
+ 
 }
 
 #titulo-principal {
@@ -59,19 +61,20 @@
     font-style: normal;
     font-weight: 500;
     line-height: 28px;
+    padding-left: 10px;
 }
 
 #descricao-principal {
 
-    overflow: hidden;
     color: #000;
-    text-overflow: ellipsis;
     font-family: Roboto;
     font-size: 20px;
     font-style: normal;
-    height: 72px;
-    align-self: stretch;
-    padding-top: 10px;
+    line-height: 28px; /* Para manter a altura das linhas */
+    padding: 10px; /* Adiciona espaço interno */
+    margin-top: 10px; /* Espaço entre o título e a descrição */
+    overflow: auto; /* Permitir rolagem se necessário */
+    height: auto; /* Remova ou ajuste o height fixo */
 }
 
 .imagem-dormindo {
@@ -93,16 +96,20 @@
         align-items: center;
     }
 
+    .text-container {
+        font-size: 14px; /* Ajuste a fonte */
+        padding: 10px;   /* Ajuste o padding */
+    }
+
     .textos {
         padding-right: 0;
         /* Remover espaço entre texto e imagem */
         text-align: center;
         /* Centralizar texto em telas menores */
     }
+    #descricao-principal {
+        padding: 10px; /* Ajuste o padding para telas menores */
+        font-size: 16px; /* Considere reduzir o tamanho da fonte em telas pequenas */
 }
-@media (max-width: 500px) {
-    .text-container {
-        font-size: 14px; /* Ajuste a fonte */
-        padding: 10px;   /* Ajuste o padding */
-    }
-}
+
+
