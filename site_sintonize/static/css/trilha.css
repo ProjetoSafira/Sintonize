@@ -41,8 +41,9 @@
     border-radius: 6px;
     border: 1px solid rgba(0, 0, 0, 0.10);
     margin-top: 20px;
-    word-break: break-word; /* Quebrar palavras longas */
- 
+    word-break: break-word;
+    /* Quebrar palavras longas */
+
 }
 
 #titulo-principal {
@@ -70,11 +71,16 @@
     font-family: Roboto;
     font-size: 20px;
     font-style: normal;
-    line-height: 28px; /* Para manter a altura das linhas */
-    padding: 10px; /* Adiciona espaço interno */
-    margin-top: 10px; /* Espaço entre o título e a descrição */
-    overflow: auto; /* Permitir rolagem se necessário */
-    height: auto; /* Remova ou ajuste o height fixo */
+    line-height: 28px;
+    /* Para manter a altura das linhas */
+    padding: 10px;
+    /* Adiciona espaço interno */
+    margin-top: 10px;
+    /* Espaço entre o título e a descrição */
+    overflow: auto;
+    /* Permitir rolagem se necessário */
+    height: auto;
+    /* Remova ou ajuste o height fixo */
 }
 
 .imagem-dormindo {
@@ -97,8 +103,10 @@
     }
 
     .text-container {
-        font-size: 14px; /* Ajuste a fonte */
-        padding: 10px;   /* Ajuste o padding */
+        font-size: 14px;
+        /* Ajuste a fonte */
+        padding: 10px;
+        /* Ajuste o padding */
     }
 
     .textos {
@@ -107,9 +115,103 @@
         text-align: center;
         /* Centralizar texto em telas menores */
     }
+
     #descricao-principal {
-        padding: 10px; /* Ajuste o padding para telas menores */
-        font-size: 16px; /* Considere reduzir o tamanho da fonte em telas pequenas */
+        padding: 10px;
+        /* Ajuste o padding para telas menores */
+        font-size: 16px;
+        /* Considere reduzir o tamanho da fonte em telas pequenas */
+    }
+}
+
+.sintomas-comuns {
+    background-color: #F2f0ff;
+    /* Cor do fundo da seção */
+    padding: 20px;
+    text-align: center;
+}
+
+.sintomas-comuns h2 {
+    color: #1C646D;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 48px;
+    /* 120% */
+    margin-top: 60px;
+  }
+
+#sintomas-frequentes {
+    color: #000;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    margin-top: 24px; margin: 16px 0; /* Margem superior e inferior ajustadas */
+}
+
+.sintomas-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* Centralizar as colunas */
+    align-items: flex-start;
+    /* Garantir que todos sejam alinhados ao topo */
+    margin-top: 20px
+}
+
+.sintoma {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px; /* Use margin em vez de padding */
+    text-align: center; /* Centralizando o texto também */
+    background-color: #F2f0ff; /* Cor do fundo dos sintomas */
+    padding: 20px; /* Ajuste o padding para ter um espaço interno consistente */
+    border-radius: 10px; /* Borda arredondada para visual agradável */
+    box-shadow: 0 2px 4px rgba(245, 242, 242, 0.897); /* Sombra leve para destaque */
+    width: 200px; /* Largura constante para cada sintoma */
 }
 
 
+.sintoma img {
+    max-width: 80px;
+    /* Tamanho máximo da imagem */
+    height: auto;
+    /* Manter proporções */
+    border-radius: 50%;
+    /* Define a borda como círculo */
+    background-color: #e1e3eb;
+    /* Cor de fundo cinza */
+    padding: 12px;
+    /* Ajuste em relação ao padding */
+    box-shadow: 0 2px 4px rgba(245, 242, 242, 0.897);
+    /* Sombra leve */
+}
+
+.sintoma h3 {
+
+    color: #000;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    margin: 8px 0; /* Margem para o título */
+    font-weight: bold;
+
+}
+
+.sintoma p {
+  color: #000;
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+}
