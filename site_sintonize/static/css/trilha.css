@@ -138,7 +138,7 @@
     font-weight: 800;
     line-height: 48px;
     margin-top: 60px;
-  }
+}
 
 #sintomas-frequentes {
     color: #000;
@@ -148,14 +148,18 @@
     font-style: normal;
     font-weight: 400;
     line-height: 24px;
-    margin-top: 24px; margin: 16px 0; /* Margem superior e inferior ajustadas */
+    margin-top: 24px;
+    margin: 16px 0;
+    /* Margem superior e inferior ajustadas */
 }
 
 .sintomas-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Centraliza os itens */
-    align-items: flex-start; /* Alinhando todos ao topo */
+    justify-content: center;
+    /* Centraliza os itens */
+    align-items: flex-start;
+    /* Alinhando todos ao topo */
     margin-top: 20px;
 }
 
@@ -164,17 +168,27 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 20px; /* Use margin em vez de padding */
-    text-align: center; /* Centralizando o texto também */
-    background-color: #F2f0ff; /* Cor do fundo dos sintomas */
-    padding: 20px; /* Ajuste o padding para ter um espaço interno consistente */
-    border-radius: 10px; /* Borda arredondada para visual agradável */
-    box-shadow: 0 2px 4px rgba(245, 242, 242, 0.897); /* Sombra leve para destaque */
-    width: 200px; /* Largura constante para cada sintoma */
+    margin: 20px;
+    /* Use margin em vez de padding */
+    text-align: center;
+    /* Centralizando o texto também */
+    background-color: #F2f0ff;
+    /* Cor do fundo dos sintomas */
+    padding: 20px;
+    /* Ajuste o padding para ter um espaço interno consistente */
+    border-radius: 10px;
+    /* Borda arredondada para visual agradável */
+    box-shadow: 0 2px 4px rgba(245, 242, 242, 0.897);
+    /* Sombra leve para destaque */
+    width: 200px;
+    /* Largura constante para cada sintoma */
 }
-.sintoma:hover{
-    transform: scale(1.1); /* Aumenta a escala da imagem ao passar o mouse */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Aumenta a sombra ao passar o mouse */
+
+.sintoma:hover {
+    transform: scale(1.1);
+    /* Aumenta a escala da imagem ao passar o mouse */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Aumenta a sombra ao passar o mouse */
 }
 
 .sintoma img {
@@ -191,10 +205,14 @@
     box-shadow: 0 2px 4px rgba(245, 242, 242, 0.897);
     /* Sombra leve */
 }
+
 .sintoma:hover img {
-    transform: scale(1.1); /* Aumenta a escala da imagem ao passar o mouse */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Aumenta a sombra ao passar o mouse */
+    transform: scale(1.1);
+    /* Aumenta a escala da imagem ao passar o mouse */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Aumenta a sombra ao passar o mouse */
 }
+
 .sintoma h3 {
 
     color: #000;
@@ -204,15 +222,125 @@
     font-style: normal;
     font-weight: 400;
     line-height: 28px;
-    margin: 8px 0; /* Margem para o título */
+    margin: 8px 0;
+    /* Margem para o título */
     font-weight: bold;
 
 }
 
 .sintoma p {
-  color: #000;
+    color: #000;
     font-family: Roboto;
     font-size: 20px;
     font-weight: 400;
     line-height: 24px;
+}
+
+
+.diagnostico-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centraliza o conteúdo geral */
+    gap: 24px;
+    width: 100%;
+    background-color: #F2F0FF;
+    /* Cor de fundo */
+    padding: 20px;
+    /* Padding interno */
+    border-radius: 6px;
+    /* Bordas arredondadas */
+}
+
+.diagnostico {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    /* Centraliza o conteúdo */
+    gap: 10px;
+    /* Ajustar o espaço entre título e descrição */
+    width: 100%;
+
+    max-width: 756px;
+}
+
+.diagnostico h3 {
+    color: #1C646D;
+    font-family: Roboto, sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 48px;
+}
+
+.diagnostico p {
+    color: #000;
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    margin-top: 10px;
+    margin-bottom: -20px;
+}
+
+.diagnosticos {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    /* Espaçamento entre os diagnósticos */
+    width: 100%;
+    align-items: center;
+    /* Centraliza os itens */
+}
+
+.diagnostico-item {
+    display: flex;
+    padding: 20px 0px;
+    justify-content: flex-start;
+    /* Alinhar texto à esquerda */
+    align-items: flex;
+    gap: 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    width: 100%;
+    /* Pode usar 100% */
+    max-width: 756px;
+    box-sizing: border-box;
+    /* Inclui padding e bordas no cálculo da largura */
+}
+
+.diagnostico-item h4 {
+    color: #000;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28px;
+    /* 140% */
+    align-self: stretch;
+    margin-bottom: 8px;
+}
+
+.diagnostico-item p {
+    overflow: hidden;
+    /* Essa propriedade pode ser removida se não for necessária */
+    color: #000;
+    text-overflow: ellipsis;
+    /* Isso mostra reticências se o texto for muito longo, mas só é aplicável se o overflow for visível */
+    white-space: normal;
+    /* Permite que o texto quebre em linhas normais */
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    margin: 0;
+    /* Remove a margem padrão para melhor controle */
+    width: 100%;
+    /* Opcional, garante que use toda a largura disponível */
+}
+
+hr {
+    border: none; /* Remove a borda padrão */
+    border: 1px solid rgba(0, 0, 0, 0.10);
+   
 }
