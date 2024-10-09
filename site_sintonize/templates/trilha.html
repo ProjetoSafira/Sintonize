@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/trilha.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@600&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
@@ -59,6 +58,44 @@
                 <p>Dores de cabeça, insônia, problemas gastrointestinais</p>
             </div>
         </div>
-        <button class="botao">Ver Mais Sintomas</button>
+       <!--  <button class="botao">Ver Mais Sintomas</button> -->
     </div>
-    
+    <hr>
+    <div class="diagnostico-container">
+        <div class="diagnostico">
+            <h3>Como é Feito o Diagnóstico?</h3>
+            <p>Entenda o processo de diagnóstico da Síndrome de Burnout.</p>
+        </div>
+        <div class="diagnostico-botao">
+      <!--  <button class="botao">Saiba Mais</button> -->
+        </div>
+        
+        <div class="diagnosticos">
+            <div class="diagnostico-item">
+                <img src="{% static 'images/historia.png' %}" alt="História do paciente">
+                <div class="diagnostico-texto">
+                    <h4>História do Paciente</h4>
+                    <p>O diagnóstico é focado na história do paciente, seu envolvimento no trabalho e realização pessoal relacionada à profissão.</p>
+                </div>
+            </div>
+            <div class="diagnostico-item">
+                <img src="{% static 'images/profissionais.png' %}" alt="Profissionais de saúde">
+                <div class="diagnostico-texto">
+                    <h4>Profissionais de Saúde</h4>
+                    <p>Psiquiatras e psicólogos são especializados em identificar o problema e orientar o tratamento adequado.</p>
+                </div>
+            </div>
+            <div class="diagnostico-item">
+                <img src="{% static 'images/diagnostico.png' %}" alt="Diagnóstico preciso">
+                <div class="diagnostico-texto">
+                    <h4>Diagnóstico Preciso</h4>
+                    <p>É essencial considerar a história pessoal do paciente, o tipo de trabalho que realiza e os sintomas apresentados.</p>
+                </div>
+            </div>
+        </div> 
+    </div>
+    <hr>
+    {% include 'footer.html' %}
+        
+</body>
+</html>
