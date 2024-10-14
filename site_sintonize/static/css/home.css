@@ -621,7 +621,11 @@ header {
         flex-direction: column;
         align-items: center;
     }
-
+    .pagina p,
+    .pagina h2{
+        
+        margin-left: 10px;
+    }
     .imagem-container {
         width: 40%;
         /* Altere de max-width para width */
