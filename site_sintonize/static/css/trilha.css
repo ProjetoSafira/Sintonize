@@ -345,3 +345,41 @@ hr {
     border: 1px solid rgba(0, 0, 0, 0.10);
    
 }
+
+
+/* Estilo para o container da seção header */
+.container-burnout {
+    text-align: center; 
+    padding: 50px 20px; 
+    background-color: #1C646D; 
+    color: white; 
+    margin-top: 80px; /* Espaçamento superior */
+    margin-bottom: -100px;
+}
+
+/* Estilo para o título da seção Burnout */
+.titulo-burnout {
+    font-size: 36px; 
+    font-family: 'Roboto', sans-serif; 
+    font-weight: 700; 
+    margin-bottom: 20px; /* Espaçamento inferior */
+    color: #FFFFFF; 
+
+/* Estilo para o subtítulo da seção Burnout */
+.subtitulo-burnout {
+    font-size: 20px; 
+    font-family: 'Roboto', sans-serif; 
+    font-weight: 400; 
+    color: #FFFFFF;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .titulo-burnout {
+        font-size: 28px; /* Tamanho do título menor para telas pequenas */
+    }
+
+    .subtitulo-burnout {
+        font-size: 16px; /* Ajuste do subtítulo em telas pequenas */
+    }
+}
