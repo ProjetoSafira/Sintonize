@@ -57,7 +57,7 @@ def equipe(request):
             'cargo': 'Scrum Master',
             'descricao': '"Ser um agente de transformação digital é o que me move para alcançar horizontes desconhecidos.” Em 2019, iniciei um processo de transição de carreira para a área de dados, criando dashboards interativos e relatórios personalizados para monitoramento contínuo de KPIs e métricas de negócios através das ferramentas Power BI e Qlik Sense. Desde 2022 comecei a embarcar em um novo horizonte, o universo ágil. Diante disso, desenvolver habilidades de um agilista tornou-se um caminho sem volta, pois, não só passei a adquirir conhecimentos bem como replicá-los para outros profissionais que são entusiastas ou que estejam iniciando a carreira na área. Possuo as seguintes certificações: Professional Scrum Master 1 (PSM 1), Accredited Scrum Fundamentals Certification, Lean Agile Coach Professional e Management 3.0 Foundation Workshop."',
             'linkedin': 'https://linkedin.com/in/fernandomgalvao/',
-            'imagem': 'images/fernando.png',  # URL da imagem do membro
+            'imagem': 'images/galvao.png',  # URL da imagem do membro
         },
           {
             'nome': 'Jefferson Bernardes',
