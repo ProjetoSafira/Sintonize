@@ -7,7 +7,6 @@
     justify-content: center;
     padding: 20px;
     /* Reduzido para melhorar responsividade */
-    margin-top: 80px;
 }
 
 .container {
@@ -353,8 +352,7 @@ hr {
     padding: 50px 20px; 
     background-color: #1C646D; 
     color: white; 
-    margin-top: 80px; /* Espaçamento superior */
-    margin-bottom: -100px;
+    margin-top: 80px; /* Espaçamento superior */   
 }
 
 /* Estilo para o título da seção Burnout */
@@ -364,7 +362,7 @@ hr {
     font-weight: 700; 
     margin-bottom: 20px; /* Espaçamento inferior */
     color: #FFFFFF; 
-
+}
 /* Estilo para o subtítulo da seção Burnout */
 .subtitulo-burnout {
     font-size: 20px; 
@@ -382,4 +380,10 @@ hr {
     .subtitulo-burnout {
         font-size: 16px; /* Ajuste do subtítulo em telas pequenas */
     }
+
+    .container-burnout {
+        
+        margin-top: 1%;
+    }
+    
 }
