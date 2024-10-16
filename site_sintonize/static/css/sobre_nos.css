@@ -14,6 +14,7 @@ main {
     max-width: 1100px;
     margin: 90px auto;
     padding: 20px;
+    
 }
 
 /* Estilo do Header */
@@ -28,6 +29,8 @@ header {
     align-items: center;
     justify-content: center;
     margin-top: 80px;
+    flex-wrap: wrap;
+    
 }
 
 /* Conteúdo do Header */
@@ -72,7 +75,7 @@ header p {
     line-height: 24px;
     text-align: left;
     color: #000000;
-    margin: 0;
+    margin: 10px 0;
 }
 
 /* Estilo da Imagem */
@@ -143,7 +146,7 @@ h2 {
     /* Adiciona borda */
     border-radius: 6px;
     /* Bordas arredondadas */
-    padding: 16px;
+    padding: 10px;
     /* Preenchimento interno */
     display: flex;
     /* Flex para alinhar a imagem e o texto */
@@ -151,38 +154,71 @@ h2 {
     /* Alinha verticalmente o conteúdo */
     gap: 16px;
 }
+@media (max-width: 540px) {
+    header img {
+        position: absolute;
+        width: 85%;
+        margin-top: 300px;
+        }
 
-@media (max-width: 768px) {
+        h1 {
+            font-size: 2em;
+            /* Reduz o tamanho da fonte em telas menores */
+        }
+
+        header {
+            padding: 40px 0;
+            /* Menos padding pode ajudar em telas pequenas */;
+            margin-top: 1%;  
+        }
+
+        .text-container {
+            max-width: 90%;
+            /* Aumentar a largura do texto em telas pequenas */
+            margin-top: -200px;
+            margin-left: 10px;
+           }
+    }
+
+@media (max-width: 768px) and (min-width: 540px) {
     h1 {
-        font-size: 2.5em;
+        font-size: 2em;
         /* Reduz o tamanho da fonte em telas menores */
     }
 
     header {
         padding: 40px 0;
-        /* Menos padding pode ajudar em telas pequenas */
+        /* Menos padding pode ajudar em telas pequenas */;
+        margin-top: 1%;  
     }
-
+   
     header img {
         position: absolute;
-        width: 85%;
-        margin-top: 250px;
-
-
+        width: 73%;
+        margin-top: 200px;
     }
 
     .text-container {
         max-width: 90%;
         /* Aumentar a largura do texto em telas pequenas */
         margin-top: -200px;
-        margin-left: auto;
+        margin-left: 10px;
 
-
-    }
+       }
 
     .projeto,
     .missao {
         font-size: 1.2em;
         /* Ajusta tamanho para leitura em telas pequenas */
     }
+}
+@media (max-width: 1024px) and (min-width: 769px) {
+
+    header {
+        margin-top: 8%;
+     }
+
+    header img {
+       position: relative;
+        width: 40%;
 }
