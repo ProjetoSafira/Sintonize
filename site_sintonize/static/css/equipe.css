@@ -142,12 +142,9 @@ p {
 
     /* Remova larguras fixas das descrições */
     h2,
-    h3,
     p {
         width: 90%;
         font-size: 1.5rem;
-   
-        
     }
 
     .foto-membro {
@@ -213,6 +210,7 @@ p {
     .info {
         text-align: left;
         /* Alinha o texto à esquerda */
+        display: inline-block;
 
     }
 }
@@ -238,7 +236,7 @@ p {
 
     /* Remova larguras fixas das descrições */
     h2,
-    h3,
+    
     p {
         width: 90%;
         font-size: 1.5rem;
