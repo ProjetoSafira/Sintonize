@@ -1,8 +1,8 @@
 body {
     font-family: 'Roboto', sans-serif;
     background: #FFFFFF;
-    margin: 0;
     overflow-x: hidden;
+    width: 100%;
     /* Previne rolagem horizontal indesejada */
 
 }
@@ -12,10 +12,10 @@ header {
     position: relative;
     text-align: center;
     background-color: #f2f0ff;
-    margin-top: 80px;
     flex-direction: column;
     display: flex;
     align-items: center;
+    margin-top: 80px;
 }
 
 .header-banner {
@@ -409,22 +409,23 @@ header {
 }
 
 /* Responsividade */
-@media (max-width: 1024px) {
+@media (max-width: 1024px) and (min-width: 769px) {
+    #header{
+        margin-top: 9%;
+    }
+
     .header-content {
         width: 100%;
-        /* Para telas menores, o texto ocupa completamente */
-        margin-right: 10px;
-        /* Remove a margem */
-        text-align: left;
-        /* Centraliza o texto */
+       text-align: center;
+       
 
     }
 
     .header-content p {
         font-size: 18px;
-        width: 70%;
-        /* Ajusta o tamanho do texto */
+        width: 100%;
         line-height: 1.5;
+        text-align: center;
     }
 
     .header-banner {
@@ -435,12 +436,15 @@ header {
     }
 
     .header-banner img {
-        width: 90%;
+        width: 80%;
         /* Imagem ocupa 90% em dispositivos pequenos */
         max-width: 350px;
         /* Limita a largura máxima da imagem */
     }
 }
+
+
+
 
 @media (max-width: 768px) {
 
@@ -459,7 +463,10 @@ header {
         /* Mantenha a consistência no layout */
         flex-direction: column;
         align-items: center;
-        /* Certifique-se de centralizar sempre */
+        /* Certifique-se de centralizar sempre */ 
+    }
+    #header{
+        margin-top: 1%;
     }
 
     .header-content {
@@ -470,13 +477,14 @@ header {
         position: relative;
         left: 10px;
         flex-direction: column;
+        
     }
 
     .header-banner {
         flex-direction: column;
         /* Altera para coluna em telas menores */
         align-items: center;
-
+    
     }
 
     .header-banner img {
@@ -620,6 +628,7 @@ header {
         display: flex;
         flex-direction: column;
         align-items: center;
+      
     }
     .pagina p,
     .pagina h2{
@@ -641,6 +650,7 @@ header {
     .header-content h1 {
         font-size: 1.6rem;
         /* Ajusta para telas pequenas */
+        
     }
     .imagem-consequencias {
         width: 100%; 
