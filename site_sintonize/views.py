@@ -101,5 +101,12 @@ def equipe(request):
             'linkedin': 'https://www.linkedin.com/in/mysilva/',
             'imagem': 'images/myrella.png',  # URL da imagem do membro
         },
+          {
+            'nome': 'Graziella Rodrigues',
+            'cargo': 'Front End Developer',
+            'descricao': '"Atualmente, estou me formando em Análise e Desenvolvimento de Sistemas. Sou apaixonada por tecnologia, estou constantemente em busca de oportunidades para aprender e crescer, tanto profissionalmente quanto pessoalmente. Acredito que, ao unir boas práticas de desenvolvimento com um olhar atento à experiência do usuário, é possível criar soluções digitais que impactem positivamente a vida das pessoas."',
+            'linkedin': 'https://www.linkedin.com/in/agraziella',
+            'imagem': 'images/grazi.png',  # URL da imagem do membro
+        },
     ]
     return render(request, 'equipe.html', {'membros': membros})
