@@ -146,6 +146,7 @@ p {
     p {
         width: 90%;
         font-size: 1.5rem;
+   
         
     }
 
@@ -180,6 +181,101 @@ p {
 
     p {
         font-size: 14px;
+        /* Redução do texto no parágrafo */
+        line-height: 20px;
+        /* Ajusta a linha do texto */
+    }
+
+    .botao-linkedin {
+        display: inline-block;
+        /* Para contornar problemas de alinhamento */
+        padding: 10px 20px;
+        /* Padding para dar espaço interno */
+        font-size: 16px;
+        /* Tamanho da fonte do texto */
+        border: none;
+        /* Remove borda padrão */
+        border-radius: 5px;
+        /* Bordas arredondadas */
+        background-color: #0077b5;
+        /* Cor de fundo do LinkedIn */
+        color: white;
+        /* Cor do texto */
+        text-align: center;
+        /* Centraliza o texto */
+        cursor: pointer;
+        /* Muda o cursor para pointer */
+        margin: 40px 0;
+        /* Margem superior e inferior */
+
+    }
+
+    .info {
+        text-align: left;
+        /* Alinha o texto à esquerda */
+
+    }
+}
+@media (max-width: 853px) and (min-width: 769px) {
+    .container {
+        padding: 20px;
+        /* Ajusta o padding para telas pequenas */
+        margin-top: 80px;
+    }
+
+    .membro {
+        display: flex;
+        /* Adiciona o display flex */
+        flex-direction: column;
+        /* Muda o layout para coluna */
+        align-items: left;
+        /* Faz com que os itens fiquem à esquerda */
+        padding: 10px;
+        /* Reduz o padding */
+        width: 100%;
+        /* Largura total */
+    }
+
+    /* Remova larguras fixas das descrições */
+    h2,
+    h3,
+    p {
+        width: 90%;
+        font-size: 1.5rem;
+        
+    }
+
+    .foto-membro {
+        width: 100px;
+        /* Tamanho reduzido da imagem */
+        height: auto;
+        /* Tamanho reduzido da imagem */
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        /* Reduz o tamanho da fonte */
+        line-height: 28px;
+        /* Ajusta a linha */
+        margin: 0;
+        /* Remove margens */
+        margin-top: -50px;
+
+
+    }
+
+    h3 {
+        font-size: 14px;
+        /* Reduz o tamanho do cargo */
+        line-height: 20px;
+        /* Deixa a linha mais espaçada */
+        margin: 0;
+        /* Remove margens */
+        display: inline-block;
+    }
+
+    p {
+        font-size: 18px;
         /* Redução do texto no parágrafo */
         line-height: 20px;
         /* Ajusta a linha do texto */
