@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from requests.exceptions import Timeout
+from .forms import BurnoutSurveyForm
 import requests
+import json
 
 def index (request):
     return render (request, 'index.html')
@@ -110,3 +112,36 @@ def equipe(request):
         },
     ]
     return render(request, 'equipe.html', {'membros': membros})
+
+
+
+
+def burnout_survey_view(request):
+    if request.method == 'POST':
+        form = BurnoutSurveyForm(request.POST)
+        if form.is_valid():
+            survey = form.save()
+            score = survey.total_score()
+            return redirect('resultado', score=score)  # Redirecionar para uma página de resultado com a pontuação
+    else:
+        form = BurnoutSurveyForm()
+    
+    return render(request, 'burnout_survey.html', {'form': form})
+
+
+
+def resultado_view(request, score):
+    if score <= 20:
+        result_text = "Nenhum indício aparente de Síndrome de Burnout."
+    elif 21 <= score <= 40:
+        result_text = "Possibilidade de desenvolver recomendações de prevenção da Síndrome de Burnout."
+    elif 41 <= score <= 60:
+        result_text = "Fase inicial do Burnout. Procure ajuda profissional."
+    elif 61 <= score <= 80:
+        result_text = "A Síndrome está instalada. Procure ajuda profissional."
+    elif 81 <= score <= 100:
+        result_text = "Você pode estar em uma fase considerável do Burnout. Procure tratamento."
+    
+    return render(request, 'resultado.html', {'score': score, 'result_text': result_text})
+
+
