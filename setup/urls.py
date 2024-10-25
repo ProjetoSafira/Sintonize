@@ -11,7 +11,7 @@ urlpatterns = [
     path('politicas_privacidade', politicas_privacidade, name='politicas_privacidade'), 
     path('sobre_nos/', sobre_nos, name='sobre_nos'),
     path('equipe/', equipe, name='equipe'),
-    path('thilha/', trilha, name='trilha'),
+    path('trilha/', trilha, name='trilha'),
     path('burnout-survey/', burnout_survey_view, name='burnout_survey'),
     path('resultado/<int:score>/', resultado_view, name='resultado'),
 ]
