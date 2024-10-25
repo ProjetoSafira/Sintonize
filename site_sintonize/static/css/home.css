@@ -1,13 +1,15 @@
-body {
-    font-family: 'Roboto', sans-serif;
-    background: #FFFFFF;
-    overflow-x: hidden;
-    width: 100%;
-    /* Previne rolagem horizontal indesejada */
-
+* {
+    box-sizing: border-box;
 }
 
-/* Estilos do Header */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: var(--light-background);
+    overflow-x: hidden;
+    width: 100%;
+}
+
 header {
     position: relative;
     text-align: center;
@@ -15,7 +17,7 @@ header {
     flex-direction: column;
     display: flex;
     align-items: center;
-    margin-top: 80px;
+    margin-top: 80px;  
 }
 
 .header-banner {
@@ -29,6 +31,8 @@ header {
     margin: auto;
     background-color: #f2f0ff;
     gap: 20px;
+    max-width: 1440px; /* Defina a largura máxima desejada */
+    margin: 0 auto; /* Centraliza o contêiner horizontalmente */
 }
 
 .header-banner img {
@@ -38,6 +42,7 @@ header {
     /* Limite de largura para grandes telas */
     height: auto;
     margin-left: 50px;
+    margin-bottom: -20px;
 }
 
 .header-content {
@@ -67,53 +72,55 @@ header {
 }
 
 /* Estilos Gerais da Página */
-.pagina {
+.section-cuidados {
     max-width: 100%;
     /* Alinhar com a largura do layout */
     background: #CEF09D;
     display: flex;
     align-items: center;
+    text-align: center;
     justify-content: center;
-    padding: 60px 40px;
+    padding:40px;  
 }
 
 .container {
     max-width: 100%;
-    text-align: left;
+    text-align: left;   
 }
 
-.pagina h2 {
-    font-size: 36px;
+.section-cuidados h2 {
+    font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 10px;
     color: #1C646D;
-    margin-left: 200px;
+    margin-left: 10%;
+    width: 455px;
 }
 
-.pagina p {
-    font-size: 18px;
+.section-cuidados p {
+    font-size: 1.5rem;
     line-height: 1.6;
     margin-bottom: 20px;
     color: #1F0802;
-    margin-left: 200px;
+    margin-left: 10%;
+    width: 455px;
 }
 
 
 /* Estilos da Imagem */
 #imagem-container {
     width: 100%;
-    /* Para ocupar 100% do contêiner pai */
+    max-width:840px;
     display: flex;
     /* Para centralizar a imagem */
     justify-content: center;
 }
 
 #imagem-principal {
-    max-width: 100%;
     /* Para que a imagem não exceda a largura do contêiner */
     height: auto;
     /* Para manter a proporção da imagem */
-    margin-right: 2mnj, vcb14¿0px;
+    max-width:100%;
 }
 
 .imagem-container .imagem.visible {
@@ -178,32 +185,27 @@ header {
     width: 100%;
     /* Para que ocupe toda a largura, se necessário */
     text-align: center;
-    /* Centraliza o botão */
+
 
 }
-
+.botao-sondagem{
+    margin-left: 10%;
+}
 .botao-sondagem,
 .botao-burnout {
     display: inline-block;
-    /* Para permitir espaçamento */
     background-color: #38184C;
-    /* Cor do botão */
     color: #fff;
-    /* Cor do texto do botão */
     padding: 15px 30px;
-    /* Espaçamento interno do botão */
     border-radius: 5px;
-    /* Bordas arredondadas do botão */
     text-decoration: none;
-    /* Sem decoração no texto */
     font-weight: bold;
-    /* Negrito */
     text-align: center;
-    /* Centraliza o texto */
     margin-top: 20px;
-    /* Margem superior */
     transition: background-color 0.3s ease;
-    /* Transição suave para hover */
+    font-size: 16px; /* Ajuste do tamanho da fonte */
+    width: auto; /* Permite ajuste de largura baseado no conteúdo */
+    min-width: 180px;
 }
 
 .botao-sondagem:hover,
@@ -254,13 +256,10 @@ header {
     /* Mantém a proporção */
 }
 
-.imagem-consequencias,
 .imagem-consequencias-lateral {
-    max-width: 100%;
-    /* A imagem nunca deve exceder a largura do contêiner */
+    max-width: 180px;
+    width: 100%;
     height: auto;
-    /* Mantém a proporção da imagem */
-
 }
 
 .consequencias-texto {
@@ -413,7 +412,7 @@ header {
     #header{
         margin-top: 9%;
     }
-
+   
     .header-content {
         width: 100%;
        text-align: center;
@@ -441,22 +440,31 @@ header {
         max-width: 350px;
         /* Limita a largura máxima da imagem */
     }
-    .pagina {
+    .section-cuidados {
         padding: 2rem 1rem;
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .botao-sondagem,
+    .botao-burnout {
+        padding: 12px 25px;
+        font-size: 15px; /* Reduz um pouco o tamanho da fonte */
+        min-width: 150px; /* Ajuste da largura mínima */
     }
 }
 
+
 @media (max-width: 768px) {
 
-    .pagina {
+    .section-cuidados {
         padding: 2rem 1rem;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
+   
 
     .container {
         max-width: 100%;
@@ -518,7 +526,8 @@ header {
     }
 
 
-    .botao-burnout {
+    .botao-burnout,
+    .botao-sondagem {
         padding: 10px 20px;
         /* Ajusta o padding do botão para telas menores */
         font-size: 14px;
@@ -612,9 +621,6 @@ header {
         /* Garante que a descrição ocorra 100% do card */
     }
 
-    .pagina {
-        padding: 2rem 1rem;
-    }
 
     .label {
        
@@ -625,24 +631,30 @@ header {
 }
 
 
-@media (max-width: 480px) {
-    .pagina {
+@media (max-width: 540px) {
+    .section-cuidados {
         padding: 1rem;
         display: flex;
         flex-direction: column;
         align-items: center;
-      
+        width: 100%; /* Garante que a seção ocupe 100% da largura da tela */
+        box-sizing: border-box; /* Inclui padding e border dentro da largura do elemento */
     }
-    .pagina p,
-    .pagina h2{
-        
-        margin-left: 10px;
+
+    .section-cuidados p,
+    .section-cuidados h2 {
+        font-size: 1rem;
+        margin-left: 0; /* Remove margem lateral */
+        text-align: center; /* Centraliza o texto */
+        padding: 0 10px; /* Padding para evitar encostar nas bordas */
+        width: 100%; /* Garante que o texto ocupe 100% da largura da tela */
+        box-sizing: border-box; /* Garante que padding seja incluído na largura total */
     }
-    .imagem-container {
-        width: 40%;
-        /* Altere de max-width para width */
+
+    #imagem-container {
+        max-width: 90%; /* Mantém a imagem responsiva */
         height: auto;
-        /* Especifique a altura */
+        margin-top: 15px;
     }
 
     .header-banner {
@@ -669,5 +681,9 @@ header {
     .texto-consequencia p {
         font-size: 0.9rem;
         /* Texto menor em telas pequenas */
+    }
+    
+    .botao-sondagem{
+        margin-top: 8px;
     }
 }
