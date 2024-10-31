@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from site_sintonize.views import index, politicas_privacidade, sondagem, sobre_nos, equipe, trilha,burnout_survey_view, resultado_view
+from site_sintonize.views import index, politicas_privacidade, sondagem, sobre_nos, equipe, trilha, diagnostico, burnout_survey_view, resultado_view
 
 
 urlpatterns = [
@@ -12,6 +12,7 @@ urlpatterns = [
     path('sobre_nos/', sobre_nos, name='sobre_nos'),
     path('equipe/', equipe, name='equipe'),
     path('trilha/', trilha, name='trilha'),
+    path('diagnostico/', diagnostico, name='diagnostico'),
     path('burnout-survey/', burnout_survey_view, name='burnout_survey'),
     path('resultado/<int:score>/', resultado_view, name='resultado'),
 ]
