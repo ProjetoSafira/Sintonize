@@ -17,5 +17,43 @@
             <p class="subtitulo-burnout">O diagnóstico da Síndrome de Burnout é essencialmente clínico, focando na história do paciente e no seu envolvimento no trabalho.</p>
         </div>
     </header>
+    <section class="container-evolucao">
+        <h2 class="titulo-evolucao">Fatores Importantes</h2>
+        <div class="avaliacoes-container">
+            <div class="avaliacao-item">
+                <img src="{% static 'images/simbolo.png' %}" alt="Ícone de História Pessoal">
+                <div class="avaliacao-texto">
+                    <h3>História Pessoal</h3>
+                    <p>Considerar a história do paciente.</p>
+                    <h2>Tipo de trabalho, sintomas</h2>
+                </div>
+            </div>
+            <div class="avaliacao-item">
+                <img src="{% static 'images/mala.png' %}" alt="Ícone de Diagnóstico Preciso">
+                <div class="avaliacao-texto">
+                    <h3>Diagnóstico Preciso</h3>
+                    <p>Diferenciar Burnout de fadiga normal e depressão.</p>
+                    <h2>Entrevista detalhada</h2>
+                </div>
+            </div>
+            <div class="avaliacao-item">
+                <img src="{% static 'images/relogio.png' %}" alt="Ícone de Diagnóstico Precoce">
+                <div class="avaliacao-texto">
+                    <h3>Diagnóstico Precoce</h3>
+                    <p>Importância da identificação precoce.</p>
+                </div>
+            </div>
+        </div>    
+        <div class="box-diagnostico">
+            <img src="{% static 'images/lista.png' %}" alt="Ícone de Diagnóstico Precoce">
+            <div class="diagnostico-conteudo">
+                <h4 class="titulo-diagnostico">Diagnóstico Precoce</h4>
+                <p class="diagnostico-precoce">O diagnóstico precoce e correto pode fazer uma grande diferença no manejo e tratamento da síndrome, ajudando o paciente a recuperar sua qualidade de vida e prevenir complicações mais graves.</p>
+            </div>
+        </div>
+            <a href="{% url 'burnout_survey' %}" class="botao" id="botao">Tratamento de Burnout</a>
+        </div>
+    </section>  
+    {% include 'footer.html' %}  
 </body>
 </html>
