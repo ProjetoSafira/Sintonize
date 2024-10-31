@@ -1,0 +1,75 @@
+.container-burnout {
+    text-align: center;
+    padding: 60px 5%; /* Mantém para melhor responsividade */
+    border: 1px solid #000;
+    background: #1C646D;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    margin-top: 80px;
+    align-self: stretch;   
+    max-width: 100%;
+}
+
+.titulo-burnout {
+    font-size: 40px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: #FFF;
+}
+
+/* Estilo para o subtítulo da seção Burnout */
+.subtitulo-burnout {
+    font-family: 'Roboto', sans-serif;
+    color: #FFF;
+    text-align: center;
+    font-size: 18px; /* Aumentado de 16px para melhor legibilidade */
+    font-weight: 400; /* Mantido leve para o subtítulo */
+    line-height: 1.6; /* Melhor espaçamento entre linhas */
+    width: 80%; /* Mantido para responsividade, aumenta um pouco */
+    display: inline-block;
+    margin: 0 auto;
+    max-width: 550px;
+}
+
+/* Media Queries para Adaptação */
+@media (max-width: 1200px) {
+    .titulo-burnout {
+        font-size: 36px; /* Reduz tamanho do título em telas menores */
+    }
+
+    .subtitulo-burnout {
+        font-size: 16px; /* Ajuste do subtítulo */
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .titulo-burnout {
+        font-size: 30px; /* Ajusta o tamanho do título para telas médias */
+    }
+
+    .subtitulo-burnout {
+        font-size: 14px; /* Ajuste do subtítulo */
+        width: 95%;
+    }
+
+    .container-burnout {
+        padding: 40px 3%; /* Reduz o padding */
+        margin-top: 1%;
+    }
+}
+
+@media (max-width: 480px) {
+    .titulo-burnout {
+        font-size: 24px; /* Tamanho otimizado para dispositivos pequenos */
+    }
+
+    .subtitulo-burnout {
+        font-size: 12px; /* Ajuste para dispositivos móveis */
+        width: 100%; /* Faz com que o subtítulo ocupe toda a largura */
+    }
+
+    .container-burnout {
+        padding: 20px 1%; /* Padding otimizado */
+    }
+}

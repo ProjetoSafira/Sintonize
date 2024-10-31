@@ -5,7 +5,7 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background: var(--light-background);
+    background: #FFFFFF;
     overflow-x: hidden;
     width: 100%;
 }
@@ -17,7 +17,7 @@ header {
     flex-direction: column;
     display: flex;
     align-items: center;
-    margin-top: 80px;  
+    margin-top: 80px;   
 }
 
 .header-banner {

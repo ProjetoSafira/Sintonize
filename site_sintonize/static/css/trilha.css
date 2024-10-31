@@ -95,6 +95,7 @@
     /* Manter a proporção da imagem */
 }
 
+
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
@@ -337,6 +338,14 @@
     /* Remove a margem padrão para melhor controle */
     width: 100%;
     /* Opcional, garante que use toda a largura disponível */
+}
+
+.diagnostico-botao {
+    width: auto; /* Permite que a largura do botão seja determinada pelo seu conteúdo */
+    margin: 20px 0; /* Adiciona margem superior e inferior, ajustável conforme necessário */
+    text-align: left; /* Garante que o conteúdo seja alinhado à esquerda */
+    margin-right: 33%;
+    
 }
 
 hr {
