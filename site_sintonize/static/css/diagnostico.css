@@ -2,209 +2,332 @@
     text-align: center;
     padding: 60px 5%;
     border: 1px solid #000;
-    background: #1C646D;
+    background: #1c646d;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     margin-top: 80px;
     max-width: 100%;
-}
-
-.titulo-burnout {
+  }
+  
+  .titulo-burnout {
     font-size: 40px;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 800;
     margin-bottom: 20px;
-    color: #FFF;
-}
-
-.subtitulo-burnout {
-    font-family: 'Roboto', sans-serif;
-    color: #FFF;
-    font-size: 18px;
-    font-weight: 400;
+    color: #fff;
+  }
+  
+  .subtitulo-burnout {
+    font-family: "Roboto", sans-serif;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
     line-height: 1.6;
-    width: 90%;
-    /* Aumentado para responsividade */
+    width: 100%;
     margin: 0 auto;
-}
-
-.container-evolucao {
+    max-width: 520px;
+  }
+  
+  .container-evolucao {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 60px;
-    background: #F2F0FF;
+    background: #f2f0ff;
     padding: 0 5%;
-}
-
-.titulo-evolucao {
-    color: #1C646D;
+  }
+  
+  .titulo-evolucao {
+    color: #1c646d;
     text-align: center;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 40px;
     font-weight: 800;
     margin-top: 20px;
-}
-
-.item-titulo {
+  }
+  
+  .item-titulo {
     color: #000;
     text-align: center;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: 28px;
     margin-bottom: 2%;
-}
- .subtitulo{
-    margin-bottom:2%;
- }
-
-.avaliacoes-container {
+  }
+  .subtitulo {
+    margin-bottom: 2%;
+  }
+  
+  .avaliacoes-container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    /* Permite que os itens quebrem em várias linhas */
     margin-bottom: 40px;
-}
-
-.avaliacao-item {
+  }
+  
+  .avaliacao-item {
     flex: 2 2 400px;
-    /* Permite flexibilidade */
     margin: 20px;
     text-align: center;
-}
-.icon-container {
-    display: inline-block; /* Permite que o container se ajuste ao tamanho da imagem */
-    text-align: center; /* Centraliza o texto dentro do contêiner */
-    padding: 10px; 
-
-}
-.icon-container img {
+  }
+  .icon-container {
+    display: inline-block; 
+    text-align: center; 
+    padding: 10px;
+  }
+  .icon-container img {
     max-width: 80px;
-    /* Tamanho máximo da imagem */
     height: 80px;
-    /* Manter proporções */
     border-radius: 50%;
-    /* Define a borda como círculo */
     background-color: #e1e3eb;
-    /* Cor de fundo cinza */
     padding: 12px;
-    /* Ajuste em relação ao padding */
     box-shadow: 0 2px 4px rgba(245, 242, 242, 0.897);
     object-fit: cover;
-}
-
-.box-diagnostico {
+  }
+  
+  .box-diagnostico {
     display: flex;
     flex-direction: row;
     align-items: center;
     width: 45%;
     padding: 16px;
     border-radius: 6px;
-    border: 1px solid rgba(0, 0, 0, 0.10);
-    background-color: #F2F0FF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: #f2f0ff;
     margin: 16px 0;
-}
-
-.imagem-diagnostico {
+  }
+  
+  .imagem-diagnostico {
     max-width: 100px;
-    /* Tamanho mais flexível */
     height: auto;
     margin-right: 16px;
-}
-
-.diagnostico-conteudo {
+  }
+  
+  .diagnostico-conteudo {
     display: flex;
     flex-direction: column;
     width: 100%;
-}
-
-.titulo-diagnostico {
+  }
+  
+  .titulo-diagnostico {
     color: #000000;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 20px;
     font-weight: 500;
     line-height: 1.5;
-}
-
-.diagnostico-precoce {
+  }
+  
+  .diagnostico-precoce {
     color: #000000;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 18px;
     font-weight: 400;
     line-height: 1.5;
     margin-top: 8px;
-}
-.botao {
-    margin-bottom: 20px; /* Espaço acima do botão */
-}
-
-/* Media Queries para Responsividade */
-@media (max-width: 1200px) {
+  }
+  .botao {
+    margin-bottom: 20px;
+  }
+  
+  /*  Responsividade */
+  @media (max-width: 1200px) {
     .titulo-burnout {
-        font-size: 36px;
+      font-size: 36px;
     }
-
+  
     .subtitulo-burnout {
-        font-size: 16px;
-        width: 90%;
+      font-size: 16px;
+      width: 90%;
     }
-}
-
-@media (max-width: 768px) {
+  }
+  
+  @media (max-width: 768px) {
     .titulo-burnout {
-        font-size: 30px;
+      font-size: 30px;
     }
-
+  
     .subtitulo-burnout {
-        font-size: 14px;
-        width: 95%;
+      font-size: 14px;
+      width: 95%;
     }
-
+  
     .container-burnout {
-        padding: 40px 3%;
-        margin-top: 1%;
+      padding: 40px 3%;
+      margin-top: 1%;
     }
-
+  
     .titulo-evolucao {
-        font-size: 28px;
+      font-size: 28px;
     }
-
+  
     .avaliacao-item {
-        flex: 1 1 100%;
-        /* Itens ocupam toda a largura em telas pequenas */
+      flex: 1 1 100%;
     }
-
+  
     .box-diagnostico {
-        flex-direction: column;
-        /* Muda para coluna em telas menores */
-        align-items: flex-start;
-        padding: 12px;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 12px;
     }
-
+  
     .imagem-diagnostico {
-        margin-right: 0;
-        margin-bottom: 12px;
+      margin-right: 0;
+      margin-bottom: 12px;
     }
-
+  
     .titulo-diagnostico,
     .diagnostico-precoce {
-        font-size: 18px;
+      font-size: 18px;
     }
-}
-
-@media (max-width: 480px) {
+  }
+  
+  @media (max-width: 480px) {
     .titulo-burnout {
-        font-size: 24px;
+      font-size: 24px;
     }
-
+  
     .subtitulo-burnout {
-        font-size: 12px;
-        width: 100%;
+      font-size: 12px;
+      width: 100%;
     }
-
+  
     .container-burnout {
-        padding: 20px 1%;
+      padding: 20px 1%;
     }
-}
+  }
+  
+  .container-diagnostico {
+      display: flex;
+      padding: 60px 170px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 60px;
+      background: #f2f0ff;
+    }
+    
+    .titulo-diagnostico1 {
+      display: flex; 
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;    
+      align-self: stretch;
+      width: 520px; 
+      margin: 0 auto; 
+      color: #1c646d;
+      text-align: center;
+      font-family: Roboto, sans-serif;
+      font-size: 40px;
+      font-weight: 800;
+      line-height: 48px;
+    }
+    
+    .diagnostico-cards {
+      display: flex;
+      flex-direction: column;
+      padding: 20px 0px;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      width: 100%;
+      max-width: 800px; 
+      margin: 0 auto; 
+    }
+    
+    .diagnostico-card {
+      display: flex;
+      padding: 16px;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 16px;
+      width: 100%;
+      flex: 1 0 0;
+      border-radius: 6px;
+      border: 1px solid rgba(0, 0, 0, 0.10);
+      box-sizing: border-box;
+      margin: 16px 0;
+  }
+    
+    .diagnostico-card img {
+      max-width: 100px;
+      height: auto;
+      margin-right: 16px;
+    }
+    
+    .diagnostico-card h4 {
+      color: #000000;
+      font-family: "Roboto", sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.5;
+      line-height: 28px; /* 140% */
+    }
+    
+    .diagnostico-card p {
+      color: #000000;
+      font-family: "Roboto", sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.5;
+      margin-top: 8px;
+    }
+    
+    /* Responsividade para telas menores */
+  @media (max-width: 768px) {
+      .container-diagnostico {
+          padding: 40px 20px;
+      }
+    
+      .titulo-diagnostico1 {
+          width: 100%; 
+          font-size: 32px; 
+          line-height: 38px;
+      }
+    
+      .diagnostico-cards {
+          gap: 20px; 
+      }
+    
+      .diagnostico-card {
+          flex-direction: column; 
+          align-items: center;
+          gap: 12px;
+      }
+  
+      .diagnostico-card img {
+          max-width: 80px; 
+          margin: 0; 
+      }
+  
+      .diagnostico-card h4 {
+          font-size: 18px;
+          line-height: 26px;
+      }
+  
+      .diagnostico-card p {
+          font-size: 16px;
+      }
+  }
+  
+  /* Responsividade para telas muito pequenas */
+  @media (max-width: 480px) {
+      .titulo-diagnostico1 {
+          font-size: 28px;
+          line-height: 34px;
+      }
+  
+      .diagnostico-card img {
+          max-width: 60px;
+      }
+  
+      .diagnostico-card h4 {
+          font-size: 16px;
+      }
+  
+      .diagnostico-card p {
+          font-size: 14px;
+      }
+  }
