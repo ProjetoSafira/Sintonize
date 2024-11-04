@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tratamento</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tratamento.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    {% include 'menu.html' %}
+    
+    <header>
+        <h1 class="titulo-tratamento">Tratamento da Síndrome de Burnout</h1>
+        <p class="sub-tratamento">Descubra algumas abordagens para o tratamento do Burnout</p>
+    </header>
+    
+    <main>
+        <div class="card-container">
+            <div class="card">
+                <h2 class="titulo-card">Terapia</h2>
+                <img src="{% static 'images/terapia.png' %}" alt="Terapia Cognitivo-Comportamental">
+                <p class="titulo-abordagem">Terapia Cognitivo-Comportamental</p>
+            </div>
+            <div class="card">
+                <h2 class="titulo-card">Bem-estar</h2>
+                <img src="{% static 'images/bemestar.png' %}" alt="Meditação e Mindfulness">
+                <p class="titulo-abordagem">Meditação e Mindfulness</p>
+            </div>
+            <div class="card">
+                <h2 class="titulo-card">Saúde</h2>
+                <img src="{% static 'images/saude.png' %}" alt="Exercícios Físicos">
+                <p class="titulo-abordagem">Exercícios Físicos</p>
+            </div>
+        </div>
+        <div class="info-container">
+            <div class="info-card">
+                <img src="{% static 'images/homens.png' %}" alt="Ícone de tratamento" class="imagem-tratamento">
+                <div class="text-content">
+                    <h3>Alterações no Ambiente de Trabalho</h3>
+                    <p>O tratamento do Burnout começa com mudanças no ambiente de trabalho, como ajustar a carga de trabalho e fornecer os recursos necessários para que os funcionários possam desempenhar suas funções de maneira eficaz.</p>
+                </div>
+            </div>
+            <div class="info-card">
+                <img src="{% static 'images/farmaco.png' %}" alt="Ícone de tratamento" class="imagem-tratamento">
+                <div class="text-content">
+                    <h3>Tratamento Farmacológico</h3>
+                    <p>O tratamento medicamentoso para a síndrome de Burnout pode ser considerado em casos específicos, dependendo da gravidade dos sintomas e das características do paciente, após avaliação de um especialista.</p>
+                </div>
+            </div>
+            <div class="info-card">
+                <img src="{% static 'images/psico.png' %}" alt="Ícone de tratamento" class="imagem-tratamento">
+                <div class="text-content">
+                    <h3>Tratamento Psicológico</h3>
+                    <p>O tratamento psicológico é essencial para a recuperação do Burnout, oferecendo apoio emocional e ferramentas práticas. A Terapia Cognitivo-Comportamental (TCC) é altamente eficaz, ajudando a lidar com o estresse e distorções cognitivas.</p>
+                </div>
+            </div>
+            <div class="info-card">
+                <img src="{% static 'images/habilidades.png' %}" alt="Ícone de tratamento" class="imagem-tratamento">
+                <div class="text-content">
+                    <h3>Desenvolvimento de Habilidades Pessoais</h3>
+                    <p>A melhoria da autoestima envolve reconhecer fraquezas e forças, eliminando o autojulgamento. O desenvolvimento da resiliência fortalece a capacidade de superar adversidades, enquanto a assertividade aprimora a comunicação e a defesa dos próprios direitos de forma respeitosa.</p>
+                </div>
+            </div>
+            <div class="info-card">
+                <img src="{% static 'images/maca.png' %}" alt="Ícone de tratamento" class="imagem-tratamento">
+                <div class="text-content">
+                    <h3>Promoção de Hábitos Saudáveis</h3>
+                    <p>Manter uma rotina equilibrada é fundamental, incluindo autocuidado com exercícios, alimentação, descanso e meditação, além de garantir um bom equilíbrio entre trabalho, lazer e vida pessoal.</p>
+                </div>
+            </div>
+            <div class="info-card">
+                <img src="{% static 'images/profissional.png' %}" alt="Ícone de tratamento" class="imagem-tratamento">
+                <div class="text-content">
+                    <h3>Importância de Procurar Ajuda Profissional</h3>
+                    <p>Apesar das informações e recursos disponíveis na trilha de conhecimento e no site, é fundamental lembrar que o diagnóstico e tratamento da Síndrome de Burnout devem ser feitos por profissionais de saúde qualificados. O conteúdo aqui oferecido não substitui a consulta com um especialista.</p>
+                </div>
+            </div> 
+        </div>
+        {% include 'footer.html' %}
+        
