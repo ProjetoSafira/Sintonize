@@ -25,6 +25,9 @@ def trilha (request):
 def diagnostico (request):
     return render(request, 'diagnostico.html') 
 
+def tratamento (request):
+    return render(request, 'tratamento.html') 
+
 def equipe(request):
     membros = [
         {
