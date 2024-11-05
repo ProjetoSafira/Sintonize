@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Como é feito o Diagnóstico ?</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/diagnostico.css' %}" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@600&display=swap" rel="stylesheet" />
+</head>
+<body>
+    {% include 'menu.html' %}
+    <header>
+        <div class="container-burnout">
+            <h1 class="titulo-burnout">Como é feito o Diagnóstico ?</h1>
+            <p class="subtitulo-burnout">O diagnóstico da Síndrome de Burnout é essencialmente clínico, focando na história do paciente e no seu envolvimento no trabalho.</p>
+        </div>
+    </header>
+
+<section class="container-diagnostico">
+        <h2 class="titulo-diagnostico1"> Diagnóstico da Síndrome de Burnout</h2>
+        
+        <div class="diagnostico-cards">
+            <div class="diagnostico-card">
+                <img src="{% static 'images/medico_sentado.png' %}" alt="Ícone Profissionais Envolvidos">
+                <div>
+                    <h4>Profissionais Envolvidos</h4>
+                    <p> Psiquiatras e psicólogos são os mais indicados para identificar o problema e orientar o tratamento adequado.</p>
+                </div>                    
+            </div>
+           
+            
+            <div class="diagnostico-card">
+                <img src="{% static 'images/braco_cruzado.png' %}" alt="Ícone Homem de Braços Cruzados">
+                <div>
+                    <h4>Desafios na Identificação</h4>
+                    <p>Muitas pessoas não buscam ajuda médica devido à dificuldade em identificar os sintomas.</p>
+                </div>                
+            </div>
+            <div class="diagnostico-card">
+                <img src="{% static 'images/diagnostico_clinico.png' %}" alt="Ícone de Diagnóstico Clínico">
+                <div>
+                    <h4>Diagnóstico Clínico</h4>
+                    <p>O diagnóstico de Burnout é feito com base na história do paciente e sua relação com o trabalho.</p>
+                </div>                
+            </div>
+            <div class="diagnostico-card">
+                <img src="{% static 'images/entrevista_detalhada.png' %}" alt="Ícone de Entrevista Detalhada">
+                <div>
+                    <h4>Entrevista Detalhada</h4>
+                    <p>Uma entrevista completa é fundamental para uma avaliação precisa, considerando a história do paciente e os sintomas apresentados.</p>
+                </div>
+            </div>
+            </div>            
+        </div>        
+    </section>
+
+        <section class="container-evolucao">
+            <h2 class="titulo-evolucao">Fatores Importantes</h2>
+            <div class="avaliacoes-container">
+                <div class="avaliacao-item">
+                    <div class="icon-container">
+                        <img src="{% static 'images/simbolo.png' %}" alt="Ícone de História Pessoal">
+                        <h3 class="item-titulo">História Pessoal</h3>
+                        <p class="subtitulo">Considerar a história do paciente.</p>
+                        <h2>Tipo de trabalho, sintomas</h2>
+                    </div>
+                </div>
+                <div class="avaliacao-item">
+                    <div class="icon-container">
+                        <img src="{% static 'images/mala.png' %}" alt="Ícone de Diagnóstico Preciso">
+                        <h3 class="item-titulo">Diagnóstico Preciso</h3>
+                        <p class="subtitulo">Diferenciar Burnout de fadiga normal e depressão.</p>
+                        <h2>Entrevista detalhada</h2>
+                    </div>
+                </div>
+                <div class="avaliacao-item">
+                    <div class="icon-container">
+                        <img src="{% static 'images/relogio.png' %}" alt="Ícone de Diagnóstico Precoce">
+                        <h3 class="item-titulo">Diagnóstico Precoce</h3>
+                        <p class="subtitulo">Importância da identificação precoce.</p>
+                    </div>
+                </div>
+            </div>
+        <div class="box-diagnostico">
+            <img src="{% static 'images/lista.png' %}" alt="Ícone de Diagnóstico Precoce" class="imagem-diagnostico">
+            <div class="diagnostico-conteudo">
+                <h4 class="titulo-diagnostico">Diagnóstico Precoce</h4>
+                <p class="diagnostico-precoce">O diagnóstico precoce e correto pode fazer uma grande diferença no manejo e tratamento da síndrome, ajudando o paciente a recuperar sua qualidade de vida e prevenir complicações mais graves.</p>
+            </div>
+        </div>        
+            <a href="{% url 'tratamento' %}" class="botao" id="botao">Tratamento de Burnout</a>
+        </div>
+    </section>  
+    {% include 'footer.html' %}  
+</body>
+</html>

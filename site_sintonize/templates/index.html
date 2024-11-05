@@ -11,7 +11,7 @@
     
 </head>
 <body>
-    {% include 'header.html' %}
+    {% include 'menu.html' %}
     <header id="header">
         <div class="header-banner">
             <div class="header-content">
@@ -25,7 +25,7 @@
             <img src="{% static 'images/cabeca.png' %}" alt="Imagem de apoio" class="header-image">
         </div>
     </header>
-    <div class="pagina" id="pagina">
+    <div class="section-cuidados" id="section-cuidados">
         <div class="container" id="container-principal">
             <h2 id="titulo-principal">É HORA DE CUIDAR DE VOCÊ MESMO</h2>
             <p id="descricao-principal">
@@ -102,7 +102,7 @@
             </div>
         </div>
         <div class="botao-container" id="botao-container-burnout">
-            <a href="{% url 'sondagem' %}" class="botao-burnout" id="botao-burnout">Entenda mais sobre o Burnout</a>
+            <a href="{% url 'burnout_survey' %}" class="botao-burnout" id="botao-burnout">Entenda mais sobre o Burnout</a>
         </div>
     </section>
     {% include 'footer.html' %}  <!-- Incluindo o rodapé -->
