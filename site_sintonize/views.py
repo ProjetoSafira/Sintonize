@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from requests.exceptions import Timeout
+from .forms import BurnoutSurveyForm
 import requests
+import json
 
 def index (request):
     return render (request, 'index.html')
@@ -16,6 +18,15 @@ def sobre_nos (request):
 
 def equipe (request):
     return render(request, 'equipe.html') 
+
+def trilha (request):
+    return render(request, 'trilha.html') 
+
+def diagnostico (request):
+    return render(request, 'diagnostico.html') 
+
+def tratamento (request):
+    return render(request, 'tratamento.html') 
 
 def equipe(request):
     membros = [
@@ -54,7 +65,7 @@ def equipe(request):
             'cargo': 'Scrum Master',
             'descricao': '"Ser um agente de transformação digital é o que me move para alcançar horizontes desconhecidos.” Em 2019, iniciei um processo de transição de carreira para a área de dados, criando dashboards interativos e relatórios personalizados para monitoramento contínuo de KPIs e métricas de negócios através das ferramentas Power BI e Qlik Sense. Desde 2022 comecei a embarcar em um novo horizonte, o universo ágil. Diante disso, desenvolver habilidades de um agilista tornou-se um caminho sem volta, pois, não só passei a adquirir conhecimentos bem como replicá-los para outros profissionais que são entusiastas ou que estejam iniciando a carreira na área. Possuo as seguintes certificações: Professional Scrum Master 1 (PSM 1), Accredited Scrum Fundamentals Certification, Lean Agile Coach Professional e Management 3.0 Foundation Workshop."',
             'linkedin': 'https://linkedin.com/in/fernandomgalvao/',
-            'imagem': 'images/fernando.png',  # URL da imagem do membro
+            'imagem': 'images/galvao.png',  # URL da imagem do membro
         },
           {
             'nome': 'Jefferson Bernardes',
@@ -98,5 +109,45 @@ def equipe(request):
             'linkedin': 'https://www.linkedin.com/in/mysilva/',
             'imagem': 'images/myrella.png',  # URL da imagem do membro
         },
+          {
+            'nome': 'Graziella Rodrigues',
+            'cargo': 'Front End Developer',
+            'descricao': '"Atualmente, estou me formando em Análise e Desenvolvimento de Sistemas. Sou apaixonada por tecnologia, estou constantemente em busca de oportunidades para aprender e crescer, tanto profissionalmente quanto pessoalmente. Acredito que, ao unir boas práticas de desenvolvimento com um olhar atento à experiência do usuário, é possível criar soluções digitais que impactem positivamente a vida das pessoas."',
+            'linkedin': 'https://www.linkedin.com/in/agraziella',
+            'imagem': 'images/grazi.png',  # URL da imagem do membro
+        },
     ]
     return render(request, 'equipe.html', {'membros': membros})
+
+
+
+
+def burnout_survey_view(request):
+    if request.method == 'POST':
+        form = BurnoutSurveyForm(request.POST)
+        if form.is_valid():
+            survey = form.save()
+            score = survey.total_score()
+            return redirect('resultado', score=score)  # Redirecionar para uma página de resultado com a pontuação
+    else:
+        form = BurnoutSurveyForm()
+    
+    return render(request, 'burnout_survey.html', {'form': form})
+
+
+
+def resultado_view(request, score):
+    if score <= 20:
+        result_text = "Nenhum indício aparente de Síndrome de Burnout."
+    elif 21 <= score <= 40:
+        result_text = "Possibilidade de desenvolver recomendações de prevenção da Síndrome de Burnout."
+    elif 41 <= score <= 60:
+        result_text = "Fase inicial do Burnout. Procure ajuda profissional."
+    elif 61 <= score <= 80:
+        result_text = "A Síndrome está instalada. Procure ajuda profissional."
+    elif 81 <= score <= 100:
+        result_text = "Você pode estar em uma fase considerável do Burnout. Procure tratamento."
+    
+    return render(request, 'resultado.html', {'score': score, 'result_text': result_text})
+
+
