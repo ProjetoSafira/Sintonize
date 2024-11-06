@@ -77,16 +77,16 @@
     text-align: center; 
     padding: 10px;
   }
-  .icon-container img {
-    max-width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background-color: #e1e3eb;
+
+  img.padronizada {
+    width: 80px; /* Tamanho padrão */
+    height: 80px; /* Manter quadrado */
+    border-radius: 50%; /* Bordas arredondadas */
+    object-fit: contain; /* Cobre a área sem distorcer */
+    background-color: #e1e3eb; /* Cor de fundo se a imagem não preencher */
     padding: 12px;
-    box-shadow: 0 2px 4px rgba(245, 242, 242, 0.897);
-    object-fit: cover;
-  }
-  
+}
+
   .box-diagnostico {
     display: flex;
     flex-direction: row;
