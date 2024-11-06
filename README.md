@@ -80,4 +80,3 @@ pip3 install django
 python manage.py runserver
 ```
 - Abra no navegador: http://127.0.0.1:8000
-
