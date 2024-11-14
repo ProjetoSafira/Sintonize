@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Respiração Guiada 4-7-8</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            margin-top: 10%; 
+            transition: all 0.5s ease-in-out; 
+        }
+        #timer { 
+            font-size: 48px; 
+            margin-top: 20px; 
+            transition: transform 0.5s ease-in-out; 
+        }
+        button { 
+            padding: 10px 20px; 
+            font-size: 16px; 
+            margin: 5px; 
+        }
+        .hidden { 
+            display: none; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Respiração Guiada 4-7-8</h1>
+    <div id="timer">Pressione Iniciar</div>
+    <button id="startButton" onclick="startBreathing()">Iniciar</button>
+    <button id="pauseContinueButton" class="hidden" onclick="togglePause()">Pausar</button>
+    <button id="resetButton" class="hidden" onclick="resetBreathing()">Reiniciar</button>
+
+    <script>
+        let timer = null;
+        let sequenceIndex = 0;
+        let isPaused = false;
+        const sequences = [
+            { action: 'Inspirar', seconds: 4 },
+            { action: 'Segurar', seconds: 7 },
+            { action: 'Expirar', seconds: 8 }
+        ];
+
+        function startBreathing() {
+            clearTimeout(timer); // Certifique-se de limpar qualquer timer anterior
+            timer = null;
+            sequenceIndex = 0;
+            isPaused = false;
+            executeSequence();
+            document.getElementById('pauseContinueButton').classList.remove('hidden');
+            document.getElementById('resetButton').classList.remove('hidden');
+            document.getElementById('startButton').classList.add('hidden');
+        }
+
+        function togglePause() {
+            isPaused = !isPaused;
+            const pauseContinueButton = document.getElementById('pauseContinueButton');
+
+            if (isPaused) {
+                clearTimeout(timer);
+                timer = null;
+                document.getElementById('timer').textContent = 'Pausado';
+                pauseContinueButton.textContent = 'Continuar';
+            } else {
+                pauseContinueButton.textContent = 'Pausar';
+                executeSequence();
+            }
+        }
+
+        function resetBreathing() {
+            clearTimeout(timer);
+            timer = null;
+            sequenceIndex = 0;
+            isPaused = false;
+            document.getElementById('timer').textContent = 'Pressione Iniciar';
+            resetInterface();
+        }
+
+        function executeSequence() {
+            if (!isPaused && sequenceIndex < sequences.length) {
+                const sequence = sequences[sequenceIndex];
+                let timeLeft = sequence.seconds;
+
+                const timerElement = document.getElementById('timer');
+                timerElement.textContent = `${sequence.action} - ${timeLeft}s`;
+                timerElement.style.transform = 'scale(1.2)';
+
+                setTimeout(() => {
+                    timerElement.style.transform = 'scale(1)';
+                }, 500);
+
+                function countdown() {
+                    if (isPaused) {
+                        return;
+                    }
+                    if (timeLeft >= 0) {
+                        timerElement.textContent = `${sequence.action} - ${timeLeft}s`;
+                        timeLeft--;
+                        timer = setTimeout(countdown, 1000);
+                    } else {
+                        sequenceIndex++;
+                        timer = setTimeout(executeSequence, 500);
+                    }
+                }
+                countdown();
+            } else if (sequenceIndex >= sequences.length) {
+                document.getElementById('timer').textContent = 'Ciclo Completo!';
+                resetInterface();
+            }
+        }
+
+        function resetInterface() {
+            document.getElementById('startButton').classList.remove('hidden');
+            document.getElementById('pauseContinueButton').classList.add('hidden');
+            document.getElementById('resetButton').classList.add('hidden');
+            document.getElementById('timer').style.transform = 'scale(1)';
+        }
+    </script>
+</body>
+</html>
