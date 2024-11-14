@@ -53,68 +53,56 @@ def equipe(request):
             'linkedin': 'https://www.linkedin.com/in/jessica-carvalho30',
             'imagem': 'images/jess.png',  # URL da imagem do membro
         },
-          {
-            'nome': 'Fernanda Giglio',
-            'cargo': 'UX/UI Design',
-            'descricao': '"Profissional com 10 anos de experiência em atendimento ao cliente e área comercial, formada em Publicidade e Propaganda. Estou em transição para o Design UX/UI, onde utilizo minhas habilidades de comunicação, empatia e resolução de problemas para melhorar a experiência dos usuários. Com passagens por startups de tecnologia, tenho uma visão estratégica voltada para resultados e estou sempre em busca de novas oportunidades para crescer. Além disso, tenho experiência em marketing, vendas e suporte a franqueados, sempre priorizando a satisfação do cliente',
-            'linkedin': 'https://www.linkedin.com/in/fernandagiglio/',
-            'imagem': 'images/fer.png',  # URL da imagem do membro
-        },
+       
           {
             'nome': 'Fernando Galvão',
             'cargo': 'Scrum Master',
             'descricao': '"Ser um agente de transformação digital é o que me move para alcançar horizontes desconhecidos.” Em 2019, iniciei um processo de transição de carreira para a área de dados, criando dashboards interativos e relatórios personalizados para monitoramento contínuo de KPIs e métricas de negócios através das ferramentas Power BI e Qlik Sense. Desde 2022 comecei a embarcar em um novo horizonte, o universo ágil. Diante disso, desenvolver habilidades de um agilista tornou-se um caminho sem volta, pois, não só passei a adquirir conhecimentos bem como replicá-los para outros profissionais que são entusiastas ou que estejam iniciando a carreira na área. Possuo as seguintes certificações: Professional Scrum Master 1 (PSM 1), Accredited Scrum Fundamentals Certification, Lean Agile Coach Professional e Management 3.0 Foundation Workshop."',
             'linkedin': 'https://linkedin.com/in/fernandomgalvao/',
-            'imagem': 'images/galvao.png',  # URL da imagem do membro
+            'imagem': 'images/galvao.png',  #
         },
-          {
-            'nome': 'Jefferson Bernardes',
-            'cargo': 'Scrum Master',
-            'descricao': '"Gestão e gerenciamento de projetos, desenvolvimento e implantação de soluções de alto nível, atendendo aos diversos segmentos na indústria farmacêutica, contemplando diferentes regras de negócios no segmento de logística, projetos de grande complexidade com diversas áreas envolvidas, onde absorvi experiência na mitigação dos riscos e gestão de grandes resultados. Atuação no controle das atividades mapeadas e levantadas para desenvolvimento do projeto."',
-            'linkedin': 'https://www.linkedin.com/in/jefferson-bernardes-109584a8',
-            'imagem': 'images/jefferson.png',  # URL da imagem do membro
-        },
+        
           {
             'nome': 'Bruna Lacerda',
             'cargo': 'Quality Assurance',
             'descricao': '"Sou uma profissional de QA com 3 anos de experiência em uma empresa de tecnologia, responsável por garantir a qualidade de produtos e serviços. Com atuação anterior em web design e atendimento ao cliente, tenho uma visão orientada à experiência do usuário. Sou curiosa e gosto de explorar e conhecer novas áreas e pessoas!."',
             'linkedin': 'https://www.linkedin.com/in/brunajlacerda',
-            'imagem': 'images/bru.png',  # URL da imagem do membro
+            'imagem': 'images/bru.png', 
         },
           {
             'nome': 'Eduardo Gonçalves Moraes',
             'cargo': 'Back End Developer',
             'descricao': '"Trabalho com desenvolvimento de sites e aplicativos web, gerencio e atualizo sites corporativos. Me especializando em Python na área de ciência de dados e aplicativos web, com ferramentas como pandas e django. Em busca de oportunidade para voltar ao mercado de trabalho, atualmente trabalho como freelancer."',
             'linkedin': 'https://www.linkedin.com/in/eduardo-moraes-285b9315a',
-            'imagem': 'images/edu.png',  # URL da imagem do membro
+            'imagem': 'images/edu.png',  
         },
           {
             'nome': 'Monique da Hora',
             'cargo': 'Product Owner',
             'descricao': '"Iniciei minha carreira na área de tecnologia com montagem e manutenção de computadores, e posteriormente prestei serviços de suporte de TI para outras empresas. Sempre fui apaixonada por resolver problemas e, ao longo da minha trajetória, tive a oportunidade de criar produtos que geraram valor para as empresas. Sou curiosa e inovadora, e estou constantemente refletindo sobre como a tecnologia vai evoluir, impactar a sociedade e transformar os negócios no futuro."',
             'linkedin': 'https://www.linkedin.com/in/moniquedahora/',
-            'imagem': 'images/monique.png',  # URL da imagem do membro
+            'imagem': 'images/monique.png',  
         },
         {
           'nome': 'Rhaíssa Alessi Manzini',
             'cargo': 'UX/UI Design',
             'descricao': '"Profissional com 10 anos de experiência na área Jurídica e Compliance em transição de carreira para UX/UI Design. Apaixonada por Design desde criança, hoje aplico minha paixão e expertise para criar soluções estratégicas alinhadas aos valores da companhia e objetivos do negócio."',
             'linkedin': 'https://www.linkedin.com/in/rha%C3%ADssa-manzini/',
-            'imagem': 'images/rhaissa.png',  # URL da imagem do membro
+            'imagem': 'images/rhaissa.png',  
         },
         {
             'nome': 'Myrella da Silva Pinto',
             'cargo': 'Scrum Master',
             'descricao': '"Atualmente estou em transição de carreira para a agilidade e, ajudar equipes a alcançar seu máximo potencial por meio da adoção das práticas ágeis se tornou uma paixão. Meu propósito é o de ser uma agente de transformação, criando soluções, gerando valor e, promovendo uma cultura de melhoria contínua dentro das equipes."',
             'linkedin': 'https://www.linkedin.com/in/mysilva/',
-            'imagem': 'images/myrella.png',  # URL da imagem do membro
+            'imagem': 'images/myrella.png',  
         },
           {
             'nome': 'Graziella Rodrigues',
             'cargo': 'Front End Developer',
             'descricao': '"Atualmente, estou me formando em Análise e Desenvolvimento de Sistemas. Sou apaixonada por tecnologia, estou constantemente em busca de oportunidades para aprender e crescer, tanto profissionalmente quanto pessoalmente. Acredito que, ao unir boas práticas de desenvolvimento com um olhar atento à experiência do usuário, é possível criar soluções digitais que impactem positivamente a vida das pessoas."',
             'linkedin': 'https://www.linkedin.com/in/agraziella',
-            'imagem': 'images/grazi.png',  # URL da imagem do membro
+            'imagem': 'images/grazi.png',  
         },
     ]
     return render(request, 'equipe.html', {'membros': membros})
