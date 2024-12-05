@@ -19,7 +19,7 @@ body {
 /* Estilo do Container */
 .container {
     width: 100%;
-    height: 100%;
+    height: auto; /* Ou uma altura mínima, se necessário */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,6 +27,7 @@ body {
     overflow: hidden;
     position: relative;
 }
+
 
 /* Estilos de SVG */
 svg {
@@ -38,6 +39,7 @@ svg {
     z-index: 0; 
     object-fit: cover;
 }
+
 
 
 /* Estilos do Cabeçalho */
@@ -113,4 +115,21 @@ svg {
     height: auto;
     right: 80px;
     margin-top: -80px;
+}
+
+@media (max-width: 1280px) {
+    svg {
+        height: auto; /* Para ajustar a altura em dispositivos menores */
+        max-height:866px; /* Limita a altura no viewport */
+       
+        width: 1440px;
+    }
+
+    .illustration {
+        max-width: 500px; 
+        width: 100%;
+        height: auto;
+        right: 80px;
+        margin-top: -80px;
+    }
 }
