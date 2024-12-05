@@ -1,689 +1,116 @@
+/* Estilos Globais */
 * {
-    box-sizing: border-box;
+    box-sizing: border-box; /* Inclui padding e borda na largura/altura total */
 }
 
+:root {
+    --Primary-Pressed---500: #204551;
+    --Primary-Desabled---100: #BDCCD1; 
+}
 
 body {
     font-family: 'Roboto', sans-serif;
-    background: #FFFFFF;
+    margin: 0;
+    padding: 0;
     overflow-x: hidden;
-    width: 100%;
+    height: 100%;
 }
 
-header {
-    position: relative;
-    text-align: center;
-    background-color: #f2f0ff;
-    flex-direction: column;
-    display: flex;
-    align-items: center;
-    margin-top: 80px;   
-}
-
-.header-banner {
-    display: flex;
-    flex-direction: row;
-    /* Mantenha os elementos em coluna */
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    max-width: 90%;
-    margin: auto;
-    background-color: #f2f0ff;
-    gap: 20px;
-    max-width: 1440px; /* Defina a largura máxima desejada */
-    margin: 0 auto; /* Centraliza o contêiner horizontalmente */
-}
-
-.header-banner img {
-    width: 100%;
-    /* Imagem ocupa 100% da largura do contêiner */
-    max-width: 600px;
-    /* Limite de largura para grandes telas */
-    height: auto;
-    margin-left: 50px;
-    margin-bottom: -20px;
-}
-
-.header-content {
-    color: #1C646D;
-    font-family: Roboto;
-    font-size: 40px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 48px;
-    width: 33%;
-    text-align: left;
-}
-
-.header-content h1 {
-    font-size: 40px;
-    /* Tamanho da fonte responsivo */
-    margin: 10px 0;
-}
-
-.header-content p {
-    color: #211C33;
-    font-family: Roboto;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 24px;
-}
-
-/* Estilos Gerais da Página */
-.section-cuidados {
-    max-width: 100%;
-    /* Alinhar com a largura do layout */
-    background: #CEF09D;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    padding:40px;  
-}
-
+/* Estilo do Container */
 .container {
-    max-width: 100%;
-    text-align: left;   
-}
-
-.section-cuidados h2 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #1C646D;
-    margin-left: 10%;
-    width: 455px;
-}
-
-.section-cuidados p {
-    font-size: 1.5rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    color: #1F0802;
-    margin-left: 10%;
-    width: 455px;
-}
-
-
-/* Estilos da Imagem */
-#imagem-container {
     width: 100%;
-    max-width:840px;
+    height: 100%;
     display: flex;
-    /* Para centralizar a imagem */
-    justify-content: center;
-}
-
-#imagem-principal {
-    /* Para que a imagem não exceda a largura do contêiner */
-    height: auto;
-    /* Para manter a proporção da imagem */
-    max-width:100%;
-}
-
-.imagem-container .imagem.visible {
-    opacity: 1;
-}
-
-/* Seção de Dados sobre Burnout */
-.dados-burnout {
-    text-align: center;
-    padding: 40px 20px;
-}
-
-.titulo-burnout {
-    font-size: 2em;
-    margin-bottom: 20px;
-}
-
-.descricao-burnout {
-    font-size: 1.2em;
-    margin-bottom: 40px;
-}
-
-.container-dados {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.dado {
-    background-color: #ffffff;
-    /* Altere esta linha para branco */
-    padding: 20px;
-    border-radius: 30px;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
-    flex: 1;
-    min-width: 200px;
-    max-width: 200px;
-}
-
-.numero {
-    font-size: 2em;
-    font-weight: bold;
-    height: 50px;
-    color: #666;
-    justify-content: left;
-    text-align: left;
-}
-
-.texto-dado {
-    font-size: 1em;
-    color: #666;
-    text-align: left;
-    /* Alinha o texto à esquerda */
-}
-
-/* Botões */
-.botao-container {
-    margin-top: 20px;
-    /* Espaçamento acima do botão */
-    /* adicione esta propriedade para garantir que fique alinhado embaixo */
-    width: 100%;
-    /* Para que ocupe toda a largura, se necessário */
-    text-align: center;
-
-
-}
-.botao-sondagem{
-    margin-left: 10%;
-}
-.botao-sondagem,
-.botao-burnout {
-    display: inline-block;
-    background-color: #38184C;
-    color: #fff;
-    padding: 15px 30px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
-    font-size: 16px; /* Ajuste do tamanho da fonte */
-    width: auto; /* Permite ajuste de largura baseado no conteúdo */
-    min-width: 180px;
-}
-
-.botao-sondagem:hover,
-.botao-burnout:hover {
-    background-color: #4E2A6A;
-    /* Cor do botão ao passar o mouse */
-    cursor: pointer;
-    /* Muda o cursor para indicar interatividade */
-}
-
-.conteudo-consequencia {
-    display: flex;
-    /* Usa flexbox para alinhar imagem e texto */
-    align-items: center;
-    /* Alinha verticalmente ao centro */
-}
-
-.consequencias-burnout {
-    background-color: #CEF09D;
-    /* Verde claro */
-    padding: 40px;
-    margin-top: 40px;
-    border-radius: 6px;
-
-}
-
-.consequencias-header {
-    display: flex;
-    /* Usa flex para alinhar a imagem e o texto */
-    align-items: center;
-    /* Alinha a imagem e o texto no topo */
-    margin-left: 300px;
-    flex-direction: row;
-    /* Lado a lado por padrão */
-    justify-content: center;
-    /* Centraliza os elementos */
-    margin-bottom: 10px;
-    /* Espaço entre o header e a próxima seção */
-    font-size: 15rem;
-}
-
-.imagem-consequencias {
-    width: 100%;
-    /* Imagem ocupa 100% do espaço disponível */
-    max-width: 300px;
-    /* Limita a largura máxima */
-    height: auto;
-    /* Mantém a proporção */
-}
-
-.imagem-consequencias-lateral {
-    max-width: 180px;
-    width: 100%;
-    height: auto;
-}
-
-.consequencias-texto {
-    display: flex;
-    /* Flex para alinhar o título e a descrição */
     flex-direction: column;
-    /* Coloca título acima da descrição */
-    margin-left: 30px;
-}
-
-.titulo-consequencias {
-    color: #1C646D;
-    /* Cor do título */
-    font-family: 'Roboto', sans-serif;
-    font-size: 40px;
-    font-weight: 700;
-    line-height: 48px;
-    margin-bottom: 10px;
-    /* Ajuste de margem inferior */
-
-}
-
-
-.container-consequencias {
-    display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    padding: 20px;
+    overflow: hidden;
+    position: relative;
 }
 
-.consequencia {
+/* Estilos de SVG */
+svg {
+    position: absolute; 
+    top: 0; /* Ajuste aqui conforme necessário */
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 0; 
+    object-fit: cover;
+}
+
+
+/* Estilos do Cabeçalho */
+.header-illustration {
     display: flex;
-    width: 556px;
-    padding: 16px;
+    height: 100%;
+    align-items: center;
+    width: 100%;
+    z-index: 1; /* Acima do SVG */
+    justify-content: center;
+    margin-top: -150px;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 1; /* Acima do SVG */
+}
+
+/* Títulos */
+.Titulo-saude-mental {
+    width: 523px;
+    align-self: stretch;
+    font-family: 'Nunito';
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 125%;
+    margin-top: -20px;
+    letter-spacing: -0.5px;
+    background: linear-gradient(180deg, #265361 0%, #234C59 51.01%, #204551 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Texto */
+.Texto-saude-mental {
+    width: 513px;
+    color: var(--Primary-Pressed---500, #204551); 
+    font-family: 'Roboto';
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 27px;
+    margin-top: -20px;
+}
+
+/* Estilos do Botão */
+.teste-button {
+    display: inline-flex;
+    padding: 16px 28px;
     justify-content: center;
     align-items: flex-start;
-    gap: 16px;
-    flex-shrink: 0;
-    border-radius: 6px;
-    border: 1px solid rgba(42, 46, 222, 0.20);
-    padding: 20px 0px;
-}
-
-
-.consequencia:hover {
-    transform: scale(1.05);
-    /* Aumenta o tamanho ao passar o mouse */
-}
-
-.consequencia h3 {
-    font-size: 24px;
-    /* Tamanho do título do card */
-    margin-bottom: 10px;
-    /* Margem abaixo do título */
-}
-
-.consequencia p {
-    width: 408px;
-    height: auto;
-    font-family: Roboto;
-    font-size: 15px;
+    gap: 10px;
+    border-radius: 50px;
+    border: 1px solid var(--Primary-Pressed---500, #204551); 
+    background: var(--Primary-Pressed---500, #204551); 
+    font-family: 'Poppins';
+    font-size: 19.2px;
     font-weight: 400;
     line-height: 24px;
-    text-align: left;
-    color: #1F0802;
-    /* Cor do texto */
-    padding: 0 0 10px 0;
-
+    text-decoration: none;
 }
 
+.teste-button:hover {
+    background-color: #265361;
+}
 
-.texto-consequencia {
+/* Estilo da Ilustração */
+.illustration {
+    max-width: 700px; 
     width: 100%;
-    /* Garante que o texto ocupe toda a largura do card */
-    padding: 10px;
-    /* Adiciona espaçamento interno */
-}
-
-.titulo-card {
-    font-size: 1.5rem;
-    /* Ajusta o tamanho do título */
-    margin-bottom: 10px;
-    /* Espaçamento entre o título e a descrição */
-}
-
-.label {
-    height: 20px;
-    /* Altura fixa */
-    display: inline-block; /* Para adequar o estilo */
-    margin: 5px; /* Espaço entre os rótulos */
-    background: #D9D9D980; /* Cor de fundo */
-    border: 0.5px solid #990069 10%; /* Borda */
-    border-radius: 6px; /* Bordas arredondadas */
-    padding: 2px 4px; /* Espaçamento interno */
-    font-family: 'Roboto', sans-serif; /* Tipografia */
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 16px; 
-}
-
-.descricao-impacto {
-    width: 860px;
-    /* Largura fixa */
-    height: 24px;
-    /* Altura fixa */
-    font-family: 'Roboto', sans-serif;
-    /* Tipografia */
-    font-size: 1rem px;
-    /* Tamanho da fonte */
-    font-weight: 400;
-    /* Peso da fonte */
-    line-height: 24px;
-    /* Altura da linha */
-    text-align: center;
-    /* Alinhamento do texto */
-    color: #1F0802;
-    /* Cor de fundo */
-    padding: 4px;
-    opacity: 1;
-    margin-bottom: 10px;
-    /* Espaçamento entre a descrição e as labels */
-}
-
-.descricao-impactar {
-    width: 860px;
-    /* Largura fixa */
-    height: 24px;
-    /* Altura fixa */
-    gap: 0;
-    /* Sem espaçamento */
-    opacity: 1;
-    /* Opacidade visível */
-    font-family: 'Roboto', sans-serif;
-    /* Tipografia */
-    font-size: 20px;
-    /* Tamanho da fonte */
-    font-weight: 400;
-    /* Peso da fonte */
-    line-height: 24px;
-    /* Altura da linha */
-    text-align: left;
-    /* Alinhamento à esquerda */
-    margin-top: 10px;
-    /* Espaco acima, se necessário */
-}
-
-/* Responsividade */
-@media (max-width: 1024px) and (min-width: 769px) {
-    #header{
-        margin-top: 9%;
-    }
-   
-    .header-content {
-        width: 100%;
-       text-align: center;
-       
-
-    }
-
-    .header-content p {
-        font-size: 18px;
-        width: 100%;
-        line-height: 1.5;
-        text-align: center;
-    }
-
-    .header-banner {
-        flex-direction: column;
-        /* Muda para coluna em dispositivos pequenos */
-        align-items: center;
-        /* Centraliza tudo em coluna */
-    }
-
-    .header-banner img {
-        width: 80%;
-        /* Imagem ocupa 90% em dispositivos pequenos */
-        max-width: 350px;
-        /* Limita a largura máxima da imagem */
-    }
-    .section-cuidados {
-        padding: 2rem 1rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .botao-sondagem,
-    .botao-burnout {
-        padding: 12px 25px;
-        font-size: 15px; /* Reduz um pouco o tamanho da fonte */
-        min-width: 150px; /* Ajuste da largura mínima */
-    }
-}
-
-
-@media (max-width: 768px) {
-
-    .section-cuidados {
-        padding: 2rem 1rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-   
-
-    .container {
-        max-width: 100%;
-        padding: 0 1rem;
-        overflow-wrap: break-word;
-        display: flex;
-        /* Mantenha a consistência no layout */
-        flex-direction: column;
-        align-items: center;
-        /* Certifique-se de centralizar sempre */ 
-    }
-    #header{
-        margin-top: 1%;
-    }
-
-    .header-content {
-        text-align: left;
-        padding: 10px;
-        width: 90%;
-        /* Continua 100% */
-        position: relative;
-        left: 10px;
-        flex-direction: column;
-        
-    }
-
-    .header-banner {
-        flex-direction: column;
-        /* Altera para coluna em telas menores */
-        align-items: center;
-    
-    }
-
-    .header-banner img {
-        width: 100%;
-        margin: auto;
-        height: auto;
-        justify-content: left;
-        /* Centraliza os elementos */
-    }
-
-    .header-content h1 {
-        font-size: 1.8rem;
-    }
-
-    .header-content p {
-        font-size: 1.0rem;
-        /* Ajusta o tamanho do texto */
-        line-height: 1.5;
-
-    }
-
-    .dados-burnout h2,
-    .dados-burnout p {
-        font-size: 1.5rem;
-        text-align: center;
-        width: 100%;
-        overflow-wrap: break-word;
-    }
-
-
-    .botao-burnout,
-    .botao-sondagem {
-        padding: 10px 20px;
-        /* Ajusta o padding do botão para telas menores */
-        font-size: 14px;
-        /* Reduz o tamanho da fonte do botão */
-    }
-
-    .consequencias-header {
-        flex-direction: column;
-        /* Coloca a imagem em cima do texto */
-        align-items: center;
-        /* Centraliza a imagem e texto */
-        margin-left: 10px;
-        /* Remove a margem esquerda */
-    }
-
-    .imagem-consequencias-lateral {
-        width: 100%;
-        /* Ajusta a largura da imagem lateral */
-        max-width: 300px;
-        /* Limita a largura máxima da imagem */
-        margin-bottom: 20px;
-        /* Espaço entre a imagem e o texto */
-
-    }
-
-    .conteudo-consequencia {
-        flex-direction: row;
-        /* Coloca imagem acima do texto */
-        justify-content: flex-start;
-        /* Ajusta alinhamento conforme necessário */
-        text-align: left;
-        /* Textos alinhados à esquerda em telas maiores */
-       
-    }
-
-    .imagem-consequencias {
-        width: 45%;
-        /* Ajusta a largura da imagem lateral */
-        max-width: 70px;
-        /* Limita a largura máxima da imagem */
-        margin-bottom: 10px;
-        /* Espaço entre a imagem e o texto */
-        margin-right: 10px;
-    }
-
-    .consequencias-texto {
-        text-align: center;
-        /* Centraliza o texto */
-        width: 100%;
-        margin-bottom: 20px;
-       
-    }
-
-    .consequencias-texto p {
-        text-align: left;
-        /* Centraliza o texto */
-        width: 80%;
-        margin-bottom: 20px;  
-
-    }
-
-    .texto-consequencia {
-        margin-right: 150px;
-        /* Espaçamento entre imagem e texto */
-    }
-
-    .texto-consequencia p {
-      
-        /* Centraliza o texto */
-        width: 100%;
-    }
-
-    .container-consequencias {
-        flex-direction: column;
-        /* Para que os cards se empilhem em dispositivos menores */
-        align-items: center;
-        /* Centraliza os cards */
-    }
-
-    .consequencia {
-        width: 100%;
-        /* Ajusta a largura dos cards para 90% do contêiner */
-        max-width: none;
-        /* Remove a largura máxima */
-        padding: 26px;
-        /* Adiciona espaçamento interno */
-    }
-
-    .descricao-impacto {
-        width: 100%;
-        /* Garante que a descrição ocorra 100% do card */
-    }
-
-
-    .label {
-       
-        margin: 5px 0;
-        /* Um pouco de espaço entre os rótulos */
-        
-    }
-}
-
-
-@media (max-width: 540px) {
-    .section-cuidados {
-        padding: 1rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%; /* Garante que a seção ocupe 100% da largura da tela */
-        box-sizing: border-box; /* Inclui padding e border dentro da largura do elemento */
-    }
-
-    .section-cuidados p,
-    .section-cuidados h2 {
-        font-size: 1rem;
-        margin-left: 0; /* Remove margem lateral */
-        text-align: center; /* Centraliza o texto */
-        padding: 0 10px; /* Padding para evitar encostar nas bordas */
-        width: 100%; /* Garante que o texto ocupe 100% da largura da tela */
-        box-sizing: border-box; /* Garante que padding seja incluído na largura total */
-    }
-
-    #imagem-container {
-        max-width: 90%; /* Mantém a imagem responsiva */
-        height: auto;
-        margin-top: 15px;
-    }
-
-    .header-banner {
-        padding: 15px;
-        /* Menos padding em telas menores */
-    }
-
-    .header-content h1 {
-        font-size: 1.6rem;
-        /* Ajusta para telas pequenas */
-        
-    }
-    .imagem-consequencias {
-        width: 100%; 
-        margin-left: 40px;
-    }
-
-
-    .titulo-consequencias {
-        font-size: 1.5rem;
-        /* Tamanho do título em telas pequenas */
-    }
-
-    .texto-consequencia p {
-        font-size: 0.9rem;
-        /* Texto menor em telas pequenas */
-    }
-    
-    .botao-sondagem{
-        margin-top: 8px;
-    }
+    height: auto;
+    right: 80px;
+    margin-top: -80px;
 }

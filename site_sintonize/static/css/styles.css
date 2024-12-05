@@ -1,34 +1,82 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
 body {
     font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f7fa;
 }
 
-.botao {
-    display: inline-block; /* Para permitir espaçamento */
-    background-color: #38184C; /* Cor do botão */
-    color:#FFFFFF;
-    ; /* Cor do texto do botão */
-    padding: 15px 30px; /* Espaçamento interno do botão */
-    border-radius: 5px; /* Bordas arredondadas do botão */
-    text-decoration: none; /* Sem decoração no texto */
-    font-weight: bold; /* Negrito */
-    text-align: center; /* Centraliza o texto */
-    margin-top: 20px; /* Margem superior */
-    transition: background-color 0.3s ease; /* Transição suave para hover */
+.container {
+    display: flex;
+    width: 1440px;  /* Ajustado para 1440px */
+    height: 866px;  /* Ajustado para 866px */
+    padding: 224px 0 224px 80px;  /* Padding conforme especificações */
+    align-items: center;
+    gap: 89px;  /* Espaçamento entre os elementos */
+    flex-shrink: 0;
+    position: relative;  /* Para posicionar elementos internos */
 }
 
-.botao:hover {
-    background-color: #4E2A6A; /* Cor do botão ao passar o mouse */
-    cursor: pointer; /* Muda o cursor para indicar interatividade */
+header {
+    text-align: left;  /* Alinhamento à esquerda */
 }
-.botao-container-equipe {
-    display: flex; /* Usar flexbox */
-    justify-content: center; /* Centraliza horizontalmente */
-    margin-top: 20px; /* Margem superior para espaçamento */
+
+header h1 {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.teste-button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.teste-button:hover {
+    background-color: #0056b3;
+}
+
+.illustration {
+    text-align: right;  /* Alinhamento à direita */
+}
+
+.illustration img {
+    max-width: 100%;
+    height: auto;
+}
+
+nav {
+    text-align: center;
+    margin-top: 30px;
+    position: absolute;  /* Fixa a navegação na parte inferior */
+    bottom: 10%;  /* Ajusta a altura conforme necessário */
+    width: 100%;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
 }
