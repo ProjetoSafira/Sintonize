@@ -8,105 +8,31 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@600&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+
 </head>
 <body>
-    {% include 'menu.html' %}
-    <header id="header">
-        <div class="header-banner">
-            <div class="header-content">
-                <h1>Olá! Como você está?</h1>
-                <p>
-                    O Sintonize é um espaço que oferece funcionalidades focadas na saúde mental em relação ao trabalho. 
-                    Nossa plataforma ajuda você a identificar e gerenciar o estresse, além de fornecer ferramentas práticas 
-                    para melhorar sua saúde mental e manter o equilíbrio entre sua vida pessoal e profissional.
-                </p>
-            </div>
-            <img src="{% static 'images/cabeca.png' %}" alt="Imagem de apoio" class="header-image">
-        </div>
-    </header>
-    <div class="section-cuidados" id="section-cuidados">
-        <div class="container" id="container-principal">
-            <h2 id="titulo-principal">É HORA DE CUIDAR DE VOCÊ MESMO</h2>
-            <p id="descricao-principal">
-                Avalie seu nível de estresse no trabalho em apenas 10 minutos, entenda melhor o que é o Burnout 
-                e encontre ferramentas eficazes para melhorar sua saúde mental e bem-estar.
-            </p>
-            <div class="botao-container" id="botao-container-principal">
-                <a href="{% url 'sondagem' %}" class="botao-sondagem" id="botao-sondagem">
-                    Clique aqui para fazer a sondagem de burnout
-                </a>
-            </div>
-        </div>
-        <div class="imagem" id="imagem-container">
-            <img src="{% static 'images/cerebro.png' %}" alt="Ilustração sobre Burnout" class="imagem" id="imagem-principal">
-        </div>
-    </div>
 
-    <section class="dados-burnout" id="dados-burnout">
-        <h2 class="titulo-burnout" id="titulo-burnout">Dados sobre Burnout</h2>
-        <p class="descricao-burnout" id="descricao-burnout">
-            Burnout é um estado de exaustão emocional, física e mental causado por estresse prolongado.<br>
-            Afeta profissionais de diversas áreas e pode ter sérias consequências para a saúde.
-        </p>
-        <div class="container-dados" id="container-dados">
-            <div class="dado" id="dado-1">
-                <div class="numero" id="numero-1">18%</div>
-                <p class="texto-dado" id="texto-dado-1">dos brasileiros são vítimas da Síndrome de Burnout.</p>
-            </div>
-            <div class="dado" id="dado-2">
-                <div class="numero" id="numero-2">43%</div>
-                <p class="texto-dado" id="texto-dado-2">dos trabalhadores enfrentaram estresse ou burnout no Brasil.</p>
-            </div>
-            <div class="dado" id="dado-3">
-                <div class="numero" id="numero-3">67%</div>
-                <p class="texto-dado" id="texto-dado-3">dos trabalhadores enfrentaram alguma situação desafiadora de saúde mental e emocional.</p>
-            </div>
-            <div class="dado" id="dado-4">
-                <div class="numero" id="numero-4">80%</div>
-                <p class="texto-dado" id="texto-dado-4">dos trabalhadores tem pelo menos um sintoma de burnout.</p>
+    <div class="container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 280 1440 866" fill="none">
+            <path d="M0 0H1440V780C1440 780 1002.56 866.093 719 866C436.212 865.907 0 780 0 780V0Z" 
+                  fill="var(--Primary-Desabled---100)" />
+        </svg>
+        
+        
+        <div class="header-illustration">
+            <header>
+                <h1 class="Titulo-saude-mental">Priorize Sua Saúde Mental no Trabalho</h1>
+                <p class="Texto-saude-mental">Explore recursos e dicas para reduzir o estresse e melhorar seu bem-estar profissional.</p>
+                <a href="{% url 'burnout_survey' %}" class="teste-button" id="botao-burnout">Fazer teste de Burnout</a>
+            </header>
+            
+            <div class="illustration">
+                <img src="{% static 'images/images_home/health.gif' %}" alt="Ilustração sobre saúde mental">
             </div>
         </div>
-      
-    </section>
-    <section class="consequencias-burnout">
-        <div class="consequencias-header">
-            <img src="{% static 'images/consequencia.png' %}" alt="Imagem Representativa" class="imagem-consequencias-lateral">
-            <div class="consequencias-texto">
-                <h2 class="titulo-consequencias">Consequências do Burnout</h2>
-                <p class="descricao-impactar">Descubra como o burnout pode impactar sua saúde e bem-estar.</p>
-            </div>
-        </div>
-        <div class="container-consequencias">
-            <div class="consequencia" id="impacto-saude-mental">
-                <div class="conteudo-consequencia">
-                    <img src="{% static 'images/impactos.png' %}" alt="Impacto na saúde mental" class="imagem-consequencias">
-                    <div class="texto-consequencia">
-                        <h3 class="titulo-card">Impacto na saúde mental</h3>
-                        <p>O Burnout pode levar a depressão, ansiedade e outros problemas de saúde mental.</p>
-                        <div class="label"><strong>Saúde Mental</strong></div>
-                        <div class="label"><strong>Exaustão</strong></div>
-                    </div>
-                </div>
-            </div>
-            <div class="consequencia" id="efeitos-fisicos">
-                <div class="conteudo-consequencia">
-                    <img src="{% static 'images/efeito.png' %}" alt="Efeitos físicos do Burnout" class="imagem-consequencias">
-                    <div class="texto-consequencia">
-                        <h3 class="titulo-card">Efeitos físicos do Burnout</h3>
-                        <p>A exaustão crônica pode causar problemas de saúde como insônia, dores de cabeça e doenças cardiovasculares.</p>
-                        <div class="label"><strong>Saúde Física</strong></div>
-                        <div class="label"><strong>Estresse</strong></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="botao-container" id="botao-container-burnout">
-            <a href="{% url 'burnout_survey' %}" class="botao-burnout" id="botao-burnout">Entenda mais sobre o Burnout</a>
-        </div>
-    </section>
-    {% include 'footer.html' %}  <!-- Incluindo o rodapé -->
-    
-    
+    <p></p>
 </body>
 </html>

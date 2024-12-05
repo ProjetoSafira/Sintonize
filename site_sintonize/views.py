@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
 from requests.exceptions import Timeout
 from .forms import BurnoutSurveyForm
-import requests
-import json
+
 
 def index (request):
     return render (request, 'index.html')
