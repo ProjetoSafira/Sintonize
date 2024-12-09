@@ -5,3 +5,5 @@ venv/
 db.sqlite3
 db_backup.sqlite3
 0001_initial.py
+migrations
+
