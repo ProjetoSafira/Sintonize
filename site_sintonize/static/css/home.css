@@ -117,7 +117,7 @@ svg {
     margin-top: -80px;
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1440px) {
     svg {
         height: auto; /* Para ajustar a altura em dispositivos menores */
         max-height:866px; /* Limita a altura no viewport */
