@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta
+      charset="UTF-8"
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+    <title>Pomodoro Timer Online</title>
+  </head>
+  <body>
+    <style>
+      :root {
+        --main-color: rgb(28, 100, 109);
+      }
+
+      body {
+        height: 100vh;
+        margin: 0;
+        background-color: var(--main-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: roboto, sans-serif;
+      }
+
+      button {
+        cursor: pointer;
+        border: none;
+        margin: 0;
+        background: none;
+      }
+
+      main {
+        width: 480px;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+        padding-block: 20px;
+      }
+
+      nav button {
+        color: white;
+        font-size: 16px;
+        border-radius: 4px;
+        padding: 2px 16px;
+        height: 28px;
+      }
+
+      nav button[active="true"] {
+        font-weight: bold;
+        background-color: rgba(0, 0, 0, 0.15);
+      }
+
+      h1 {
+        margin: 0;
+        color: white;
+        font-size: 120px;
+      }
+
+      .action-button {
+        background-color: white;
+        color: var(--main-color);
+        font-weight: bold;
+        font-size: 22px;
+        height: 55px;
+        width: 200px;
+        border-radius: 4px;
+        box-shadow: rgb(235, 235, 235) 0px 6px 0px;
+        transition-duration: 0.2s;
+        transition-property: box-shadow, transform;
+      }
+
+      /* efeito de pressionar o botão start/stop */
+      .action-button:active,
+      .action-button[stop="true"] {
+        box-shadow: rgb(235, 235, 235);
+        transform: translateY(6px);
+      }
+    </style>
+
+    <main>
+      <nav>
+        <!-- Botões superiores -->
+        <button id="pomodoro" active="true">Pomodoro</button>
+        <button id="short-break">Short-Break</button>
+        <button id="long-break">Long-Break</button>
+      </nav>
+
+      <!-- Cronômetro -->
+      <h1>25:00</h1>
+
+      <!-- Botão start/stop-->
+      <button class="action-button" stop="true">START</button>
+    </main>
+
+    <!-- Script -->
+    <script>
+      /* Botões superiores */
+      const buttons = document.querySelectorAll("nav button");
+      console.log(buttons);
+
+      /* Mudar de cor ao clicar nos botões de nav */
+      buttons.forEach((button) => {
+        button.addEventListener("click", (e) => {
+          // Altera seleção
+          cleanButtonsAttributes();
+          const button = e.target;
+          button.setAttribute("active", "true");
+          // Altera título e cor de fundo
+          const id = button.getAttribute("id");
+          changeTheme(id);
+          changeTitle(id);
+          timerStopwatch = timerCount[id];
+          stopTimer();
+          renderTimerDisplay();
+          resetStartButton();
+        });
+      });
+
+      function cleanButtonsAttributes() {
+        buttons.forEach((button) => {
+          button.setAttribute("active", "false");
+        });
+      }
+
+      // Função para resetar o botão "START/STOP"
+      function resetStartButton() {
+        isTimeStopped = false; // Define como parado
+        actionButton.setAttribute("stop", "true");
+        actionButton.innerText = "START";
+      }
+
+      const root = document.documentElement;
+      const colors = {
+        pomodoro: "rgb(28, 100, 109)",
+        "short-break": "rgb(21,112,111)",
+        "long-break": "rgb(27,145,144)",
+      };
+
+      function changeTheme(id) {
+        const color = colors[id];
+        root.style.setProperty("--main-color", color);
+      }
+
+      /* Alterar titles */
+      const titleElement = document.querySelector("title");
+
+      const titles = {
+        pomodoro: "25:00 - Time to Focus!",
+        "short-break": "05:00 - Timefor a Break!",
+        "long-break": "15:00 - Timefor a Break!",
+      };
+
+      function changeTitle(id) {
+        const title = titles[id];
+        titleElement.innerHTML = title;
+      }
+
+      // Mudança do cronômetro no nav button
+      const timerCount = {
+        pomodoro: 25 * 60,
+        "short-break": 5 * 60,
+        "long-break": 15 * 60,
+      };
+
+      // botão start/stop
+      const actionButton = document.querySelector("button.action-button");
+      let isTimeStopped = false;
+      //evento de click
+      actionButton.addEventListener("click", () => {
+        isTimeStopped = !isTimeStopped;
+    
+        handleTimer(isTimeStopped);
+        if (isTimeStopped) {
+          startTimer();
+        } else {
+          stopTimer();
+        }
+      });
+      function handleTimer(isTimeStopped) {
+        actionButton.setAttribute("stop", isTimeStopped);
+        actionButton.innerText = isTimeStopped ? "STOP" : "START";
+      }
+
+      // contagem do cronômetro
+      const timerDisplay = document.querySelector("h1");
+      let timerStopwatch = timerCount["pomodoro"]; // contagem de tempo em segundos
+      document.addEventListener("DOMContentLoaded", () => {
+        renderTimerDisplay(); // Renderiza antes de interações
+      });
+      let timerInterval;
+
+      // atualizar o valor do timer, calculando os minutos
+      function renderTimerDisplay() {
+        const minutes = Math.floor(timerStopwatch / 60);
+        const seconds = timerStopwatch % 60;
+
+        //acrescentar zero à direita ou á esquerda pra ter duas casas
+        const minutesString = String(minutes).padStart(2, "0");
+        const secondsString = String(seconds).padStart(2, "0");
+
+        timerDisplay.innerText = `${minutesString}:${secondsString} `;
+      }
+
+      // iniciar a contagem do cronômetro executando de 1 em 1 segundo
+      function startTimer() {
+        timerInterval = setInterval(() => {
+          if (timerStopwatch > 0) {
+            timerStopwatch--;
+            renderTimerDisplay();
+          } else {
+            stopTimer();
+          }
+        }, 1000);
+      }
+
+      // parar o contador
+      function stopTimer() {
+        clearInterval(timerInterval);
+      }
+    </script>
+  </body>
+</html>
