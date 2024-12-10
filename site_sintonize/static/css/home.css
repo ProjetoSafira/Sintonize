@@ -133,3 +133,40 @@ svg {
         margin-top: -80px;
     }
 }
+
+/* Estilos do Menu */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #BDCCD1; /* Cor de fundo semelhante à imagem */
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2; /* Acima do SVG */
+}
+
+.brand h2 {
+    font-family: 'Nunito', sans-serif;
+    color: #204551; /* Cor do texto */
+    margin: 0;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 20px; /* Espaçamento entre os itens do menu */
+    margin: 0;
+    padding: 0;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #204551; /* Cor do texto */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600; /* Peso da fonte */
+}
+
+.menu li a:hover {
+    color: #265361; /* Cor do texto ao passar o mouse */
+}
