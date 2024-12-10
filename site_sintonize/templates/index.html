@@ -12,6 +12,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="navbar">
+        <div class="brand">
+            <h2>Sintonize</h2>
+        </div>
+        <ul class="menu">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#quem-somos">Quem Somos</a></li>
+            <li><a href="#sobre-burnout">Sobre o Burnout</a></li>
+            <li><a href="#aprender-mais">Aprenda Mais</a></li>
+            <li><a href="{% url 'burnout_survey' %}">Teste de Burnout</a></li>
+        </ul>
+    </div>
     <div class="container">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 280 1440 866" fill="none">
             <path d="M0 0H1440V780C1440 780 1002.56 866.093 719 866C436.212 865.907 0 780 0 780V0Z" 
