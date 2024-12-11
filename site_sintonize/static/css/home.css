@@ -1,11 +1,12 @@
 /* Estilos Globais */
 * {
-    box-sizing: border-box; /* Inclui padding e borda na largura/altura total */
+    box-sizing: border-box;
+    /* Inclui padding e borda na largura/altura total */
 }
 
 :root {
     --Primary-Pressed---500: #204551;
-    --Primary-Desabled---100: #BDCCD1; 
+    --Primary-Desabled---100: #BDCCD1;
 }
 
 body {
@@ -19,7 +20,8 @@ body {
 /* Estilo do Container */
 .container {
     width: 100%;
-    height: auto; /* Ou uma altura mínima, se necessário */
+    height: auto;
+    /* Ou uma altura mínima, se necessário */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,12 +33,13 @@ body {
 
 /* Estilos de SVG */
 svg {
-    position: absolute; 
-    top: 0; /* Ajuste aqui conforme necessário */
+    position: absolute;
+    top: 0;
+    /* Ajuste aqui conforme necessário */
     left: 0;
     width: 100%;
     height: auto;
-    z-index: 0; 
+    z-index: 0;
     object-fit: cover;
 }
 
@@ -48,7 +51,8 @@ svg {
     height: 100%;
     align-items: center;
     width: 100%;
-    z-index: 1; /* Acima do SVG */
+    z-index: 1;
+    /* Acima do SVG */
     justify-content: center;
     margin-top: -150px;
 }
@@ -57,7 +61,8 @@ svg {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    z-index: 1; /* Acima do SVG */
+    z-index: 1;
+    /* Acima do SVG */
 }
 
 /* Títulos */
@@ -79,7 +84,7 @@ svg {
 /* Texto */
 .Texto-saude-mental {
     width: 513px;
-    color: var(--Primary-Pressed---500, #204551); 
+    color: var(--Primary-Pressed---500, #204551);
     font-family: 'Roboto';
     font-size: 24px;
     font-weight: 400;
@@ -95,8 +100,8 @@ svg {
     align-items: flex-start;
     gap: 10px;
     border-radius: 50px;
-    border: 1px solid var(--Primary-Pressed---500, #204551); 
-    background: var(--Primary-Pressed---500, #204551); 
+    border: 1px solid var(--Primary-Pressed---500, #204551);
+    background: var(--Primary-Pressed---500, #204551);
     font-family: 'Poppins';
     font-size: 19.2px;
     font-weight: 400;
@@ -110,7 +115,7 @@ svg {
 
 /* Estilo da Ilustração */
 .illustration {
-    max-width: 700px; 
+    max-width: 700px;
     width: 100%;
     height: auto;
     right: 80px;
@@ -119,14 +124,16 @@ svg {
 
 @media (max-width: 1440px) {
     svg {
-        height: auto; /* Para ajustar a altura em dispositivos menores */
-        max-height:866px; /* Limita a altura no viewport */
-       
+        height: auto;
+        /* Para ajustar a altura em dispositivos menores */
+        max-height: 866px;
+        /* Limita a altura no viewport */
+
         width: 1440px;
     }
 
     .illustration {
-        max-width: 500px; 
+        max-width: 500px;
         width: 100%;
         height: auto;
         right: 80px;
@@ -134,39 +141,136 @@ svg {
     }
 }
 
-/* Estilos do Menu */
-.navbar {
+
+.bem-estar-container {
+    display: flex;
+    height: 123px;
+    align-items: center;
+   
+    /* Alinha verticalmente os itens no centro */
+    padding: 20px;
+
+
+    /* Adiciona um pouco de espaço ao redor */
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.bem-estar {
+    width: 124px;
+    height: 6px;
+    transform: rotate(-90deg);
+    border-radius: 4px;
+    background: #F8B490;
+}
+
+.frase-bem-estar {
+    display: flex;
+    width: 1249px;
+    height: 133px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--4, 32px);
+    flex-shrink: 0;
+    margin-top: 0; /* Remova qualquer margem superior */
+    margin-bottom: 0; /* Remova ou ajuste para 0 conforme necessário */
+    
+    
+}
+
+.titulo-bem-estar {
+    height: 41px;
+    flex-shrink: 0;
+    align-self: stretch;
+    color: var(--Primary-Pressed---500, #204551);
+    font-family: 'Mulish';
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    
+}
+
+.subtitulo-bem-estar {
+    color: var(--Primary-Pressed---500, #204551);
+    font-family: 'Roboto';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%;
+    /* 32px */
+    letter-spacing: 0.15px;
+    align-self: stretch;
+ */
+}
+
+.cards {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    background-color: #BDCCD1; /* Cor de fundo semelhante à imagem */
-    padding: 10px 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: relative;
-    z-index: 2; /* Acima do SVG */
+    flex-wrap: wrap;
+    /* Para quebrar em vários locais em telas menores */
+    gap: 20px;
+    /* Espaçamento entre os cartões */
 }
 
-.brand h2 {
+.card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: calc(25% - 20px);
+    /* Quatro cartões na linha */
+    box-sizing: border-box;
+    min-width: 250px;
+    /* Tamanho mínimo do cartão */
+}
+
+.card h3 {
     font-family: 'Nunito', sans-serif;
-    color: #204551; /* Cor do texto */
-    margin: 0;
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: var(--Primary-Pressed---500, #204551);
 }
 
-.menu {
-    list-style: none;
-    display: flex;
-    gap: 20px; /* Espaçamento entre os itens do menu */
-    margin: 0;
-    padding: 0;
+.card p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 20px;
+    color: #555;
+    /* Cor do texto dos cartões */
 }
 
-.menu li a {
+.action-button {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--Primary-Pressed---500, #204551);
+    color: white;
     text-decoration: none;
-    color: #204551; /* Cor do texto */
     font-family: 'Poppins', sans-serif;
-    font-weight: 600; /* Peso da fonte */
+    font-size: 16px;
 }
 
-.menu li a:hover {
-    color: #265361; /* Cor do texto ao passar o mouse */
+.action-button:hover {
+    background-color: #265361;
+    /* Cor do botão ao passar o mouse */
+}
+
+@media (max-width: 1280px) {
+    .bem-estar-container {
+        flex-direction: column; /* Se você quiser empilhar os itens verticalmente em telas menores */
+        align-items: center; /* Centraliza os itens verticalmente */
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .card {
+        width: 100%;
+        /* Cartões ocupam 100% em telas menores */
+    }
 }

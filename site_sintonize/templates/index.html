@@ -7,23 +7,13 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="navbar">
-        <div class="brand">
-            <h2>Sintonize</h2>
-        </div>
-        <ul class="menu">
-            <li><a href="#inicio">Início</a></li>
-            <li><a href="#quem-somos">Quem Somos</a></li>
-            <li><a href="#sobre-burnout">Sobre o Burnout</a></li>
-            <li><a href="#aprender-mais">Aprenda Mais</a></li>
-            <li><a href="{% url 'burnout_survey' %}">Teste de Burnout</a></li>
-        </ul>
-    </div>
+    {% include 'menu.html' %}
     <div class="container">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 280 1440 866" fill="none">
             <path d="M0 0H1440V780C1440 780 1002.56 866.093 719 866C436.212 865.907 0 780 0 780V0Z" 
@@ -42,5 +32,37 @@
             </div>
         </div>
     </div>
+    <!-- <div class="bem-estar-container">
+        <div class="bem-estar"></div>
+        <div class="frase-bem-estar">
+            <div class="titulo-bem-estar">Bem-Estar e Equilíbrio para Sua Vida</div>
+            <div class="subtitulo-bem-estar">O Sintonize é um espaço dedicado à sua saúde mental no ambiente de trabalho. Nossa plataforma auxilia você a reconhecer e gerenciar o estresse, além de oferecer ferramentas práticas para melhorar seu bem-estar e manter o equilíbrio entre vida pessoal e profissional.</div>
+        </div>
+    </div>
+    
+        <div class="cards">
+            <div class="card">
+                <h3>Autoavaliação Inteligente</h3>
+                <p>Um teste prático para identificar sinais de estresse e Burnout, ajudando você a entender seu momento atual.</p>
+                <a href="#" class="action-button">Fazer teste</a>
+            </div>
+            <div class="card">
+                <h3>Autocuidado na Prática</h3>
+                <p>Técnicas simples de mindfulness, relaxamento e foco para cuidar de si mesmo.</p>
+                <a href="#" class="action-button">Fazer teste</a>
+            </div>
+            <div class="card">
+                <h3>Equilíbrio Vida&Trabalho</h3>
+                <p>Faça o teste e identifique áreas que podem ser ajustadas para melhorar seu bem-estar e qualidade de vida.</p>
+                <a href="#" class="action-button">Fazer teste</a>
+            </div>
+            <div class="card">
+                <h3>Avalie sua Ansiedade</h3>
+                <p>Faça o teste e avalie seu nível de ansiedade. Identifique sinais e cuide do seu bem-estar emocional.</p>
+                <a href="#" class="action-button">Fazer teste</a>
+            </div>
+        </div>
+    </div>  -->
+    
 </body>
 </html>
