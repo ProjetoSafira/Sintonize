@@ -146,14 +146,9 @@ svg {
     display: flex;
     height: 123px;
     align-items: center;
-   
-    /* Alinha verticalmente os itens no centro */
-    padding: 20px;
-
-
-    /* Adiciona um pouco de espaço ao redor */
     justify-content: center;
     flex-shrink: 0;
+    margin-bottom: 92px;
 }
 
 .bem-estar {
@@ -172,10 +167,6 @@ svg {
     align-items: flex-start;
     gap: var(--4, 32px);
     flex-shrink: 0;
-    margin-top: 0; /* Remova qualquer margem superior */
-    margin-bottom: 0; /* Remova ou ajuste para 0 conforme necessário */
-    
-    
 }
 
 .titulo-bem-estar {
@@ -188,7 +179,6 @@ svg {
     font-style: normal;
     font-weight: 400;
     line-height: 120%;
-    
 }
 
 .subtitulo-bem-estar {
@@ -201,67 +191,100 @@ svg {
     /* 32px */
     letter-spacing: 0.15px;
     align-self: stretch;
- */
+    */
 }
 
 .cards {
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    /* Para quebrar em vários locais em telas menores */
-    gap: 20px;
-    /* Espaçamento entre os cartões */
+    align-items: center;
+    gap: var(--spacing-spacing-4-spacing-6, 24px);
+    align-self: stretch;
+    padding: 79px 92px;
+    justify-content: center;
 }
 
 .card {
-    background: white;
+    display: flex;
+    width: 302px;
+    height: 435px;
+    flex-direction: column;
+    align-items: flex-start;
     border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: calc(25% - 20px);
-    /* Quatro cartões na linha */
-    box-sizing: border-box;
-    min-width: 250px;
-    /* Tamanho mínimo do cartão */
+    background: #FFF;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 }
 
-.card h3 {
-    font-family: 'Nunito', sans-serif;
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: var(--Primary-Pressed---500, #204551);
+.ilustracao-card {
+    margin-bottom: 15px;
+    width: 302px;
+    height: 226px;
+    border-radius: 12px;
+    background: rgba(76, 76, 76, 0.22);
 }
 
-.card p {
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    line-height: 1.4;
-    margin-bottom: 20px;
-    color: #555;
-    /* Cor do texto dos cartões */
+.card-image {
+    display: flex;
+    width: 303px;
+    height: 222px;
+    padding: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 29px;
+    flex-shrink: 0;
+}
+
+.texto-card{
+    display: flex;
+    width: 255px;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 24px;
+}
+
+.titulo-card {
+    width: 252px;
+    color: #000;
+    font-family: 'Roboto';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%;
+    letter-spacing: 0.15px;
+}
+
+.subtitulo-card {
+    color: #000;
+
+    /* Typography/Body/body2 */
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 143%; /* 20.02px */
+    letter-spacing: 0.17px;
+    align-self: stretch;
 }
 
 .action-button {
-    display: inline-block;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: var(--Primary-Pressed---500, #204551);
-    color: white;
+    
+    color: #204551;
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 143%; /* 20.02px */
+    letter-spacing: 0.17px;
+    align-self: stretch;
     text-decoration: none;
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-}
-
-.action-button:hover {
-    background-color: #265361;
-    /* Cor do botão ao passar o mouse */
 }
 
 @media (max-width: 1280px) {
     .bem-estar-container {
-        flex-direction: column; /* Se você quiser empilhar os itens verticalmente em telas menores */
-        align-items: center; /* Centraliza os itens verticalmente */
+        flex-direction: column;
+        /* Se você quiser empilhar os itens verticalmente em telas menores */
+        align-items: center;
+        /* Centraliza os itens verticalmente */
         width: 100%;
         justify-content: center;
     }
