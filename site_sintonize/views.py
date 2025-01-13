@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from requests.exceptions import Timeout
 from .forms import BurnoutSurveyForm
-
+from django.http import JsonResponse
 
 def index (request):
     return render (request, 'index.html')
@@ -26,6 +26,15 @@ def diagnostico (request):
 
 def tratamento (request):
     return render(request, 'tratamento.html') 
+
+def search_options(request):
+    query = request.GET.get('query', '')
+    # Aqui você deve substituir isso pelos seus dados reais
+    options = ["Burnout", " Teste", " ", " ", " "]
+    filtered_options = [option for option in options if query.lower() in option.lower()]
+    
+    return JsonResponse(filtered_options, safe=False)
+
 
 def equipe(request):
     membros = [
