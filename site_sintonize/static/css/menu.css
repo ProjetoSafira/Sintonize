@@ -7,6 +7,10 @@
     gap: 10px;
     background: rgba(255, 255, 255, 0.50);
     backdrop-filter: blur(2px);
+    position: relative;
+    /* Certifique-se que está definido para que o z-index funcione */
+    z-index: 1;
+    /* Um valor menor para garantir que o dropdown apareça à frente */
 }
 
 .nav-menu {
@@ -14,7 +18,11 @@
     width: 100%;
     justify-content: space-around;
     align-items: center;
-    
+    position: relative;
+    /* Para garantir que o z-index funcione */
+    z-index: 1;
+    /* Um valor menor também */
+
 }
 
 .menu {
@@ -42,33 +50,110 @@
 /* Media Query para telas menores */
 @media (max-width: 1024px) {
     .navbar {
-        padding: 10px; 
+        padding: 10px;
     }
 
     .menu {
-        flex-direction:row; 
-        gap: 10px; 
-        align-items: center; 
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
     }
 
     .menu li a {
-        font-size: 16px; 
+        font-size: 16px;
     }
 }
 
 @media (max-width: 768px) {
     .navbar {
-        flex-direction: column; 
-        padding: 10px; 
+        flex-direction: column;
+        padding: 10px;
     }
 
     .menu {
-        flex-direction: column; 
-        gap: 10px; 
-        align-items: center; 
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
     }
 
     .menu li a {
-        font-size: 18px; 
+        font-size: 18px;
     }
+}
+
+.search-container {
+    display: flex;
+    position: relative;
+    width: 400px;
+    height: 56px;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.00);
+    flex-direction: column;
+    align-items: flex-start;
+    color: #B7BAC1;
+}
+
+.search-container input {
+    height: 56px;
+    padding: 16px 268px 16px 24px; /* Ajusta o padding para garantir a distância da lupa */
+    border-radius: 100px;
+    border: 1px solid var(--Neutral-colors-Gray-Colors-400, #6B7280); /* Cor padrão da borda */
+    background: rgba(255, 255, 255, 0.00); /* Fundo transparente */
+    width: 100%; /* Para ocupar todo o espaço disponível */
+    transition: border-color 0.3s; /* Suaviza a transição da cor da borda */
+    outline: none; /* Remove a borda padrão ao foco */
+    font-family: 'Inter', sans-serif; /* Certifique-se de que a fonte Inter está importada */
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+/* Efeito de hover na borda do input */
+.search-container:hover input {
+    border-color: #1E90FF; /* Cor da borda azul ao passar o mouse */
+}
+
+.search-container input:focus {
+    border-color: #1E90FF; /* Borda azul ao foco */
+    box-shadow: 0 0 5px rgba(30, 144, 255, 0.5); /* Sombra azul leve no foco */
+}
+
+.search-icon {
+    position: absolute;
+    right: 15px; /* Distância da direita */
+    top: 50%; /* Centraliza verticalmente */
+    transform: translateY(-50%); /* Ajusta a posição vertical da imagem */
+    width: 19.046px; /* Tamanho da lupa */
+    height: 19.046px; /* Tamanho da lupa */
+    flex-shrink: 0; /* Garante que não encolha */
+    pointer-events: none; /* Ignora cliques na imagem */
+}
+
+.dropdown-options {
+    display: none; /* Inicialmente oculto */
+    position: absolute;
+    top: 60px; /* Ajuste conforme necessário */
+    left: 0;
+    width: 100%;
+    border-radius: 8px; /* Bordas arredondadas para o dropdown */
+    background: rgba(255, 255, 255, 0.90); /* Cor de fundo do dropdown */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+    z-index: 1000;
+    overflow-y: auto; /* Adiciona barra de rolagem se necessário */
+    max-height: 400px; /* Limita a altura */
+    display: flex; /* Exibir como flex */
+    flex-direction: column; /* Colocando as opções em coluna */
+    padding: 0; /* Remove qualquer padding indesejado */
+}
+
+.dropdown-options .option {
+    padding: 10px 16px; /* Espaçamento interno */
+    cursor: pointer; /* Cursor de pointer ao passar o mouse */
+    width: 100%; /* Ocupa toda a largura */
+    box-sizing: border-box; /* Garante que o padding não quebre o layout */
+}
+
+.dropdown-options .option:hover {
+    background-color: #f0f0f0; /* Altera a cor de fundo da opção ao passar o mouse */
 }

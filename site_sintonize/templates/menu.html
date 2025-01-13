@@ -1,18 +1,81 @@
 {% load static %}
-<div class="navbar">
-    <div class="nav-menu">
-    
-    <div class="brand">
-        <a href="{% url 'index' %}">
-            <img src="{% static 'images/images_logo/logo.png' %}" alt="Logo">
-        </a>  
+<body>
+    <div class="navbar">
+        <div class="nav-menu">
+            <div class="brand">
+                <a href="{% url 'index' %}">
+                    <img src="{% static 'images/images_logo/logo.png' %}" alt="Logo">
+                </a>  
+            </div>
+            <div class="search-container">
+                <input type="text" placeholder="Pesquisa" aria-label="Pesquisa" onclick="toggleDropdown()" id="searchInput">
+                <img src="{% static 'images/images_menu/lupa.png' %}" alt="Lupa" class="search-icon">
+                <div class="dropdown-options" id="dropdownOptions">
+                </div>
+            </div>
+            
+            <ul class="menu">
+                <li><a href="{% url 'index' %}">Início</a></li>
+                <li><a href="#quem-somos">Quem Somos</a></li>
+                <li><a href="#sobre-burnout">Sobre o Burnout</a></li>
+                <li><a href="#aprender-mais">Aprenda Mais</a></li>
+                <li><a href="{% url 'burnout_survey' %}">Teste de Burnout</a></li>
+            </ul>
+        </div>
     </div>
-    <ul class="menu">
-        <li><a href="{% url 'index' %}">Início</a></li>
-        <li><a href="#quem-somos">Quem Somos</a></li>
-        <li><a href="#sobre-burnout">Sobre o Burnout</a></li>
-        <li><a href="#aprender-mais">Aprenda Mais</a></li>
-        <li><a href="{% url 'burnout_survey' %}">Teste de Burnout</a></li>
-    </ul>
-</div>
-</div>
+
+    <script>
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdownOptions');
+            dropdown.style.display = dropdown.style.display === 'none' || dropdown.style.display === '' ? 'flex' : 'none';
+        }
+
+        document.addEventListener('click', function(event) {
+            const target = event.target;
+            const dropdown = document.getElementById('dropdownOptions');
+            const searchContainer = document.querySelector('.search-container');
+            
+            if (!searchContainer.contains(target)) {
+                dropdown.style.display = 'none'; // Oculta o dropdown se o clique foi fora do contêiner
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchInput');
+    const dropdownOptions = document.getElementById('dropdownOptions');
+
+    searchInput.addEventListener('input', function() {
+        const query = searchInput.value;
+
+        // Se a consulta estiver vazia, não faz a requisição
+        if (query.length === 0) {
+            dropdownOptions.style.display = 'none';
+            return;
+        }
+
+        // Fazendo a requisição para a view do Django
+        fetch(`/search-options/?query=${encodeURIComponent(query)}`)
+            .then(response => response.json())
+            .then(data => {
+                // Limpar as opções existentes
+                dropdownOptions.innerHTML = '';
+
+                // Adicionar as opções filtradas ao dropdown
+                data.forEach(option => {
+                    const div = document.createElement('div');
+                    div.classList.add('option');
+                    div.textContent = option;
+                    dropdownOptions.appendChild(div);
+                });
+
+                // Exibir o dropdown se houver opções
+                dropdownOptions.style.display = data.length ? 'flex' : 'none';
+            })
+            .catch(error => {
+                console.error('Erro ao buscar opções:', error);
+            });
+    });
+});
+
+    </script>
+</body>
