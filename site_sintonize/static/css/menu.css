@@ -48,6 +48,43 @@
 }
 
 /* Media Query para telas menores */
+@media (max-width: 1440px) {
+    .navbar {
+        display: flex;
+        padding: 16px var(--10, 80px);
+        justify-content: flex-end;
+        align-items: flex-start;
+        
+    }
+
+    .menu {
+          gap: 20px;
+        
+    }
+
+    .menu li a {
+        font-size: 16px;
+        color: #204551;
+    }
+}
+
+@media (max-width: 1280px) {
+    .navbar {
+        padding: 10px;
+        /* Ajusta o espaçamento em telas menores */
+    }
+
+    .menu {
+        gap: 20px;
+        /* Reduz o espaçamento entre itens */
+    }
+
+    .menu li a {
+        font-size: 16px;
+        /* Reduz o tamanho da fonte */
+    }
+}
+
 @media (max-width: 1024px) {
     .navbar {
         padding: 10px;
@@ -55,7 +92,7 @@
 
     .menu {
         flex-direction: row;
-        gap: 10px;
+        gap: 20px;
         align-items: center;
     }
 
@@ -84,76 +121,123 @@
 .search-container {
     display: flex;
     position: relative;
-    width: 400px;
+    width: 100%;
+    /* Definindo a largura como 100% para se ajustar ao contêiner pai */
+    max-width: 400px;
+    /* Limite máximo para a largura */
     height: 56px;
     border-radius: 100px;
     background: rgba(255, 255, 255, 0.00);
     flex-direction: column;
     align-items: flex-start;
     color: #B7BAC1;
+    margin: 0 auto;
+    /* Centraliza a barra de pesquisa */
 }
 
 .search-container input {
     height: 56px;
-    padding: 16px 268px 16px 24px; /* Ajusta o padding para garantir a distância da lupa */
+    padding: 16px 60px 16px 24px;
+    /* Ajusta o padding */
     border-radius: 100px;
-    border: 1px solid var(--Neutral-colors-Gray-Colors-400, #6B7280); /* Cor padrão da borda */
-    background: rgba(255, 255, 255, 0.00); /* Fundo transparente */
-    width: 100%; /* Para ocupar todo o espaço disponível */
-    transition: border-color 0.3s; /* Suaviza a transição da cor da borda */
-    outline: none; /* Remove a borda padrão ao foco */
-    font-family: 'Inter', sans-serif; /* Certifique-se de que a fonte Inter está importada */
+    border: 1px solid var(--Neutral-colors-Gray-Colors-400, #6B7280);
+    background: rgba(255, 255, 255, 0.00);
+    width: 100%;
+    /* Para ocupar todo o espaço disponível */
+    transition: border-color 0.3s;
+    outline: none;
+    font-family: 'Inter', sans-serif;
     font-size: 14px;
-    font-style: normal;
     font-weight: 400;
-    line-height: normal;
 }
 
 /* Efeito de hover na borda do input */
 .search-container:hover input {
-    border-color: #1E90FF; /* Cor da borda azul ao passar o mouse */
+    border-color: #1E90FF;
 }
 
 .search-container input:focus {
-    border-color: #1E90FF; /* Borda azul ao foco */
-    box-shadow: 0 0 5px rgba(30, 144, 255, 0.5); /* Sombra azul leve no foco */
+    border-color: #1E90FF;
+    box-shadow: 0 0 5px rgba(30, 144, 255, 0.5);
 }
 
 .search-icon {
     position: absolute;
-    right: 15px; /* Distância da direita */
-    top: 50%; /* Centraliza verticalmente */
-    transform: translateY(-50%); /* Ajusta a posição vertical da imagem */
-    width: 19.046px; /* Tamanho da lupa */
-    height: 19.046px; /* Tamanho da lupa */
-    flex-shrink: 0; /* Garante que não encolha */
-    pointer-events: none; /* Ignora cliques na imagem */
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 19.046px;
+    height: 19.046px;
+    flex-shrink: 0;
+    pointer-events: none;
 }
 
 .dropdown-options {
-    display: none; /* Inicialmente oculto */
+    display: none;
     position: absolute;
-    top: 60px; /* Ajuste conforme necessário */
+    top: 60px;
     left: 0;
     width: 100%;
-    border-radius: 8px; /* Bordas arredondadas para o dropdown */
-    background: rgba(255, 255, 255, 0.90); /* Cor de fundo do dropdown */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.90);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    overflow-y: auto; /* Adiciona barra de rolagem se necessário */
-    max-height: 400px; /* Limita a altura */
-    display: flex; /* Exibir como flex */
-    flex-direction: column; /* Colocando as opções em coluna */
-    padding: 0; /* Remove qualquer padding indesejado */
+    overflow-y: auto;
+    max-height: 400px;
+    flex-direction: column;
+    padding: 0;
 }
 
 .dropdown-options .option {
-    padding: 10px 16px; /* Espaçamento interno */
-    cursor: pointer; /* Cursor de pointer ao passar o mouse */
-    width: 100%; /* Ocupa toda a largura */
-    box-sizing: border-box; /* Garante que o padding não quebre o layout */
+    padding: 10px 16px;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .dropdown-options .option:hover {
-    background-color: #f0f0f0; /* Altera a cor de fundo da opção ao passar o mouse */
+    background-color: #f0f0f0;
+}
+
+/* Media Queries para Responsividade */
+
+
+@media (max-width: 768px) {
+    .search-container {
+        width: 90%;
+        /* Aumenta a largura em telas menores */
+        max-width: none;
+        /* Remove a largura máxima */
+    }
+
+    .search-container input {
+        padding: 16px 40px 16px 20px;
+        /* Ajusta o padding */
+    }
+
+    .search-icon {
+        width: 16px;
+        /* Ajusta o ícone da lupa para telas menores */
+        height: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-container {
+        height: 48px;
+        /* Reduz a altura em telas pequenas */
+    }
+
+    .search-container input {
+        font-size: 12px;
+        /* Reduz o tamanho da fonte no input */
+        padding: 12px 40px 12px 16px;
+        /* Ajusta o padding */
+    }
+
+    .search-icon {
+        width: 14px;
+        /* Ajusta ainda mais o ícone */
+        height: 14px;
+    }
 }
