@@ -1,4 +1,3 @@
-/* Estilos do Menu */
 .navbar {
     display: flex;
     width: 100%;
@@ -8,9 +7,7 @@
     background: rgba(255, 255, 255, 0.50);
     backdrop-filter: blur(2px);
     position: relative;
-    /* Certifique-se que está definido para que o z-index funcione */
     z-index: 1;
-    /* Um valor menor para garantir que o dropdown apareça à frente */
 }
 
 .nav-menu {
@@ -19,10 +16,7 @@
     justify-content: space-around;
     align-items: center;
     position: relative;
-    /* Para garantir que o z-index funcione */
     z-index: 1;
-    /* Um valor menor também */
-
 }
 
 .menu {
@@ -47,41 +41,32 @@
     color: #265361;
 }
 
-/* Media Query para telas menores */
 @media (max-width: 1440px) {
     .navbar {
-        display: flex;
-        padding: 16px var(--10, 80px);
         justify-content: flex-end;
         align-items: flex-start;
-        
     }
 
     .menu {
-          gap: 20px;
-        
+        gap: 20px;
     }
 
     .menu li a {
         font-size: 16px;
-        color: #204551;
     }
 }
 
 @media (max-width: 1280px) {
     .navbar {
         padding: 10px;
-        /* Ajusta o espaçamento em telas menores */
     }
 
     .menu {
         gap: 20px;
-        /* Reduz o espaçamento entre itens */
     }
 
     .menu li a {
         font-size: 16px;
-        /* Reduz o tamanho da fonte */
     }
 }
 
@@ -122,9 +107,7 @@
     display: flex;
     position: relative;
     width: 100%;
-    /* Definindo a largura como 100% para se ajustar ao contêiner pai */
     max-width: 400px;
-    /* Limite máximo para a largura */
     height: 56px;
     border-radius: 100px;
     background: rgba(255, 255, 255, 0.00);
@@ -132,18 +115,15 @@
     align-items: flex-start;
     color: #B7BAC1;
     margin: 0 auto;
-    /* Centraliza a barra de pesquisa */
 }
 
 .search-container input {
     height: 56px;
     padding: 16px 60px 16px 24px;
-    /* Ajusta o padding */
     border-radius: 100px;
     border: 1px solid var(--Neutral-colors-Gray-Colors-400, #6B7280);
     background: rgba(255, 255, 255, 0.00);
     width: 100%;
-    /* Para ocupar todo o espaço disponível */
     transition: border-color 0.3s;
     outline: none;
     font-family: 'Inter', sans-serif;
@@ -151,7 +131,6 @@
     font-weight: 400;
 }
 
-/* Efeito de hover na borda do input */
 .search-container:hover input {
     border-color: #1E90FF;
 }
@@ -193,31 +172,35 @@
     cursor: pointer;
     width: 100%;
     box-sizing: border-box;
+    color: var(--Neutral--50, #282828);
+    font-family: Inter;
+    font-size: 14px;
 }
 
 .dropdown-options .option:hover {
     background-color: #f0f0f0;
+    color: var(--Neutral--50, #282828);
 }
 
-/* Media Queries para Responsividade */
-
+@media (max-width: 1024px) {
+    .search-container {
+        width: 40%;
+        padding: 0 10px;
+    }
+}
 
 @media (max-width: 768px) {
     .search-container {
         width: 90%;
-        /* Aumenta a largura em telas menores */
         max-width: none;
-        /* Remove a largura máxima */
     }
 
     .search-container input {
         padding: 16px 40px 16px 20px;
-        /* Ajusta o padding */
     }
 
     .search-icon {
         width: 16px;
-        /* Ajusta o ícone da lupa para telas menores */
         height: 16px;
     }
 }
@@ -225,19 +208,15 @@
 @media (max-width: 480px) {
     .search-container {
         height: 48px;
-        /* Reduz a altura em telas pequenas */
     }
 
     .search-container input {
         font-size: 12px;
-        /* Reduz o tamanho da fonte no input */
         padding: 12px 40px 12px 16px;
-        /* Ajusta o padding */
     }
 
     .search-icon {
         width: 14px;
-        /* Ajusta ainda mais o ícone */
         height: 14px;
     }
 }

@@ -30,7 +30,7 @@ def tratamento (request):
 def search_options(request):
     query = request.GET.get('query', '')
     # Aqui você deve substituir isso pelos seus dados reais
-    options = ["Burnout", " Teste", " ", " ", " "]
+    options = ["Burnout", " Teste", " ", " ", ""]
     filtered_options = [option for option in options if query.lower() in option.lower()]
     
     return JsonResponse(filtered_options, safe=False)
