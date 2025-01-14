@@ -8,12 +8,11 @@
                 </a>  
             </div>
             <div class="search-container">
-                <input type="text" placeholder="Pesquisa" aria-label="Pesquisa" onclick="toggleDropdown()" id="searchInput">
+                <input type="text" id="searchInput" placeholder="Pesquisa (máx. 50 caracteres)" maxlength="50" aria-label="Pesquisa">
                 <img src="{% static 'images/images_menu/lupa.png' %}" alt="Lupa" class="search-icon">
-                <div class="dropdown-options" id="dropdownOptions">
-                </div>
+                <div class="dropdown-options" id="dropdownOptions"></div>
             </div>
-            
+ 
             <ul class="menu">
                 <li><a href="{% url 'index' %}">Início</a></li>
                 <li><a href="#quem-somos">Quem Somos</a></li>
