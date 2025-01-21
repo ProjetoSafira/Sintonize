@@ -8,73 +8,158 @@
                 </a>  
             </div>
             <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Pesquisa (máx. 50 caracteres)" maxlength="50" aria-label="Pesquisa">
+                <input type="text" id="searchInput" placeholder="Pesquisa" maxlength="50" aria-label="Pesquisa" autocomplete="off">
                 <img src="{% static 'images/images_menu/lupa.png' %}" alt="Lupa" class="search-icon">
                 <div class="dropdown-options" id="dropdownOptions"></div>
+                <p id="noResultsMessage" style="display:none;"> Nenhum resultado encontrado para sua pesquisa </p> 
             </div>
  
             <ul class="menu">
-                <li><a href="{% url 'index' %}">Início</a></li>
-                <li><a href="#quem-somos">Quem Somos</a></li>
-                <li><a href="#sobre-burnout">Sobre o Burnout</a></li>
-                <li><a href="#aprender-mais">Aprenda Mais</a></li>
-                <li><a href="{% url 'burnout_survey' %}">Teste de Burnout</a></li>
+                <li class="menu-item"><a href="{% url 'index' %}">Início</a></li>
+                <li class="menu-item"><a href="#quem-somos">Quem Somos</a></li>
+                <li class="menu-item"><a href="#sobre-burnout">Sobre o Burnout</a></li>
+                <li class="menu-item"><a href="#aprender-mais">Aprenda Mais</a></li>
+                <li class="menu-item"><a href="{% url 'burnout_survey' %}">Teste de Burnout</a></li>
             </ul>
         </div>
     </div>
 
     <script>
-        function toggleDropdown() {
-            const dropdown = document.getElementById('dropdownOptions');
-            dropdown.style.display = dropdown.style.display === 'none' || dropdown.style.display === '' ? 'flex' : 'none';
-        }
+    // Realizar a busca no menu e retornar os itens que correspondem à consulta (class menu-item)
+    function searchMenu(query) {
+        const menuItems = document.querySelectorAll('.menu-item a');
+        const filteredQuery = query.toLowerCase().split(" ").filter(word => !["de", "o", "e", "que", "em", "para", "com"].includes(word));
 
-        document.addEventListener('click', function(event) {
-            const target = event.target;
-            const dropdown = document.getElementById('dropdownOptions');
-            const searchContainer = document.querySelector('.search-container');
-            
-            if (!searchContainer.contains(target)) {
-                dropdown.style.display = 'none'; // Oculta o dropdown se o clique foi fora do contêiner
+        if (filteredQuery.length === 0) return [];
+
+        const results = [];
+
+        menuItems.forEach(item => {
+            const text = item.textContent.toLowerCase();
+            if (filteredQuery.some(word => text.includes(word))) {
+                results.push(item);
             }
         });
 
-        document.addEventListener('DOMContentLoaded', function() {
-    const searchInput = document.getElementById('searchInput');
-    const dropdownOptions = document.getElementById('dropdownOptions');
+        return results;
+    }
 
-    searchInput.addEventListener('input', function() {
-        const query = searchInput.value;
+    // Atualizar o dropdown com os resultados da pesquisa
+    function updateSearchResults(query) {
+        const dropdownOptions = document.getElementById('dropdownOptions');
+        dropdownOptions.innerHTML = '';  // Limpa as opções existentes
 
-        // Se a consulta estiver vazia, não faz a requisição
-        if (query.length === 0) {
-            dropdownOptions.style.display = 'none';
-            return;
+        const results = searchMenu(query);
+
+        if (results.length > 0) {
+            results.forEach(result => {
+                const div = document.createElement('div');
+                div.classList.add('option');
+                div.innerHTML = result.outerHTML;  // Adiciona o link completo
+                div.addEventListener('click', function() {
+                    window.location.href = result.getAttribute('href');  // Direciona para o link do item
+                });
+                dropdownOptions.appendChild(div);
+            });
+            dropdownOptions.style.display = 'flex';  // Exibe o dropdown se houver resultados
+        } else {
+            const noResultDiv = document.createElement('div');
+            noResultDiv.classList.add('option');
+            noResultDiv.classList.add('no-result');  // Adiciona uma classe específica para a mensagem
+            noResultDiv.textContent = 'Nenhum resultado encontrado';  // Mensagem de erro
+            dropdownOptions.appendChild(noResultDiv);
+            dropdownOptions.style.display = 'flex';  // Exibe o dropdown, mesmo sem resultados
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('searchInput');
+        const dropdownOptions = document.getElementById('dropdownOptions');
+        let selectedIndex = -1; // Índice da opção selecionada
+
+        // Evento para digitação no campo de pesquisa
+        searchInput.addEventListener('input', function() {
+            const query = searchInput.value;
+            if (query.length === 0) {
+                dropdownOptions.style.display = 'none';  // Esconde o dropdown se o campo estiver vazio
+            } else {
+                updateSearchResults(query);  // Atualiza os resultados conforme a digitação
+            }
+        });
+
+        // Evento que escuta a tecla pressionada (setas para cima/baixo, Enter)
+        searchInput.addEventListener('keydown', function(e) {
+            const options = dropdownOptions.querySelectorAll('.option');
+
+            // Se o dropdown não estiver visível, nada acontece
+            if (dropdownOptions.style.display === 'none') return;
+
+            // Impedir a navegação dentro do input
+            if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+                e.preventDefault();  // Impede a navegação no input
+
+                // Navegar para baixo
+                if (e.key === 'ArrowDown') {
+                    if (selectedIndex < options.length - 1) {
+                        selectedIndex++;
+                    } else {
+                        selectedIndex = 0; // Volta ao início se estiver no final
+                    }
+                }
+                // Navegar para cima
+                else if (e.key === 'ArrowUp') {
+                    if (selectedIndex > 0) {
+                        selectedIndex--;
+                    } else {
+                        selectedIndex = options.length - 1; // Vai para o final se estiver no início
+                    }
+                }
+
+                highlightOption(options, selectedIndex);
+            }
+            // Selecionar a opção com Enter
+            else if (e.key === 'Enter' && selectedIndex !== -1) {
+                const selectedOption = options[selectedIndex];
+                if (selectedOption) {
+                    window.location.href = selectedOption.querySelector('a').getAttribute('href');
+                }
+            }
+        });
+
+        // Função para destacar a opção selecionada
+        function highlightOption(options, index) {
+            options.forEach(option => option.classList.remove('hover')); // Remove a classe 'hover' de todas
+            if (index !== -1) {
+                options[index].classList.add('hover'); // Adiciona a classe 'hover' na opção atual
+            }
         }
 
-        // Fazendo a requisição para a view do Django
-        fetch(`/search-options/?query=${encodeURIComponent(query)}`)
-            .then(response => response.json())
-            .then(data => {
-                // Limpar as opções existentes
-                dropdownOptions.innerHTML = '';
-
-                // Adicionar as opções filtradas ao dropdown
-                data.forEach(option => {
-                    const div = document.createElement('div');
-                    div.classList.add('option');
-                    div.textContent = option;
-                    dropdownOptions.appendChild(div);
+        // Permitir o movimento do cursor entre as opções do dropdown (mouse)
+        dropdownOptions.addEventListener('mouseover', function(e) {
+            if (e.target.classList.contains('option')) {
+                // Remover a classe 'hover' de todas as opções
+                dropdownOptions.querySelectorAll('.option').forEach(option => {
+                    option.classList.remove('hover');
                 });
+                // Adicionar a classe 'hover' na opção em que o cursor está
+                e.target.classList.add('hover');
+                selectedIndex = Array.from(dropdownOptions.children).indexOf(e.target); // Atualiza o índice da opção
+            }
+        });
 
-                // Exibir o dropdown se houver opções
-                dropdownOptions.style.display = data.length ? 'flex' : 'none';
-            })
-            .catch(error => {
-                console.error('Erro ao buscar opções:', error);
-            });
+        // Fechar o dropdown ao clicar fora
+        document.addEventListener('click', function(e) {
+            if (!searchInput.contains(e.target) && !dropdownOptions.contains(e.target)) {
+                dropdownOptions.style.display = 'none';  // Esconde o dropdown
+            }
+        });
     });
-});
+</script>
 
-    </script>
+    
+    
+    
+    
+    
+    
 </body>
