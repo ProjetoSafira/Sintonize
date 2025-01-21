@@ -35,6 +35,7 @@
     font-size: 20px;
     font-weight: 400;
     line-height: 27px;
+    text-decoration: none;
 }
 
 .menu li a:hover {
@@ -165,6 +166,15 @@
     max-height: 400px;
     flex-direction: column;
     padding: 0;
+    font-family: Inter;
+    text-decoration: none;
+}
+
+/* Exibe o dropdown quando houver resultados */
+.dropdown-options.show {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease;
 }
 
 .dropdown-options .option {
@@ -175,12 +185,53 @@
     color: var(--Neutral--50, #282828);
     font-family: Inter;
     font-size: 14px;
+    text-decoration: none;
 }
 
 .dropdown-options .option:hover {
     background-color: #f0f0f0;
     color: var(--Neutral--50, #282828);
+    text-decoration: none;
 }
+
+/* Remover sublinhado dos links no dropdown */ 
+
+.dropdown-options .option a { 
+    text-decoration: none;
+}
+
+/* Estilo para os links quando estão em foco (selecionados via teclado) */
+.menu li a:active,
+.dropdown-options .option:active {
+    color: #265361; 
+    background-color: #f0f0f0; 
+    outline: none;
+}
+
+/*Fazer com que o elemento selecionado com as setas do teclado fique visualmente destacado, da mesma forma que quando o mouse passa sobre ele*/
+.option.hover {
+    background-color: #f0f0f0; 
+    color: #204551; 
+    cursor: pointer;
+}
+
+
+/* Estilo para a mensagem "Nenhum resultado encontrado" */
+#noResultsMessage {
+    display: none;
+    padding: 10px 16px;
+    cursor: pointer; /* Para garantir que o cursor seja o mesmo de uma opção */
+    width: 100%; /* Ocupa toda a largura disponível, como as opções */
+    box-sizing: border-box;
+    color: var(--Neutral--50, #282828);
+    font-family: Inter;
+    font-size: 14px;
+    background: rgba(255, 255, 255, 0.90);  /* Fundo igual ao do dropdown */
+    border-radius: 8px;  /* Bordas arredondadas iguais às das opções */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra igual ao dropdown */
+    text-align: center;
+}
+
 
 @media (max-width: 1024px) {
     .search-container {

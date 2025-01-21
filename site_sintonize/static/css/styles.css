@@ -77,10 +77,10 @@ nav li {
 
 nav a {
     text-decoration: none;
-    color: #007BFF;
+    color: #000000;
     font-weight: bold;
 }
 
 nav a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
