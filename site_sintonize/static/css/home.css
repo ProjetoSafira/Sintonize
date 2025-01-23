@@ -79,6 +79,8 @@ svg {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    position: relative;  /* Garante que o z-index funcione */
+    z-index: 10;  /* Menor que o z-index do dropdown */
 }
 
 /* Texto */
