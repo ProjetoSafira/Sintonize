@@ -162,8 +162,8 @@
     background: rgba(255, 255, 255, 0.90);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    overflow-y: auto;
-    max-height: 400px;
+    overflow-y: auto; /*Habilita a rolagem vertical*/
+    max-height: 400px; /*Limite de altura que será ajustado conforme necessário*/
     flex-direction: column;
     padding: 0;
     font-family: Inter;
@@ -193,6 +193,20 @@
     color: var(--Neutral--50, #282828);
     text-decoration: none;
 }
+
+/*Dropdown sobreposto ao título
+#dropdownOptions {
+    max-height: 200px;
+    overflow-y: auto;
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    z-index: 1000;  /* Maior z-index para garantir que fique à frente 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: none;
+}*/
+
 
 /* Remover sublinhado dos links no dropdown */ 
 

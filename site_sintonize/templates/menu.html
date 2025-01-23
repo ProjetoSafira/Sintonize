@@ -28,18 +28,28 @@
     // Realizar a busca no menu e retornar os itens que correspondem à consulta (class menu-item)
     function searchMenu(query) {
         const menuItems = document.querySelectorAll('.menu-item a');
-        const filteredQuery = query.toLowerCase().split(" ").filter(word => !["de", "o", "e", "que", "em", "para", "com"].includes(word));
+    
+        // Função para remover acentos e caracteres especiais
+        function removeDiacritics(str) {
+            return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ç/g, 'c');
+        }
 
-        if (filteredQuery.length === 0) return [];
+        // Remove acentos e palavras irrelevantes da consulta
+        const filteredQuery = removeDiacritics(query.toLowerCase())
+            .split(' ')
+            .filter(word => !["de", "e", "que", "em", "para", "com"].includes(word));
+
+        if (filteredQuery.length === 0) return [];  // Retorna um array vazio se a consulta for vazia
 
         const results = [];
 
         menuItems.forEach(item => {
-            const text = item.textContent.toLowerCase();
-            if (filteredQuery.some(word => text.includes(word))) {
+            const itemText = removeDiacritics(item.textContent.toLowerCase());
+            if (filteredQuery.some(word => itemText.includes(word))) {
                 results.push(item);
             }
         });
+        
 
         return results;
     }
@@ -51,12 +61,18 @@
 
         const results = searchMenu(query);
 
-        if (results.length > 0) {
-            results.forEach(result => {
+        // Limitar o número de resultados a 5 itens (pega os 5 primeiros resultados)
+        const limitedResults = results.slice(0, 5);
+
+
+        if (limitedResults.length > 0) {
+            limitedResults.forEach(result => {
                 const div = document.createElement('div');
                 div.classList.add('option');
                 div.innerHTML = result.outerHTML;  // Adiciona o link completo
                 div.addEventListener('click', function() {
+                    document.getElementById('searchInput').value = '';  // Limpa o campo de pesquisa
+                    dropdownOptions.style.display = 'none';  // Esconde o dropdown
                     window.location.href = result.getAttribute('href');  // Direciona para o link do item
                 });
                 dropdownOptions.appendChild(div);
@@ -76,6 +92,16 @@
         const searchInput = document.getElementById('searchInput');
         const dropdownOptions = document.getElementById('dropdownOptions');
         let selectedIndex = -1; // Índice da opção selecionada
+
+        // Limpar o campo de pesquisa e esconder o dropdown ao carregar a página
+        searchInput.value = '';
+        dropdownOptions.style.display = 'none';  // Esconde o dropdown        
+
+        // Limpar o campo de pesquisa ao voltar a página
+        window.addEventListener('pageshow', function(){
+            searchInput.value = '';  // Limpa o campo de pesquisa
+            dropdownOptions.style.display = 'none';  // Esconde o dropdown
+        });
 
         // Evento para digitação no campo de pesquisa
         searchInput.addEventListener('input', function() {
@@ -102,17 +128,16 @@
                 if (e.key === 'ArrowDown') {
                     if (selectedIndex < options.length - 1) {
                         selectedIndex++;
-                    } else {
-                        selectedIndex = 0; // Volta ao início se estiver no final
-                    }
+                    } //else {selectedIndex = 0; // Volta ao início se estiver no final
+                    //}
+                                        
                 }
                 // Navegar para cima
                 else if (e.key === 'ArrowUp') {
                     if (selectedIndex > 0) {
                         selectedIndex--;
-                    } else {
-                        selectedIndex = options.length - 1; // Vai para o final se estiver no início
-                    }
+                    } //else {selectedIndex = options.length - 1; // Vai para o final se estiver no início
+                    //}
                 }
 
                 highlightOption(options, selectedIndex);
