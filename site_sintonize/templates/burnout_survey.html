@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400&family=Poppins:wght@400&display=swap"
+        rel="stylesheet">
     <title>Teste de Burnout</title>
     <style>
         .session-header {
@@ -22,17 +25,21 @@
             font-weight: bold;
             justify-content: center;
         }
+
         .question {
             display: none;
         }
+
         .question.active {
             display: block;
         }
+
         .radio-container {
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
         }
+
         .radio-label {
             display: flex;
             align-items: center;
@@ -42,28 +49,46 @@
             cursor: pointer;
             transition: background-color 0.2s;
         }
+
         .radio-label:hover {
             background-color: #f0f4f8;
         }
+
         .radio-input {
             display: none;
         }
+
+        .form-card {
+            width: 100%;
+            max-width: 1411px;
+            height: 712px;
+            border-radius: 32px;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+            background-color: white; /* Certifique-se que o fundo é branco */
+        }
+
         .form-content {
             display: flex;
             align-items: center;
         }
+
         .form-content img {
             max-width: 40%;
             margin-right: 20px;
         }
+
         .form-info {
             max-width: 60%;
         }
+
         .progress-bar-container {
             display: flex;
             align-items: center;
             margin-top: 20px;
         }
+
         .progress-bar {
             flex-grow: 1;
             height: 8px;
@@ -72,17 +97,98 @@
             overflow: hidden;
             margin-right: 10px;
         }
+
         .progress {
             height: 100%;
             background-color: #007bff;
             width: 0;
+        }
+
+        #prevBtn {
+            display: flex;                          /* Torna o botão um flex container */
+            width: 143px;                           /* Largura desejada */
+            height: 56px;                           /* Altura desejada */
+            padding: 16px 28px;                    /* Preenchimento interno */
+            justify-content: center;                /* Centraliza o conteúdo */
+            align-items: center;                    /* Centraliza verticalmente */
+            gap: 10px;                              /* Espaço entre ícones e texto */
+            border-radius: var(--spacing-spacing-4-spacing-3, 12px); /* Bordas arredondadas com a variável desejada */
+            border: 1.4px solid var(--Primary-Defaunt---400, #3A6573); /* Borda com a cor especificada */
+            background: transparent;                /* Fundo transparente para o botão */
+            color: var(--Primary-Defaunt---400, #3A6573); /* Cor do texto */
+            cursor: pointer;                        /* Muda o cursor ao passar o mouse */
+            transition: background-color 0.3s;     /* Transição suave ao passar o mouse */
+
+            /* Tipografia */
+            font-family: 'Poppins', sans-serif;     /* Fonte Poppins */
+            font-size: 19.2px;                     /* Tamanho da fonte */
+            font-style: normal;                     /* Estilo normal */
+            font-weight: 400;                      /* Peso da fonte */
+            line-height: 24px;                     /* Altura da linha */
+        }
+
+        #prevBtn:hover {
+            background: rgba(58, 101, 115, 0.1); /* Cor de fundo ao passar o mouse (opcional) */
+        }
+
+        #nextBtn {
+            display: flex;                          /* Mantém como flex container */
+            width: 143px;                           /* Largura desejada */
+            height: 56px;                           /* Altura desejada */
+            padding: 16px 28px;                    /* Preenchimento interno */
+            justify-content: center;                /* Centraliza o conteúdo */
+            align-items: center;                    /* Centraliza verticalmente */
+            gap: 10px;                              /* Espaço entre ícones e texto */
+            border-radius: 12px;                   /* Bordas arredondadas */
+            background: #3A6573;                   /* Cor de fundo */
+            box-shadow: 0px 4px 8px 0px rgba(255, 255, 255, 0.08); /* Sombra */
+            color: var(--gray-scale-white-white, #FFF); /* Cor do texto */
+            border: none;                           /* Sem borda */
+            cursor: pointer;                        /* Muda o cursor ao passar o mouse */
+            transition: background-color 0.3s;     /* Transição suave ao passar o mouse */
+
+            /* Tipografia */
+            font-family: 'Nunito', sans-serif;     /* Fonte Nunito */
+            font-size: 24px;                       /* Tamanho da fonte */
+            font-style: normal;                     /* Estilo normal */
+            font-weight: 400;                      /* Peso da fonte */
+            line-height: 133%;                     /* Altura da linha */
+        }
+
+        #nextBtn:hover,
+        #sendBtn:hover {
+            background: #2e5256;                   /* Cor de fundo ao passar o mouse */
+        }
+
+        #sendBtn {
+            display: flex;                          /* Mantém como flex container */
+            width: 143px;                           /* Largura desejada */
+            height: 56px;                           /* Altura desejada */
+            padding: 16px 28px;                    /* Preenchimento interno */
+            justify-content: center;                /* Centraliza o conteúdo */
+            align-items: center;                    /* Centraliza verticalmente */
+            gap: 10px;                              /* Espaço entre ícones e texto */
+            border-radius: 12px;                   /* Bordas arredondadas */
+            background: #3A6573;                   /* Cor de fundo */
+            box-shadow: 0px 4px 8px 0px rgba(255, 255, 255, 0.08); /* Sombra */
+            color: var(--gray-scale-white-white, #FFF); /* Cor do texto */
+            border: none;                           /* Sem borda */
+            cursor: pointer;                        /* Muda o cursor ao passar o mouse */
+            transition: background-color 0.3s;     /* Transição suave ao passar o mouse */
+
+            /* Tipografia */
+            font-family: 'Nunito', sans-serif;     /* Fonte Nunito */
+            font-size: 24px;                       /* Tamanho da fonte */
+            font-style: normal;                     /* Estilo normal */
+            font-weight: 400;                      /* Peso da fonte */
+            line-height: 133%;                     /* Altura da linha */
         }
     </style>
 </head>
 
 <body class="bg-gray-100">
     {% include 'menu.html' %}
-    
+
     <div class="container mx-auto py-8">
         <div class="form-card max-w-2xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
             <div id="sessionHeader" class="session-header"></div>
@@ -112,10 +218,14 @@
                                 </div>
                                 <div id="progressText" class="text-sm ml-2"></div>
                             </div>
-                            <div>
-                                <button type="button" id="prevBtn" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700" onclick="changeQuestion(-1)" style="display: none;">Anterior</button>
-                                <button type="button" id="nextBtn" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700" onclick="changeQuestion(1)">Próximo</button>
-                                <button type="submit" id="submitBtn" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700" style="display: none;">Enviar</button>
+                            <div class="flex space-x-2"> <!-- Adicionado espaço entre os botões -->
+                                <button type="button" id="prevBtn"
+                                    class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700"
+                                    onclick="changeQuestion(-1)" style="display: none;">Voltar</button>
+                                <button type="button" id="nextBtn"
+                                    onclick="changeQuestion(1)">Próximo</button>
+                                <button type="submit" id="sendBtn"
+                                    style="display: none;">Enviar</button>
                             </div>
                         </div>
                     </form>
@@ -136,14 +246,13 @@
         let currentQuestion = 0;
         const questions = document.querySelectorAll('.question');
 
-
         function changeQuestion(n) {
             questions[currentQuestion].classList.remove('active');
             currentQuestion += n;
 
             if (currentQuestion >= 0 && currentQuestion < questions.length) {
                 questions[currentQuestion].classList.add('active');
-                
+
                 const sessionIndex = Math.floor(currentQuestion / (questions.length / 4));
                 document.getElementById('sessionHeader').textContent = sessionTitles[sessionIndex];
 
@@ -154,11 +263,12 @@
 
                 document.getElementById("prevBtn").style.display = currentQuestion === 0 ? 'none' : 'inline';
                 document.getElementById("nextBtn").style.display = currentQuestion === questions.length - 1 ? 'none' : 'inline';
-                document.getElementById("submitBtn").style.display = currentQuestion === questions.length - 1 ? 'inline' : 'none';
+                document.getElementById("sendBtn").style.display = currentQuestion === questions.length - 1 ? 'inline' : 'none';
             }
         }
 
         changeQuestion(0);
     </script>
 </body>
+
 </html>
