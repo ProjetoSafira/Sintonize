@@ -7,7 +7,7 @@
     {% load static %}
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/menu.css' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400&family=Poppins:wght@400&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400&family=Poppins:wght@400&family=Roboto:wght@400&display=swap"
         rel="stylesheet">
     <title>Teste de Burnout</title>
     <style>
@@ -195,11 +195,14 @@
             <div class="p-4 form-content">
                 <img src="{% static 'images/forms/formulario.png' %}" alt="Ícone formulário">
                 <div class="form-info">
-                    <h2 class="text-xl font-bold mb-4">Identifique sinais respondendo ao formulário.</h2>
+                    <h2 style="width: 845.045px; height: 40.567px; flex-shrink: 0; color: var(--Primary-Pressed---500, #204551); font-family: 'Nunito', sans-serif; font-size: 32px; font-style: normal; font-weight: 600; line-height: 40px; letter-spacing: 0.25px;">
+                        Identifique sinais respondendo ao formulário.
+                    </h2>
                     <form method="post" id="surveyForm">
                         {% csrf_token %}
                         {% for field in form %}
-                        <div class="question {% if forloop.first %}active{% endif %}" id="question-{{ forloop.counter }}">
+                        <div class="question {% if forloop.first %}active{% endif %}" id="question-{{ forloop.counter }}" 
+                             style="width: 845px; margin-top: 20px; color: #000; font-family: 'Roboto', sans-serif; font-size: 20px; font-style: normal; font-weight: 400; line-height: normal;">
                             <h3 class="text-lg font-semibold">{{ field.label }}</h3>
                             <div class="radio-container mt-4">
                                 {% for subfield in field %}
