@@ -62,7 +62,6 @@
         .progress-bar-container {
             display: flex;
             align-items: center;
-            justify-content: space-between;
             margin-top: 20px;
         }
         .progress-bar {
@@ -104,16 +103,18 @@
                             </div>
                         </div>
                         {% endfor %}
-                        <div class="progress-bar-container mt-4">
-                            <div class="progress-bar">
-                                <div id="progress" class="progress"></div>
+                        <div class="flex items-center justify-between mt-4">
+                            <div class="flex items-center flex-grow mr-4">
+                                <div class="progress-bar">
+                                    <div id="progress" class="progress"></div>
+                                </div>
+                                <div id="progressText" class="text-sm ml-2"></div>
                             </div>
-                            <div id="progressText" class="text-sm"></div>
-                        </div>
-                        <div class="flex justify-between mt-4">
-                            <button type="button" id="prevBtn" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700" onclick="changeQuestion(-1)" style="display: none;">Anterior</button>
-                            <button type="button" id="nextBtn" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700" onclick="changeQuestion(1)">Próximo</button>
-                            <button type="submit" id="submitBtn" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700" style="display: none;">Enviar</button>
+                            <div>
+                                <button type="button" id="prevBtn" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700" onclick="changeQuestion(-1)" style="display: none;">Anterior</button>
+                                <button type="button" id="nextBtn" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700" onclick="changeQuestion(1)">Próximo</button>
+                                <button type="submit" id="submitBtn" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700" style="display: none;">Enviar</button>
+                            </div>
                         </div>
                     </form>
                 </div>
