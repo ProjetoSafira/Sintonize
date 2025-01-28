@@ -6,7 +6,7 @@
     {% load static %}
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/menu.css' %}">
-    <title>Survey de Burnout</title>
+    <title>Teste de Burnout</title>
     <style>
         .session-header {
             display: flex;
@@ -79,8 +79,10 @@
         }
     </style>
 </head>
+
 <body class="bg-gray-100">
     {% include 'menu.html' %}
+    
     <div class="container mx-auto py-8">
         <div class="form-card max-w-2xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
             <div id="sessionHeader" class="session-header"></div>
@@ -133,6 +135,7 @@
         const totalQuestions = {{ form|length }}; // Total de perguntas
         let currentQuestion = 0;
         const questions = document.querySelectorAll('.question');
+
 
         function changeQuestion(n) {
             questions[currentQuestion].classList.remove('active');
