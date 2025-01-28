@@ -15,26 +15,24 @@ class BurnoutSurvey(models.Model):
         (ALWAYS, "Sempre"),
     ]
 
-    statement_1 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="1. Eu me sinto emocionalmente esgotado.")
-    statement_2 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="2. Eu me sinto sobrecarregado de trabalho.")
-    statement_3 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="3. Eu me sinto menos competente no meu trabalho.")
-    statement_4 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="4. Eu me sinto isolado no meu ambiente de trabalho.")
-    statement_5 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="5. Eu tenho dificuldade em relaxar após o trabalho.")
-    statement_6 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="6. Eu me sinto apático em relação a atividades que costumava gostar.")
-    statement_7 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="7. Eu sinto que as minhas emoções estão fora de controle.")
-    statement_8 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="8. Eu me sinto menos produtivo do que antes.")
-    statement_9 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="9. Eu fico facilmente irritado ou frustrado.")
-    statement_10 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="10. Eu tenho dificuldade em me concentrar em tarefas simples.")
-    statement_11 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="11. Não sinto mais tanto amor pelo meu trabalho como antes.")
-    statement_12 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="12. Não acredito mais naquilo que realizo profissionalmente.")
-    statement_13 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="13. Penso que não importa o que eu faça, nada vai mudar no meu trabalho.")
-    statement_14 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="14. As pessoas me culpam pelos seus problemas.")
-    statement_15 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="15. Sinto-me responsável pelos problemas das pessoas que atendo.")
-    statement_16 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="16. Tenho me sentido mais estressado(a) com as pessoas que atendo.")
-    statement_17 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="17. Estou no emprego apenas por causa do salário.")
-    statement_18 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="18. Sinto-me sem forças para conseguir algum resultado significante.")
-    statement_19 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="19. Não acredito mais na profissão que exerço.")
-    statement_20 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="20. Envolvo-me com facilidade nos problemas dos outros.")
+    statement_1 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="1. Com que frequência você sente que não consegue lidar emocionalmente com as demandas do trabalho?.")
+    statement_2 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="2. Você sente que perdeu o entusiasmo ou a motivação que tinha em relação ao seu trabalho?.")
+    statement_3 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="3. Sente-se frequentemente ansioso(a) ou frustrado(a) em relação ao trabalho?.")
+    statement_4 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="4. Com que frequência você se sente irritado(a) ou impaciente com colegas, gestores ou clientes?.")
+    statement_5 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="5. Você sente dificuldade em se desconectar emocionalmente do trabalho, mesmo fora do expediente?.")
+    statement_6 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="6. Após o expediente, com que frequência você se sente fisicamente exausto(a)?.")
+    statement_7 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="7. Ao acordar, você sente que não recuperou a necessidade de energia, mesmo após uma noite de descanso?.")
+    statement_8 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="8.Você sente que a carga de trabalho está impactando sua saúde física, como dores, cansaço excessivo ou outros sintomas?.")
+    statement_9 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="9. Você percebe alterações no seu apetite ou padrão de sono devido ao trabalho?.")
+    statement_10 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="10. Você sente que seu esforço ou desempenho no trabalho não é devidamente reconhecido ou valorizado?.")
+    statement_11 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="11. Você acredita que seu trabalho atual proporciona um senso de propósito ou realização pessoal?.")
+    statement_12 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="12. Você considera que os pagamentos ou benefícios recebidos são proporcionais ao critério do trabalho?.")
+    statement_13 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="13. Você acredita que o ambiente de trabalho contribui positivamente para seu bem-estar mental e físico?.")
+    statement_14 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="14. Você sente que pode contar com o apoio de seus colegas ou superiores em momentos de dificuldade?.")
+    statement_15 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="15. Você sente que consegue equilibrar suas responsabilidades profissionais com sua vida pessoal?.")
+    statement_16 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="16. Com que frequência você sente que o tempo disponível para realizar suas tarefas no trabalho é insuficiente?.")
+    statement_17 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="17. Você percebe que o trabalho interfere na sua capacidade de cuidar de si mesmo(a) ou de outras áreas importantes da sua vida?.")
+
 
     def total_score(self):
         score = (
@@ -45,8 +43,6 @@ class BurnoutSurvey(models.Model):
             self.statement_10 + self.statement_11 + 
             self.statement_12 + self.statement_13 + 
             self.statement_14 + self.statement_15 + 
-            self.statement_16 + self.statement_17 + 
-            self.statement_18 + self.statement_19 + 
-            self.statement_20
+            self.statement_16 + self.statement_17 
         )
         return score
