@@ -5,8 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
     <title>Survey de Burnout</title>
     <style>
+        .session-header {
+            display: flex;
+            width: 100%;
+            max-width: 1411px;
+            height: 72px;
+            padding: 16px 64px;
+            align-items: center;
+            gap: 10px;
+            border-radius: 24px 24px 0 0;
+            background: #BDCCD1;
+            color: #333;
+            font-weight: bold;
+            justify-content: center;
+        }
         .question {
             display: none;
         }
@@ -33,37 +48,88 @@
         .radio-input {
             display: none;
         }
+        .form-content {
+            display: flex;
+            align-items: center;
+        }
+        .form-content img {
+            max-width: 40%;
+            margin-right: 20px;
+        }
+        .form-info {
+            max-width: 60%;
+        }
+        .progress-bar-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .progress-bar {
+            flex-grow: 1;
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-right: 10px;
+        }
+        .progress {
+            height: 100%;
+            background-color: #007bff;
+            width: 0;
+        }
     </style>
 </head>
 <body class="bg-gray-100">
+    {% include 'menu.html' %}
     <div class="container mx-auto py-8">
-        <div class="form-card p-4 max-w-2xl mx-auto bg-white shadow-md rounded-lg">
-            <h2 class="text-xl font-bold mb-4">Identifique sinais respondendo ao formulário.</h2>
-            <form method="post" id="surveyForm">
-                {% csrf_token %}
-                {% for field in form %}
-                <div class="question {% if forloop.first %}active{% endif %}" id="question-{{ forloop.counter }}">
-                    <h3 class="text-lg font-semibold">{{ forloop.counter }}. {{ field.label }}</h3>
-                    <div class="radio-container mt-4">
-                        {% for subfield in field %}
-                        <label class="radio-label">
-                            {{ subfield.tag }}
-                            <span class="ml-3">{{ subfield.choice_label }}</span>
-                        </label>
+        <div class="form-card max-w-2xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
+            <div id="sessionHeader" class="session-header"></div>
+            <div class="p-4 form-content">
+                <img src="{% static 'images/forms/formulario.png' %}" alt="Ícone formulário">
+                <div class="form-info">
+                    <h2 class="text-xl font-bold mb-4">Identifique sinais respondendo ao formulário.</h2>
+                    <form method="post" id="surveyForm">
+                        {% csrf_token %}
+                        {% for field in form %}
+                        <div class="question {% if forloop.first %}active{% endif %}" id="question-{{ forloop.counter }}">
+                            <h3 class="text-lg font-semibold">{{ field.label }}</h3>
+                            <div class="radio-container mt-4">
+                                {% for subfield in field %}
+                                <label class="radio-label">
+                                    {{ subfield.tag }}
+                                    <span class="ml-3">{{ subfield.choice_label }}</span>
+                                </label>
+                                {% endfor %}
+                            </div>
+                        </div>
                         {% endfor %}
-                    </div>
+                        <div class="progress-bar-container mt-4">
+                            <div class="progress-bar">
+                                <div id="progress" class="progress"></div>
+                            </div>
+                            <div id="progressText" class="text-sm"></div>
+                        </div>
+                        <div class="flex justify-between mt-4">
+                            <button type="button" id="prevBtn" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700" onclick="changeQuestion(-1)" style="display: none;">Anterior</button>
+                            <button type="button" id="nextBtn" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700" onclick="changeQuestion(1)">Próximo</button>
+                            <button type="submit" id="submitBtn" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700" style="display: none;">Enviar</button>
+                        </div>
+                    </form>
                 </div>
-                {% endfor %}
-                <div class="flex justify-between mt-4">
-                    <button type="button" id="prevBtn" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700" onclick="changeQuestion(-1)" style="display: none;">Anterior</button>
-                    <button type="button" id="nextBtn" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700" onclick="changeQuestion(1)">Próximo</button>
-                    <button type="submit" id="submitBtn" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700" style="display: none;">Enviar</button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 
     <script>
+        const sessionTitles = [
+            "Sessão 1 de 4: Carga Emocional e Saúde Mental",
+            "Sessão 2 de 4: Exaustão Física e Cansaço",
+            "Sessão 3 de 4: Satisfação e Realização Profissional",
+            "Sessão 4 de 4: Relações e Suporte no Ambiente de Trabalho"
+        ];
+
+        const totalQuestions = {{ form|length }}; // Total de perguntas
         let currentQuestion = 0;
         const questions = document.querySelectorAll('.question');
 
@@ -73,6 +139,14 @@
 
             if (currentQuestion >= 0 && currentQuestion < questions.length) {
                 questions[currentQuestion].classList.add('active');
+                
+                const sessionIndex = Math.floor(currentQuestion / (questions.length / 4));
+                document.getElementById('sessionHeader').textContent = sessionTitles[sessionIndex];
+
+                // Atualiza a barra de progresso
+                const progressPercentage = ((currentQuestion + 1) / totalQuestions) * 100; // +1 porque currentQuestion começa em 0
+                document.getElementById('progress').style.width = progressPercentage + '%';
+                document.getElementById('progressText').textContent = `${currentQuestion + 1}/${totalQuestions}`;
 
                 document.getElementById("prevBtn").style.display = currentQuestion === 0 ? 'none' : 'inline';
                 document.getElementById("nextBtn").style.display = currentQuestion === questions.length - 1 ? 'none' : 'inline';
