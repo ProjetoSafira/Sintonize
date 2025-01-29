@@ -12,20 +12,32 @@
         rel="stylesheet">
     <title>Teste de Burnout</title>
     <style>
-        .session-header {
-            display: flex;
-            width: 100%;
-            max-width: 1411px;
-            height: 72px;
-            padding: 16px 64px;
-            align-items: center;
-            gap: 10px;
-            border-radius: 24px 24px 0 0;
-            background: #BDCCD1;
-            color: #333;
-            font-weight: bold;
-            justify-content: center;
-        }
+     .session-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1411px;
+    height: 72px;
+    padding: 16px 64px;
+    border-radius: 24px 24px 0 0;
+    background: #BDCCD1;
+    color: var(--Neutral-colors-Black-Colors-400, #292B2F);
+    font-family: 'Nunito', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 133%;
+}
+
+/* Estilo adicional para o texto da sessão */
+.session-title {
+    margin-right: 10px; /* Ajuste a distância conforme necessário */
+}
+
+.session-subtitle {
+    font-weight: bold; /* Pode ajustar conforme desejado */
+}
+
 
         .question {
             display: none;
@@ -52,6 +64,7 @@
             border: 1px solid #B7BAC1;
             background: rgba(254, 254, 254, 0.50);
             backdrop-filter: blur(2px);
+            
         }
 
         .radio-label:hover {
@@ -60,6 +73,19 @@
 
         .radio-input {
             display: none;
+            
+        }
+
+        .radio-input+span::before {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+
+        }
+
+        .radio-input:checked+span::before {
+            background-color: #204551;
+            /* Cor de fundo quando marcado */
         }
 
         .form-card {
