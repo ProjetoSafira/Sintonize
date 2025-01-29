@@ -7,7 +7,8 @@
     {% load static %}
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/menu.css' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400&family=Poppins:wght@400&family=Roboto:wght@400&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400&family=Poppins:wght@400&family=Roboto:wght@400&display=swap"
         rel="stylesheet">
     <title>Teste de Burnout</title>
     <style>
@@ -42,12 +43,15 @@
 
         .radio-label {
             display: flex;
+            width: 845px;
+            height: var(--6, 48px);
+            padding: 12px 10px 12px 16px;
             align-items: center;
-            padding: 0.75rem;
-            border: 2px solid #D3D3D3;
-            border-radius: 0.375rem;
-            cursor: pointer;
-            transition: background-color 0.2s;
+            gap: 10px;
+            border-radius: 12px;
+            border: 1px solid #B7BAC1;
+            background: rgba(254, 254, 254, 0.50);
+            backdrop-filter: blur(2px);
         }
 
         .radio-label:hover {
@@ -66,7 +70,8 @@
             justify-content: center;
             align-items: center;
             flex-shrink: 0;
-            background-color: white; /* Certifique-se que o fundo é branco */
+            background-color: white;
+            /* Certifique-se que o fundo é branco */
         }
 
         .form-content {
@@ -85,103 +90,178 @@
 
         .progress-bar-container {
             display: flex;
+            width: 443px;
+            height: 21px;
+            padding-right: 14px;
             align-items: center;
-            margin-top: 20px;
+            flex-shrink: 0;
         }
 
         .progress-bar {
-            flex-grow: 1;
-            height: 8px;
-            background-color: #e0e0e0;
-            border-radius: 4px;
-            overflow: hidden;
-            margin-right: 10px;
+            width: 383px;
+            height: 12px;
+            flex-shrink: 0;
+            border-radius: 10px;
+            background: #D9D9D9;
         }
 
+
         .progress {
-            height: 100%;
-            background-color: #007bff;
-            width: 0;
+
+            left: 59px;
+            top: 4px;
+            border-radius: 10px;
+            background: var(--Primary-Pressed---500, #204551);
+        }
+
+        #progressText {
+            width: 51px;
+            flex-shrink: 0;
+            color: #36454F;
+            text-align: right;
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
         }
 
         #prevBtn {
-            display: flex;                          /* Torna o botão um flex container */
-            width: 143px;                           /* Largura desejada */
-            height: 56px;                           /* Altura desejada */
-            padding: 16px 28px;                    /* Preenchimento interno */
-            justify-content: center;                /* Centraliza o conteúdo */
-            align-items: center;                    /* Centraliza verticalmente */
-            gap: 10px;                              /* Espaço entre ícones e texto */
-            border-radius: var(--spacing-spacing-4-spacing-3, 12px); /* Bordas arredondadas com a variável desejada */
-            border: 1.4px solid var(--Primary-Defaunt---400, #3A6573); /* Borda com a cor especificada */
-            background: transparent;                /* Fundo transparente para o botão */
-            color: var(--Primary-Defaunt---400, #3A6573); /* Cor do texto */
-            cursor: pointer;                        /* Muda o cursor ao passar o mouse */
-            transition: background-color 0.3s;     /* Transição suave ao passar o mouse */
+            display: flex;
+            /* Torna o botão um flex container */
+            width: 143px;
+            /* Largura desejada */
+            height: 56px;
+            /* Altura desejada */
+            padding: 16px 28px;
+            /* Preenchimento interno */
+            justify-content: center;
+            /* Centraliza o conteúdo */
+            align-items: center;
+            /* Centraliza verticalmente */
+            gap: 10px;
+            /* Espaço entre ícones e texto */
+            border-radius: var(--spacing-spacing-4-spacing-3, 12px);
+            /* Bordas arredondadas com a variável desejada */
+            border: 1.4px solid var(--Primary-Defaunt---400, #3A6573);
+            /* Borda com a cor especificada */
+            background: transparent;
+            /* Fundo transparente para o botão */
+            color: var(--Primary-Defaunt---400, #3A6573);
+            /* Cor do texto */
+            cursor: pointer;
+            /* Muda o cursor ao passar o mouse */
+            transition: background-color 0.3s;
+            /* Transição suave ao passar o mouse */
 
             /* Tipografia */
-            font-family: 'Poppins', sans-serif;     /* Fonte Poppins */
-            font-size: 19.2px;                     /* Tamanho da fonte */
-            font-style: normal;                     /* Estilo normal */
-            font-weight: 400;                      /* Peso da fonte */
-            line-height: 24px;                     /* Altura da linha */
+            font-family: 'Poppins', sans-serif;
+            /* Fonte Poppins */
+            font-size: 19.2px;
+            /* Tamanho da fonte */
+            font-style: normal;
+            /* Estilo normal */
+            font-weight: 400;
+            /* Peso da fonte */
+            line-height: 24px;
+            /* Altura da linha */
         }
 
         #prevBtn:hover {
-            background: rgba(58, 101, 115, 0.1); /* Cor de fundo ao passar o mouse (opcional) */
+            background: rgba(58, 101, 115, 0.1);
+            /* Cor de fundo ao passar o mouse (opcional) */
         }
 
         #nextBtn {
-            display: flex;                          /* Mantém como flex container */
-            width: 143px;                           /* Largura desejada */
-            height: 56px;                           /* Altura desejada */
-            padding: 16px 28px;                    /* Preenchimento interno */
-            justify-content: center;                /* Centraliza o conteúdo */
-            align-items: center;                    /* Centraliza verticalmente */
-            gap: 10px;                              /* Espaço entre ícones e texto */
-            border-radius: 12px;                   /* Bordas arredondadas */
-            background: #3A6573;                   /* Cor de fundo */
-            box-shadow: 0px 4px 8px 0px rgba(255, 255, 255, 0.08); /* Sombra */
-            color: var(--gray-scale-white-white, #FFF); /* Cor do texto */
-            border: none;                           /* Sem borda */
-            cursor: pointer;                        /* Muda o cursor ao passar o mouse */
-            transition: background-color 0.3s;     /* Transição suave ao passar o mouse */
+            display: flex;
+            /* Mantém como flex container */
+            width: 143px;
+            /* Largura desejada */
+            height: 56px;
+            /* Altura desejada */
+            padding: 16px 28px;
+            /* Preenchimento interno */
+            justify-content: center;
+            /* Centraliza o conteúdo */
+            align-items: center;
+            /* Centraliza verticalmente */
+            gap: 10px;
+            /* Espaço entre ícones e texto */
+            border-radius: 12px;
+            /* Bordas arredondadas */
+            background: #3A6573;
+            /* Cor de fundo */
+            box-shadow: 0px 4px 8px 0px rgba(255, 255, 255, 0.08);
+            /* Sombra */
+            color: var(--gray-scale-white-white, #FFF);
+            /* Cor do texto */
+            border: none;
+            /* Sem borda */
+            cursor: pointer;
+            /* Muda o cursor ao passar o mouse */
+            transition: background-color 0.3s;
+            /* Transição suave ao passar o mouse */
 
             /* Tipografia */
-            font-family: 'Nunito', sans-serif;     /* Fonte Nunito */
-            font-size: 24px;                       /* Tamanho da fonte */
-            font-style: normal;                     /* Estilo normal */
-            font-weight: 400;                      /* Peso da fonte */
-            line-height: 133%;                     /* Altura da linha */
+            font-family: 'Nunito', sans-serif;
+            /* Fonte Nunito */
+            font-size: 24px;
+            /* Tamanho da fonte */
+            font-style: normal;
+            /* Estilo normal */
+            font-weight: 400;
+            /* Peso da fonte */
+            line-height: 133%;
+            /* Altura da linha */
         }
 
         #nextBtn:hover,
         #sendBtn:hover {
-            background: #2e5256;                   /* Cor de fundo ao passar o mouse */
+            background: #2e5256;
+            /* Cor de fundo ao passar o mouse */
         }
 
         #sendBtn {
-            display: flex;                          /* Mantém como flex container */
-            width: 143px;                           /* Largura desejada */
-            height: 56px;                           /* Altura desejada */
-            padding: 16px 28px;                    /* Preenchimento interno */
-            justify-content: center;                /* Centraliza o conteúdo */
-            align-items: center;                    /* Centraliza verticalmente */
-            gap: 10px;                              /* Espaço entre ícones e texto */
-            border-radius: 12px;                   /* Bordas arredondadas */
-            background: #3A6573;                   /* Cor de fundo */
-            box-shadow: 0px 4px 8px 0px rgba(255, 255, 255, 0.08); /* Sombra */
-            color: var(--gray-scale-white-white, #FFF); /* Cor do texto */
-            border: none;                           /* Sem borda */
-            cursor: pointer;                        /* Muda o cursor ao passar o mouse */
-            transition: background-color 0.3s;     /* Transição suave ao passar o mouse */
+            display: flex;
+            /* Mantém como flex container */
+            width: 143px;
+            /* Largura desejada */
+            height: 56px;
+            /* Altura desejada */
+            padding: 16px 28px;
+            /* Preenchimento interno */
+            justify-content: center;
+            /* Centraliza o conteúdo */
+            align-items: center;
+            /* Centraliza verticalmente */
+            gap: 10px;
+            /* Espaço entre ícones e texto */
+            border-radius: 12px;
+            /* Bordas arredondadas */
+            background: #3A6573;
+            /* Cor de fundo */
+            box-shadow: 0px 4px 8px 0px rgba(255, 255, 255, 0.08);
+            /* Sombra */
+            color: var(--gray-scale-white-white, #FFF);
+            /* Cor do texto */
+            border: none;
+            /* Sem borda */
+            cursor: pointer;
+            /* Muda o cursor ao passar o mouse */
+            transition: background-color 0.3s;
+            /* Transição suave ao passar o mouse */
 
             /* Tipografia */
-            font-family: 'Nunito', sans-serif;     /* Fonte Nunito */
-            font-size: 24px;                       /* Tamanho da fonte */
-            font-style: normal;                     /* Estilo normal */
-            font-weight: 400;                      /* Peso da fonte */
-            line-height: 133%;                     /* Altura da linha */
+            font-family: 'Nunito', sans-serif;
+            /* Fonte Nunito */
+            font-size: 24px;
+            /* Tamanho da fonte */
+            font-style: normal;
+            /* Estilo normal */
+            font-weight: 400;
+            /* Peso da fonte */
+            line-height: 133%;
+            /* Altura da linha */
         }
     </style>
 </head>
@@ -195,14 +275,16 @@
             <div class="p-4 form-content">
                 <img src="{% static 'images/forms/formulario.png' %}" alt="Ícone formulário">
                 <div class="form-info">
-                    <h2 style="width: 845.045px; height: 40.567px; flex-shrink: 0; color: var(--Primary-Pressed---500, #204551); font-family: 'Nunito', sans-serif; font-size: 32px; font-style: normal; font-weight: 600; line-height: 40px; letter-spacing: 0.25px;">
+                    <h2
+                        style="width: 845.045px; height: 40.567px; flex-shrink: 0; color: var(--Primary-Pressed---500, #204551); font-family: 'Nunito', sans-serif; font-size: 32px; font-style: normal; font-weight: 600; line-height: 125%; letter-spacing: 0.25px;">
                         Identifique sinais respondendo ao formulário.
                     </h2>
                     <form method="post" id="surveyForm">
                         {% csrf_token %}
                         {% for field in form %}
-                        <div class="question {% if forloop.first %}active{% endif %}" id="question-{{ forloop.counter }}" 
-                             style="width: 845px; margin-top: 20px; color: #000; font-family: 'Roboto', sans-serif; font-size: 20px; font-style: normal; font-weight: 400; line-height: normal;">
+                        <div class="question {% if forloop.first %}active{% endif %}"
+                            id="question-{{ forloop.counter }}"
+                            style="width: 845px; margin-top: 20px; color: #000; font-family: 'Roboto', sans-serif; font-size: 16px; font-style: normal; font-weight: 400; line-height: normal;">
                             <h3 class="text-lg font-semibold">{{ field.label }}</h3>
                             <div class="radio-container mt-4">
                                 {% for subfield in field %}
@@ -216,19 +298,18 @@
                         {% endfor %}
                         <div class="flex items-center justify-between mt-4">
                             <div class="flex items-center flex-grow mr-4">
-                                <div class="progress-bar">
-                                    <div id="progress" class="progress"></div>
+                                <div id="progressText" style="margin-right: 10px;"></div>
+                                <!-- Alinhar o texto à esquerda -->
+                                <div class="progress-bar" style="position: relative;">
+                                    <div id="progress" class="progress" style="height: 100%;"></div>
                                 </div>
-                                <div id="progressText" class="text-sm ml-2"></div>
                             </div>
-                            <div class="flex space-x-2"> <!-- Adicionado espaço entre os botões -->
+                            <div class="flex space-x-2">
                                 <button type="button" id="prevBtn"
                                     class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700"
                                     onclick="changeQuestion(-1)" style="display: none;">Voltar</button>
-                                <button type="button" id="nextBtn"
-                                    onclick="changeQuestion(1)">Próximo</button>
-                                <button type="submit" id="sendBtn"
-                                    style="display: none;">Enviar</button>
+                                <button type="button" id="nextBtn" onclick="changeQuestion(1)">Próximo</button>
+                                <button type="submit" id="sendBtn" style="display: none;">Enviar</button>
                             </div>
                         </div>
                     </form>
@@ -244,10 +325,10 @@
             "Sessão 3 de 4: Satisfação e Realização Profissional",
             "Sessão 4 de 4: Relações e Suporte no Ambiente de Trabalho"
         ];
-
-        const totalQuestions = {{ form|length }}; // Total de perguntas
+        const totalQuestions = 17; // Definir 17 perguntas
         let currentQuestion = 0;
         const questions = document.querySelectorAll('.question');
+
 
         function changeQuestion(n) {
             questions[currentQuestion].classList.remove('active');
@@ -256,21 +337,24 @@
             if (currentQuestion >= 0 && currentQuestion < questions.length) {
                 questions[currentQuestion].classList.add('active');
 
-                const sessionIndex = Math.floor(currentQuestion / (questions.length / 4));
+                // Atualiza o título da sessão
+                const sessionIndex = Math.floor(currentQuestion / (totalQuestions / 4));
                 document.getElementById('sessionHeader').textContent = sessionTitles[sessionIndex];
 
                 // Atualiza a barra de progresso
-                const progressPercentage = ((currentQuestion + 1) / totalQuestions) * 100; // +1 porque currentQuestion começa em 0
+                const progressPercentage = ((currentQuestion + 1) / totalQuestions) * 100;
                 document.getElementById('progress').style.width = progressPercentage + '%';
                 document.getElementById('progressText').textContent = `${currentQuestion + 1}/${totalQuestions}`;
 
+                // Atualiza visibilidade dos botões
                 document.getElementById("prevBtn").style.display = currentQuestion === 0 ? 'none' : 'inline';
-                document.getElementById("nextBtn").style.display = currentQuestion === questions.length - 1 ? 'none' : 'inline';
-                document.getElementById("sendBtn").style.display = currentQuestion === questions.length - 1 ? 'inline' : 'none';
+                document.getElementById("nextBtn").style.display = currentQuestion === totalQuestions - 1 ? 'none' : 'inline';
+                document.getElementById("sendBtn").style.display = currentQuestion === totalQuestions - 1 ? 'inline' : 'none';
             }
         }
 
         changeQuestion(0);
+
     </script>
 </body>
 
