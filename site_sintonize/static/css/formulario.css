@@ -15,6 +15,7 @@
     line-height: 133%;
 }
 
+
 /* Estilo para o título da seção */
 .session-title {
     margin-right: 10px;
@@ -69,13 +70,16 @@
 .radio-input {
     display: none;
     
+
 }
 
 .radio-input+span::before {
     content: '';
     display: inline-block;
-    width: 24px !important; /* Tamanho */
-    height: 24px !important; /* Tamanho */
+    width: 24px !important;
+    /* Tamanho */
+    height: 24px !important;
+    /* Tamanho */
     border: 2px solid #B7BAC1 !important;
     border-radius: 50%;
     margin-right: 10px;
@@ -106,25 +110,33 @@
 
 .form-content {
     display: flex;
-    align-items: flex-start; /* Alinha ao topo */
+    align-items: flex-start;
+    /* Alinha ao topo */
 }
 
 .form-content img {
-    max-width: 40%; /* Você pode ajustar isto conforme necessário */
-    margin-right: 10px; /* Reduza isso para aproximar da form-info */
+    max-width: 40%;
+    /* Você pode ajustar isto conforme necessário */
+    margin-right: 10px;
+    /* Reduza isso para aproximar da form-info */
 }
 
 .form-info {
     display: flex;
-    flex-direction: column; /* Para empilhar elementos verticalmente */
-    width: 40%; /* Ajuste conforme necessário */
-    justify-content: flex-start; /* Alinha ao topo */
-    margin-left: -20px; /* Para puxar a form-info mais próxima da imagem */
+    flex-direction: column;
+    /* Para empilhar elementos verticalmente */
+    width: 40%;
+    /* Ajuste conforme necessário */
+    justify-content: flex-start;
+    /* Alinha ao topo */
+    margin-left: -20px;
+    /* Para puxar a form-info mais próxima da imagem */
 }
 
 /* Estilo de título */
 .form-info h2 {
-    margin: 0; /* Remove margens padrão para mais proximidade */
+    margin: 0;
+    /* Remove margens padrão para mais proximidade */
 }
 
 
@@ -211,11 +223,16 @@
     background: rgba(58, 101, 115, 0.1);
     /* Cor de fundo ao passar o mouse (opcional) */
 }
-#prevBtn:hover, #nextBtn:hover, #sendBtn:hover {
+
+#prevBtn:hover,
+#nextBtn:hover,
+#sendBtn:hover {
     transform: scale(1.05);
 }
 
-#prevBtn, #nextBtn, #sendBtn {
+#prevBtn,
+#nextBtn,
+#sendBtn {
     transition: background-color 0.3s, transform 0.2s;
 }
 
@@ -313,37 +330,42 @@
 
 /* Estilos gerais para telas pequenas */
 @media (max-width: 1440px) {
-.radio-container {
-    display: flex;
-    width: 40%;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--spacing-spacing-4-spacing-3, 12px);
-}
-.radio-label {
-   
-    width: 745px;
-}
+    .radio-container {
+        display: flex;
+        width: 40%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-spacing-4-spacing-3, 12px);
+    }
 
-.form-info {
- 
-    flex-direction: column; /* Para empilhar elementos verticalmente */
-    width: 594px; /* Ajuste conforme necessário */
-   
-    justify-content: flex-start; /* Alinha ao topo */
-    margin-left: -40px; /* Para puxar a form-info mais próxima da imagem */
-  
-}
+    .radio-label {
 
-.text-lg{
-    color: #000;
-font-family: 'Roboto';
-font-size: 20px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-width: 745px;
-}
+        width: 745px;
+    }
+
+    .form-info {
+
+        flex-direction: column;
+        /* Para empilhar elementos verticalmente */
+        width: 594px;
+        /* Ajuste conforme necessário */
+
+        justify-content: flex-start;
+        /* Alinha ao topo */
+        margin-left: -40px;
+        /* Para puxar a form-info mais próxima da imagem */
+
+    }
+
+    .text-lg {
+        color: #000;
+        font-family: 'Roboto';
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        width: 745px;
+    }
 
 }
 
@@ -353,7 +375,7 @@ width: 745px;
         align-items: center;
         padding: 10px 20px;
     }
-    
+
     .session-title,
     .session-subtitle {
         width: 100%;
@@ -445,59 +467,78 @@ width: 745px;
     /* Adicione algum preenchimento para conforto */
 }
 }
+
 /* Estilos gerais para telas pequenas */
 
 
 @media (max-width: 768px) {
     .session-header {
-        flex-direction: column; /* Muda a direção do layout para coluna */
-        align-items: flex-start; /* Alinha tudo à esquerda */
-        padding: 10px 5%; /* Ajusta padding */
+        flex-direction: column;
+        /* Muda a direção do layout para coluna */
+        align-items: flex-start;
+        /* Alinha tudo à esquerda */
+        padding: 10px 5%;
+        /* Ajusta padding */
     }
 
     .session-title {
-        font-size: 20px; /* Tamanho de fonte menor */
+        font-size: 20px;
+        /* Tamanho de fonte menor */
     }
 
     .session-subtitle {
-        font-size: 24px; /* Tamanho de fonte menor */
-        width: 100%; /* Largura total para dispositivos móveis */
+        font-size: 24px;
+        /* Tamanho de fonte menor */
+        width: 100%;
+        /* Largura total para dispositivos móveis */
     }
 
     .radio-label {
-        width: 100%; /* Ajusta a largura para que ocupe a tela toda */
+        width: 100%;
+        /* Ajusta a largura para que ocupe a tela toda */
     }
 
     .form-card {
-        padding: 10px; /* Adicione preenchimento para um layout confortável */
+        padding: 10px;
+        /* Adicione preenchimento para um layout confortável */
     }
 }
 
 @media (max-width: 480px) {
     .session-title {
-        font-size: 18px; /* Tamanho de fonte ainda menor */
+        font-size: 18px;
+        /* Tamanho de fonte ainda menor */
     }
 
     .session-subtitle {
-        font-size: 20px; /* Tamanho de fonte ainda menor */
+        font-size: 20px;
+        /* Tamanho de fonte ainda menor */
     }
 
     #prevBtn,
     #nextBtn,
     #sendBtn {
-        width: 100%; /* Botões ocupando toda a largura disponível */
-        height: auto; /* Altura ajustável */
-        font-size: 18px; /* Tamanho da fonte menor */
-        padding: 12px; /* Ajusta padding */
+        width: 100%;
+        /* Botões ocupando toda a largura disponível */
+        height: auto;
+        /* Altura ajustável */
+        font-size: 18px;
+        /* Tamanho da fonte menor */
+        padding: 12px;
+        /* Ajusta padding */
     }
 
     .progress-bar-container {
-        width: 100%; /* Assegura que a barra de progresso ocupe toda a largura */
-        flex-direction: column; /* Coluna para dispositivos pequenos */
-        align-items: flex-start; /* Alinha os itens à esquerda */
+        width: 100%;
+        /* Assegura que a barra de progresso ocupe toda a largura */
+        flex-direction: column;
+        /* Coluna para dispositivos pequenos */
+        align-items: flex-start;
+        /* Alinha os itens à esquerda */
     }
-    
+
     .radio-container {
-        padding: 10px; /* Adicione algum preenchimento para conforto */
+        padding: 10px;
+        /* Adicione algum preenchimento para conforto */
     }
 }
