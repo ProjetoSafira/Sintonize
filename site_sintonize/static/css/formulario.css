@@ -68,21 +68,20 @@
 
 .radio-input {
     display: none;
+    
 }
 
 .radio-input+span::before {
     content: '';
     display: inline-block;
-    width: 24px;
-    /* Alterar o tamanho do botão de rádio */
-    height: 24px;
-    /* Alterar o tamanho do botão de rádio */
-    border: 2px solid #B7BAC1;
+    width: 24px !important; /* Tamanho */
+    height: 24px !important; /* Tamanho */
+    border: 2px solid #B7BAC1 !important;
     border-radius: 50%;
     margin-right: 10px;
-    background-color: transparent;
-    transition: background-color 0.3s, border-color 0.3s
+    transition: background-color 0.3s, border-color 0.3s;
 }
+
 
 .radio-input:checked+span::before {
     background-color: #204551;
@@ -211,6 +210,13 @@
 #prevBtn:hover {
     background: rgba(58, 101, 115, 0.1);
     /* Cor de fundo ao passar o mouse (opcional) */
+}
+#prevBtn:hover, #nextBtn:hover, #sendBtn:hover {
+    transform: scale(1.05);
+}
+
+#prevBtn, #nextBtn, #sendBtn {
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 #nextBtn {

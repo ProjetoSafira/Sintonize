@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="site_sintonize\static\images\images_logo\favicon.ico" type="image/x-icon">
     {% load static %}
+    <link rel="icon" href="{% static 'images/images_logo/favicon.ico' %}" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/menu.css' %}">
     <link rel="stylesheet" href="{% static 'css/formulario.css' %}">
@@ -41,10 +41,8 @@
                                     {{ subfield.tag }}  <!-- Gera o input de rádio -->
                                     <span class="ml-3">{{ subfield.choice_label }}</span>
                                 </label>
-                                
                                 {% endfor %}
                             </div>
-
                         </div>
                         {% endfor %}
                         <div class="flex items-center justify-between mt-4">
