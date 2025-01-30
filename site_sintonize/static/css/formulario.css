@@ -1,0 +1,291 @@
+.session-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1411px;
+    height: 72px;
+    padding: 16px 64px;
+    border-radius: 24px 24px 0 0;
+    background: #BDCCD1;
+    color: var(--Neutral-colors-Black-Colors-400, #292B2F);
+    font-family: 'Nunito', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 133%;
+}
+
+/* Estilo para o título da seção */
+.session-title {
+    margin-right: 10px;
+    /* Pode ser ajustado conforme necessário */
+}
+
+/* Estilo para o subtítulo da seção */
+.session-subtitle {
+    width: 729px;
+    flex-shrink: 0;
+    color: var(--Neutral-colors-Black-Colors-400, #292B2F);
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 125%;
+    display: flex;
+    align-items: left;
+    /* 40px */
+}
+
+
+.question {
+    display: none;
+}
+
+.question.active {
+    display: block;
+}
+
+.radio-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.radio-label {
+    display: flex;
+    width: 845px;
+    height: 48px;
+    padding: 12px 10px 12px 16px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 12px;
+    border: 1px solid #B7BAC1;
+    background: rgba(254, 254, 254, 0.50);
+    backdrop-filter: blur(2px);
+}
+
+.radio-input {
+    display: none;
+}
+
+.radio-input+span::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    /* Alterar o tamanho do botão de rádio */
+    height: 24px;
+    /* Alterar o tamanho do botão de rádio */
+    border: 2px solid #B7BAC1;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: transparent;
+    transition: background-color 0.3s, border-color 0.3s
+}
+
+.radio-input:checked+span::before {
+    background-color: #204551;
+    border-color: #204551;
+}
+
+
+.form-card {
+    width: 100%;
+    max-width: 1411px;
+    height: 712px;
+    border-radius: 32px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    background-color: white;
+    /* Certifique-se que o fundo é branco */
+}
+
+.form-content {
+    display: flex;
+    align-items: center;
+}
+
+.form-content img {
+    max-width: 40%;
+    margin-right: 20px;
+}
+
+.form-info {
+    max-width: 60%;
+}
+
+.progress-bar-container {
+    display: flex;
+    width: 443px;
+    height: 21px;
+    padding-right: 14px;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.progress-bar {
+    width: 383px;
+    height: 12px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #D9D9D9;
+}
+
+
+.progress {
+
+    left: 59px;
+    top: 4px;
+    border-radius: 10px;
+    background: var(--Primary-Pressed---500, #204551);
+}
+
+#progressText {
+    width: 51px;
+    flex-shrink: 0;
+    color: #36454F;
+    text-align: right;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+#prevBtn {
+    display: flex;
+    /* Torna o botão um flex container */
+    width: 143px;
+    /* Largura desejada */
+    height: 56px;
+    /* Altura desejada */
+    padding: 16px 28px;
+    /* Preenchimento interno */
+    justify-content: center;
+    /* Centraliza o conteúdo */
+    align-items: center;
+    /* Centraliza verticalmente */
+    gap: 10px;
+    /* Espaço entre ícones e texto */
+    border-radius: var(--spacing-spacing-4-spacing-3, 12px);
+    /* Bordas arredondadas com a variável desejada */
+    border: 1.4px solid var(--Primary-Defaunt---400, #3A6573);
+    /* Borda com a cor especificada */
+    background: transparent;
+    /* Fundo transparente para o botão */
+    color: var(--Primary-Defaunt---400, #3A6573);
+    /* Cor do texto */
+    cursor: pointer;
+    /* Muda o cursor ao passar o mouse */
+    transition: background-color 0.3s;
+    /* Transição suave ao passar o mouse */
+
+    /* Tipografia */
+    font-family: 'Poppins', sans-serif;
+    /* Fonte Poppins */
+    font-size: 19.2px;
+    /* Tamanho da fonte */
+    font-style: normal;
+    /* Estilo normal */
+    font-weight: 400;
+    /* Peso da fonte */
+    line-height: 24px;
+    /* Altura da linha */
+}
+
+#prevBtn:hover {
+    background: rgba(58, 101, 115, 0.1);
+    /* Cor de fundo ao passar o mouse (opcional) */
+}
+
+#nextBtn {
+    display: flex;
+    /* Mantém como flex container */
+    width: 143px;
+    /* Largura desejada */
+    height: 56px;
+    /* Altura desejada */
+    padding: 16px 28px;
+    /* Preenchimento interno */
+    justify-content: center;
+    /* Centraliza o conteúdo */
+    align-items: center;
+    /* Centraliza verticalmente */
+    gap: 10px;
+    /* Espaço entre ícones e texto */
+    border-radius: 12px;
+    /* Bordas arredondadas */
+    background: #3A6573;
+    /* Cor de fundo */
+    box-shadow: 0px 4px 8px 0px rgba(255, 255, 255, 0.08);
+    /* Sombra */
+    color: var(--gray-scale-white-white, #FFF);
+    /* Cor do texto */
+    border: none;
+    /* Sem borda */
+    cursor: pointer;
+    /* Muda o cursor ao passar o mouse */
+    transition: background-color 0.3s;
+    /* Transição suave ao passar o mouse */
+
+    /* Tipografia */
+    font-family: 'Nunito', sans-serif;
+    /* Fonte Nunito */
+    font-size: 24px;
+    /* Tamanho da fonte */
+    font-style: normal;
+    /* Estilo normal */
+    font-weight: 400;
+    /* Peso da fonte */
+    line-height: 133%;
+    /* Altura da linha */
+}
+
+#nextBtn:hover,
+#sendBtn:hover {
+    background: #2e5256;
+    /* Cor de fundo ao passar o mouse */
+}
+
+#sendBtn {
+    display: flex;
+    /* Mantém como flex container */
+    width: 143px;
+    /* Largura desejada */
+    height: 56px;
+    /* Altura desejada */
+    padding: 16px 28px;
+    /* Preenchimento interno */
+    justify-content: center;
+    /* Centraliza o conteúdo */
+    align-items: center;
+    /* Centraliza verticalmente */
+    gap: 10px;
+    /* Espaço entre ícones e texto */
+    border-radius: 12px;
+    /* Bordas arredondadas */
+    background: #3A6573;
+    /* Cor de fundo */
+    box-shadow: 0px 4px 8px 0px rgba(255, 255, 255, 0.08);
+    /* Sombra */
+    color: var(--gray-scale-white-white, #FFF);
+    /* Cor do texto */
+    border: none;
+    /* Sem borda */
+    cursor: pointer;
+    /* Muda o cursor ao passar o mouse */
+    transition: background-color 0.3s;
+    /* Transição suave ao passar o mouse */
+
+    /* Tipografia */
+    font-family: 'Nunito', sans-serif;
+    /* Fonte Nunito */
+    font-size: 24px;
+    /* Tamanho da fonte */
+    font-style: normal;
+    /* Estilo normal */
+    font-weight: 400;
+    /* Peso da fonte */
+    line-height: 133%;
+    /* Altura da linha */
+}
