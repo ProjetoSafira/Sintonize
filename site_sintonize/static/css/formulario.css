@@ -335,6 +335,18 @@
   
 }
 
+.text-lg{
+    color: #000;
+font-family: 'Roboto';
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+width: 745px;
+}
+
+}
+
 @media (max-width: 1024px) {
     .session-header {
         flex-direction: column;
