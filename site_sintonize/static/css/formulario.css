@@ -67,25 +67,14 @@
     backdrop-filter: blur(2px);
 }
 
+.form-content .radio-container .radio-label input[type="radio"] {
+    width: 20px;
+    height: 20px;
+}
+
 .radio-input {
     display: none;
-    
-
 }
-
-.radio-input+span::before {
-    content: '';
-    display: inline-block;
-    width: 24px !important;
-    /* Tamanho */
-    height: 24px !important;
-    /* Tamanho */
-    border: 2px solid #B7BAC1 !important;
-    border-radius: 50%;
-    margin-right: 10px;
-    transition: background-color 0.3s, border-color 0.3s;
-}
-
 
 .radio-input:checked+span::before {
     background-color: #204551;

@@ -118,11 +118,6 @@ def equipe(request):
     return render(request, 'equipe.html', {'membros': membros})
 
 
-
-
-
-
-
 def burnout_survey_view(request):
     if request.method == 'POST':
         form = BurnoutSurveyForm(request.POST)
@@ -137,6 +132,7 @@ def burnout_survey_view(request):
         form = BurnoutSurveyForm()
 
     return render(request, 'burnout_survey.html', {'form': form})
+
 
 
 def resultado_view(request, score):
