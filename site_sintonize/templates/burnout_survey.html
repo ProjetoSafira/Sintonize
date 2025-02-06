@@ -17,6 +17,13 @@
 
 <body class="bg-gray-100">
     {% include 'menu.html' %}
+    {% if messages %}
+    <div class="notification">
+        {% for message in messages %}
+            <div>{{ message }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
 
     <div class="container mx-auto py-8">
         <div class="form-card max-w-2xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
@@ -43,6 +50,7 @@
                                 </label>
                                 {% endfor %}
                             </div>
+                            <div id="error-{{ forloop.counter }}" class="text-red-500 mt-2" style="display: none;">Por favor, selecione uma opção para prosseguir.</div>
                         </div>
                         {% endfor %}
                         <div class="flex items-center justify-between mt-4">
@@ -57,8 +65,8 @@
                                 <button type="button" id="prevBtn"
                                     class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700"
                                     onclick="changeQuestion(-1)" style="display: none;">Voltar</button>
-                                <button type="button" id="nextBtn" onclick="changeQuestion(1)">Próximo</button>
-                                <button type="submit" id="sendBtn" style="display: none;">Enviar</button>
+                                <button type="button" id="nextBtn" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700" onclick="changeQuestion(1)">Próximo</button>
+                                <button type="submit" id="sendBtn" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700" style="display: none;">Enviar</button>
                             </div>
                         </div>
                     </form>
@@ -78,8 +86,25 @@
         let currentQuestion = 0;
         const questions = document.querySelectorAll('.question');
 
+        function isOptionSelected() {
+            const currentQuestionElement = questions[currentQuestion];
+            const radioButtons = currentQuestionElement.querySelectorAll('input[type="radio"]');
+            let isSelected = false;
+            radioButtons.forEach(radio => {
+                if (radio.checked) {
+                    isSelected = true;
+                }
+            });
+            return isSelected;
+        }
 
         function changeQuestion(n) {
+            if (n > 0 && !isOptionSelected()) {
+                document.getElementById(`error-${currentQuestion + 1}`).style.display = 'block';
+                return;
+            }
+
+            document.getElementById(`error-${currentQuestion + 1}`).style.display = 'none';
             questions[currentQuestion].classList.remove('active');
             currentQuestion += n;
 
@@ -89,9 +114,9 @@
                 // Atualiza o título da sessão
                 const sessionIndex = Math.floor(currentQuestion / (totalQuestions / 4));
                 document.getElementById('sessionHeader').innerHTML = `
-            <div class="session-title">Seção ${sessionIndex + 1} de 4</div>
-            <div class="session-subtitle">${sessionTitles[sessionIndex]}</div>
-        `;
+                    <div class="session-title">Seção ${sessionIndex + 1} de 4</div>
+                    <div class="session-subtitle">${sessionTitles[sessionIndex]}</div>
+                `;
 
                 // Atualiza a barra de progresso
                 const progressPercentage = ((currentQuestion + 1) / totalQuestions) * 100;
@@ -106,8 +131,6 @@
         }
 
         changeQuestion(0);
-
-
     </script>
 </body>
 
