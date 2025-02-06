@@ -20,7 +20,7 @@
     {% if messages %}
     <div class="notification">
         {% for message in messages %}
-            <div>{{ message }}</div>
+        <div>{{ message }}</div>
         {% endfor %}
     </div>
     {% endif %}
@@ -45,12 +45,13 @@
                             <div class="radio-container mt-4">
                                 {% for subfield in field %}
                                 <label class="radio-label">
-                                    {{ subfield.tag }}  <!-- Gera o input de rádio -->
+                                    {{ subfield.tag }} <!-- Gera o input de rádio -->
                                     <span class="ml-3">{{ subfield.choice_label }}</span>
                                 </label>
                                 {% endfor %}
                             </div>
-                            <div id="error-{{ forloop.counter }}" class="text-red-500 mt-2" style="display: none;">Por favor, selecione uma opção para prosseguir.</div>
+                            <div id="error-{{ forloop.counter }}" class="text-red-500 mt-2" style="display: none;">Por
+                                favor, selecione uma opção para prosseguir.</div>
                         </div>
                         {% endfor %}
                         <div class="flex items-center justify-between mt-4">
@@ -65,8 +66,12 @@
                                 <button type="button" id="prevBtn"
                                     class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700"
                                     onclick="changeQuestion(-1)" style="display: none;">Voltar</button>
-                                <button type="button" id="nextBtn" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700" onclick="changeQuestion(1)">Próximo</button>
-                                <button type="submit" id="sendBtn" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700" style="display: none;">Enviar</button>
+                                <button type="button" id="nextBtn"
+                                    class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+                                    onclick="changeQuestion(1)">Próximo</button>
+                                <button type="button" id="sendBtn"
+                                    class="px-4 py-2 bg-green-500 text-white rounded hover:bg-blue-700"
+                                    style="display: none;" onclick="validateAndSubmit()">Enviar</button>
                             </div>
                         </div>
                     </form>
@@ -131,6 +136,17 @@
         }
 
         changeQuestion(0);
+
+        function validateAndSubmit() {
+            // Verifica se uma opção foi selecionada na última pergunta
+            if (!isOptionSelected()) {
+                document.getElementById(`error-${currentQuestion + 1}`).style.display = 'block';
+                return; // Impede o envio do formulário
+            }
+
+            // Se uma opção foi selecionada, envia o formulário
+            document.getElementById('surveyForm').submit();
+        }
     </script>
 </body>
 
