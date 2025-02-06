@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from requests.exceptions import Timeout
 from .forms import BurnoutSurveyForm
 from django.http import JsonResponse
+from django.contrib import messages
 
 
 def index (request):
@@ -120,6 +121,8 @@ def equipe(request):
 
 
 
+
+
 def burnout_survey_view(request):
     if request.method == 'POST':
         form = BurnoutSurveyForm(request.POST)
@@ -127,10 +130,14 @@ def burnout_survey_view(request):
             survey = form.save()
             score = survey.total_score()
             return redirect('resultado', score=score)
+        else:
+            messages.error(request, 'Por favor, corrija os erros no formulário.')
+
     else:
         form = BurnoutSurveyForm()
-    
+
     return render(request, 'burnout_survey.html', {'form': form})
+
 
 def resultado_view(request, score):
     if score <= 20:
