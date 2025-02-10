@@ -138,13 +138,22 @@ def burnout_survey_view(request):
 def resultado_view(request, score):
     if score <= 20:
         result_text = "Nenhum indício aparente de Síndrome de Burnout."
+        modal_id = "noIndicationModal"
     elif 21 <= score <= 40:
         result_text = "Possibilidade de desenvolver recomendações de prevenção da Síndrome de Burnout."
+        modal_id = "warningModal"
     elif 41 <= score <= 60:
         result_text = "Fase inicial do Burnout. Procure ajuda profissional."
+        modal_id = "initialBurnoutModal"
     elif 61 <= score <= 80:
         result_text = "A Síndrome está instalada. Procure ajuda profissional."
+        modal_id = "burnoutInstalledModal"
     elif 81 <= score <= 100:
         result_text = "Você pode estar em uma fase considerável do Burnout. Procure tratamento."
+        modal_id = "criticalBurnoutModal"
 
-    return render(request, 'resultado.html', {'score': score, 'result_text': result_text})
+    return render(request, 'burnout_survey.html', {
+        'score': score,
+        'result_text': result_text,
+        'modal_id': modal_id
+    })
