@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,12 +8,10 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/menu.css' %}">
     <link rel="stylesheet" href="{% static 'css/formulario.css' %}">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400&family=Poppins:wght@400&family=Roboto:wght@400&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/modal.css?v=1' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400&family=Poppins:wght@400&family=Roboto:wght@400&display=swap" rel="stylesheet">
     <title>Teste de Burnout</title>
 </head>
-
 <body class="bg-gray-100">
     {% include 'menu.html' %}
     {% if messages %}
@@ -57,25 +54,38 @@
                         <div class="flex items-center justify-between mt-4">
                             <div class="flex items-center flex-grow mr-4">
                                 <div id="progressText" style="margin-right: 10px;"></div>
-                                <!-- Alinhar o texto à esquerda -->
                                 <div class="progress-bar" style="position: relative;">
                                     <div id="progress" class="progress" style="height: 100%;"></div>
                                 </div>
                             </div>
                             <div class="flex space-x-2">
-                                <button type="button" id="prevBtn"
-                                    class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700"
+                                <button type="button" id="prevBtn" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700"
                                     onclick="changeQuestion(-1)" style="display: none;">Voltar</button>
-                                <button type="button" id="nextBtn"
-                                    class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+                                <button type="button" id="nextBtn" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
                                     onclick="changeQuestion(1)">Próximo</button>
-                                <button type="button" id="sendBtn"
-                                    class="px-4 py-2 bg-green-500 text-white rounded hover:bg-blue-700"
-                                    style="display: none;" onclick="validateAndSubmit()">Enviar</button>
+                                <button type="button" id="sendBtn" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-blue-700" style="display: none;">Enviar</button>
                             </div>
                         </div>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="resultModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+        <div class="modal-content bg-white rounded-lg p-6 shadow-lg w-11/12 md:w-1/2">
+            <div class="modal-header flex justify-between items-center border-b pb-2">
+                <h3 class="text-xl font-semibold text-green-600" id="modalTitle">Tudo sob controle! Continue assim</h3>
+                <button id="closeModal" class="text-gray-500 hover:text-gray-800">&times;</button>
+            </div>
+            <div class="modal-body mt-4">
+                <p id="modalBody" class="text-gray-700 text-base">
+                    Parabéns! Seu nível de estresse está bem equilibrado, sem sinais de Burnout.
+                </p>
+            </div>
+            <div class="modal-footer flex justify-end mt-4">
+                <button id="confirmButton" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-700">OK, Entendido</button>
             </div>
         </div>
     </div>
@@ -87,8 +97,9 @@
             "Satisfação e Realização Profissional",
             "Relações e Suporte no Ambiente de Trabalho"
         ];
-        const totalQuestions = 17; // Definir 17 perguntas
+        const totalQuestions = 17; // Total de perguntas
         let currentQuestion = 0;
+        let totalScore = 0;  // Variável para armazenar a pontuação total
         const questions = document.querySelectorAll('.question');
 
         function isOptionSelected() {
@@ -103,11 +114,25 @@
             return isSelected;
         }
 
+        function calculateScore() {
+            const currentQuestionElement = questions[currentQuestion];
+            const radioButtons = currentQuestionElement.querySelectorAll('input[type="radio"]');
+            radioButtons.forEach(radio => {
+                if (radio.checked) {
+                    // Atualiza a pontuação com base na opção selecionada
+                    totalScore += parseInt(radio.value); 
+                }
+            });
+        }
+
         function changeQuestion(n) {
             if (n > 0 && !isOptionSelected()) {
                 document.getElementById(`error-${currentQuestion + 1}`).style.display = 'block';
                 return;
             }
+
+            // Calcula a pontuação da pergunta atual antes de avançar
+            if (n > 0) calculateScore();
 
             document.getElementById(`error-${currentQuestion + 1}`).style.display = 'none';
             questions[currentQuestion].classList.remove('active');
@@ -115,39 +140,55 @@
 
             if (currentQuestion >= 0 && currentQuestion < questions.length) {
                 questions[currentQuestion].classList.add('active');
-
-                // Atualiza o título da sessão
                 const sessionIndex = Math.floor(currentQuestion / (totalQuestions / 4));
                 document.getElementById('sessionHeader').innerHTML = `
                     <div class="session-title">Seção ${sessionIndex + 1} de 4</div>
                     <div class="session-subtitle">${sessionTitles[sessionIndex]}</div>
                 `;
-
-                // Atualiza a barra de progresso
                 const progressPercentage = ((currentQuestion + 1) / totalQuestions) * 100;
                 document.getElementById('progress').style.width = progressPercentage + '%';
                 document.getElementById('progressText').textContent = `${currentQuestion + 1}/${totalQuestions}`;
-
-                // Atualiza visibilidade dos botões
                 document.getElementById("prevBtn").style.display = currentQuestion === 0 ? 'none' : 'inline';
                 document.getElementById("nextBtn").style.display = currentQuestion === totalQuestions - 1 ? 'none' : 'inline';
                 document.getElementById("sendBtn").style.display = currentQuestion === totalQuestions - 1 ? 'inline' : 'none';
             }
         }
 
-        changeQuestion(0);
+        function openModal() {
+            // Exibe o modal baseado na pontuação
+            let modalTitle = "Tudo sob controle! Continue assim";
+            let modalBody = "Parabéns! Seu nível de estresse está bem equilibrado, sem sinais de Burnout.";
 
-        function validateAndSubmit() {
-            // Verifica se uma opção foi selecionada na última pergunta
-            if (!isOptionSelected()) {
-                document.getElementById(`error-${currentQuestion + 1}`).style.display = 'block';
-                return; // Impede o envio do formulário
+            if (totalScore >= 50) {
+                modalTitle = "Cuidado com o Burnout";
+                modalBody = "Seu nível de estresse está mais elevado do que o ideal. Tente encontrar maneiras de reduzir a pressão.";
             }
 
-            // Se uma opção foi selecionada, envia o formulário
-            document.getElementById('surveyForm').submit();
+            document.getElementById('modalTitle').innerText = modalTitle;
+            document.getElementById('modalBody').innerText = modalBody;
+            document.getElementById('resultModal').classList.remove('hidden');
         }
+
+        function closeModal() {
+            document.getElementById('resultModal').classList.add('hidden');
+        }
+
+        document.getElementById('sendBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal();
+        });
+
+        document.getElementById('closeModal').addEventListener('click', closeModal);
+        document.getElementById('confirmButton').addEventListener('click', closeModal);
+
+        window.addEventListener('click', (event) => {
+            const modal = document.getElementById('resultModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        changeQuestion(0);
     </script>
 </body>
-
 </html>
