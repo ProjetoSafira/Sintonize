@@ -317,6 +317,7 @@
     /* Altura da linha */
 }
 
+
 /* Estilos gerais para telas pequenas */
 @media (max-width: 1440px) {
     .radio-container {
@@ -455,7 +456,7 @@
     padding: 10px;
     /* Adicione algum preenchimento para conforto */
 }
-}
+
 
 /* Estilos gerais para telas pequenas */
 
@@ -531,3 +532,5 @@
         /* Adicione algum preenchimento para conforto */
     }
 }
+
+

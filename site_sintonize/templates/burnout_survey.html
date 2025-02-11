@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +9,13 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/menu.css' %}">
     <link rel="stylesheet" href="{% static 'css/formulario.css' %}">
-    <link rel="stylesheet" href="{% static 'css/modal.css?v=1' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400&family=Poppins:wght@400&family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/modal.css' %}">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400&family=Poppins:wght@400&family=Roboto:wght@400&display=swap"
+        rel="stylesheet">
     <title>Teste de Burnout</title>
 </head>
+
 <body class="bg-gray-100">
     {% include 'menu.html' %}
     {% if messages %}
@@ -59,11 +63,15 @@
                                 </div>
                             </div>
                             <div class="flex space-x-2">
-                                <button type="button" id="prevBtn" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700"
+                                <button type="button" id="prevBtn"
+                                    class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700"
                                     onclick="changeQuestion(-1)" style="display: none;">Voltar</button>
-                                <button type="button" id="nextBtn" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+                                <button type="button" id="nextBtn"
+                                    class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
                                     onclick="changeQuestion(1)">Próximo</button>
-                                <button type="button" id="sendBtn" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-blue-700" style="display: none;">Enviar</button>
+                                <button type="button" id="sendBtn"
+                                    class="px-4 py-2 bg-green-500 text-white rounded hover:bg-blue-700"
+                                    style="display: none;">Enviar</button>
                             </div>
                         </div>
                     </form>
@@ -73,22 +81,24 @@
     </div>
 
     <!-- Modal -->
-    <div id="resultModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+
+    <div id="resultModal"
+        class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
         <div class="modal-content bg-white rounded-lg p-6 shadow-lg w-11/12 md:w-1/2">
             <div class="modal-header flex justify-between items-center border-b pb-2">
-                <h3 class="text-xl font-semibold text-green-600" id="modalTitle">Tudo sob controle! Continue assim</h3>
+                <h3 class="text-xl font-semibold text-green-600" id="modalTitle">Resultado</h3>
                 <button id="closeModal" class="text-gray-500 hover:text-gray-800">&times;</button>
             </div>
             <div class="modal-body mt-4">
-                <p id="modalBody" class="text-gray-700 text-base">
-                    Parabéns! Seu nível de estresse está bem equilibrado, sem sinais de Burnout.
-                </p>
+                <img id="modalImage" src="" alt="Resultado da imagem" class="w-full h-auto mb-4">
+                <p id="modalBody" class="text-gray-700 text-base">Resultado será exibido aqui.</p>
             </div>
             <div class="modal-footer flex justify-end mt-4">
-                <button id="confirmButton" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-700">OK, Entendido</button>
+                <button id="confirmButton" class="px-4 py-2">OK, Entendido</button>
             </div>
         </div>
     </div>
+
 
     <script>
         const sessionTitles = [
@@ -105,13 +115,7 @@
         function isOptionSelected() {
             const currentQuestionElement = questions[currentQuestion];
             const radioButtons = currentQuestionElement.querySelectorAll('input[type="radio"]');
-            let isSelected = false;
-            radioButtons.forEach(radio => {
-                if (radio.checked) {
-                    isSelected = true;
-                }
-            });
-            return isSelected;
+            return Array.from(radioButtons).some(radio => radio.checked);
         }
 
         function calculateScore() {
@@ -119,8 +123,7 @@
             const radioButtons = currentQuestionElement.querySelectorAll('input[type="radio"]');
             radioButtons.forEach(radio => {
                 if (radio.checked) {
-                    // Atualiza a pontuação com base na opção selecionada
-                    totalScore += parseInt(radio.value); 
+                    totalScore += parseInt(radio.value);
                 }
             });
         }
@@ -131,7 +134,6 @@
                 return;
             }
 
-            // Calcula a pontuação da pergunta atual antes de avançar
             if (n > 0) calculateScore();
 
             document.getElementById(`error-${currentQuestion + 1}`).style.display = 'none';
@@ -154,29 +156,32 @@
             }
         }
 
+        document.getElementById('sendBtn').addEventListener('click', (e) => {
+            e.preventDefault(); // Evita o comportamento padrão do botão
+            openModal();
+        });
+
         function openModal() {
-            // Exibe o modal baseado na pontuação
-            let modalTitle = "Tudo sob controle! Continue assim";
-            let modalBody = "Parabéns! Seu nível de estresse está bem equilibrado, sem sinais de Burnout.";
-
-            if (totalScore >= 50) {
-                modalTitle = "Cuidado com o Burnout";
-                modalBody = "Seu nível de estresse está mais elevado do que o ideal. Tente encontrar maneiras de reduzir a pressão.";
-            }
-
-            document.getElementById('modalTitle').innerText = modalTitle;
-            document.getElementById('modalBody').innerText = modalBody;
-            document.getElementById('resultModal').classList.remove('hidden');
+            const total = totalScore;
+            fetch(`/resultado/${total}/`)  // Chama a URL da view resultado
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro ao obter o resultado.');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    document.getElementById('modalTitle').innerText = data.title;
+                    document.getElementById('modalBody').innerText = data.body;
+                    document.getElementById('modalImage').src = data.image;
+                    document.getElementById('resultModal').classList.remove('hidden');
+                })
+                .catch(error => console.error('Erro ao obter o resultado:', error));
         }
 
         function closeModal() {
             document.getElementById('resultModal').classList.add('hidden');
         }
-
-        document.getElementById('sendBtn').addEventListener('click', (e) => {
-            e.preventDefault();
-            openModal();
-        });
 
         document.getElementById('closeModal').addEventListener('click', closeModal);
         document.getElementById('confirmButton').addEventListener('click', closeModal);
@@ -188,7 +193,8 @@
             }
         });
 
-        changeQuestion(0);
+        changeQuestion(0); // Inicia mostrando a primeira pergunta
     </script>
 </body>
+
 </html>

@@ -3,6 +3,8 @@ from requests.exceptions import Timeout
 from .forms import BurnoutSurveyForm
 from django.http import JsonResponse
 from django.contrib import messages
+from django.templatetags.static import static
+
 
 
 def index (request):
@@ -133,27 +135,41 @@ def burnout_survey_view(request):
 
     return render(request, 'burnout_survey.html', {'form': form})
 
-
-
 def resultado_view(request, score):
+    # Dicionário de imagens de resultados
+    imagens = {
+        "none": static("images/modal/meditacao.png"),        
+        "cuidado": static("images/cuidado.png"),
+        "alerta": static("images/alerta.png"),
+        "atencao": static("images/atencao.png"),
+        "critico": static("images/critico.png"),
+    }
+    
+    # Determina o texto do resultado e a imagem com base na pontuação
     if score <= 20:
-        result_text = "Nenhum indício aparente de Síndrome de Burnout."
-        modal_id = "noIndicationModal"
+        result_text = "Parabéns! Seu nível de estresse está bem equilibrado, sem sinais de Burnout. "
+        title = "Tudo sob controle! Continue assim"
+        image = imagens["none"]
+    
     elif 21 <= score <= 40:
         result_text = "Possibilidade de desenvolver recomendações de prevenção da Síndrome de Burnout."
-        modal_id = "warningModal"
+        title = "Cuidado!"
+        image = imagens["cuidado"]
+        
     elif 41 <= score <= 60:
         result_text = "Fase inicial do Burnout. Procure ajuda profissional."
-        modal_id = "initialBurnoutModal"
+        title = "Alerta!"
+        image = imagens["alerta"]
+        
     elif 61 <= score <= 80:
         result_text = "A Síndrome está instalada. Procure ajuda profissional."
-        modal_id = "burnoutInstalledModal"
+        title = "Atenção!"
+        image = imagens["atencao"]
+        
     elif 81 <= score <= 100:
         result_text = "Você pode estar em uma fase considerável do Burnout. Procure tratamento."
-        modal_id = "criticalBurnoutModal"
+        title = "Crítico!"
+        image = imagens["critico"]
 
-    return render(request, 'burnout_survey.html', {
-        'score': score,
-        'result_text': result_text,
-        'modal_id': modal_id
-    })
+    # Retornamos um JsonResponse com os dados necessários para o modal, incluindo a imagem
+    return JsonResponse({'title': title, 'body': result_text, 'image': image})
