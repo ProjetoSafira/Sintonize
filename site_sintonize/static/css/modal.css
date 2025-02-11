@@ -1,41 +1,57 @@
 .modal-content {
-    animation: fadeIn 0.3s ease-in-out;
+    display: flex;                       /* Define o comportamento flexível */
+    width: 480px;                       /* Largura do modal */
+    height: 492px;                      /* Altura do modal */
+    padding: 20px;                      /* Padding interno */
+    flex-direction: column;             /* Direção dos itens em coluna */
+    align-items: flex-start;            /* Alinha os itens no início da coluna */
+    gap: 20px;                          /* Espaço entre os itens */
+    border-radius: 16px;                /* Arredondamento das bordas */
+    background: #FFF;                   /* Cor de fundo */
+    max-height: 80vh;                   /* Limite de altura do modal */
+    overflow-y: auto;                   /* Ativa a rolagem vertical */
+    animation: fadeIn 0.3s ease-in-out; /* Animação de aparecimento */
 }
 
 #modalImage {
-    width: 258px;
-    height: 253px;
-    flex-shrink: 0;
-    display: block;
-    margin: 0 auto;
-    /* Centraliza a imagem horizontalmente */
+    width: 258px;                       /* Largura da imagem */
+    height: 253px;                      /* Altura da imagem */
+    flex-shrink: 0;                     /* Não encolher a imagem */
+    display: block;                     /* Exibe a imagem como bloco */
+    margin: 0 auto;                     /* Centraliza a imagem */
 }
 
+.modal-body {
+    display: flex;                       /* Comportamento flexível */
+    flex-direction: column;             /* Direção dos itens em coluna */
+    align-items: center;                /* Alinha os itens no centro */
+    gap: 10px;                          /* Espaçamento entre elementos */
+    text-align: center;                 /* Centraliza o texto */
+}
 
+.modal-footer {
+    display: flex;                       /* Comportamento flexível */
+    justify-content: flex-end;          /* Alinha o botão para a direita */
+    width: 100%;                        /* Garanta que o footer ocupe toda a largura */
+}
 
-.modal-footer #confirmButton {
-    display: flex;
-    padding: 8px 24px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    border-radius: 50px;
+#confirmButton {
+    display: flex;                       /* Define o botão como flexível */
+    padding: 8px 24px;                  /* Padding do botão */
+    justify-content: center;             /* Centraliza o conteúdo do botão */
+    align-items: center;                 /* Alinha itens do botão no centro */
+    gap: 10px;                          /* Espaçamento entre ícones e texto no botão */
+    border-radius: 50px;                /* Arredondamento do botão */
     border: 1px solid var(--Primary-Pressed---500, #204551);
     background: var(--Primary-Defaunt---400, #3A6573);
-}
-
-.px-4 py-2 {
     color: var(--gray-scale-white-white, #FFF);
-
-    /* Typography/Subtitle/subtitle2 */
-    font-family: Nunito;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 160%;
-    /* 32px */
-    letter-spacing: 0.15px;
+    font-family: Nunito;                /* Fonte do botão */
+    font-size: 20px;                    /* Tamanho da fonte */
+    font-weight: 600;                   /* Peso da fonte */
+    line-height: 160%;                  /* Altura da linha */
+    letter-spacing: 0.15px;             /* Espacemento das letras */
 }
+
 
 @keyframes fadeIn {
     from {
