@@ -167,7 +167,7 @@ def resultado_view(request, score):
     if score <= 20:
         icon = icons["none"]
         result_text = "Parabéns! Seu nível de estresse está bem equilibrado, sem sinais de Burnout."
-        title = "Tudo sob controle! Continue assim."
+        title = "Tudo sob controle! Continue assim"
         image = imagens["none"]
         user_message = mensagens["none"]
     

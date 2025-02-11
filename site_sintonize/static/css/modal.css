@@ -1,55 +1,133 @@
 .modal-content {
-    display: flex;                       /* Define o comportamento flexível */
-    width: 480px;                       /* Largura do modal */
-    height: 492px;                      /* Altura do modal */
-    padding: 20px;                      /* Padding interno */
-    flex-direction: column;             /* Direção dos itens em coluna */
-    align-items: flex-start;            /* Alinha os itens no início da coluna */
-    gap: 20px;                          /* Espaço entre os itens */
-    border-radius: 16px;                /* Arredondamento das bordas */
-    background: #FFF;                   /* Cor de fundo */
-    max-height: 80vh;                   /* Limite de altura do modal */
-    overflow-y: auto;                   /* Ativa a rolagem vertical */
-    animation: fadeIn 0.3s ease-in-out; /* Animação de aparecimento */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: white; 
+    border-radius: 8px;
+    width: 80%; /* Ajuste conforme necessário */
+    max-width: 600px; /* Limite máximo de largura */
+}
+
+.flex-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    height: 306px; /* Altura fixa */
+    overflow-y: auto; /* Permite rolagem apenas aqui */
 }
 
 #modalImage {
-    width: 258px;                       /* Largura da imagem */
-    height: 253px;                      /* Altura da imagem */
-    flex-shrink: 0;                     /* Não encolher a imagem */
-    display: block;                     /* Exibe a imagem como bloco */
-    margin: 0 auto;                     /* Centraliza a imagem */
+    width: 258px;
+    /* Largura da imagem */
+    height: 253px;
+    /* Altura da imagem */
+    flex-shrink: 0;
+    /* Não encolher a imagem */
+    display: block;
+    /* Exibe a imagem como bloco */
+    margin: 0 auto;
+    /* Centraliza a imagem */
 }
 
 .modal-body {
-    display: flex;                       /* Comportamento flexível */
-    flex-direction: column;             /* Direção dos itens em coluna */
-    align-items: center;                /* Alinha os itens no centro */
-    gap: 10px;                          /* Espaçamento entre elementos */
-    text-align: center;                 /* Centraliza o texto */
+    display: flex; 
+    flex-direction: column; /* Alinha os itens em coluna */
+    height: 306px; /* A altura definida para a área visível */
+    overflow-y: auto; /* Permite a rolagem vertical */
+    gap: 10px; /* Espaçamento entre os elementos */
 }
 
+
+.modal-title {
+    display: flex;
+    width: 440px;
+    align-items: center;
+    gap: 10px;
+    flex: 1 0 0;
+    /* Layout flexível */
+    color: #333;
+    /* Cor do texto */
+    font-family: "Open Sans";
+    /* Fonte do texto */
+    font-size: 16px;
+    /* Tamanho da fonte */
+    font-style: normal;
+    /* Estilo da fonte */
+    font-weight: 700;
+    /* Peso da fonte */
+    line-height: normal;
+    /* Altura da linha */
+    gap: 10px;
+}
+
+
 .modal-footer {
-    display: flex;                       /* Comportamento flexível */
-    justify-content: flex-end;          /* Alinha o botão para a direita */
-    width: 100%;                        /* Garanta que o footer ocupe toda a largura */
+    display: flex;
+    /* Comportamento flexível */
+    justify-content: flex-end;
+    /* Alinha o botão para a direita */
+    width: 100%;
+    /* Garanta que o footer ocupe toda a largura */
+}
+
+.result-text {
+    flex: 1; /* Preenche o espaço disponível */
+}
+
+.result-image {
+    width: 258px; /* Ajuste a largura da imagem */
+    height: 253px; /* Ajuste a altura da imagem */
+    margin: 0 auto; /* Centraliza a imagem */
+    flex-shrink: 0; /* Não encolhe */
+}
+
+.user-message {
+    flex: 1; /* Preenche o espaço disponível */
 }
 
 #confirmButton {
-    display: flex;                       /* Define o botão como flexível */
-    padding: 8px 24px;                  /* Padding do botão */
-    justify-content: center;             /* Centraliza o conteúdo do botão */
-    align-items: center;                 /* Alinha itens do botão no centro */
-    gap: 10px;                          /* Espaçamento entre ícones e texto no botão */
-    border-radius: 50px;                /* Arredondamento do botão */
+    display: flex;
+    /* Define o botão como flexível */
+    padding: 8px 24px;
+    /* Padding do botão */
+    justify-content: center;
+    /* Centraliza o conteúdo do botão */
+    align-items: center;
+    /* Alinha itens do botão no centro */
+    gap: 10px;
+    /* Espaçamento entre ícones e texto no botão */
+    border-radius: 50px;
+    /* Arredondamento do botão */
     border: 1px solid var(--Primary-Pressed---500, #204551);
     background: var(--Primary-Defaunt---400, #3A6573);
     color: var(--gray-scale-white-white, #FFF);
-    font-family: Nunito;                /* Fonte do botão */
-    font-size: 20px;                    /* Tamanho da fonte */
-    font-weight: 600;                   /* Peso da fonte */
-    line-height: 160%;                  /* Altura da linha */
-    letter-spacing: 0.15px;             /* Espacemento das letras */
+    font-family: Nunito;
+    /* Fonte do botão */
+    font-size: 20px;
+    /* Tamanho da fonte */
+    font-weight: 600;
+    /* Peso da fonte */
+    line-height: 160%;
+    /* Altura da linha */
+    letter-spacing: 0.15px;
+    /* Espacemento das letras */
+}
+
+
+.close-button {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    color: #CCCCCC;
+
+}
+
+.divider {
+    width: 440px;
+    height: 1px;
+    background: #E1E1E1;
+    margin-bottom: 10px;
+    /* Margem para separar do título */
 }
 
 
