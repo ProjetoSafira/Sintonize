@@ -136,40 +136,68 @@ def burnout_survey_view(request):
     return render(request, 'burnout_survey.html', {'form': form})
 
 def resultado_view(request, score):
+
+    icons = {
+        "none": static("images/modal/icon1.png"),
+        "cuidado": static("images/modal/icon2.png"),
+        "alerta": static("images/modal/icon3.png"),
+        "atencao": static("images/modal/icon4.png"),
+        "critico": static("images/modal/icon5.png"),
+    }
+    
     # Dicionário de imagens de resultados
     imagens = {
         "none": static("images/modal/meditacao.png"),        
-        "cuidado": static("images/cuidado.png"),
-        "alerta": static("images/alerta.png"),
-        "atencao": static("images/atencao.png"),
-        "critico": static("images/critico.png"),
+        "cuidado": static("images/modal/trabalho.png"),
+        "alerta": static("images/modal/alerta.png"),
+        "atencao": static("images/modal/atencao.png"),
+        "critico": static("images/modal/critico.png"),
     }
     
-    # Determina o texto do resultado e a imagem com base na pontuação
+    # Defina as mensagens para cada pontuação
+    mensagens = {
+        "none": "Isso indica que você está mantendo um bom equilíbrio entre trabalho e vida pessoal. Continue adotando hábitos saudáveis, como pausas regulares, atividades relaxantes e uma boa rotina de sono.",
+        "cuidado": "Pequenos níveis de estresse podem se acumular com o tempo. Considere adotar medidas preventivas, como organizar melhor sua rotina, praticar exercícios físicos e estabelecer limites saudáveis ​​no trabalho. Prevenir é sempre o melhor caminho!",
+        "alerta": "Esse é o momento ideal para entrevir e evitar que o quadro se agrave. Pratique atividades que te relaxem, estabeleça momentos de descanso e, se necessário, busque apoio profissional.",
+        "atencao": " Esse é o momento ideal para entrevir e evitar que o quadro se agrave. Pratique atividades que te relaxem, estabeleça momentos de descanso e, se necessário, busque apoio profissional.",
+        "critico": "Recomendamos que você agende uma consulta com um médico para avaliação e acompanhamento do seu estado de saúde."
+    }
+
+    # Determine o texto do resultado, a imagem e a mensagem com base na pontuação
     if score <= 20:
-        result_text = "Parabéns! Seu nível de estresse está bem equilibrado, sem sinais de Burnout. "
-        title = "Tudo sob controle! Continue assim"
+        icon = icons["none"]
+        result_text = "Parabéns! Seu nível de estresse está bem equilibrado, sem sinais de Burnout."
+        title = "Tudo sob controle! Continue assim."
         image = imagens["none"]
+        user_message = mensagens["none"]
     
     elif 21 <= score <= 40:
         result_text = "Possibilidade de desenvolver recomendações de prevenção da Síndrome de Burnout."
-        title = "Cuidado!"
+        icon = icons["cuidado"]
+        title = "Fique de olho! Pequenos sinais de estresse"
         image = imagens["cuidado"]
-        
-    elif 41 <= score <= 60:
-        result_text = "Fase inicial do Burnout. Procure ajuda profissional."
-        title = "Alerta!"
-        image = imagens["alerta"]
-        
-    elif 61 <= score <= 80:
-        result_text = "A Síndrome está instalada. Procure ajuda profissional."
-        title = "Atenção!"
-        image = imagens["atencao"]
-        
-    elif 81 <= score <= 100:
-        result_text = "Você pode estar em uma fase considerável do Burnout. Procure tratamento."
-        title = "Crítico!"
-        image = imagens["critico"]
+        user_message = mensagens["cuidado"]
 
-    # Retornamos um JsonResponse com os dados necessários para o modal, incluindo a imagem
-    return JsonResponse({'title': title, 'body': result_text, 'image': image})
+    elif 41 <= score <= 60:
+        icon = icons["alerta"]
+        result_text = "Fase inicial do Burnout. Procure ajuda profissional."
+        title = "Possível Risco de Burnout! Hora de Prevenir"
+        image = imagens["alerta"]
+        user_message = mensagens["alerta"]
+
+    elif 61 <= score <= 80:
+        icon = icons["atencao"]
+        result_text = "A Síndrome está instalada. Procure ajuda profissional."
+        title = "Risco Alto de Burnout! Procure Ajuda "
+        image = imagens["atencao"]
+        user_message = mensagens["atencao"]
+
+    elif 81 <= score <= 100:
+        icon = icons["critico"]
+        result_text = "Você pode estar em uma fase considerável do Burnout. Procure tratamento."
+        title = "Nível Crítico de Burnout! Procure Ajuda "
+        image = imagens["critico"]
+        user_message = mensagens["critico"]
+
+    # Retorne um JsonResponse com os dados necessários para o modal
+    return JsonResponse({'title': title, 'body': result_text, 'image': image, 'userMessage': user_message, 'icon': icon})
