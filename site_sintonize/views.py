@@ -180,14 +180,14 @@ def resultado_view(request, score):
 
     elif 41 <= score <= 60:
         icon = icons["alerta"]
-        result_text = "Fase inicial do Burnout. Procure ajuda profissional."
+        result_text = "Atenção! Alguns sintomas de Burnout podem começar a aparecer. "
         title = "Possível Risco de Burnout! Hora de Prevenir"
         image = imagens["alerta"]
         user_message = mensagens["alerta"]
 
     elif 61 <= score <= 80:
         icon = icons["atencao"]
-        result_text = "A Síndrome está instalada. Procure ajuda profissional."
+        result_text = "Atenção! Alguns sintomas de Burnout podem começar a aparecer. "
         title = "Risco Alto de Burnout! Procure Ajuda "
         image = imagens["atencao"]
         user_message = mensagens["atencao"]

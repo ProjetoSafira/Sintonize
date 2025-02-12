@@ -11,24 +11,30 @@
     align-items: flex-start;
     position: relative;
     overflow-y: auto;
-    height: 492px; 
+    height: 492px;
 }
+
 /* Estilos para a barra de rolagem */
 .modal-content::-webkit-scrollbar {
-    width: 8px; /* Largura da barra de rolagem */
+    width: 8px;
+    /* Largura da barra de rolagem */
 }
 
 .modal-content::-webkit-scrollbar-track {
-    background: transparent; /* Cor do "trilho" */
+    background: transparent;
+    /* Cor do "trilho" */
 }
 
 .modal-content::-webkit-scrollbar-thumb {
-    background: #D9D9D9; /* Cor da barra em si */
-    border-radius: 6px; /* Raiz do canto */
+    background: #D9D9D9;
+    /* Cor da barra em si */
+    border-radius: 6px;
+    /* Raiz do canto */
 }
 
 .modal-content::-webkit-scrollbar-thumb:hover {
-    background: #bbb; /* Cor quando o mouse está sobre a barra */
+    background: #bbb;
+    /* Cor quando o mouse está sobre a barra */
 }
 
 
@@ -77,10 +83,11 @@
 
 .result-text,
 .user-message {
+    width: 422px;
+    flex-shrink: 0;
+    align-self: stretch;
     color: #000;
-
-    /* Typography/Body/body2 */
-    font-family: Roboto;
+    font-family: 'Roboto';
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -130,13 +137,26 @@
 }
 
 
-.close-button {
-    width: 24px;
-    height: 24px;
-    flex-shrink: 0;
-    color: #CCCCCC;
-
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    /* Espaço entre o título e o botão X */
+    align-items: center;
+    /* Centraliza verticalmente */
+    width: 100%;
 }
+
+.close-button {
+    font-size: 24px;
+    /* Ajuste o tamanho do X conforme necessário */
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #CCCCCC;
+    /* Cor do botão X */
+}
+
+
 
 .divider {
     width: 440px;

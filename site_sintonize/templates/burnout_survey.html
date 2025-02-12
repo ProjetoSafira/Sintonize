@@ -84,17 +84,20 @@
         </div>
     </div>
 
-   <!-- Modal -->
+<!-- Modal -->
 <div id="resultModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
     <div class="modal-content">
-        <div class="modal-header flex flex-col justify-between items-start">
-            <div style="width: 440px; height: 1px; background: #E1E1E1;" class="mb-2"></div> <!-- Linha acima do título -->
+        
+        <!-- Linha acima do título -->
+        <div style="width: 440px; height: 1px; background: #E1E1E1;" class="mb-2"></div> 
+        
+        <div class="modal-header flex justify-between items-center mb-2">
             <div class="flex items-center">
                 <img id="modalIcon" src="" alt="Ícone do resultado" style="width: 20px; height: 20px; flex-shrink: 0;" class="mr-2">
-                <h3 class="modal-title" id="modalTitle">Resultado</h3> <!-- Título -->
+                <h3 class="modal-title" id="modalTitle">Resultado</h3>
             </div>
             <button id="closeModal" class="text-gray-500 hover:text-gray-800">&times;</button>
-        </div>
+        </div>     
         
         <div class="modal-body mt-4 flex-container">
             <p id="modalBody" class="result-text text-gray-700 text-base">
@@ -104,7 +107,9 @@
             <p id="userMessage" class="user-message text-gray-700 text-base mt-4">
                 Isso indica que você está mantendo um bom equilíbrio entre trabalho e vida pessoal.
             </p>
-            <div style="width: 440px; height: 1px; background: #E1E1E1;" class="mb-2"></div> <!-- Linha acima do título -->
+
+            <!-- Linha abaixo do user_message -->
+            <div style="width: 440px; height: 1px; background: #E1E1E1;" class="mt-2"></div>
         </div>
         
         <div class="modal-footer">
@@ -112,10 +117,6 @@
         </div>
     </div>
 </div>
-
-    
-
-
 
     <script>
         const sessionTitles = [
