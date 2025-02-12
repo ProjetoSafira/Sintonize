@@ -17,24 +17,19 @@
 /* Estilos para a barra de rolagem */
 .modal-content::-webkit-scrollbar {
     width: 8px;
-    /* Largura da barra de rolagem */
-}
-
-.modal-content::-webkit-scrollbar-track {
-    background: transparent;
-    /* Cor do "trilho" */
 }
 
 .modal-content::-webkit-scrollbar-thumb {
     background: #D9D9D9;
-    /* Cor da barra em si */
     border-radius: 6px;
-    /* Raiz do canto */
 }
 
 .modal-content::-webkit-scrollbar-thumb:hover {
     background: #bbb;
-    /* Cor quando o mouse está sobre a barra */
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #f0f0f0;
 }
 
 
@@ -97,14 +92,9 @@
 }
 
 .result-image {
-    width: 258px;
-    /* Ajuste a largura da imagem */
-    height: 253px;
-    /* Ajuste a altura da imagem */
-    margin: 0 auto;
-    /* Centraliza a imagem */
+    width: 422px;
+    height: 197px;
     flex-shrink: 0;
-    /* Não encolhe */
 }
 
 
@@ -119,6 +109,7 @@
     /* Alinha itens do botão no centro */
     gap: 10px;
     /* Espaçamento entre ícones e texto no botão */
+    margin-top: 20px;
     border-radius: 50px;
     /* Arredondamento do botão */
     border: 1px solid var(--Primary-Pressed---500, #204551);
@@ -146,9 +137,12 @@
     width: 100%;
 }
 
-.close-button {
+#close-button {
     font-size: 24px;
     /* Ajuste o tamanho do X conforme necessário */
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
     cursor: pointer;
     background: none;
     border: none;
