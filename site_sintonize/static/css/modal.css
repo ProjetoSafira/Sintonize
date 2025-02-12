@@ -2,62 +2,67 @@
     display: flex;
     flex-direction: column;
     padding: 20px;
-    background: white; 
+    background: white;
     border-radius: 8px;
-    width: 80%; /* Ajuste conforme necessário */
-    max-width: 600px; /* Limite máximo de largura */
+    width: 100%;
+    /* Ajuste conforme necessário */
+    max-width: 480px;
+    /* Limite máximo de largura */
+    align-items: flex-start;
+    position: relative;
+    overflow-y: auto;
+    height: 492px; 
 }
+/* Estilos para a barra de rolagem */
+.modal-content::-webkit-scrollbar {
+    width: 8px; /* Largura da barra de rolagem */
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: transparent; /* Cor do "trilho" */
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: #D9D9D9; /* Cor da barra em si */
+    border-radius: 6px; /* Raiz do canto */
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #bbb; /* Cor quando o mouse está sobre a barra */
+}
+
 
 .flex-container {
     display: flex;
     align-items: flex-start;
     gap: 10px;
-    height: 306px; /* Altura fixa */
-    overflow-y: auto; /* Permite rolagem apenas aqui */
+    height: 306px;
+    /* Altura fixa */
+    overflow-y: auto;
+    /* Permite rolagem apenas aqui */
 }
 
-#modalImage {
-    width: 258px;
-    /* Largura da imagem */
-    height: 253px;
-    /* Altura da imagem */
-    flex-shrink: 0;
-    /* Não encolher a imagem */
-    display: block;
-    /* Exibe a imagem como bloco */
-    margin: 0 auto;
-    /* Centraliza a imagem */
-}
 
 .modal-body {
-    display: flex; 
-    flex-direction: column; /* Alinha os itens em coluna */
-    height: 306px; /* A altura definida para a área visível */
-    overflow-y: auto; /* Permite a rolagem vertical */
-    gap: 10px; /* Espaçamento entre os elementos */
+    display: flex;
+    flex-direction: column;
+    /* Alinha os itens em coluna */
+    height: 306px;
+    /* A altura definida para a área visível */
+    overflow-y: auto;
+    /* Permite a rolagem vertical */
+    gap: 10px;
+    /* Espaçamento entre os elementos */
 }
 
-
 .modal-title {
-    display: flex;
-    width: 440px;
-    align-items: center;
-    gap: 10px;
-    flex: 1 0 0;
-    /* Layout flexível */
     color: #333;
-    /* Cor do texto */
     font-family: "Open Sans";
-    /* Fonte do texto */
     font-size: 16px;
-    /* Tamanho da fonte */
     font-style: normal;
-    /* Estilo da fonte */
     font-weight: 700;
-    /* Peso da fonte */
     line-height: normal;
-    /* Altura da linha */
-    gap: 10px;
+    flex: 1 0 0;
 }
 
 
@@ -70,20 +75,31 @@
     /* Garanta que o footer ocupe toda a largura */
 }
 
-.result-text {
-    flex: 1; /* Preenche o espaço disponível */
+.result-text,
+.user-message {
+    color: #000;
+
+    /* Typography/Body/body2 */
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 143%;
+    /* 20.02px */
+    letter-spacing: 0.17px;
 }
 
 .result-image {
-    width: 258px; /* Ajuste a largura da imagem */
-    height: 253px; /* Ajuste a altura da imagem */
-    margin: 0 auto; /* Centraliza a imagem */
-    flex-shrink: 0; /* Não encolhe */
+    width: 258px;
+    /* Ajuste a largura da imagem */
+    height: 253px;
+    /* Ajuste a altura da imagem */
+    margin: 0 auto;
+    /* Centraliza a imagem */
+    flex-shrink: 0;
+    /* Não encolhe */
 }
 
-.user-message {
-    flex: 1; /* Preenche o espaço disponível */
-}
 
 #confirmButton {
     display: flex;
