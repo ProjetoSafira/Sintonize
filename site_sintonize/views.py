@@ -149,7 +149,7 @@ def resultado_view(request, score):
     imagens = {
         "none": static("images/modal/meditacao.png"),        
         "cuidado": static("images/modal/trabalho.png"),
-        "alerta": static("images/modal/alerta.png"),
+        "alerta": static("images/modal/lupa1.png"),
         "atencao": static("images/modal/atencao.png"),
         "critico": static("images/modal/critico.png"),
     }

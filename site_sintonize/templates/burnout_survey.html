@@ -84,39 +84,39 @@
         </div>
     </div>
 
-<!-- Modal -->
-<div id="resultModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-    <div class="modal-content">
-        
-        <!-- Linha acima do título -->
-        <div style="width: 440px; height: 1px; background: #E1E1E1;" class="mb-2"></div> 
-        
-        <div class="modal-header flex justify-between items-center mb-2">
-            <div class="flex items-center">
-                <img id="modalIcon" src="" alt="Ícone do resultado" style="width: 20px; height: 20px; flex-shrink: 0;" class="mr-2">
-                <h3 class="modal-title" id="modalTitle">Resultado</h3>
-            </div>
-            <button id="closeModal" class="text-gray-500 hover:text-gray-800">&times;</button>
-        </div>     
-        
-        <div class="modal-body mt-4 flex-container">
-            <p id="modalBody" class="result-text text-gray-700 text-base">
-                Resultado será exibido aqui.
-            </p>
-            <img id="modalImage" src="" alt="Resultado da imagem" class="result-image mb-4">
-            <p id="userMessage" class="user-message text-gray-700 text-base mt-4">
-                Isso indica que você está mantendo um bom equilíbrio entre trabalho e vida pessoal.
-            </p>
+    <!-- Modal -->
+    <div id="resultModal"
+        class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+        <div class="modal-content">
 
-            <!-- Linha abaixo do user_message -->
+            <!-- Linha acima do título -->
+            <div style="width: 440px; height: 1px; background: #E1E1E1;" class="mb-2"></div>
+
+            <div class="modal-header flex justify-between items-center mb-2">
+                <div class="flex items-center">
+                    <img id="modalIcon" src="" alt="Ícone do resultado"
+                        style="width: 20px; height: 20px; flex-shrink: 0;" class="mr-2">
+                    <h3 class="modal-title" id="modalTitle">Resultado</h3>
+                </div>
+                <button id="closeModal" class="text-gray-500 hover:text-gray-800">&times;</button>
+            </div>
+
+            <div class="modal-body mt-4 flex-container">
+                <p id="modalBody" class="result-text text-gray-700 text-base">
+                    Resultado será exibido aqui.
+                </p>
+                <img id="modalImage" src="" alt="Resultado da imagem" class="result-image mb-4">
+                <p id="userMessage" class="user-message text-gray-700 text-base mt-4">
+                    Isso indica que você está mantendo um bom equilíbrio entre trabalho e vida pessoal.
+                </p>
+            </div>
             <div style="width: 440px; height: 1px; background: #E1E1E1;" class="mt-2"></div>
-        </div>
-        
-        <div class="modal-footer">
-            <button id="confirmButton" class="px-4 py-2">OK, Entendido</button>
+
+            <div class="modal-footer">
+                <button id="confirmButton" class="px-4 py-2">OK, Entendido</button>
+            </div>
         </div>
     </div>
-</div>
 
     <script>
         const sessionTitles = [
@@ -214,6 +214,13 @@
         });
 
         changeQuestion(0); // Inicia mostrando a primeira pergunta
+
+        const modalContent = document.querySelector('.modal-content');
+
+        modalContent.addEventListener('scroll', () => {
+            modalContent.style.scrollBehavior = 'smooth';
+        });
+
     </script>
 </body>
 
