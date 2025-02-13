@@ -17,28 +17,20 @@
     /* Para Firefox */
 }
 
-
-.modal-content::-webkit-scrollbar {
+.modal-body::-webkit-scrollbar {
     width: 8px;
-    height: 150px;
 }
 
-.modal-content::-webkit-scrollbar-thumb {
-    background-color: #D3D3D3;
-    /* Cor do polegar */
-    border-radius: 6x;
-    /* Bordas arredondadas */
+.modal-body::-webkit-scrollbar-thumb {
+    background-color: #D3D3D3; /* Cor do polegar */
+    border-radius: 6px; /* Corrigido de '6x' para '6px' */
 }
 
-.modal-content::-webkit-scrollbar-track {
-    background: transparent;
-    /* Torna a trilha invisível */
+.modal-body::-webkit-scrollbar-track {
+    background: transparent; /* Torna a trilha invisível */
 }
 
-.modal-content::-webkit-scrollbar-button {
-    display: none;
-    /* Remove os botões de rolagem */
-}
+
 
 .flex-container {
     display: flex;
@@ -50,17 +42,12 @@
     /* Permite rolagem apenas aqui */
 }
 
-
 .modal-body {
     display: flex;
-    flex-direction: column;
-    /* Alinha os itens em coluna */
-    height: 306px;
-    /* A altura definida para a área visível */
-    overflow-y: auto;
-    /* Permite a rolagem vertical */
-    gap: 10px;
-    /* Espaçamento entre os elementos */
+    flex-direction: column; 
+    max-height: 60vh; /* Limite a altura máxima da área visível */
+    overflow-y: auto; /* Permite a rolagem vertical */
+    gap: 10px; /* Espaçamento entre os elementos */
 }
 
 .modal-title {
@@ -167,7 +154,7 @@
     width: 24px;
     height: 24px;
     flex-shrink: 0;
-    line-height: 0; /* Alinha o texto dentro do botão */
+    line-height: 0px; /* Alinha o texto dentro do botão */
     align-items: center;
     justify-content: center;
     color: #CCCCCC;
