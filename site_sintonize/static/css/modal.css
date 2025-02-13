@@ -126,8 +126,8 @@
     background: var(--Primary-Defaunt---400, #3A6573);
     color: var(--gray-scale-white-white, #FFF);
     font-family: 'nunito';
-        /* Fonte do botão */
-        font-size: 20px;
+    /* Fonte do botão */
+    font-size: 20px;
     line-height: 160%;
     /* Altura da linha */
     letter-spacing: 0.15px;
@@ -162,19 +162,21 @@
     width: 100%;
 }
 
-#close-button {
+.close-button {
     font-size: 24px;
-    /* Ajuste o tamanho do X conforme necessário */
     width: 24px;
     height: 24px;
     flex-shrink: 0;
-    cursor: pointer;
-    background: none;
-    border: none;
+    line-height: 0; /* Alinha o texto dentro do botão */
+    align-items: center;
+    justify-content: center;
     color: #CCCCCC;
-    /* Cor do botão X */
+    cursor: pointer;
+    /* Adiciona cursor para indicar interatividade */
+    background: none;
+    /* Remove fundo */
+    border: none;
 }
-
 
 
 .divider {
