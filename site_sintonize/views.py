@@ -164,35 +164,35 @@ def resultado_view(request, score):
     }
 
     # Determine o texto do resultado, a imagem e a mensagem com base na pontuação
-    if score <= 20:
+    if score <= 17:
         icon = icons["none"]
         result_text = "Parabéns! Seu nível de estresse está bem equilibrado, sem sinais de Burnout."
         title = "Tudo sob controle! Continue assim"
         image = imagens["none"]
         user_message = mensagens["none"]
     
-    elif 21 <= score <= 40:
+    elif 18 <= score <= 34:
         result_text = "Possibilidade de desenvolver recomendações de prevenção da Síndrome de Burnout."
         icon = icons["cuidado"]
         title = "Fique de olho! Pequenos sinais de estresse"
         image = imagens["cuidado"]
         user_message = mensagens["cuidado"]
 
-    elif 41 <= score <= 60:
+    elif 35 <= score <= 51:
         icon = icons["alerta"]
         result_text = "Atenção! Alguns sintomas de Burnout podem começar a aparecer. "
         title = "Possível Risco de Burnout! Hora de Prevenir"
         image = imagens["alerta"]
         user_message = mensagens["alerta"]
 
-    elif 61 <= score <= 80:
+    elif 52 <= score <= 68:
         icon = icons["atencao"]
         result_text = "Atenção! Alguns sintomas de Burnout podem começar a aparecer. "
         title = "Risco Alto de Burnout! Procure Ajuda "
         image = imagens["atencao"]
         user_message = mensagens["atencao"]
 
-    elif 81 <= score <= 100:
+    elif 69 <= score <= 85:
         icon = icons["critico"]
         result_text = "Você pode estar em uma fase considerável do Burnout. Procure tratamento."
         title = "Nível Crítico de Burnout! Procure Ajuda "
