@@ -11,27 +11,26 @@
     align-items: flex-start;
     position: relative;
     overflow-y: auto;
-    height: 492px;
+    scrollbar-width: thin; /* Para Firefox */
+    scrollbar-color: #D3D3D3 transparent; /* Para Firefox */
 }
 
-/* Estilos para a barra de rolagem */
 .modal-content::-webkit-scrollbar {
-    width: 8px;
+    width: 8px; /* Defina a largura */
 }
 
 .modal-content::-webkit-scrollbar-thumb {
-    background: #D9D9D9;
-    border-radius: 6px;
-}
-
-.modal-content::-webkit-scrollbar-thumb:hover {
-    background: #bbb;
+    background-color: #D3D3D3; /* Cor do polegar */
+    border-radius: 10px; /* Bordas arredondadas */
 }
 
 .modal-content::-webkit-scrollbar-track {
-    background: #f0f0f0;
+    background: transparent; /* Tornar a trilha invisível */
 }
 
+.modal-content::-webkit-scrollbar-button {
+    display: none; /* Remover os botões */
+}
 
 .flex-container {
     display: flex;

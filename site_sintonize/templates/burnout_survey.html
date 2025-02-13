@@ -60,24 +60,26 @@
                         </div>
                         {% endfor %}
                         <div class="flex items-center justify-between mt-4">
-                            <div class="flex items-center flex-grow mr-4">
-                                <div id="progressText" style="margin-right: 10px;"></div>
-                                <div class="progress-bar" style="position: relative;">
-                                    <div id="progress" class="progress" style="height: 100%;"></div>
+                            <div class="flex items-center justify-between mt-4">
+                                <div class="flex items-center flex-grow mr-4">
+                                    <div id="progressText" style="margin-right: 10px;"></div>
+                                    <div class="progress-bar" style="position: relative;">
+                                        <div id="progress" class="progress" style="height: 100%;"></div>
+                                    </div>
                                 </div>
+                                <div class="flex space-x-2">
+                                    <button type="button" id="prevBtn"
+                                        class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700"
+                                        onclick="changeQuestion(-1)" style="display: none;">Voltar</button>
+                                    <button type="button" id="nextBtn"
+                                        class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+                                        onclick="changeQuestion(1)">Próximo</button>
+                                        <button type="button" id="sendBtn"
+                                        class="px-4 py-2 bg-green-500 text-white rounded hover:bg-blue-700"
+                                        style="display: none;">Enviar</button>
+                                    
                             </div>
-                            <div class="flex space-x-2">
-                                <button type="button" id="prevBtn"
-                                    class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700"
-                                    onclick="changeQuestion(-1)" style="display: none;">Voltar</button>
-                                <button type="button" id="nextBtn"
-                                    class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
-                                    onclick="changeQuestion(1)">Próximo</button>
-                                <button type="button" id="sendBtn"
-                                    class="px-4 py-2 bg-green-500 text-white rounded hover:bg-blue-700"
-                                    style="display: none;">Enviar</button>
-                            </div>
-                        </div>
+                            
                     </form>
                 </div>
             </div>
@@ -214,6 +216,7 @@
         });
 
         changeQuestion(0); // Inicia mostrando a primeira pergunta
+    
 
         const modalContent = document.querySelector('.modal-content');
 
