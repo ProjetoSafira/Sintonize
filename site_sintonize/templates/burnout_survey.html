@@ -180,6 +180,16 @@
 
         document.getElementById('sendBtn').addEventListener('click', (e) => {
             e.preventDefault(); // Evita o comportamento padrão do botão
+            // Verifica se alguma opção foi selecionada na última pergunta
+            if (!isOptionSelected()) {
+                // Exibe a mensagem de erro na última pergunta
+                document.getElementById(`error-${currentQuestion + 1}`).style.display = 'block';
+                return; // Impede a execução do código abaixo se não houver seleção
+            }
+
+            // Esconde a mensagem de erro caso tenha sido exibida antes
+            document.getElementById(`error-${currentQuestion + 1}`).style.display = 'none';
+
             openModal();
         });
 
@@ -228,6 +238,8 @@
             modalContent.style.scrollBehavior = 'smooth';
         });
 
+
+        
     </script>
 </body>
 
