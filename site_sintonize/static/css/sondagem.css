@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
 
 body {
@@ -12,34 +13,56 @@ body {
 .hero-section {
     width: 100%;
     min-height: 100vh;
-    background: 
-        linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%),
-        linear-gradient(0deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.25) 8.63%, rgba(0, 0, 0, 0.00) 57.5%),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.10) 9.58%, rgba(0, 0, 0, 0.20) 100%),
-        url('../images/sondagem/union.png') center/cover no-repeat,
-        #D9D9D9;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-.container-sondagem {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    text-align: center;
-    color: white;
-    z-index: 2;
     position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    padding-bottom: 60px;
+    margin-bottom: 0;
+    overflow: visible;
+}
+
+/* Novo elemento para o background */
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 95%;
+    background: url('../images/sondagem/union.png') center/cover no-repeat; /* Alterado para cover */
+    background-position: center bottom;
+    z-index: 4; 
+}
+
+.wave-wrapper {
+    position: absolute;
+    bottom: -30px; /* Ajustado para subir um pouco */
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 3;
+    background: transparent;
+}
+
+.wave-container {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: -1px;
+    background: var(--Neutral-colors-Gray-Colors-100, #F3F4F6); /* Adicionado mesmo background */
+}
+
+.container-sondagem {
+    position: relative;
+    z-index: 4;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 60px; /* Reduzido o padding-top para 0 */
+    text-align: center;
+    color: white;
+    margin-top: -60px; /* Adicionado margem negativa para subir */
 }
 
 .main-title {
@@ -54,6 +77,7 @@ body {
     line-height: 125%;
     letter-spacing: -0.5px;
     margin-bottom: 2rem;
+    margin-top: 0; /* Garantir que não tenha margem superior */
 }
 
 .decorative-bar {
@@ -62,111 +86,153 @@ body {
     flex-shrink: 0;
     border-radius: 4px;
     background: #F8B490;
-    margin: 1rem auto;
+    margin: 2rem auto;
 }
 
 .hero-text {
     width: 100%;
-    max-width: 1007px;
+    max-width: 1040px;
+    height: 123px;
     color: #FEFEFE;
     text-align: center;
     font-family: 'Nunito';
-    font-size: clamp(16px, 2vw, 20px);
+    font-size: 20px;
     font-style: normal;
     font-weight: 700;
     line-height: 160%;
-    margin: 1rem auto;
-    padding: 0 20px;
-}
-
-.wave-container {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 1440.5px;
-    height: 123px;
-    flex-shrink: 0;
-    background: url('../images/sondagem/ondulacoes.png') no-repeat;
-    background-size: 100% 100%;
-    background-position: bottom center;
-    z-index: 1;
-    opacity: 0.5; /* Para criar o efeito de fill com 50% de opacidade */
-    background-color: rgba(189, 204, 209, 1); /* Cor base */
-}
-
-/* Adicione um wrapper para garantir que a onda cubra toda a largura em telas maiores */
-@media (min-width: 1441px) {
-    .wave-container {
-        width: 100%; /* Para telas maiores que 1440px */
-    }
-}
-
-/* Ajuste no container para garantir que fique sobre a onda */
-.container-sondagem {
-    z-index: 2;
-    position: relative;
-}
-
-/* Atualiza a responsividade */
-@media (max-width: 1440px) {
-    .container-sondagem {
-        max-width: 90%;
-    }
-}
-
-@media (max-width: 768px) {
-    .hero-section {
-        padding: 20px 0;
-    }
-    
-    .main-title {
-        padding: 0 10px;
-    }
-    
-    .hero-text {
-        padding: 0 15px;
-    }
-}
-
-.content-section {
-    background-color: #fff;
-    position: relative;
-    z-index: 0;
+    margin: 2rem auto;
     padding: 20px;
-    margin-top: -1px; /* Ajuste fino para evitar linha branca */
+    height: auto; /* Removido altura fixa */
 }
 
-.content-container {
+.sondagem-content {
+    position: relative;
+    background: var(--Neutral-colors-Gray-Colors-100, #F3F4F6); /* Alterado o background */
+    padding: 80px 0;
+    margin-top: 0; /* Removido margin-top */
+    z-index: 2;
+    width: 100vw;
+    max-width: 100%;
+}
+
+.sondagem-container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 182px 20px;
+
 }
 
-.section-title {
+.sondagem-title {
     color: #2C3E50;
-    font-family: "Wix Madefor Display";
+    font-family: 'Mulish';
     font-size: 48px;
     font-weight: 700;
     line-height: 125%;
     margin-bottom: 40px;
     position: relative;
+    padding-left: 20px;
 }
 
-.section-title::before {
+.sondagem-title::before {
     content: '';
     position: absolute;
     left: 0;
     top: 50%;
     width: 4px;
-    height: 100%;
+    height: 80%;
     background-color: #F8B490;
     transform: translateY(-50%);
-    margin-left: -15px;
 }
 
-.content-text {
+.sondagem-text {
     color: #4A4A4A;
     font-family: 'Nunito';
     font-size: 18px;
-    line-height: 160%;
+    line-height: 1.8;
+}
+
+.sondagem-text p {
     margin-bottom: 24px;
+}
+
+.sondagem-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .sondagem-title {
+        font-size: 32px;
+        padding-left: 15px;
+        
+    }
+    
+    .sondagem-text {
+        font-size: 16px;
+    }
+}
+
+/* Adicionando media query específica para tela de 853px */
+@media screen and (max-width: 1024px) {
+    .hero-section {
+        padding-bottom: 30px; /* Reduzido padding */
+    }
+
+    .wave-wrapper {
+        bottom: 30px; /* Subindo mais a onda em telas menores */
+    }
+
+    .container-sondagem {
+        padding: 0 15px 30px; /* Reduzido padding */
+    }
+
+    .hero-text {
+        font-size: 18px; /* Reduzindo um pouco o tamanho do texto */
+        max-width: 90%; /* Ajustando largura máxima */
+        padding: 15px;
+        margin: 1.5rem auto;
+    }
+
+    .main-title {
+        font-size: clamp(32px, 4vw, 48px); /* Ajustando tamanho do título */
+        margin-bottom: 1.5rem;
+    }
+
+    .decorative-bar {
+        margin: 1.5rem auto;
+    }
+}
+
+/* Adicione isso ao final do arquivo CSS */
+.divider-section {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    margin: -1px 0; /* Evita gaps entre seções */
+}
+
+.divider-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Ajuste para telas menores */
+@media screen and (max-width: 853px) {
+    .divider-section {
+        margin-top: -2px; /* Ajuste fino para evitar gaps em telas menores */
+    }
+}
+
+/* Ajuste para telas maiores */
+@media screen and (min-width: 1920px) {
+    .sondagem-content {
+        display: flex;
+        justify-content: center;
+    }
+
+    .sondagem-container {
+        width: 100%;
+        max-width: 1440px; /* Aumentado para telas maiores */
+    }
 }

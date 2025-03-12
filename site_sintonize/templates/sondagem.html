@@ -3,6 +3,10 @@
 
 {% block content %}
 <section class="hero-section">
+    <div class="hero-background"></div>
+    <div class="wave-wrapper">
+        <img src="{% static 'images/sondagem/ondulacoes.png' %}" alt="Ondulações" class="wave-container">
+    </div>
     <div class="container-sondagem">
         <h1 class="main-title">Como está sua<br>qualidade de vida no trabalho?</h1>
         
@@ -16,6 +20,30 @@
         </p>
     </div>
 </section>
+
+<section class="sondagem-content">
+    <div class="sondagem-container">
+        <h2 class="sondagem-title">Você no Centro da Sua Jornada Profissional</h2>
+        
+        <div class="sondagem-text">
+            <p>O trabalho é uma parte importante da nossa vida, ocupando boa parte do nosso tempo e energia. Mas será que ele contribui para o nosso bem-estar ou tem sido uma fonte constante de cansaço e preocupação? A qualidade de vida no trabalho vai muito além da produtividade ou do cumprimento de prazos. Ela está diretamente ligada à maneira como nos sentimos ao determinar nossas funções, ao equilíbrio entre desafios e satisfação, e ao impacto que a rotina profissional tem em nossa saúde física e emocional.</p>
+            
+            <p>Cada pessoa tem uma relação única com o trabalho. Para alguns, ele pode ser fonte de propósito e realização, enquanto, para outros, pode representar uma carga difícil de carregar. E tudo bem sentir isso. O importante é reconhecer como o trabalho está afetando sua vida e encontrando formas de torná-lo mais saudável e sustentável.</p>
+            
+            <p>Pensar sobre qualidade de vida no trabalho não significa ignorar desafios ou dificuldades, mas sim olhar para eles com mais consciência. Como você se sente ao começar o dia de trabalho? O que está dando certo? Quais momentos da sua rotina profissional trazem satisfação e geram maior desgaste? Essas são perguntas que podem ajudar a compreender o que precisa de mais atenção.</p>
+            
+            <p>Aqui, nosso objetivo não é apontar erros ou definir o que é certo ou errado, mas sim oferecer um espaço para reflexão. Queremos te ajudar a identificar pequenos sinais do dia a dia que podem indicar a necessidade de ajustes, seja na forma como organizamos nossas atividades, no equilíbrio entre a vida pessoal e profissional ou na busca por mais bem-estar.</p>
+            
+            <p>Seja qual for o seu momento, lembre-se: você não está sozinho. Cuidar da qualidade de vida no trabalho não é um luxo, mas uma necessidade. Pequenas mudanças podem fazer toda a diferença. Vamos juntos explorar formas de tornar sua rotina mais equilibrada e satisfatória?</p>
+        </div>
+    </div>
+</section>
+
+<!-- Nova seção para o divider -->
+<div class="divider-section">
+    <img src="{% static 'images/sondagem/divider.png' %}" alt="Divisor" class="divider-image">
+</div>
+
 {% endblock %}
 
 {% block extra_css %}
