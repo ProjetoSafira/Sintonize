@@ -1,5 +1,20 @@
 {% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sintonize</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Wix+Madefor+Display:wght@400;700&display=swap" rel="stylesheet">
+    {% block extra_css %}{% endblock %}
+</head>
 <body>
+    <!-- Navbar -->
     <div class="navbar">
         <div class="nav-menu">
             <div class="brand">
@@ -24,6 +39,11 @@
         </div>
     </div>
 
+    <!-- Conteúdo principal -->
+    {% block content %}
+    {% endblock %}
+
+    <!-- Scripts -->
     <script>
     // Realizar a busca no menu e retornar os itens que correspondem à consulta (class menu-item)
     function searchMenu(query) {
@@ -179,12 +199,8 @@
             }
         });
     });
-</script>
+    </script>
 
-    
-    
-    
-    
-    
-    
+    {% block extra_js %}{% endblock %}
 </body>
+</html>
