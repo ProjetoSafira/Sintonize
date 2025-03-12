@@ -1,239 +1,172 @@
+/* Reset básico */
 * {
-    box-sizing: border-box; /* Inclui padding e borda na largura/altura total */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-
-#titulo-qualidade-vida {
-    width: 100%; /* Largura do título */
-    height: 51.3px; /* Altura do título */
-    opacity: 1; /* Tornar o título visível */
-    font-family: 'Roboto', sans-serif; /* Fonte Roboto */
-    font-size: 40px; /* Tamanho da fonte */
-    font-weight: 400; /* Peso da fonte */
-    line-height: 51px; /* Altura da linha (ajustada para centralizar verticalmente) */
-    text-align: center; /* Alinhamento do texto centrado */
-    margin: 10px auto; /* Centraliza com margem acima e abaixo */
-    margin-top: 80px;
-    color:#1C646D;
-    
+body {
+    overflow-x: hidden; /* Previne scroll horizontal */
 }
 
-/* Estilo da Informação */
-#informacao-conteudo {
-    font-size: 20px;
-    background-color:#CEF09D;
-    ; /* Ajuste conforme necessário */
-    padding: 5px 15px; /* Padding lateral reduzido */
-    border-radius: 20px;       
-    text-align: center;      
-    color: #000;              
-    margin: 20px auto; /* Centraliza e adiciona margem vertical */
-    max-width: fit-content; /* Reduz o tamanho do container ao conteúdo */
-
-}
-
-
-/* Descrição das Perguntas */
-#descricao-perguntas {
-    max-width: 100%; /* Altera para uma largura máxima de 100% */
-    height: auto; /* Mantém a altura automática */
-    position: relative; 
-    opacity: 1; 
-    font-family: 'Roboto', sans-serif; 
-    font-size: 20px; 
-    font-weight: 400; 
-    line-height: 30px; 
-    text-align: justify; /* Justifica o texto */
-    margin: 40px auto; /* Centraliza horizontalmente */
-    padding: 20px; /* Adiciona um padding para evitar que o texto grude nas bordas */
-   
-}
-
-
-/* Container de Perguntas */
-.questions-container {
-    display: grid; /* Usar Grid Layout para dispor os itens */
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Ajuste de colunas responsivas */
-    gap: 15px; /* Espaçamento entre os itens */
-    margin-top: 20px; /* Margem superior opcional */
-    background: #FFFFFF; /* Fundo branco do container */
-    padding: 20px; /* Padding ao redor do container */
-}
-
-/* Estilo do Item de Perguntas */
-.question-item {
-    width: 100%; /* Largura do item 100% do grid */
-    height: auto; /* Altura automática para se ajustar ao conteúdo */
-    background: #FFFFFF; /* Fundo do item */
-    border: 2px solid #C9E95780; /* Borda com cor e opacidade */
-    border-radius: 10px; /* Bordas arredondadas */
-    padding: 15px; /* Aumenta o padding interno para espaçamento */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve opcional */
-    opacity: 1; /* Tornar o item visível */
-    text-align: left; /* Justifica o texto dentro do item */
-    font-family: 'Roboto', sans-serif; /* Fonte Roboto */
-}
-
-/* Para garantir textos organizados */
-.question-item p {
-    margin: 0; /* Remove margens dos parágrafos (se houver) */
-    height: auto; /* Garante que o texto ocupe o espaço total */
-    
-    /* Estilo de Texto */
-    font-family: 'Roboto', sans-serif; /* Fonte Roboto */
-    font-size: 18px; /* Tamanho da fonte */
-    font-weight: 400; /* Peso da fonte */
-    line-height: 1.5; /* Aumenta a altura da linha para mais espaçamento */
-}
-
-
-/* Imagem do container */
-.image-container {
+.hero-section {
+    width: 100%;
+    min-height: 100vh;
+    background: 
+        linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%),
+        linear-gradient(0deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.25) 8.63%, rgba(0, 0, 0, 0.00) 57.5%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.10) 9.58%, rgba(0, 0, 0, 0.20) 100%),
+        url('../images/sondagem/union.png') center/cover no-repeat,
+        #D9D9D9;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
     display: flex;
-    justify-content: center; /* Centraliza a imagem horizontalmente */
-    align-items: center; /* Centraliza a imagem verticalmente, se necessário */
-    margin: 20px auto; /* Espaçamento vertical e centraliza horizontalmente */
-    width: 100%; /* Permite que o container ocupe a largura do pai */
-    max-width: 756px; /* Limite máximo da largura do container */
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.container-sondagem {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+    color: white;
+    z-index: 2;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.image-container img {
-    max-width: 100%; /* Faz a imagem ocupar toda a largura do container */
-    height: auto; /* Mantém a proporção */
-    opacity: 1; /* Se desejar manter a imagem visível, use 1 */
+.main-title {
+    width: 100%;
+    max-width: 1268px;
+    color: #FEFEFE;
+    text-align: center;
+    font-family: "Wix Madefor Display";
+    font-size: clamp(40px, 5vw, 64px);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 125%;
+    letter-spacing: -0.5px;
+    margin-bottom: 2rem;
 }
 
-
-
-/* Informação Geral */
-.informacao {
-    font-size: 12px;
-    background-color:#CEF09D; /* Ajuste conforme necessário */
-    padding: 10px;             
-    border-radius: 5px;       
-    text-align: center;      
-    font-weight: 400;         
-    color: #000;              
-    margin: 20px 0; /* Aumenta a margem para espaçamento */
+.decorative-bar {
+    width: 133px;
+    height: 6px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    background: #F8B490;
+    margin: 1rem auto;
 }
 
-.importante {
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 30px;
-    text-align: justify;
-    margin-top: 10px; /* Ajuste o valor conforme necessário */
-    padding: 15px; /* Opcional: espaçamento interno */
-    
-}
-.text-color {
-    color: #525866; /* Define a cor do texto */
-    font-family: 'Roboto', sans-serif; /* Define a família da fonte */
-    font-size: 20px; /* Define o tamanho da fonte */
-    font-weight: 400; /* Peso normal da fonte */
-    line-height: 30px; /* Altura da linha */
-    text-align: justify; /* Justifica o texto */
-    padding: 15px; /* Opcional: espaçamento interno */
-    margin-bottom: 10px; /* Espaço entre os parágrafos */
+.hero-text {
+    width: 100%;
+    max-width: 1007px;
+    color: #FEFEFE;
+    text-align: center;
+    font-family: 'Nunito';
+    font-size: clamp(16px, 2vw, 20px);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 160%;
+    margin: 1rem auto;
+    padding: 0 20px;
 }
 
-.referencias{
-     max-width: 100%; /* Altera para uma largura máxima de 100% */
-    height: auto; /* Mantém a altura automática */
-    position: relative; 
-    opacity: 1; 
-    font-family: 'Roboto', sans-serif; 
-    font-size: 16px; 
-    font-weight: 400; 
-    line-height: 30px; 
-    text-align: justify; /* Justifica o texto */
-    margin: 40px auto; /* Centraliza horizontalmente */
-    padding: 20px; /* Adiciona um padding para evitar que o texto grude nas bordas */
-
-}
-#container-principal {
-    max-width: 1440px; /* Defina a largura máxima desejada */
-    margin: 0 auto; /* Centraliza o contêiner horizontalmente */
-    padding: 20px; /* Adiciona um pouco de preenchimento */
+.wave-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 1440.5px;
+    height: 123px;
+    flex-shrink: 0;
+    background: url('../images/sondagem/ondulacoes.png') no-repeat;
+    background-size: 100% 100%;
+    background-position: bottom center;
+    z-index: 1;
+    opacity: 0.5; /* Para criar o efeito de fill com 50% de opacidade */
+    background-color: rgba(189, 204, 209, 1); /* Cor base */
 }
 
+/* Adicione um wrapper para garantir que a onda cubra toda a largura em telas maiores */
+@media (min-width: 1441px) {
+    .wave-container {
+        width: 100%; /* Para telas maiores que 1440px */
+    }
+}
 
+/* Ajuste no container para garantir que fique sobre a onda */
+.container-sondagem {
+    z-index: 2;
+    position: relative;
+}
 
-/* Estilos para telas pequenas */
+/* Atualiza a responsividade */
+@media (max-width: 1440px) {
+    .container-sondagem {
+        max-width: 90%;
+    }
+}
 
 @media (max-width: 768px) {
-    #titulo-qualidade-vida {
-        font-size: 30px;
-        height: auto;
-        margin-top: 1%;   
-    }
-
-    #informacao-conteudo {
-        font-size: 18px;
-        padding: 10px;
-        margin: 15px auto;
-    }
-
-    #descricao-perguntas {
-        font-size: 18px;
-        padding: 15px;
-    }
-
-    .questions-container {
-        grid-template-columns: 1fr;
-        padding: 28px;
-    }
-
-    .question-item {
-        padding: 10px;
-    }
-
-    .image-container {
-        width: auto;
-    }
-
-    .text-color,
-    .importante,
-    .referencias {
-        font-size: 18px;
-        padding: 10px;
-    }
-
-    .informacao {
-        font-size: 14px;
-    }
-
-    .button-linkedin {
-        font-size: 10px;
-        padding: 8px 15px;
-    }
-}
-
-/* Estilos para telas médias */
-@media (min-width: 769px) and (max-width: 1024px) {
-    #titulo-qualidade-vida {
-        font-size: 28px;
-    }
-
-    .questions-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .text-color,
-    .importante,
-    .referencias {
-        font-size: 19px;
-    }
-}
-
-/* Estilos para telas grandes */
-@media (min-width: 1025px) {
-    .questions-container {
-        grid-template-columns: repeat(3, 1fr);
+    .hero-section {
+        padding: 20px 0;
     }
     
-    #container-principal {
-        padding: 40px;
+    .main-title {
+        padding: 0 10px;
     }
+    
+    .hero-text {
+        padding: 0 15px;
+    }
+}
+
+.content-section {
+    background-color: #fff;
+    position: relative;
+    z-index: 0;
+    padding: 20px;
+    margin-top: -1px; /* Ajuste fino para evitar linha branca */
+}
+
+.content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    color: #2C3E50;
+    font-family: "Wix Madefor Display";
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 125%;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.section-title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 4px;
+    height: 100%;
+    background-color: #F8B490;
+    transform: translateY(-50%);
+    margin-left: -15px;
+}
+
+.content-text {
+    color: #4A4A4A;
+    font-family: 'Nunito';
+    font-size: 18px;
+    line-height: 160%;
+    margin-bottom: 24px;
 }
