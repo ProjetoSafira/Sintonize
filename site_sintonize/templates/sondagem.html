@@ -2,22 +2,48 @@
 {% load static %}
 
 {% block content %}
-<section class="hero-section">
+  <section class="hero-section">
     <div class="container-sondagem">
-        <h1 class="main-title">Como está sua<br>qualidade de vida no trabalho?</h1>
-        
-        <div class="decorative-bar"></div>
-        
-        <p class="hero-text">
-            A Síndrome de Burnout se desenvolve de forma silenciosa, impulsionada pelo excesso de trabalho, pressão
-            e sobrecarga. Está diretamente ligada a um ambiente profissional desequilibrado. Para prevení-la, é
-            fundamental refletir sobre a Qualidade de Vida no Trabalho (QVT). Um ambiente saudável motiva e traz
-            propósito, enquanto um ambiente desgastante compromete o bem-estar físico e emocional.
-        </p>
+      <h1 class="main-title">Como está sua<br />qualidade de vida no trabalho?</h1>
+
+      <div class="decorative-bar"></div>
+
+      <p class="hero-text">A Síndrome de Burnout se desenvolve de forma silenciosa, impulsionada pelo excesso de trabalho, pressão e sobrecarga. Está diretamente ligada a um ambiente profissional desequilibrado. Para prevení-la, é fundamental refletir sobre a Qualidade de Vida no Trabalho (QVT). Um ambiente saudável motiva e traz propósito, enquanto um ambiente desgastante compromete o bem-estar físico e emocional.</p>
     </div>
-</section>
+  </section>
+
+  <section class="autoavaliacao-section">
+    <div class="autoavaliacao-content">
+      <div class="img-autoavaliacao">
+        <img src="{% static 'images/sondagem/autoavaliacao-inteligente.png' %}" alt="imagem" />
+      </div>
+
+      <div class="autoavaliacao-titulo-texto">
+        <h1>Autoavaliação Inteligente</h1>
+        <p>
+          Se você está identificando sinais de estresse excessivo, cansaço constante ou insatisfação significativa no seu ambiente de trabalho, é fundamental que você busque ajuda profissional. Aqui você consegue entender mais a fundo se existe algum nível de Burnout e em qual você se encontra.<br />
+          Clique no botão abaixo para começar a reflexão sobre seu bem-estar e explorar orientações para buscar o suporte que você merece.
+        </p>
+
+        <div class="autoavaliacao-btn">
+          <button type="button" class="btn" id="iniciar-sondagem-btn"><span class="btn-text">Iniciar Sondagem</span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
 {% endblock %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/sondagem.css' %}">
+  <link rel="stylesheet" href="{% static 'css/sondagem.css' %}" />
+{% endblock %}
+
+<!-- Scripts -->
+{% block extra_js %}
+<script>
+    const btn = document.getElementById('iniciar-sondagem-btn')
+    btn.addEventListener('click', () => {
+      window.location.href = "{% url 'burnout_survey' %}" // Redireciona para a página de sondagem
+    })
+</script>
 {% endblock %}

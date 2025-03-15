@@ -94,6 +94,116 @@ body {
     background-color: rgba(189, 204, 209, 1); /* Cor base */
 }
 
+:root {
+    --4: 4px; /* Definindo a variável */
+  }
+
+.autoavaliacao-section{
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    margin: 0 auto;
+    background: linear-gradient(121deg, var(--Neutral-colors-White-Colors-100, #FEFEFE) -1.71%, var(--Secundary-100, #FDF8EB) 98.12%);
+    display: flex; /* Torna a section um flex container */
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+    padding: 0;
+}
+
+.autoavaliacao-content{
+    display: flex;
+    width: 583px;
+    padding: 276px 0px;
+    justify-content: center;
+    align-items: center;
+    gap: 34px;
+    flex-shrink: 0;
+}
+/* Estilo para a imagem */
+.img-autoavaliacao{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 583px;
+    height: 500px;
+    flex-shrink: 0;
+    filter: drop-shadow(0px 4px 40px rgba(0, 0, 0, 0.25));
+}
+
+/* Estilo para o texto */
+.autoavaliacao-titulo-texto{
+    display: flex;
+    width: 563.5px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--4, 32px);
+    flex-shrink: 0;
+}
+
+h1{
+    display: flex;
+    width: 563px;
+    height: 149px;
+    margin: 0;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--Neutral-colors-Black-Colors-400, #292B2F);
+    font-family: Nunito;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 125%; /* 80px */
+    letter-spacing: -0.5px;
+}
+
+p{
+    width: 563px;
+    color: var(--Neutral-colors-Black-Colors-400, #292B2F);
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 24px */
+}
+
+/* Estilo para o botão */
+.btn{
+    display: flex;
+    height: 56px;
+    padding: 16px 28px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    border-radius: var(--spacing-spacing-4-spacing-3, 12px);
+    background: var(--Complementary-Red-and-orange-400, #F59460);
+    box-shadow: 0px 4px 8px 0px rgba(255, 255, 255, 0.08);
+    border: none;
+}
+
+.btn:active{
+    transform: translateY(2px); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+}
+
+.btn:hover {
+    background-color: #F27E45; /* Cor mais escura no hover */
+}
+
+.autoavaliacao-btn{
+    margin-top: 20px;
+}
+
+/* Estilo para o texto do botão */
+.btn-text{
+    color: var(--gray-scale-white-white, #FFF);
+    font-family: Nunito;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 160%; /* 32px */
+}
+
 /* Adicione um wrapper para garantir que a onda cubra toda a largura em telas maiores */
 @media (min-width: 1441px) {
     .wave-container {
