@@ -340,6 +340,11 @@ body {
     }
 }
 
+@media screen and (max-height: 665px) {
+    .hero-background {
+        height: 100%;
+    }
+}
 
 .divider-section {
     width: 100%;
