@@ -62,7 +62,8 @@ body {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px 20px 60px; /* Ajustado padding-top */
+    padding: 20px 20px 60px;
+    /* Ajustado padding-top */
     text-align: center;
     color: white;
 }
@@ -303,16 +304,19 @@ body {
 /* Adicionando media query específica para tela de 853px */
 @media screen and (max-width: 1024px) {
     .hero-section {
-        padding: 100px 0 30px; /* Ajustado padding para telas menores */
+        padding: 100px 0 30px;
+        /* Ajustado padding para telas menores */
     }
 
     .hero-background {
-        height: 100%; /* Garante cobertura total */
+        height: 100%;
+        /* Garante cobertura total */
     }
 
     .container-sondagem {
         padding: 20px 15px 30px;
-        margin-top: 0; /* Removido margin negativa */
+        margin-top: 0;
+        /* Removido margin negativa */
     }
 
     .hero-text {
@@ -362,10 +366,9 @@ body {
 }
 
 
-.reflexao-section{
+.reflexao-section {
     display: flex;
     width: auto;
-    height: 1101px;
     padding: 182px 79px;
     flex-direction: column;
     align-items: flex-start;
@@ -374,211 +377,173 @@ body {
     background: #FAFAFA;
 }
 
-.container-reflexao{
+.container-reflexao {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centraliza os itens na vertical */
-    align-items: center; /* Centraliza os itens na horizontal */
+    justify-content: center;
+    align-items: center;
     gap: 48px;
-    height: 100vh; /* Definir altura para ocupar toda a altura da tela */
-    width: 100%; /* Garantir que o contêiner ocupe toda a largura */
+    width: 100%;
 }
 
-.reflexao-texto-box{
+.reflexao-texto-box {
     display: flex;
     width: 1282px;
-    height: 169px;
-    flex-direction: column;
-    align-items: center;
-    gap: 92px;
-    gap: 24px;
-    align-self: stretch;
-}
-
-.reflexao-texto::before {
-    content:'';
-    position: absolute; 
-    left: -24px;
-    top: 44%;
-    width: 169px;
-    height: 6px;
-    background-color: #F8B490;
-    gap: 10px;
-    flex-shrink: 0;
-    transform: rotate(-90deg);
-    border-radius: 4px;
-}
-
-.reflexao-texto{
-    display: flex;
-    width: 1249px;
-    height: 185px;
     flex-direction: column;
     align-items: flex-start;
-    gap: 32px;
-    flex-shrink: 0;
+    gap: 24px;
     position: relative;
 }
 
-/*Estilo do texto*/
+.reflexao-texto {
+    display: flex;
+    width: 1249px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--3, 24px);
+    position: relative;
+    padding-left: 34px;
+}
 
-.reflexao-texto h2{
-    height: 41px;
-    flex-shrink: 0;
-    align-self: stretch;
-    color:#204551;
-    font-family: Mulish;
+.reflexao-texto::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 6px;
+    background-color: #F8B490;
+    border-radius: 4px;
+}
+
+.reflexao-texto h2 {
+    color: var(--Primary-Pressed---500, #204551);
+    font-family: 'Mulish';
     font-size: 40px;
     font-style: normal;
     font-weight: 400;
-    line-height: 120%; /* 48px */
-    margin: 0;
+    line-height: 120%;
+    /* 48px */
 }
 
-.reflexao-texto p{
-    align-self: stretch;
+.reflexao-texto p {
     color: #1F2123;
-    font-family: Nunito;
+    font-family: 'Nunito';
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
-    line-height: 160%; /* 32px */
+    line-height: 160%;
     margin: 0;
 }
 
 /* Cards */
-.reflexao-cards-container{
-    width: 1284px;
-    height: 519.5px;
+.reflexao-cards-container {
+    width: 100%;
     display: flex;
-    flex-wrap: wrap; 
-    justify-content: center; 
-    align-items: center; 
-    height: 100vh;
-    gap: 53px; 
-    box-sizing: border-box;
+    flex-direction: column;
+    gap: 53px;
+    margin-top: 48px;
+
 }
 
-.reflexao-cards-box-1{
-    display: inline-flex;
-align-items: flex-end;
-gap: 90px;
+.reflexao-cards-box-1,
+.reflexao-cards-box-2 {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 90px;
+    padding: 0 0 53px;
 }
 
-
-.reflexao-card-1{
+.card-1,
+.card-2,
+.card-3,
+.card-4,
+.card-5,
+.card-6 {
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
     width: 368px;
     height: 180px;
     padding: 60px 20px;
-    align-items: flex-start;
     gap: 20px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    background: #FEFEFE;
-}
-
-.reflexao-card-1:hover{
-box-shadow: 0px 2px 4px 0px rgba(229, 231, 235, 0.04), 0px 4px 4px 0px rgba(0, 86, 204, 0.06);
-}
-
-.numero-card{
-    width: 103.416px;
-    height: 100px;
-    flex-shrink: 0;
-    border-radius: 50%;
-    background: #FDF8EB;
-}
-
-.reflexao-cards-box-2{
-    display: flex;
-    width: 1284px;
-    height: 180px;
-    align-items: center;
-    gap: 90px;
-    flex-shrink: 0;
-}
-
-/* Ajusta o alinhamento e o layout dos boxes de cards */
-.reflexao-cards-box-1, .reflexao-cards-box-2 {
-    display: flex;
-    flex-wrap: wrap; 
-    justify-content: flex-start; 
-    align-items: flex-start; 
-    width: 100%; 
-}
-
-/* Estilos dos cards */
-.card-1, .card-2, .card-3, .card-4, .card-5, .card-6 {
-    display: flex;
-    flex-direction: column; /* Alinha o conteúdo dos cards na direção da coluna */
-    align-items: center;
-    justify-content: center;
-    width: 368px;
-    height: 180px;
     border-radius: 8px;
     background: #FEFEFE;
     position: relative;
-    padding: 20px;
     text-align: center;
-    transition: box-shadow 0.3s ease;
-}
-
-.card-1:hover, .card-2:hover, .card-3:hover, .card-4:hover, .card-5:hover, .card-6:hover {
+    flex-shrink: 0;
+    border-radius: 8px;
     box-shadow: 0px 2px 4px 0px rgba(229, 231, 235, 0.04), 0px 4px 4px 0px rgba(0, 86, 204, 0.06);
 }
 
-/* Estilização do círculo */
 .circle {
-    width: 103px;
-    height: 103px;
+    width: 103.416px;
+    height: 100px;
     display: flex;
+    flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
+    border-radius: var(--12, 96px);
     background: #FDF8EB;
     position: absolute;
-    top: -50px; /* Faz o círculo "subir" para ficar acima do card */
+    top: -50px;
     left: 50%;
     transform: translateX(-50%);
 }
 
-/* Estilização do texto dentro do círculo */
 .circle h1 {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Nunito';
     font-size: 64px;
     font-weight: 700;
-    line-height: 125%; /* 80px */
-    letter-spacing: -0.5px;
+    line-height: 125%;
     color: #F8B490;
     margin: 0;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%); /* Centraliza o círculo horizontalmente */
 }
 
-/* Estilização do texto dos cards */
-.card-1 p, .card-2 p, .card-3 p, .card-4 p, .card-5 p, .card-6 p {
+.card-1 p,
+.card-2 p,
+.card-3 p,
+.card-4 p,
+.card-5 p,
+.card-6 p {
     color: #1F2123;
     text-align: center;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto';
     font-size: 16px;
     font-weight: 400;
-    line-height: 1.5; /* 150% */
-    margin-top: 50px; /* Ajusta o espaçamento do texto para ficar abaixo do círculo */
+    line-height: 150%;
+    margin-top: 50px;
 }
 
-/* Ajustes específicos para os dois primeiros cards de cada linha */
-.reflexao-cards-box-1 .card-1, .reflexao-cards-box-1 .card-2,
-.reflexao-cards-box-2 .card-1, .reflexao-cards-box-2 .card-2 {
-    flex-direction: row; /* Mantém a direção na linha para os dois primeiros cards */
-}
+@media (max-width: 768px) {
+    .reflexao-section {
+        padding: 60px 20px;
+    }
 
-.reflexao-cards-box-1 .card-3, .reflexao-cards-box-2 .card-3,
-.reflexao-cards-box-1 .card-4, .reflexao-cards-box-2 .card-4,
-.reflexao-cards-box-1 .card-5, .reflexao-cards-box-2 .card-5,
-.reflexao-cards-box-1 .card-6, .reflexao-cards-box-2 .card-6 {
-    flex-direction: column; /* Deixa todos os outros cards com a direção de coluna */
+    .reflexao-texto-box {
+        width: 100%;
+    }
+
+    .reflexao-texto {
+        width: 100%;
+    }
+
+    .reflexao-cards-box-1,
+    .reflexao-cards-box-2 {
+        flex-direction: column;
+        gap: 60px;
+    }
+
+    .card-1,
+    .card-2,
+    .card-3,
+    .card-4,
+    .card-5,
+    .card-6 {
+        width: 100%;
+    }
 }
 
 /* Ajuste para telas menores */
@@ -608,7 +573,7 @@ box-shadow: 0px 2px 4px 0px rgba(229, 231, 235, 0.04), 0px 4px 4px 0px rgba(0, 8
     .autoavaliacao-content {
         padding: 60px 20px;
     }
-    
+
     .sondagem-container {
         padding: 120px 20px;
     }
@@ -616,7 +581,8 @@ box-shadow: 0px 2px 4px 0px rgba(229, 231, 235, 0.04), 0px 4px 4px 0px rgba(0, 8
 
 @media screen and (max-width: 820px) {
     .hero-section {
-        padding: 80px 0 30px; /* Reduzido ainda mais para telas menores */
+        padding: 80px 0 30px;
+        /* Reduzido ainda mais para telas menores */
     }
 
     .container-sondagem {
