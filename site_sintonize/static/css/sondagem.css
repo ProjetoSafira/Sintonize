@@ -645,6 +645,81 @@ body {
     .main-title {
         font-size: clamp(34px, 4.2vw, 42px);
     }
+
+    /* Ajustes para a seção de reflexão */
+    .reflexao-section {
+        padding: 60px 20px;
+    }
+
+    .reflexao-texto-box {
+        width: 100%;
+        padding: 0 15px;
+    }
+
+    .reflexao-texto {
+        width: 100%;
+        padding-left: 24px;
+    }
+
+    .reflexao-texto h2 {
+        font-size: 32px;
+        line-height: 1.2;
+        text-align: left;
+    }
+
+    .reflexao-texto p {
+        font-size: 16px;
+        line-height: 1.5;
+        text-align: left;
+    }
+
+    .reflexao-cards-container {
+        margin-top: 32px;
+        gap: 80px;
+    }
+
+    .reflexao-cards-box-1,
+    .reflexao-cards-box-2 {
+        flex-direction: column;
+        gap: 80px;
+        padding: 0;
+        align-items: center;
+    }
+
+    .card-1,
+    .card-2,
+    .card-3,
+    .card-4,
+    .card-5,
+    .card-6 {
+        width: 100%;
+        max-width: 368px;
+        height: auto;
+        min-height: 180px;
+        padding: 40px 15px;
+        margin-top: 50px;
+    }
+
+    .circle {
+        width: 80px;
+        height: 80px;
+        top: -40px;
+    }
+
+    .circle h1 {
+        font-size: 48px;
+    }
+
+    .card-1 p,
+    .card-2 p,
+    .card-3 p,
+    .card-4 p,
+    .card-5 p,
+    .card-6 p {
+        font-size: 15px;
+        margin-top: 20px;
+        padding: 0 10px;
+    }
 }
 
 @media screen and (max-width: 480px) {
