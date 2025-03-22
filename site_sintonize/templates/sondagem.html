@@ -46,18 +46,15 @@
 </div>
 
 <section class="reflexao-section">            
-  <div class="container-reflexao">
-      <div class="reflexao-texto-box">
-              <div class=reflexao-texto>
-                  <h2>Um guia de reflexão para o trabalho</h2>
-                  <p>As perguntas abaixo te ajudarão a entender sua Qualidade de Vida no Trabalho (QVT). Reserve um momento para refletir sobre seus valores, sua rotina profissional, suas principais preocupações e o que lhe traz prazer no trabalho. Essa reflexão pode proporcionar uma compreensão mais clara da sua relação com a vida profissional.</p>
-              </div>                  
-      </div>
-
-      <!--Cards-->
+    <div class="container-reflexao">
+        <div class="reflexao-texto-box">
+            <div class="reflexao-texto">
+                <h2>Um guia de reflexão para o trabalho</h2>
+                <p>As perguntas abaixo te ajudarão a entender sua Qualidade de Vida no Trabalho (QVT). Reserve um momento para refletir sobre seus valores, sua rotina profissional, suas principais preocupações e o que lhe traz prazer no trabalho. Essa reflexão pode proporcionar uma compreensão mais clara da sua relação com a vida profissional.</p>
+            </div>                  
+        </div>
 
         <div class="reflexao-cards-container">
-
             <div class="reflexao-cards-box-1">
                 <div class="card-1">
                     <div class="circle">
@@ -66,7 +63,7 @@
                     <p>Como suas interações com colegas e gestores impactam sua experiência no trabalho e sua motivação no dia a dia?</p>
                 </div>
               
-              <div class="card-2">
+                <div class="card-2">
                     <div class="circle">
                         <h1>2</h1>
                     </div>
@@ -88,7 +85,7 @@
                     <p>Sua remuneração e os reconhecimentos que recebe estão alinhados com suas expectativas e objetivos profissionais?</p>
                 </div>
               
-              <div class="card-5">
+                <div class="card-5">
                     <div class="circle">
                         <h1>5</h1>
                     </div>
@@ -103,7 +100,7 @@
                 </div>
             </div>    
         </div>
-  </div>
+    </div>
 </section>
 
 <section class="autoavaliacao-section">
@@ -119,7 +116,7 @@
           Clique no botão abaixo para começar a reflexão sobre seu bem-estar e explorar orientações para buscar o suporte que você merece.
         </p>
         <div class="autoavaliacao-btn">
-          <button type="button" class="btn" id="iniciar-sondagem-btn" onclick="window.location.href='{% url 'burnout_survey' %}'">
+          <button type="button" class="btn" id="iniciar-sondagem-btn">
             <span class="btn-text">Iniciar Sondagem</span>
           </button>
         </div>
@@ -130,4 +127,15 @@
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/sondagem.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const botaoSondagem = document.getElementById('iniciar-sondagem-btn');
+    botaoSondagem.addEventListener('click', function() {
+        window.location.href = "{% url 'burnout_survey' %}";
+    });
+});
+</script>
 {% endblock %}
