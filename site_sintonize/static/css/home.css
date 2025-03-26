@@ -131,7 +131,7 @@ svg {
         max-height: 866px;
         /* Limita a altura no viewport */
 
-        width: 1440px;
+        width: 100%;
     }
 
     .illustration {

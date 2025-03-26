@@ -1,13 +1,29 @@
 from django.db import models
 
 class BurnoutSurvey(models.Model):
+    # Pontuação padrão (para perguntas com ordem direta)
     NEVER = 1
     RARELY = 2
     SOMETIMES = 3
     OFTEN = 4
     ALWAYS = 5
 
-    STATEMENT_CHOICES = [
+    # Pontuação alternativa (para perguntas com ordem inversa)
+    NEVER_ALT = 5
+    RARELY_ALT = 4
+    SOMETIMES_ALT = 3
+    OFTEN_ALT = 2
+    ALWAYS_ALT = 1
+
+    STATEMENT_CHOICES_INVERSE = [
+        (NEVER_ALT, "Nunca"),
+        (RARELY_ALT, "Raramente"),
+        (SOMETIMES_ALT, "Às Vezes"),
+        (OFTEN_ALT, "Frequentemente"),
+        (ALWAYS_ALT, "Sempre"),
+    ]
+
+    STATEMENT_CHOICES_DIRECT = [
         (NEVER, "Nunca"),
         (RARELY, "Raramente"),
         (SOMETIMES, "Às Vezes"),
@@ -15,24 +31,54 @@ class BurnoutSurvey(models.Model):
         (ALWAYS, "Sempre"),
     ]
 
-    statement_1 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="1. Com que frequência você sente que não consegue lidar emocionalmente com as demandas do trabalho?")
-    statement_2 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="2. Você sente que perdeu o entusiasmo ou a motivação que tinha em relação ao seu trabalho?")
-    statement_3 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="3. Sente-se frequentemente ansioso(a) ou frustrado(a) em relação ao trabalho?")
-    statement_4 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="4. Com que frequência você se sente irritado(a) ou impaciente com colegas, gestores ou clientes?")
-    statement_5 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="5. Você sente dificuldade em se desconectar emocionalmente do trabalho, mesmo fora do expediente?")
-    statement_6 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="6. Após o expediente, com que frequência você se sente fisicamente exausto(a)?")
-    statement_7 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="7. Ao acordar, você sente que não recuperou a necessidade de energia, mesmo após uma noite de descanso?")
-    statement_8 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="8.Você sente que a carga de trabalho está impactando sua saúde física, como dores, cansaço excessivo ou outros sintomas?")
-    statement_9 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="9. Você percebe alterações no seu apetite ou padrão de sono devido ao trabalho?")
-    statement_10 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="10. Você sente que seu esforço ou desempenho no trabalho não é devidamente reconhecido ou valorizado?")
-    statement_11 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="11. Você acredita que seu trabalho atual proporciona um senso de propósito ou realização pessoal?")
-    statement_12 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="12. Você considera que os pagamentos ou benefícios recebidos são proporcionais ao critério do trabalho?")
-    statement_13 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="13. Você acredita que o ambiente de trabalho contribui positivamente para seu bem-estar mental e físico?")
-    statement_14 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="14. Você sente que pode contar com o apoio de seus colegas ou superiores em momentos de dificuldade?")
-    statement_15 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="15. Você sente que consegue equilibrar suas responsabilidades profissionais com sua vida pessoal?")
-    statement_16 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="16. Com que frequência você sente que o tempo disponível para realizar suas tarefas no trabalho é insuficiente?")
-    statement_17 = models.IntegerField(choices=STATEMENT_CHOICES, verbose_name="17. Você percebe que o trabalho interfere na sua capacidade de cuidar de si mesmo(a) ou de outras áreas importantes da sua vida?")
-
+    statement_1 = models.IntegerField(
+        choices=STATEMENT_CHOICES_DIRECT,  # Ordem direta (1-5)
+        verbose_name="1. Costumo me sentir esgotado(a) emocionalmente em relação ao meu trabalho."
+    )
+    statement_2 = models.IntegerField(
+        choices=STATEMENT_CHOICES_INVERSE,  # Ordem inversa (5-1)
+        verbose_name="2. Sinto que consigo lidar emocionalmente com as demandas do trabalho."
+    )
+    statement_3 = models.IntegerField(
+        choices=STATEMENT_CHOICES_DIRECT,  # Ordem direta (1-5)
+        verbose_name="3. Sinto que a carga de trabalho está impactando minha saúde física, como dores, cansaço excessivo ou outros sintomas."
+    )
+    statement_4 = models.IntegerField(
+        choices=STATEMENT_CHOICES_INVERSE,  # Ordem inversa (5-1)
+        verbose_name="4. Consigo me desconectar emocionalmente do trabalho quando estou fora do expediente."
+    )
+    statement_5 = models.IntegerField(
+        choices=STATEMENT_CHOICES_INVERSE,  # Ordem inversa (5-1)
+        verbose_name="5. Mantenho distância emocional dos problemas dos outros com facilidade."
+    )
+    statement_6 = models.IntegerField(
+        choices=STATEMENT_CHOICES_INVERSE,  # Ordem inversa (5-1)
+        verbose_name="6. Sinto-me tranquilo(a) ao lidar com as pessoas no meu ambiente de trabalho."
+    )
+    statement_7 = models.IntegerField(
+        choices=STATEMENT_CHOICES_INVERSE,  # Ordem inversa (5-1)
+        verbose_name="7. Me preocupo genuinamente com o bem-estar dos colegas de trabalho."
+    )
+    statement_8 = models.IntegerField(
+        choices=STATEMENT_CHOICES_INVERSE,  # Ordem inversa (5-1)
+        verbose_name="8. Sinto-me emocionalmente equilibrado(a) ao lidar com colegas, gestores ou clientes no ambiente de trabalho."
+    )
+    statement_9 = models.IntegerField(
+        choices=STATEMENT_CHOICES_DIRECT,  # Ordem direta (1-5)
+        verbose_name="9. Não sinto mais tanto amor pelo meu trabalho como antes."
+    )
+    statement_10 = models.IntegerField(
+        choices=STATEMENT_CHOICES_DIRECT,  # Ordem direta (1-5)
+        verbose_name="10. Não acredito mais naquilo que realizo profissionalmente."
+    )
+    statement_11 = models.IntegerField(
+        choices=STATEMENT_CHOICES_INVERSE,  # Ordem inversa (5-1)
+        verbose_name="11. Sinto que continuo entusiasmado(a) e motivado(a) em relação ao meu trabalho."
+    )
+    statement_12 = models.IntegerField(
+        choices=STATEMENT_CHOICES_INVERSE,  # Ordem inversa (5-1)
+        verbose_name="12. Sinto que meu trabalho atual proporciona um senso de propósito ou realização pessoal."
+    )
 
     def total_score(self):
         score = (
@@ -41,8 +87,6 @@ class BurnoutSurvey(models.Model):
             self.statement_6 + self.statement_7 + 
             self.statement_8 + self.statement_9 + 
             self.statement_10 + self.statement_11 + 
-            self.statement_12 + self.statement_13 + 
-            self.statement_14 + self.statement_15 + 
-            self.statement_16 + self.statement_17 
+            self.statement_12 
         )
         return score
