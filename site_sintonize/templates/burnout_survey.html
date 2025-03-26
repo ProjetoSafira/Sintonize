@@ -21,15 +21,6 @@
 </head>
 
 <body class="bg-gray-100">
-    {% include 'menu.html' %}
-    {% if messages %}
-    <div class="notification">
-        {% for message in messages %}
-        <div>{{ message }}</div>
-        {% endfor %}
-    </div>
-    {% endif %}
-
     <div class="container mx-auto py-8">
         <div class="form-card max-w-2xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
             <div id="sessionHeader" class="session-header"></div>
@@ -123,13 +114,7 @@
     </div>
 
     <script>
-        const sessionTitles = [
-            "Carga Emocional e Saúde Mental",
-            "Exaustão Física e Cansaço",
-            "Satisfação e Realização Profissional",
-            "Relações e Suporte no Ambiente de Trabalho"
-        ];
-        const totalQuestions = 17; // Total de perguntas
+        const totalQuestions = 12; // Total de perguntas
         let currentQuestion = 0;
         let totalScore = 0;  // Variável para armazenar a pontuação total
         const questions = document.querySelectorAll('.question');
@@ -164,10 +149,9 @@
 
             if (currentQuestion >= 0 && currentQuestion < questions.length) {
                 questions[currentQuestion].classList.add('active');
-                const sessionIndex = Math.floor(currentQuestion / (totalQuestions / 4));
+                const sessionIndex = Math.floor(currentQuestion / (totalQuestions / 3));
                 document.getElementById('sessionHeader').innerHTML = `
-                    <div class="session-title">Seção ${sessionIndex + 1} de 4</div>
-                    <div class="session-subtitle">${sessionTitles[sessionIndex]}</div>
+                    <div class="session-title">Seção ${sessionIndex + 1} de 3</div>
                 `;
                 const progressPercentage = ((currentQuestion + 1) / totalQuestions) * 100;
                 document.getElementById('progress').style.width = progressPercentage + '%';
@@ -180,6 +164,7 @@
 
         document.getElementById('sendBtn').addEventListener('click', (e) => {
             e.preventDefault(); // Evita o comportamento padrão do botão
+            
             // Verifica se alguma opção foi selecionada na última pergunta
             if (!isOptionSelected()) {
                 // Exibe a mensagem de erro na última pergunta
@@ -190,12 +175,16 @@
             // Esconde a mensagem de erro caso tenha sido exibida antes
             document.getElementById(`error-${currentQuestion + 1}`).style.display = 'none';
 
+            // Calcula a pontuação da última questão antes de enviar
+            calculateScore();
+
+            // Chama a função openModal que fará a requisição para o backend
             openModal();
         });
 
         function openModal() {
             const total = totalScore;
-            fetch(`/resultado/${total}/`)  // Chama a URL da view resultado
+            fetch(`/resultado/${total}/`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Erro ao obter o resultado.');
@@ -207,10 +196,14 @@
                     document.getElementById('modalBody').innerText = data.body;
                     document.getElementById('modalImage').src = data.image;
                     document.getElementById('userMessage').textContent = data.userMessage;
-                    document.getElementById('modalIcon').src = data.icon; // Define a imagem do ícone
+                    document.getElementById('modalIcon').src = data.icon;
                     document.getElementById('resultModal').classList.remove('hidden');
                 })
-                .catch(error => console.error('Erro ao obter o resultado:', error));
+                .catch(error => {
+                    console.error('Erro ao obter o resultado:', error);
+                    // Em caso de erro, submete o formulário normalmente
+                    document.getElementById('surveyForm').submit();
+                });
         }
 
         function closeModal() {
