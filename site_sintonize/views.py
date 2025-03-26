@@ -127,9 +127,6 @@ def burnout_survey_view(request):
             survey = form.save()
             score = survey.total_score()
             return redirect('resultado', score=score)
-        else:
-            messages.error(request, 'Por favor, corrija os erros no formulário.')
-
     else:
         form = BurnoutSurveyForm()
 
