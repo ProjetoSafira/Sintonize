@@ -123,6 +123,9 @@
       </div>
     </div>
   </section>
+  <!-- Div oculta que será preenchida com o conteúdo de burnout_survey.html -->
+    <div id="formulario-sondagem" style="display:none;"></div>
+
 {% endblock %}
 
 {% block extra_css %}
@@ -131,11 +134,23 @@
 
 {% block extra_js %}
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const botaoSondagem = document.getElementById('iniciar-sondagem-btn');
-    botaoSondagem.addEventListener('click', function() {
-        window.location.href = "{% url 'burnout_survey' %}";
+    document.addEventListener('DOMContentLoaded', function() {
+        const botaoSondagem = document.getElementById('iniciar-sondagem-btn');
+        const formularioSondagem = document.getElementById('formulario-sondagem');
+        
+        botaoSondagem.addEventListener('click', function() {
+            // Fazer uma requisição para carregar o conteúdo de burnout_survey.html
+            fetch("{% url 'burnout_survey' %}")
+                .then(response => response.text())
+                .then(data => {
+                    // Inserir o conteúdo de burnout_survey.html na div
+                    formularioSondagem.innerHTML = data;
+                    formularioSondagem.style.display = 'block'; // Exibir a div
+                })
+                .catch(error => {
+                    console.error("Erro ao carregar o formulário:", error);
+                });
+        });
     });
-});
 </script>
 {% endblock %}
