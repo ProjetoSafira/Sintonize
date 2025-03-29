@@ -836,6 +836,8 @@ body {
 }
 
 .decorative-left {
+    width: 1319.5px;
+    height: 848.502px;
     position: absolute;
     left: 0;
     top: 50%;
@@ -844,9 +846,12 @@ body {
     width: auto;
     height: 80%;
     max-height: 600px;
+    fill: linear-gradient(0deg, rgba(189, 204, 209, 0.10) 0%, rgba(97, 104, 107, 0.10) 100%);
 }
 
 .decorative-right {
+    width: 1319.5px;
+    height: 848.502px;
     position: absolute;
     right: 0;
     top: 50%;
@@ -855,6 +860,8 @@ body {
     width: auto;
     height: 80%;
     max-height: 600px;
+    fill: linear-gradient(90deg, rgba(189, 204, 209, 0.10) 0%, rgba(97, 104, 107, 0.10) 100%);
+    margin-bottom: 50px;
 }
 
 @media screen and (min-width: 1441px) {
@@ -867,10 +874,10 @@ body {
     .decorative-left {
         left: 80px;
         transform: translateY(-50%);
-        }
+    }
 
     .decorative-right {
-        right: -80px;
+        right: 80px;
     }
 }
 
@@ -900,6 +907,7 @@ body {
 }
 
 @media screen and (max-width: 480px) {
+
     .decorative-left,
     .decorative-right {
         display: none;
