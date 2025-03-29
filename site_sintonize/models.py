@@ -57,7 +57,7 @@ class BurnoutSurvey(models.Model):
     )
     statement_7 = models.IntegerField(
         choices=STATEMENT_CHOICES_INVERSE,  # Ordem inversa (5-1)
-        verbose_name="7. Me preocupo genuinamente com o bem-estar dos colegas de trabalho."
+        verbose_name="7. Não me preocupo genuinamente com o bem-estar dos colegas de trabalho."
     )
     statement_8 = models.IntegerField(
         choices=STATEMENT_CHOICES_INVERSE,  # Ordem inversa (5-1)
