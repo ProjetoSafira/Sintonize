@@ -897,7 +897,7 @@ body {
     left: 0;
     pointer-events: none;
     z-index: 1;
-    overflow: visible;
+    overflow: hidden;
 }
 
 .decorative-left {
@@ -909,27 +909,25 @@ body {
     width: 1319.5px;
     height: 848.502px;
     flex-shrink: 0;
+    
+    
 }
 
 .decorative-right {
     position: absolute;
-    max-width: 1319.5px;
-    right: -750px;
+    width: 650px;
+    height: auto;
+    right: -450px;
     top: 40%;
     transform: translateY(-50%);
     z-index: 0;
     object-fit: contain;
-    max-width: none;
-    max-height: none;
-    width: 89%;
-    height: 848.502px;
-
 }
 
 @media screen and (min-width: 1600px) {
     .decorative-images {
         max-width: 100%;
-        overflow: visible;
+        overflow: hidden;
     }
 
     .decorative-left {
@@ -940,14 +938,13 @@ body {
     }
 
     .decorative-right {
-        width: 900px;
-        right: -550px;
+        width: 800px;
+        right: -250px;
         top: 35%;
         transform: translateY(-50%);
         z-index: 0;
         object-fit: contain;
-        max-width: none;
-        max-height: none;
+
     }
 
     .container-avaliacao {
@@ -980,17 +977,19 @@ body {
     }
 }
 
-@media screen and (max-width: 1024px) {
-    .background-rectangle {
-        width: 100%;
-        height: auto;
-    }
-
+@media screen and (max-width: 1440px) {
     .decorative-right {
-        width: 200px;
-        right: -360px;
+        width: 600px;
+        right: -400px;
+        top: 40%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .decorative-right {
+        width: 500px;
+        right: -400px;
         object-fit: contain;
-    
     }
 
     .regua-imagem {
@@ -1015,8 +1014,9 @@ body {
     }
 
     .decorative-right {
-        width: 200px;
-        right: -20px;
+        width: 500px;
+        right: -350px;
+        top: 680px;
         object-fit: contain;
     }
 }
@@ -1032,206 +1032,3 @@ body {
     }
 }
 
-@media screen and (max-width: 1024px) and (max-height: 600px) {
-    .avaliacao-satisfacao-section {
-        padding: 30px 0;
-        min-height: 800px;
-        max-height: none;
-        overflow: visible;
-    }
-
-    .decorative-right {
-        width: 580px;
-        height: auto;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        opacity: 0.6;
-        max-height: 80vh;
-    }
-
-    .decorative-left {
-        width: 60px;
-        height: auto;
-        top: 50%;
-        opacity: 0.5;
-        max-height: 60vh;
-    }
-
-    .white-border-container {
-        min-height: auto;
-        padding: 15px 10px;
-        margin-bottom: 20px;
-    }
-
-    .avaliacao-title {
-        font-size: 20px;
-        margin-bottom: 8px;
-    }
-
-    .avaliacao-text {
-        margin-bottom: 10px;
-        height: auto;
-        max-height: none;
-    }
-
-    .avaliacao-text p {
-        font-size: 13px;
-        line-height: 120%;
-    }
-
-    .regua-container {
-        width: 100%;
-        max-width: 450px;
-        margin-bottom: 5px;
-    }
-
-    .regua-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        gap: 3px;
-    }
-
-    .regua-imagem {
-        max-width: 100%;
-        height: auto;
-        max-height: 22px;
-    }
-
-    .emoji-container {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        margin-top: 3px;
-    }
-
-    .emoji-item {
-        width: 24px;
-        height: 24px;
-        margin: 0 2px;
-    }
-
-    .container-avaliacao {
-        padding: 10px 8px;
-    }
-}
-
-@media screen and (min-width: 768px) and (max-width: 820px), screen and (width: 820px) {
-    .avaliacao-satisfacao-section {
-        min-height: 1100px;
-        padding: 60px 0;
-    }
-    
-    .decorative-right {
-        width: 250px;
-        right: -20px;
-        top: 40%;
-        opacity: 0.9;
-    }
-    
-    .decorative-left {
-        width: 150px;
-        left: -10px;
-        top: 30%;
-    }
-    
-    .white-border-container {
-        max-width: 760px;
-        min-height: 600px;
-        padding: 40px 30px;
-    }
-    
-    .regua-wrapper {
-        width: 100%;
-        max-width: 700px;
-    }
-    
-    .regua-imagem {
-        width: 100%;
-        max-width: 700px;
-        height: auto;
-    }
-    
-    .background-rectangle {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-        background-size: cover;
-        background-position: center;
-    }
-}
-
-/* Adicionando regras específicas para o iPad */
-@media only screen and (width: 820px) and (height: 1180px), 
-       only screen and (width: 834px) and (height: 1194px),
-       only screen and (width: 768px) and (height: 1024px) {
-    .avaliacao-satisfacao-section {
-        min-height: 1100px;
-        padding: 60px 0;
-    }
-    
-    .container-avaliacao {
-        padding: 20px;
-        width: 95%;
-    }
-    
-    .white-border-container {
-        max-width: 740px;
-        min-height: 580px;
-        padding: 30px 25px;
-    }
-    
-    .regua-container {
-        width: 100%;
-        max-width: 680px;
-    }
-    
-    .regua-wrapper {
-        width: 100%;
-        gap: 15px;
-    }
-    
-    .regua-imagem {
-        width: 100%;
-        max-width: 680px;
-        height: auto;
-    }
-    
-    
-    .decorative-right {
-        width: 540px;
-        right: -450px;
-        top: 40%;
-    }
-    
-    .decorative-left {
-        width: 140px;
-        left: -10px;
-        top: 30%;
-    }
-    
-    .background-rectangle {
-        height: 100%;
-        object-fit: cover;
-    }
-}
-
-.emoji-container {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 680px;
-    margin-top: 15px;
-}
-
-.emoji-item {
-    width: 48px;
-    height: 48px;
-    margin: 0 5px;
-    font-size: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
