@@ -1016,9 +1016,10 @@ body {
     .decorative-right {
         width: 500px;
         right: -350px;
-        top: 680px;
+        top: 580px;
         object-fit: contain;
     }
+
 }
 
 @media screen and (max-width: 480px) {
