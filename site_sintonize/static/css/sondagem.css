@@ -1015,10 +1015,11 @@ body {
 
     .decorative-right {
         width: 500px;
-        right: -350px;
+        right: -60%;
         top: 580px;
         object-fit: contain;
     }
+
 
 }
 
