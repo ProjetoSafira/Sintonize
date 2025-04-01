@@ -939,7 +939,7 @@ body {
 
     .decorative-right {
         width: 800px;
-        right: -250px;
+        right: -450px;
         top: 35%;
         transform: translateY(-50%);
         z-index: 0;
