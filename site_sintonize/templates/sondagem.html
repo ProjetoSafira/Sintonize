@@ -162,11 +162,26 @@
     document.addEventListener('DOMContentLoaded', function() {
         const botaoSondagem = document.getElementById('iniciar-sondagem-btn');
         const formularioSondagem = document.getElementById('formulario-sondagem');
+        
+        // Função para centralizar o formulário na tela
+        function centralizarFormulario() {
+            const rect = formularioSondagem.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const elementTop = rect.top + scrollTop;
+            const offset = elementTop - (window.innerHeight / 2 - rect.height / 2);
+            
+            window.scrollTo({
+                top: offset,
+                behavior: 'smooth'
+            });
+        }
     
         botaoSondagem.addEventListener('click', function() {
             // Verifica se o formulário já foi carregado para evitar múltiplas requisições
             if (formularioSondagem.innerHTML.trim() !== "") {
                 formularioSondagem.style.display = 'block';
+                // Centraliza o formulário na tela
+                centralizarFormulario();
                 return;
             }
     
@@ -188,6 +203,11 @@
                         document.body.appendChild(newScript);
                         document.body.removeChild(newScript); // Remove após execução
                     });
+                    
+                    // Centraliza o formulário na tela após um pequeno atraso
+                    setTimeout(() => {
+                        centralizarFormulario();
+                    }, 100); // Pequeno atraso para garantir que o conteúdo seja renderizado
                 })
                 .catch(error => {
                     console.error("Erro ao carregar o formulário:", error);
