@@ -320,17 +320,16 @@ body {
     }
 
     .hero-text {
-        font-size: 18px;
-        /* Reduzindo um pouco o tamanho do texto */
+        font-size: 17px;
+        line-height: 1.7;
+        padding: 15px;
         max-width: 90%;
         /* Ajustando largura máxima */
-        padding: 15px;
         margin: 1.5rem auto;
     }
 
     .main-title {
-        font-size: clamp(32px, 4vw, 48px);
-        /* Ajustando tamanho do título */
+        font-size: clamp(34px, 4.2vw, 42px);
         margin-bottom: 1.5rem;
     }
 
@@ -341,6 +340,21 @@ body {
     .sondagem-title {
         font-size: 32px;
         padding-left: 15px;
+    }
+
+    .decorative-right {
+        width: 280px;
+        right: 0;
+        object-fit: contain;
+        max-width: none;
+        max-height: none;
+    }
+
+    .regua-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
     }
 }
 
@@ -642,10 +656,6 @@ body {
         padding: 15px;
     }
 
-    .main-title {
-        font-size: clamp(34px, 4.2vw, 42px);
-    }
-
     /* Ajustes para a seção de reflexão */
     .reflexao-section {
         padding: 60px 20px;
@@ -749,4 +759,278 @@ body {
     .img-autoavaliacao {
         max-width: 300px;
     }
+
+    .decorative-left,
+    .decorative-right {
+        display: none;
+    }
+
+    .emoji-item {
+        width: 36px;
+        height: 36px;
+    }
+
+    .background-rectangle {
+        background-size: cover;
+        height: 100%;
+    }
+
+    .avaliacao-satisfacao-section {
+        min-height: 800px;
+        padding: 50px 0;
+    }
+
+    .background-rectangle {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
 }
+
+/* Estilos para a seção de avaliação de satisfação */
+.avaliacao-satisfacao-section {
+    width: 100%;
+    background: linear-gradient(1deg, var(--Neutral-colors-White-Colors-500, #FAFAFA) -5.23%, var(--Complementary-Purple-100, #F5F3FF) 104.96%);
+    position: relative;
+    padding: 100px 0;
+    overflow: visible;
+    min-height: 1500px;
+    height: auto;
+    z-index: 1;
+}
+
+.background-rectangle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: -1;
+    object-fit: contain;
+    max-height: none;
+}
+
+.container-avaliacao {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.white-border-container {
+    width: 100%;
+    max-width: 1280px;
+    min-height: 670px;
+    background: linear-gradient(180deg, rgba(254, 254, 254, 0.50) 0%, rgba(250, 250, 250, 0.50) 100%);
+    border-radius: 24px;
+    backdrop-filter: blur(2px);
+    box-shadow: 0px 2px 8px rgba(0, 86, 204, 0.06), 0px 4px 8px rgba(229, 231, 235, 0.08);
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    position: relative;
+    z-index: 3;
+}
+
+.avaliacao-title-container {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.avaliacao-title {
+    color: #204551;
+    font-family: 'Mulish';
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    margin-bottom: 16px;
+}
+
+.decorative-bar-1 {
+    width: 111px;
+    height: 4px;
+    background: #F8B490;
+    border-radius: 4px;
+    margin: 0 auto;
+}
+
+.avaliacao-text {
+    max-width: 1068px;
+    height: 96px;
+    flex-shrink: 0;
+    margin-bottom: 64px;
+
+}
+
+.avaliacao-text p {
+    color: var(--Neutral-colors-Black-Colors-500, #1F2123);
+    text-align: center;
+    font-family: 'Nunito';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%;
+    gap: 64px;
+}
+
+.regua-wrapper {
+    display: flex;
+    max-width: 1068px;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--8, 64px);
+}
+
+.decorative-images {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.decorative-left {
+    position: absolute;
+    left: -560px;
+    top: 25%;
+    transform: translateY(-50%);
+    opacity: 1;
+    width: 1319.5px;
+    height: 848.502px;
+    flex-shrink: 0;
+    
+    
+}
+
+.decorative-right {
+    position: absolute;
+    width: 650px;
+    height: auto;
+    right: -450px;
+    top: 40%;
+    transform: translateY(-50%);
+    z-index: 0;
+    object-fit: contain;
+}
+
+@media screen and (min-width: 1600px) {
+    .decorative-images {
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .decorative-left {
+        left: 0;
+        width: 254px;
+        height: 638px;
+        top: 18%;
+    }
+
+    .decorative-right {
+        width: 800px;
+        right: -450px;
+        top: 35%;
+        transform: translateY(-50%);
+        z-index: 0;
+        object-fit: contain;
+
+    }
+
+    .container-avaliacao {
+        max-width: 1940px;
+        width: 100%;
+        padding: 40px;
+    }
+
+    .white-border-container {
+        max-width: 1640px;
+        min-height: 670px;
+        padding: 80px;
+    }
+
+    .avaliacao-title {
+        font-size: 48px;
+    }
+
+    .avaliacao-text p {
+        font-size: 22px;
+    }
+
+    .avaliacao-satisfacao-section {
+        min-height: 1600px;
+    }
+
+    .background-rectangle {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    .decorative-right {
+        width: 600px;
+        right: -400px;
+        top: 40%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .decorative-right {
+        width: 500px;
+        right: -400px;
+        object-fit: contain;
+    }
+
+    .regua-imagem {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 750px;
+        width: 100%;
+        gap: 3px;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .avaliacao-satisfacao-section {
+        min-height: 1000px;
+    }
+
+    .background-rectangle {
+        width: 100%;
+        height: auto;
+    }
+
+    .decorative-right {
+        width: 500px;
+        right: -60%;
+        top: 580px;
+        object-fit: contain;
+    }
+
+
+}
+
+@media screen and (max-width: 480px) {
+    .avaliacao-satisfacao-section {
+        min-height: 800px;
+    }
+
+    .background-rectangle {
+        width: 100%;
+        height: auto;
+    }
+}
+
