@@ -60,6 +60,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const pontoTopo = document.querySelector('.ponto-topo');
     const textoRespiracao = document.getElementById('texto-respiracao');
+    const circuloContainer = document.querySelector('.circulo-container');
     let animacaoAtiva = false;
 
     function atualizarTexto(tempo) {
@@ -79,8 +80,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!animacaoAtiva) {
             animacaoAtiva = true;
             pontoTopo.classList.add('animando');
+            circuloContainer.classList.add('animando');
             
-            // Atualiza o texto a cada 100ms
             let tempoInicio = Date.now();
             const intervalo = setInterval(() => {
                 let tempoDecorrido = (Date.now() - tempoInicio) % 19000;
@@ -90,6 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
             textoRespiracao.onclick = function() {
                 animacaoAtiva = false;
                 pontoTopo.classList.remove('animando');
+                circuloContainer.classList.remove('animando');
                 clearInterval(intervalo);
                 textoRespiracao.textContent = 'COMEÇAR';
                 textoRespiracao.className = 'texto-central';
@@ -102,5 +104,4 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 {% endblock %}
-
 
