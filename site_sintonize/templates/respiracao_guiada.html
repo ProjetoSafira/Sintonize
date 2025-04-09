@@ -9,8 +9,8 @@
 
 {% block content %}
 <!-- SVG de fundo -->
-<div style="position: relative; width: 100%; height: 100vh;">
-  <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1440 674" fill="none" style="position: absolute; top: 0; left: 0; z-index: -1;">
+<div style="position: relative; width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center;">
+  <svg xmlns="http://www.w3.org/2000/svg" width="1440px" height="674px" viewBox="0 0 1440 674" fill="none" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: -1;">
     <g filter="url(#filter0_dd_11836_5226)">
       <path d="M1440 18C1440 11.3726 1434.63 6 1428 6H10.9999C4.37256 6 -1 11.3726 -1 18V650C-1 656.627 4.37256 662 11 662H1428C1434.63 662 1440 656.627 1440 650V18Z" fill="url(#paint0_linear_11836_5226)" shape-rendering="crispEdges"/>
     </g>
@@ -38,58 +38,76 @@
     </defs>
   </svg>
 
-  <!-- Conteúdo existente -->
-  <div style="position: relative; width: 300px; height: 300px; margin: 0 auto;">
-    <svg viewBox="0 0 200 200" width="100%" height="100%">
-      
-      <!-- Inspire - Verde claro -->
-      <circle cx="100" cy="100" r="80"
-        fill="none" stroke="#E2F6E3" stroke-width="16"
-        stroke-dasharray="105.8 396.85"
-        stroke-dashoffset="0"
-        transform="rotate(-90 100 100)" />
-  
-      <!-- Segure - Cinza -->
-      <circle cx="100" cy="100" r="80"
-        fill="none" stroke="#BDCCD1" stroke-width="16"
-        stroke-dasharray="185.1 317.55"
-        stroke-dashoffset="-105.8"
-        transform="rotate(-90 100 100)" />
-  
-      <!-- Expira - Verde escuro -->
-      <circle cx="100" cy="100" r="80"
-        fill="none" stroke="#C7EBC9" stroke-width="16"
-        stroke-dasharray="211.8 290.85"
-        stroke-dashoffset="-290.9"
-        transform="rotate(-90 100 100)" />
-  
-    </svg>
-  
-    <!-- Ponto no topo -->
-    <div style="
-      position: absolute;
-      top: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 20px;
-      height: 20px;
-      background-color: #476970;
-      border-radius: 50%;
-      z-index: 3;">
-    </div>
-  
-    <!-- Texto central -->
-    <div style="
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-family: 'Mulish', sans-serif;
-      font-size: 28px;
-      color: #3A6573;
-      font-weight: 500;
-      z-index: 2;">
-      COMEÇAR
+  <!-- Container da animação -->
+  <div style="
+    display: flex;
+    width: 440px;
+    height: 428px;
+    padding: 64px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-shrink: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: transparent;">
+    
+    <!-- Conteúdo da animação -->
+    <div style="position: relative; width: 300px; height: 300px;">
+      <svg viewBox="0 0 200 200" width="100%" height="100%">
+        
+        <!-- Inspire - Verde claro -->
+        <circle cx="100" cy="100" r="80"
+          fill="none" stroke="#E2F6E3" stroke-width="16"
+          stroke-dasharray="105.8 396.85"
+          stroke-dashoffset="0"
+          transform="rotate(-90 100 100)" />
+    
+        <!-- Segure - Cinza -->
+        <circle cx="100" cy="100" r="80"
+          fill="none" stroke="#BDCCD1" stroke-width="16"
+          stroke-dasharray="185.1 317.55"
+          stroke-dashoffset="-105.8"
+          transform="rotate(-90 100 100)" />
+    
+        <!-- Expira - Verde escuro -->
+        <circle cx="100" cy="100" r="80"
+          fill="none" stroke="#C7EBC9" stroke-width="16"
+          stroke-dasharray="211.8 290.85"
+          stroke-dashoffset="-290.9"
+          transform="rotate(-90 100 100)" />
+    
+      </svg>
+    
+      <!-- Ponto no topo -->
+      <div style="
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 20px;
+        background-color: #476970;
+        border-radius: 50%;
+        z-index: 3;">
+      </div>
+    
+      <!-- Texto central -->
+      <div style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: 'Mulish', sans-serif;
+        font-size: 28px;
+        color: #3A6573;
+        font-weight: 500;
+        z-index: 2;">
+        COMEÇAR
+      </div>
     </div>
   </div>
 </div>
