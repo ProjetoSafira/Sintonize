@@ -1,121 +1,69 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Respiração Guiada 4-7-8</title>
-    <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            text-align: center; 
-            margin-top: 10%; 
-            transition: all 0.5s ease-in-out; 
-        }
-        #timer { 
-            font-size: 48px; 
-            margin-top: 20px; 
-            transition: transform 0.5s ease-in-out; 
-        }
-        button { 
-            padding: 10px 20px; 
-            font-size: 16px; 
-            margin: 5px; 
-        }
-        .hidden { 
-            display: none; 
-        }
-    </style>
-</head>
-<body>
-    <h1>Respiração Guiada 4-7-8</h1>
-    <div id="timer">Pressione Iniciar</div>
-    <button id="startButton" onclick="startBreathing()">Iniciar</button>
-    <button id="pauseContinueButton" class="hidden" onclick="togglePause()">Pausar</button>
-    <button id="resetButton" class="hidden" onclick="resetBreathing()">Reiniciar</button>
+{% extends 'base.html' %}
+{% load static %}
 
-    <script>
-        let timer = null;
-        let sequenceIndex = 0;
-        let isPaused = false;
-        const sequences = [
-            { action: 'Inspirar', seconds: 4 },
-            { action: 'Segurar', seconds: 7 },
-            { action: 'Expirar', seconds: 8 }
-        ];
+{% block title %}Respiração Guiada{% endblock %}
 
-        function startBreathing() {
-            clearTimeout(timer); 
-            timer = null;
-            sequenceIndex = 0;
-            isPaused = false;
-            executeSequence();
-            document.getElementById('pauseContinueButton').classList.remove('hidden');
-            document.getElementById('resetButton').classList.remove('hidden');
-            document.getElementById('startButton').classList.add('hidden');
-        }
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/respiracao.css' %}">
+{% endblock %}
 
-        function togglePause() {
-            isPaused = !isPaused;
-            const pauseContinueButton = document.getElementById('pauseContinueButton');
+{% block content %}
+<div style="position: relative; width: 300px; height: 300px; margin: 0 auto;">
+    <svg viewBox="0 0 200 200" width="100%" height="100%">
+      
+      <!-- Inspire - Verde claro -->
+      <circle cx="100" cy="100" r="80"
+        fill="none" stroke="#E2F6E3" stroke-width="16"
+        stroke-dasharray="105.8 396.85"
+        stroke-dashoffset="0"
+        transform="rotate(-90 100 100)" />
+  
+      <!-- Segure - Cinza -->
+      <circle cx="100" cy="100" r="80"
+        fill="none" stroke="#BDCCD1" stroke-width="16"
+        stroke-dasharray="185.1 317.55"
+        stroke-dashoffset="-105.8"
+        transform="rotate(-90 100 100)" />
+  
+      <!-- Expira - Verde escuro -->
+      <circle cx="100" cy="100" r="80"
+        fill="none" stroke="#C7EBC9" stroke-width="16"
+        stroke-dasharray="211.8 290.85"
+        stroke-dashoffset="-290.9"
+        transform="rotate(-90 100 100)" />
+  
+    </svg>
+  
+    <!-- Ponto no topo -->
+    <div style="
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 20px;
+      background-color: #476970;
+      border-radius: 50%;
+      z-index: 3;">
+    </div>
+  
+    <!-- Texto central -->
+    <div style="
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Mulish', sans-serif;
+      font-size: 28px;
+      color: #3A6573;
+      font-weight: 500;
+      z-index: 2;">
+      COMEÇAR
+    </div>
+  </div>
+  
+  
 
-            if (isPaused) {
-                clearTimeout(timer);
-                timer = null;
-                document.getElementById('timer').textContent = 'Pausado';
-                pauseContinueButton.textContent = 'Continuar';
-            } else {
-                pauseContinueButton.textContent = 'Pausar';
-                executeSequence();
-            }
-        }
+        
+{% endblock %}
 
-        function resetBreathing() {
-            clearTimeout(timer);
-            timer = null;
-            sequenceIndex = 0;
-            isPaused = false;
-            document.getElementById('timer').textContent = 'Pressione Iniciar';
-            resetInterface();
-        }
-
-        function executeSequence() {
-            if (!isPaused && sequenceIndex < sequences.length) {
-                const sequence = sequences[sequenceIndex];
-                let timeLeft = sequence.seconds;
-
-                const timerElement = document.getElementById('timer');
-                timerElement.textContent = `${sequence.action} - ${timeLeft}s`;
-                timerElement.style.transform = 'scale(1.2)';
-
-                setTimeout(() => {
-                    timerElement.style.transform = 'scale(1)';
-                }, 500);
-
-                function countdown() {
-                    if (isPaused) {
-                        return;
-                    }
-                    if (timeLeft >= 0) {
-                        timerElement.textContent = `${sequence.action} - ${timeLeft}s`;
-                        timeLeft--;
-                        timer = setTimeout(countdown, 1000);
-                    } else {
-                        sequenceIndex++;
-                        timer = setTimeout(executeSequence, 500);
-                    }
-                }
-                countdown();
-            } else if (sequenceIndex >= sequences.length) {
-                document.getElementById('timer').textContent = 'Ciclo Completo!';
-                resetInterface();
-            }
-        }
-
-        function resetInterface() {
-            document.getElementById('startButton').classList.remove('hidden');
-            document.getElementById('pauseContinueButton').classList.add('hidden');
-            document.getElementById('resetButton').classList.add('hidden');
-            document.getElementById('timer').style.transform = 'scale(1)';
-        }
-    </script>
-</body>
-</html>
