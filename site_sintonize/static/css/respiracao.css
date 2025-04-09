@@ -1,0 +1,80 @@
+/* Container principal */
+.respiracao-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+}
+
+/* SVG e círculos */
+.respiracao-container svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Círculo de Inspiração */
+.circulo-inspire {
+    fill: none;
+    stroke: #E2F6E3;
+    stroke-width: 16;
+    stroke-dasharray: 105.8 396.85;
+    stroke-dashoffset: 0;
+    transform: rotate(-90deg);
+}
+
+/* Círculo de Segurar */
+.circulo-segure {
+    fill: none;
+    stroke: #BDCCD1;
+    stroke-width: 16;
+    stroke-dasharray: 185.1 317.55;
+    stroke-dashoffset: -105.8;
+    transform: rotate(-90deg);
+}
+
+/* Círculo de Expiração */
+.circulo-expira {
+    fill: none;
+    stroke: #C7EBC9;
+    stroke-width: 16;
+    stroke-dasharray: 211.8 290.85;
+    stroke-dashoffset: -290.9;
+    transform: rotate(-90deg);
+}
+
+/* Ponto no topo */
+/* Container que gira em torno do centro do círculo */
+.ponto-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: rotate(-90deg); /* Começa no topo */
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+    z-index: 3;
+}
+
+/* A bolinha fica "grudada" no topo do círculo */
+.ponto-topo {
+    position: absolute;
+    top: -10px; /* distância do centro até a borda */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 24px;
+}
+
+
+/* Texto central */
+.texto-comecar {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Mulish', sans-serif;
+    font-size: 28px;
+    color: #3A6573;
+    font-weight: 500;
+    z-index: 2;
+}
