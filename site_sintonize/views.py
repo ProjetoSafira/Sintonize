@@ -31,6 +31,10 @@ def diagnostico (request):
 def tratamento (request):
     return render(request, 'tratamento.html') 
 
+def respiracao_guiada (request):
+    return render(request, 'respiracao_guiada.html')
+
+
 def search_options(request):
     query = request.GET.get('query', '')
     # Aqui você deve substituir isso pelos seus dados reais
