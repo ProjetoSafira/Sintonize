@@ -1,96 +1,115 @@
 .respiracao-container {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .background-svg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: -1;
-  width: 1440px;
-  height: 674px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    width: 1440px;
+    height: 674px;
 }
 
 .animacao-container {
-  display: flex;
-  width: 440px;
-  height: 428px;
-  padding: 64px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  flex-shrink: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: transparent;
+    display: flex;
+    width: 440px;
+    height: 428px;
+    padding: 64px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-shrink: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: transparent;
 }
 
 .circulo-container {
-  position: relative;
-  width: 300px;
-  height: 300px;
+    position: relative;
+    width: 300px;
+    height: 300px;
 }
 
 .ponto-topo {
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20px;
-  height: 20px;
-  background-color: #476970;
-  border-radius: 50%;
-  z-index: 3;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width:  22.67px;
+    height:22.579px;
+    z-index: 3;
+    transform-origin: 50% 154px;
 }
 
 .texto-central {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: 'Mulish', sans-serif;
-  font-size: 28px;
-  color: #3A6573;
-  font-weight: 500;
-  z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Mulish';
+    font-size: 36px;
+    color: var(--Primary-Defaunt---400, #3A6573);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 125%;
+    width: 182px;
+    height: 43px;
+    flex-shrink: 0;
 }
 
 /* Estilos para os círculos da animação */
 .circulo-inspire {
-  fill: none;
-  stroke: #E2F6E3;
-  stroke-width: 8;
-  stroke-dasharray: 105.8 396.85;
-  stroke-dashoffset: 0;
-  transform: rotate(-90deg);
-  transform-origin: 100px 100px;
+    fill: none;
+    stroke: #E2F6E3;
+    stroke-width: 8;
+    stroke-dasharray: 105.8 396.85;
+    stroke-dashoffset: 0;
+    transform: rotate(-90deg);
+    transform-origin: 100px 100px;
 }
 
 .circulo-segure {
-  fill: none;
-  stroke: #BDCCD1;
-  stroke-width: 8;
-  stroke-dasharray: 185.1 317.55;
-  stroke-dashoffset: -105.8;
-  transform: rotate(-90deg);
-  transform-origin: 100px 100px;
+    fill: none;
+    stroke: #BDCCD1;
+    stroke-width: 8;
+    stroke-dasharray: 185.1 317.55;
+    stroke-dashoffset: -105.8;
+    transform: rotate(-90deg);
+    transform-origin: 100px 100px;
 }
 
 .circulo-expira {
-  fill: none;
-  stroke: #C7EBC9;
-  stroke-width: 8;
-  stroke-dasharray: 211.8 290.85;
-  stroke-dashoffset: -290.9;
-  transform: rotate(-90deg);
-  transform-origin: 100px 100px;
+    fill: none;
+    stroke: #C7EBC9;
+    stroke-width: 8;
+    stroke-dasharray: 211.8 290.85;
+    stroke-dashoffset: -290.9;
+    transform: rotate(-90deg);
+    transform-origin: 100px 100px;
 }
+
+/* Animações para o ponto */
+@keyframes rotacaoPonto {
+    0% { transform: translateX(-50%) rotate(0deg); }
+    21.05% { transform: translateX(-50%) rotate(120deg); } /* 4s - Inspire */
+    57.89% { transform: translateX(-50%) rotate(240deg); } /* 7s - Segure */
+    100% { transform: translateX(-50%) rotate(360deg); } /* 8s - Expira */
+}
+
+.animando {
+    animation: rotacaoPonto 19s linear infinite;
+}
+
+/* Estados do texto */
+.texto-inspire { color: #3A6573; }
+.texto-segure { color: #476970; }
+.texto-expira { color: #3A6573; }

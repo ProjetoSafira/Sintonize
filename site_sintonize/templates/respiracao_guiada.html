@@ -45,10 +45,62 @@
         <circle cx="100" cy="100" r="80" class="circulo-expira" />
       </svg>
 
-      <div class="ponto-topo"></div>
-      <div class="texto-central">COMEÇAR</div>
+      <div class="ponto-topo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+          <circle cx="4" cy="4" r="4" fill="#476970"/>
+        </svg>
+      </div>
+      
+      <div class="texto-central" id="texto-respiracao">COMEÇAR</div>
     </div>
   </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const pontoTopo = document.querySelector('.ponto-topo');
+    const textoRespiracao = document.getElementById('texto-respiracao');
+    let animacaoAtiva = false;
+
+    function atualizarTexto(tempo) {
+        if (tempo <= 4000) {
+            textoRespiracao.textContent = 'INSPIRE';
+            textoRespiracao.className = 'texto-central texto-inspire';
+        } else if (tempo <= 11000) {
+            textoRespiracao.textContent = 'SEGURE';
+            textoRespiracao.className = 'texto-central texto-segure';
+        } else {
+            textoRespiracao.textContent = 'EXPIRE';
+            textoRespiracao.className = 'texto-central texto-expira';
+        }
+    }
+
+    function iniciarAnimacao() {
+        if (!animacaoAtiva) {
+            animacaoAtiva = true;
+            pontoTopo.classList.add('animando');
+            
+            // Atualiza o texto a cada 100ms
+            let tempoInicio = Date.now();
+            const intervalo = setInterval(() => {
+                let tempoDecorrido = (Date.now() - tempoInicio) % 19000;
+                atualizarTexto(tempoDecorrido);
+            }, 100);
+
+            textoRespiracao.onclick = function() {
+                animacaoAtiva = false;
+                pontoTopo.classList.remove('animando');
+                clearInterval(intervalo);
+                textoRespiracao.textContent = 'COMEÇAR';
+                textoRespiracao.className = 'texto-central';
+                textoRespiracao.onclick = iniciarAnimacao;
+            };
+        }
+    }
+
+    textoRespiracao.onclick = iniciarAnimacao;
+});
+</script>
 {% endblock %}
+
 
