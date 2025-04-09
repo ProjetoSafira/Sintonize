@@ -113,3 +113,21 @@
 .texto-inspire { color: #3A6573; }
 .texto-segure { color: #476970; }
 .texto-expira { color: #3A6573; }
+
+/* Animação para o círculo container */
+@keyframes escalaCirculo {
+    0% { transform: scale(1); }
+    21.05% { transform: scale(1.2); }  /* Inspire - 4 segundos */
+    57.89% { transform: scale(1.2); }  /* Segure - 7 segundos */
+    100% { transform: scale(1); }      /* Expire - 8 segundos */
+}
+
+/* Manter a animação da bolinha separada */
+.ponto-topo.animando {
+    animation: rotacaoPonto 19s linear infinite;
+}
+
+/* Aplicar a animação de escala no container do círculo */
+.circulo-container.animando {
+    animation: escalaCirculo 19s linear infinite;
+}
