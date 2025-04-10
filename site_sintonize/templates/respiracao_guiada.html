@@ -71,61 +71,145 @@ document.addEventListener('DOMContentLoaded', function() {
     const circuloContainer = document.querySelector('.circulo-container');
     const contadorTempo = document.getElementById('contador-tempo');
     let animacaoAtiva = false;
+    let intervalo;
+    let tentativasReconexao = 0;
+    const maxTentativas = 3;
 
-    function atualizarTexto(tempo) {
-        let texto, instrucao;
-        
-        if (tempo <= 4000) {
-            texto = 'INSPIRE';
-            instrucao = 'Inspire lentamente pelo nariz durante 4 segundos';
-        } else if (tempo <= 11000) {
-            texto = 'SEGURE';
-            instrucao = 'Segure a respiração durante 7 segundos';
-        } else {
-            texto = 'EXPIRE';
-            instrucao = 'Expire lentamente pela boca durante 8 segundos';
-        }
-        
-        textoRespiracao.textContent = texto;
-        contadorTempo.textContent = instrucao;
+    // Adicionar elemento para mensagens de erro (invisível inicialmente)
+    const mensagemErro = document.createElement('div');
+    mensagemErro.className = 'mensagem-erro sr-only';
+    mensagemErro.setAttribute('role', 'alert');
+    mensagemErro.style.display = 'none';
+    circuloContainer.appendChild(mensagemErro);
+
+    function mostrarErro(mensagem) {
+        mensagemErro.textContent = mensagem;
+        mensagemErro.style.display = 'block';
+        textoRespiracao.textContent = 'TENTAR NOVAMENTE';
+        pararAnimacao();
     }
 
-    function iniciarAnimacao() {
-        if (!animacaoAtiva) {
+    function ocultarErro() {
+        mensagemErro.style.display = 'none';
+        mensagemErro.textContent = '';
+    }
+
+    function verificarPerformance() {
+        return new Promise((resolve, reject) => {
+            const inicioTeste = performance.now();
+            
+            // Simular uma operação para testar a performance
+            requestAnimationFrame(() => {
+                const tempoDecorrido = performance.now() - inicioTeste;
+                if (tempoDecorrido > 100) { // Se demorar mais que 100ms
+                    reject('Desempenho insuficiente para animação suave');
+                } else {
+                    resolve();
+                }
+            });
+        });
+    }
+
+    async function iniciarAnimacao() {
+        if (animacaoAtiva) return;
+
+        try {
+            ocultarErro();
+            await verificarPerformance();
+
             animacaoAtiva = true;
+            let tempoInicio = Date.now();
+            let ultimaAtualizacao = tempoInicio;
+            
             pontoTopo.classList.add('animando');
             circuloContainer.classList.add('animando');
-            textoRespiracao.setAttribute('aria-label', 'Parar exercício de respiração');
-            
-            let tempoInicio = Date.now();
-            const intervalo = setInterval(() => {
-                let tempoDecorrido = (Date.now() - tempoInicio) % 19000;
-                atualizarTexto(tempoDecorrido);
+
+            intervalo = setInterval(() => {
+                const agora = Date.now();
+                const tempoDecorrido = agora - tempoInicio;
+                const tempoDesdeUltimaAtualizacao = agora - ultimaAtualizacao;
+
+                // Verificar se houve atraso significativo entre atualizações
+                if (tempoDesdeUltimaAtualizacao > 200) { // Atraso maior que 200ms
+                    throw new Error('Instabilidade detectada na animação');
+                }
+
+                ultimaAtualizacao = agora;
+                atualizarTexto(tempoDecorrido % 19000);
             }, 100);
 
-            textoRespiracao.onclick = function() {
-                animacaoAtiva = false;
-                pontoTopo.classList.remove('animando');
-                circuloContainer.classList.remove('animando');
-                clearInterval(intervalo);
-                textoRespiracao.textContent = 'COMEÇAR';
-                textoRespiracao.className = 'texto-central';
-                textoRespiracao.setAttribute('aria-label', 'Iniciar exercício de respiração');
-                contadorTempo.textContent = '';
-                textoRespiracao.onclick = iniciarAnimacao;
-            };
+        } catch (erro) {
+            tentativasReconexao++;
+            if (tentativasReconexao >= maxTentativas) {
+                mostrarErro('Detectamos instabilidade na conexão. Por favor, verifique sua internet e tente novamente em alguns instantes.');
+            } else {
+                mostrarErro('Carregamento lento detectado. Tentando novamente...');
+                setTimeout(() => {
+                    if (animacaoAtiva) {
+                        iniciarAnimacao();
+                    }
+                }, 2000);
+            }
         }
     }
 
-    // Adicionar suporte a teclado
-    textoRespiracao.addEventListener('keypress', function(event) {
-        if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault();
-            this.click();
+    function pararAnimacao() {
+        animacaoAtiva = false;
+        pontoTopo.classList.remove('animando');
+        circuloContainer.classList.remove('animando');
+        if (intervalo) {
+            clearInterval(intervalo);
+        }
+        tentativasReconexao = 0;
+    }
+
+    function atualizarTexto(tempo) {
+        try {
+            if (tempo <= 4000) {
+                textoRespiracao.textContent = 'INSPIRE';
+                textoRespiracao.className = 'texto-central texto-inspire';
+            } else if (tempo <= 11000) {
+                textoRespiracao.textContent = 'SEGURE';
+                textoRespiracao.className = 'texto-central texto-segure';
+            } else {
+                textoRespiracao.textContent = 'EXPIRE';
+                textoRespiracao.className = 'texto-central texto-expira';
+            }
+        } catch (erro) {
+            mostrarErro('Erro ao atualizar a animação. Tente novamente.');
+            pararAnimacao();
+        }
+    }
+
+    textoRespiracao.onclick = function() {
+        if (animacaoAtiva) {
+            pararAnimacao();
+            textoRespiracao.textContent = 'COMEÇAR';
+            textoRespiracao.className = 'texto-central';
+        } else {
+            iniciarAnimacao();
+        }
+    };
+
+    // Função para reiniciar o exercício
+    function reiniciarExercicio() {
+        pararAnimacao();
+        textoRespiracao.textContent = 'COMEÇAR';
+        textoRespiracao.className = 'texto-central';
+        ocultarErro();
+    }
+
+    // Adicionar evento de visibilidade
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden && animacaoAtiva) {
+            reiniciarExercicio();
         }
     });
 
-    textoRespiracao.onclick = iniciarAnimacao;
+    // Adicionar evento para quando o usuário sair da página
+    window.addEventListener('beforeunload', function() {
+        reiniciarExercicio();
+    });
 });
 </script>
 
