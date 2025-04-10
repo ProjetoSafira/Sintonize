@@ -1,0 +1,112 @@
+.pomodoro-container {
+    display: flex;
+    width: 1062px;
+    height: 894.25px;
+    padding: 156px 262px;
+    align-items: center;
+    flex-direction:column;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: linear-gradient(180deg, rgba(254, 254, 254, 0.50) 0%, rgba(250, 250, 250, 0.50) 100%);
+    box-shadow: 0px 4px 8px 0px rgba(229, 231, 235, 0.08), 0px 2px 8px 0px rgba(0, 86, 204, 0.06);
+}
+.pomodoro-svg-background{
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 4rem 1rem; /* espaço interno */
+  min-height: 706px; /* ou o tamanho do seu SVG */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pomodoro-focus-text{
+    width: 710px;
+    height: 244px;
+    flex-shrink: 0;
+}
+
+.pomodoro-focus-title h2{
+    width: 670px;
+    color: var(--Primary-Pressed---500, #204551);
+    text-align: center;
+    text-shadow: var(--sds-size-depth-0) var(--sds-size-depth-100) var(--sds-size-depth-100) var(--sds-color-black-200), var(--sds-size-depth-0) var(--sds-size-depth-100) var(--sds-size-depth-100) var(--sds-color-black-100);
+    font-family: "Wix Madefor Display";
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 125%; /* 80px */
+    letter-spacing: -0.5px;
+    margin: 0;
+}
+
+.pomodoro-decorative-bar{
+    margin: 0 auto;
+    width: 133px;
+    height: 6px;
+    border-radius: 4px;
+    background: var(--Complementary-Red-and-orange-300, #F8B490);
+    margin-top: 28px;
+    margin-bottom: 28px;
+}
+
+.pomodoro-focus-text p{
+    width: 710px;
+    height: 102px;
+    flex-shrink: 0;
+    color: var(--Primary-Defaunt---400, #3A6573);
+    text-align: center;
+    font-family: Nunito;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 160%; /* 51.2px */
+    margin: 0;
+}
+
+/* Divisor */
+
+.pomodoro-divider-section {
+    position: relative;
+    height: 143px; /* altura base das imagens */
+  }
+
+.pomodoro-divider-image-1,
+.pomodoro-divider-image-2 {
+  position: absolute;
+  width: 100%;
+  height: 143px;
+  left: 0;
+}
+.pomodoro-divider-image-1 {
+    z-index: 2;
+  }
+
+  .pomodoro-divider-image-2 {
+    top: 64px; /* ou o valor que preferir, para "empurrar" ela um pouco pra baixo */
+    z-index: 1;
+    opacity: 0.6; /* opcional, para dar um efeito de camada inferior */
+  }
+
+/* Pomodoro Timer */
+.pomodoro-container{
+  display: flex;
+  width: 100%;
+  height: 1485px;
+  background: var(--Neutral-colors-Gray-Colors-100, #F3F4F6);
+}
+
+.pomodoro-timer{
+  display: flex;
+  width: 100%;
+  height: 894.25px;
+  padding: 220px 262px;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(254, 254, 254, 0.50) 0%, rgba(250, 250, 250, 0.50) 100%);
+  box-shadow: 0px 4px 8px 0px rgba(229, 231, 235, 0.08), 0px 2px 8px 0px rgba(0, 86, 204, 0.06);
+}

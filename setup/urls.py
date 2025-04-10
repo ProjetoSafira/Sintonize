@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from site_sintonize.views import index, politicas_privacidade, sondagem, sobre_nos, equipe, trilha, diagnostico, tratamento, burnout_survey_view, resultado_view,search_options
+from site_sintonize.views import index, politicas_privacidade, sondagem, sobre_nos, equipe, trilha, diagnostico, tratamento, burnout_survey_view, resultado_view,search_options, pomodoro
 
 
 urlpatterns = [
@@ -17,4 +17,5 @@ urlpatterns = [
     path('burnout-survey/', burnout_survey_view, name='burnout_survey'),
     path('resultado/<int:score>/', resultado_view, name='resultado'),
     path('search-options/', search_options, name='search_options'),
+    path('pomodoro.html', pomodoro, name='pomodoro'),
 ]
