@@ -172,11 +172,16 @@
     .ponto-topo {
         width: 18px;
         height: 18px;
-        transform-origin: 50% 129px;
+        transform-origin: 50% 124px;
     }
 }
 
 @media screen and (max-width: 480px) {
+    .background-svg {
+        width: 150%;
+        min-height: 100vh;
+    }
+
     .circulo-container {
         width: 200px;
         height: 200px;
@@ -190,6 +195,38 @@
     .ponto-topo {
         width: 16px;
         height: 16px;
-        transform-origin: 50% 103px;
+        transform-origin: 50% 101px;
+    }
+}
+
+/* Media query para telas grandes */
+@media screen and (min-width: 1442px) {
+    .background-svg {
+        width: 100%;
+        max-width: 1920px;
+        min-height: 60vh;
+        max-height: 95vh;
+    }
+
+    .animacao-container {
+        width: 560px;
+        height: 548px;
+        padding: 80px;
+    }
+
+    .circulo-container {
+        width: 400px;
+        height: 400px;
+    }
+
+    .texto-central {
+        font-size: 42px;
+        min-width: 220px;
+    }
+
+    .ponto-topo {
+        width: 28px;
+        height: 28px;
+        transform-origin: 50% 199px;
     }
 }
