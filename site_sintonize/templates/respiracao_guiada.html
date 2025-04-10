@@ -64,13 +64,13 @@ document.addEventListener('DOMContentLoaded', function() {
     let animacaoAtiva = false;
 
     function atualizarTexto(tempo) {
-        if (tempo <= 4000) {
+        if (tempo <= 4000) { // 0-4s: Inspire (verde claro)
             textoRespiracao.textContent = 'INSPIRE';
             textoRespiracao.className = 'texto-central texto-inspire';
-        } else if (tempo <= 11000) {
+        } else if (tempo <= 11000) { // 4-11s: Segure (cinza)
             textoRespiracao.textContent = 'SEGURE';
             textoRespiracao.className = 'texto-central texto-segure';
-        } else {
+        } else { // 11-19s: Expire (verde)
             textoRespiracao.textContent = 'EXPIRE';
             textoRespiracao.className = 'texto-central texto-expira';
         }

@@ -106,8 +106,8 @@
 /* Animações para o ponto */
 @keyframes rotacaoPonto {
     0% { transform: translateX(-50%) rotate(0deg); }
-    21.05% { transform: translateX(-50%) rotate(120deg); } /* 4s - Inspire */
-    57.89% { transform: translateX(-50%) rotate(240deg); } /* 7s - Segure */
+    40.05% { transform: translateX(-50%) rotate(150deg); } /* 4s - Inspire */
+    68.89% { transform: translateX(-50%) rotate(240deg); } /* 7s - Segure */
     100% { transform: translateX(-50%) rotate(360deg); } /* 8s - Expira */
 }
 
