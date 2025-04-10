@@ -8,8 +8,8 @@
 {% endblock %}
 
 {% block content %}
-<div class="respiracao-container">
-  <svg xmlns="http://www.w3.org/2000/svg" width="1440px" height="674px" viewBox="0 0 1440 674" fill="none" class="background-svg">
+<div class="respiracao-container" role="main" aria-label="Exercício de respiração guiada">
+  <svg xmlns="http://www.w3.org/2000/svg" width="1440px" height="674px" viewBox="0 0 1440 674" fill="none" class="background-svg" aria-hidden="true">
     <g filter="url(#filter0_dd_11836_5226)">
       <path d="M1440 18C1440 11.3726 1434.63 6 1428 6H10.9999C4.37256 6 -1 11.3726 -1 18V650C-1 656.627 4.37256 662 11 662H1428C1434.63 662 1440 656.627 1440 650V18Z" fill="url(#paint0_linear_11836_5226)" shape-rendering="crispEdges"/>
     </g>
@@ -38,21 +38,29 @@
   </svg>
 
   <div class="animacao-container">
-    <div class="circulo-container">
+    <div class="circulo-container" aria-hidden="true">
       <svg viewBox="0 0 200 200" width="100%" height="100%">
         <circle cx="100" cy="100" r="80" class="circulo-inspire" />
         <circle cx="100" cy="100" r="80" class="circulo-segure" />
         <circle cx="100" cy="100" r="80" class="circulo-expira" />
       </svg>
 
-      <div class="ponto-topo">
+      <div class="ponto-topo" aria-hidden="true">
         <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
           <circle cx="4" cy="4" r="4" fill="#476970"/>
         </svg>
       </div>
       
-      <div class="texto-central" id="texto-respiracao">COMEÇAR</div>
+      <button 
+        class="texto-central" 
+        id="texto-respiracao" 
+        aria-live="assertive"
+        tabindex="0"
+        aria-label="Iniciar exercício de respiração">COMEÇAR</button>
     </div>
+    
+    <!-- Elemento invisível para leitores de tela -->
+    <div class="sr-only" aria-live="polite" id="contador-tempo"></div>
   </div>
 </div>
 
@@ -61,19 +69,25 @@ document.addEventListener('DOMContentLoaded', function() {
     const pontoTopo = document.querySelector('.ponto-topo');
     const textoRespiracao = document.getElementById('texto-respiracao');
     const circuloContainer = document.querySelector('.circulo-container');
+    const contadorTempo = document.getElementById('contador-tempo');
     let animacaoAtiva = false;
 
     function atualizarTexto(tempo) {
-        if (tempo <= 4000) { // 0-4s: Inspire (verde claro)
-            textoRespiracao.textContent = 'INSPIRE';
-            textoRespiracao.className = 'texto-central texto-inspire';
-        } else if (tempo <= 11000) { // 4-11s: Segure (cinza)
-            textoRespiracao.textContent = 'SEGURE';
-            textoRespiracao.className = 'texto-central texto-segure';
-        } else { // 11-19s: Expire (verde)
-            textoRespiracao.textContent = 'EXPIRE';
-            textoRespiracao.className = 'texto-central texto-expira';
+        let texto, instrucao;
+        
+        if (tempo <= 4000) {
+            texto = 'INSPIRE';
+            instrucao = 'Inspire lentamente pelo nariz durante 4 segundos';
+        } else if (tempo <= 11000) {
+            texto = 'SEGURE';
+            instrucao = 'Segure a respiração durante 7 segundos';
+        } else {
+            texto = 'EXPIRE';
+            instrucao = 'Expire lentamente pela boca durante 8 segundos';
         }
+        
+        textoRespiracao.textContent = texto;
+        contadorTempo.textContent = instrucao;
     }
 
     function iniciarAnimacao() {
@@ -81,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
             animacaoAtiva = true;
             pontoTopo.classList.add('animando');
             circuloContainer.classList.add('animando');
+            textoRespiracao.setAttribute('aria-label', 'Parar exercício de respiração');
             
             let tempoInicio = Date.now();
             const intervalo = setInterval(() => {
@@ -95,13 +110,43 @@ document.addEventListener('DOMContentLoaded', function() {
                 clearInterval(intervalo);
                 textoRespiracao.textContent = 'COMEÇAR';
                 textoRespiracao.className = 'texto-central';
+                textoRespiracao.setAttribute('aria-label', 'Iniciar exercício de respiração');
+                contadorTempo.textContent = '';
                 textoRespiracao.onclick = iniciarAnimacao;
             };
         }
     }
 
+    // Adicionar suporte a teclado
+    textoRespiracao.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            this.click();
+        }
+    });
+
     textoRespiracao.onclick = iniciarAnimacao;
 });
 </script>
+
+<style>
+/* Estilo mínimo necessário para acessibilidade */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Adicionar outline apenas quando usar teclado */
+.texto-central:focus {
+    outline: 3px solid #4A90E2;
+    outline-offset: 2px;
+}
+</style>
 {% endblock %}
 

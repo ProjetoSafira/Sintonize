@@ -50,6 +50,7 @@
     transform-origin: 50% 154px;
 }
 
+/* Estilos completos para remover qualquer borda ou outline */
 .texto-central {
     position: absolute;
     top: 50%;
@@ -70,6 +71,21 @@
     min-width: 182px;
     margin: 0;
     padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Remove outline ao clicar com mouse */
+.texto-central:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Mantém outline apenas na navegação por teclado */
+.texto-central:focus-visible {
+    outline: 2px solid #4A90E2;
+    outline-offset: 2px;
 }
 
 /* Estilos para os círculos da animação */
