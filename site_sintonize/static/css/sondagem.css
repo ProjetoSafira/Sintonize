@@ -1180,24 +1180,60 @@ body {
 
 @media screen and (max-width: 1280px) {
     .health-burnout-container {
-        padding: 120px 40px;
+        padding: 100px 40px;
         height: auto;
-        gap: 60px;
-    }
-
-    .health-burnout-text {
+        gap: 40px;
         width: 100%;
-        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .health-burnout-title {
         width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        display: flex;
+        align-items: flex-start;
+        position: relative;
+    }
+
+    .health-burnout-title::before {
+        left: 0;
+        top: 50%;
+    }
+
+    .health-burnout-title h2 {
+        font-size: 36px;
+        width: 100%;
+        height: auto;
+        margin: 0 0 0 24px;
+        line-height: 1.3;
+        padding-right: 30px;
+    }
+
+    .health-burnout-text {
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 30px;
+    }
+
+    .health-burnout-text p {
+        font-size: 16px;
+        line-height: 1.5;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        text-align: left;
     }
 
     .health-burnout-container img {
-        width: 450px;
+        width: 100%;
+        max-width: 450px;
         height: auto;
         margin: 40px auto;
+        display: block;
     }
 }
 
