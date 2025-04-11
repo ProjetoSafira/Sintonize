@@ -343,11 +343,9 @@ body {
     }
 
     .decorative-right {
-        width: 280px;
-        right: 0;
+        width: 500px;
+        right: -400px;
         object-fit: contain;
-        max-width: none;
-        max-height: none;
     }
 
     .regua-wrapper {
@@ -355,6 +353,65 @@ body {
         flex-direction: column;
         align-items: center;
         width: 100%;
+    }
+
+    /* Adicionando ajustes para o health-burnout */
+    .health-burnout-container {
+        padding: 80px 30px;
+        gap: 40px;
+        height: auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .health-burnout-title {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        display: flex;
+        align-items: flex-start;
+        position: relative;
+        padding: 0;
+    }
+
+    .health-burnout-title::before {
+        left: 0;
+        top: 50%;
+    }
+
+    .health-burnout-title h2 {
+        font-size: 32px;
+        width: 100%;
+        height: auto;
+        margin: 0 0 0 24px;
+        padding-right: 20px;
+        line-height: 1.3;
+    }
+
+    .health-burnout-text {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .health-burnout-text p {
+        font-size: 16px;
+        line-height: 1.5;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        text-align: left;
+    }
+
+    .health-burnout-container img {
+        width: 100%;
+        max-width: 380px;
+        height: auto;
+        margin: 30px auto;
+        display: block;
     }
 }
 
@@ -785,6 +842,42 @@ body {
         background-repeat: no-repeat;
         background-position: center;
     }
+
+    .health-burnout-container {
+        padding: 60px 15px;
+        height: auto;
+    }
+
+    .health-burnout-title {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .health-burnout-title h2 {
+        font-size: 24px;
+        margin-left: 15px;
+        width: 100%;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        line-height: 1.3;
+    }
+
+    .health-burnout-text {
+        width: 100%;
+        padding: 0 15px;
+    }
+
+    .health-burnout-text p {
+        font-size: 14px;
+        text-align: left;
+    }
+
+    .health-burnout-container img {
+        max-width: 280px;
+        margin: 20px auto;
+        width: 100%;
+        height: auto;
+    }
 }
 
 /* Estilos para a seção de avaliação de satisfação */
@@ -936,17 +1029,18 @@ body {
 }
 
 .health-burnout-text{
-    width: 1282px;
-    height: 169px;
+    width: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 32px;
+    padding: 0 20px;
 }
 
 .health-burnout-title{
     display: flex;
-    height: 48px;
+    height: auto;
     width: 1297px;
     align-self: stretch;
     align-items: flex-start;
@@ -960,14 +1054,24 @@ body {
     flex-shrink: 0;
     align-self: stretch;
     color:#204551;
-    font-family: Mulish;
+    font-family: 'Mulish';
     font-size: 40px;
     font-style: normal;
     font-weight: 400;
-    line-height: 120%; /* 48px */
+    line-height: 120%;
     margin-left: 24px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
+.health-burnout-borda {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    align-self: stretch;
+}
 .health-burnout-title ::before {
     content: '';
     position: absolute;
@@ -987,11 +1091,12 @@ body {
     height: 96px;
     align-self: stretch;
     color:#3B3E43;
-    font-family: Roboto;
+    font-family: 'Roboto';
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 150%; /* 24px */
+    line-height: 150%;
+    max-width: 100%;
 }
 
 .health-burnout-container img{
@@ -1009,8 +1114,7 @@ body {
     width: 100%;
     position: relative;
     z-index: 1;
-    margin: -1px 0;
-    /* Evita gaps entre seções */
+    margin: -1px 0
     fill: var(--Neutral-colors-White-Colors-500, #FAFAFA);
 }
 
@@ -1075,76 +1179,169 @@ body {
 }
 
 @media screen and (max-width: 1280px) {
-    .white-border-container {
-        max-width: 1100px;
-        min-height: 600px;
-        padding: 50px 40px;
+    .health-burnout-container {
+        padding: 120px 40px;
+        height: auto;
+        gap: 60px;
     }
-    
-    .container-avaliacao {
-        max-width: 1100px;
-        padding: 20px 10px;
+
+    .health-burnout-text {
+        width: 100%;
+        height: auto;
     }
-    
-    .avaliacao-title {
-        font-size: 36px;
+
+    .health-burnout-title {
+        width: 100%;
     }
-    
-    .avaliacao-text p {
-        font-size: 18px;
-    }
-    .regua-imagem {
-    width: 800px;
-      
+
+    .health-burnout-container img {
+        width: 450px;
+        height: auto;
+        margin: 40px auto;
     }
 }
 
 @media screen and (max-width: 1024px) {
-    .decorative-right {
-        width: 500px;
-        right: -400px;
-        object-fit: contain;
-    }
-
-    .regua-imagem {
+    .health-burnout-container {
+        padding: 80px 30px;
+        gap: 40px;
+        height: auto;
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
-        max-width: 750px;
-        width: 100%;
-        gap: 3px;
     }
 
+    .health-burnout-title {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        display: flex;
+        align-items: flex-start;
+        position: relative;
+        padding: 0;
+    }
+
+    .health-burnout-title::before {
+        left: 0;
+        top: 50%;
+    }
+
+    .health-burnout-title h2 {
+        font-size: 32px;
+        width: 100%;
+        height: auto;
+        margin: 0 0 0 24px;
+        padding-right: 20px;
+        line-height: 1.3;
+    }
+
+    .health-burnout-text {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .health-burnout-text p {
+        font-size: 16px;
+        line-height: 1.5;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        text-align: left;
+    }
+
+    .health-burnout-container img {
+        width: 100%;
+        max-width: 380px;
+        height: auto;
+        margin: 30px auto;
+        display: block;
+    }
 }
 
 @media screen and (max-width: 768px) {
-    .avaliacao-satisfacao-section {
-        min-height: 1000px;
+    .health-burnout-container {
+        padding: 80px 20px;
+        gap: 40px;
     }
 
-    .background-rectangle {
+    .health-burnout-title {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .health-burnout-title h2 {
+        font-size: 32px;
+        margin-left: 20px;
+        width: calc(100% - 40px);
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        line-height: 1.2;
+        max-width: 700px;
+        margin-right: 20px;
+    }
+
+    .health-burnout-text p {
+        font-size: 14px;
+        height: auto;
+        padding: 0 15px;
+        max-width: 100%;
+    }
+
+    .health-burnout-container img {
+        width: 100%;
+        max-width: 350px;
+        margin: 30px auto;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .health-burnout-container {
+        padding: 40px 15px;
+        height: auto;
+        gap: 24px;
+    }
+
+    .health-burnout-title {
+        width: 100%;
+        padding: 0;
+        margin-bottom: 16px;
+    }
+
+    .health-burnout-title h2 {
+        font-size: 22px;
+        margin: 0 15px;
+        width: calc(100% - 30px);
+        line-height: 1.3;
+        height: auto;
+        min-height: 60px; /* Garante espaço mínimo para o título */
+    }
+
+    .health-burnout-text {
+        width: 100%;
+        padding: 0 15px;
+    }
+
+    .health-burnout-text p {
+        font-size: 14px;
+        text-align: left;
+        height: auto;
+        margin-bottom: 16px;
+    }
+
+    .health-burnout-container img {
+        max-width: 250px;
+        margin: 20px auto;
         width: 100%;
         height: auto;
     }
-
-    .decorative-right {
-        width: 500px;
-        right: -60%;
-        top: 580px;
-        object-fit: contain;
-    }
-
-
 }
 
-@media screen and (max-width: 480px) {
-    .avaliacao-satisfacao-section {
-        min-height: 800px;
-    }
-
-    .background-rectangle {
-        width: 100%;
+@media screen and (min-width: 1442px) {
+    .health-burnout-container {
+        padding: 182px 0;
+        max-width: 1440px;
+        margin: 0 auto;
         height: auto;
-    }
-}
-
