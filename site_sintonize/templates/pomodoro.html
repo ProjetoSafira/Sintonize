@@ -31,13 +31,30 @@
         <button id="long-break">Pausa Longa</button>
       </nav>
 
-      <img src="" alt="">
+      <img class="pomodoro-timer-image" src="{% static 'images/pomodoro/time-management-pomodoro.png' %}" alt="imagem">
 
       <!-- Cronômetro -->
-      <h1>25:00</h1>
+      <div class="cronometer-container">
+        <h1>25:00</h1>
 
-      <!-- Botão start/stop-->
-      <button class="action-button" stop="true">START</button>
+      <!-- Botão Start/Stop/Reiniciar e Engrenagem -->
+      <div class="pomodoro-action-buttons">
+          <button id="saction-button" stop="true" class="image-button">
+            <img src="{% static 'images/pomodoro/pomodoro-play.svg' %}" alt="Iniciar ou Parar">
+          </button>
+        
+          <button id="reset-btn" class="image-button">
+            <img src="{% static 'images/pomodoro/pomodoro-arrow-counter-clockwise.svg' %}" alt="Reiniciar">
+          </button>
+
+          <button id="engine-btn" class="image-button">
+            <img src="{% static 'images/pomodoro/pomodoro-gear-six.svg' %}" alt="Reiniciar">
+          </button>
+      </div>
+
+      </div>
+      
+    
     </div>
   </section>
 
