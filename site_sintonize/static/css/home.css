@@ -21,29 +21,25 @@ body {
 .container {
     width: 100%;
     height: auto;
-    /* Ou uma altura mínima, se necessário */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    overflow: visible;
     position: relative;
+    padding-bottom: 87px;
 }
 
 
-/* Estilos de SVG */
-svg {
+/* SVG da onda */
+.wave-svg {
     position: absolute;
-    top: 0;
-    /* Ajuste aqui conforme necessário */
+    bottom: -6px;
     left: 0;
     width: 100%;
-    height: auto;
-    z-index: 0;
-    object-fit: cover;
+    height: 87px;
+    z-index: 1;
 }
-
-
 
 /* Estilos do Cabeçalho */
 .header-illustration {
@@ -51,10 +47,10 @@ svg {
     height: 100%;
     align-items: center;
     width: 100%;
-    z-index: 1;
-    /* Acima do SVG */
+    z-index: 2;
     justify-content: center;
-    margin-top: -150px;
+    margin-top: -140px;
+    position: relative;
 }
 
 .header {
@@ -69,7 +65,7 @@ svg {
 .Titulo-saude-mental {
     width: 523px;
     align-self: stretch;
-    font-family: 'Nunito';
+    font-family: "Wix Madefor Display";
     font-size: 64px;
     font-weight: 700;
     line-height: 125%;
@@ -118,11 +114,10 @@ svg {
 /* Estilo da Ilustração */
 .illustration {
     max-width: 700px;
+    margin-top: 10px;
     width: 100%;
-    height: auto;
-    right: 80px;
-    margin-top: -80px;
-}
+    height: 700px;
+   }
 
 @media (max-width: 1440px) {
     svg {
@@ -142,7 +137,6 @@ svg {
         margin-top: -80px;
     }
 }
-
 
 .bem-estar-container {
     display: flex;
@@ -291,7 +285,6 @@ svg {
         justify-content: center;
     }
 }
-
 
 @media (max-width: 768px) {
     .card {
