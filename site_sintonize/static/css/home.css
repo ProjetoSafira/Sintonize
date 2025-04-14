@@ -14,7 +14,8 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    height: 100%;
+    height: auto;
+    position: relative;
 }
 
 /* Estilo do Container */
@@ -25,7 +26,6 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow: visible;
     position: relative;
     padding-top: 110px;
     padding-bottom: 85px;
@@ -36,16 +36,14 @@ body {
 /* SVG da onda */
 .wave-svg {
     position: absolute;
-    bottom: -3px;
+    bottom: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
     height: auto;
     z-index: 1;
     background-color: #F3F4F6;
     display: block;
 }
-
-
 
 /* Estilos do Cabeçalho */
 .header-illustration {
@@ -125,30 +123,6 @@ body {
     height: 700px;
    }
 
-
-
-@media (min-width: 1444px) {
-    .container {
-        width: 100%;
-        position: relative;
-        overflow: hidden;
-        max-width: 1920px;
-        margin: 0 auto;
-        padding-top: 110px;
-        padding-bottom: 90px;
-    }
-
-    .wave-svg {
-        position: absolute;
-        width: 100vw;
-        height: auto;
-        left: 50%;
-        transform: translateX(-50%);
-        margin-bottom: auto;
-    }
-
-    
-}
 
 .bem-estar-container {
     display: flex;
@@ -314,6 +288,7 @@ body {
     position: relative;
     z-index: 0;
     padding-top: 1px;
+    flex: 1;
 }
 
 @media (max-width: 1024px) {
@@ -370,9 +345,19 @@ body {
         display: flex;
         align-items: center;
         justify-content: center;
-        min-height: 100vh;
+        min-height: auto;
         width: 100%;
         overflow: hidden;
+        position: relative;
+    }
+
+    .wave-svg {
+        position: absolute;
+        bottom:-3px;
+        left: 0;
+        width: 100%;
+        top: auto;
+        height: auto;
     }
 
     .header-illustration {
@@ -384,6 +369,14 @@ body {
         justify-content: center;
         width: 100%;
         max-width: 100%;
+    }
+
+    .illustration {
+        width: 260px;
+        height: 260px;
+        margin: 20px auto 40px auto;
+        display: block;
+        object-fit: contain;
     }
 
     .header {
@@ -416,14 +409,6 @@ body {
         line-height: 140%;
     }
 
-    .illustration {
-        width: 260px;
-        height: 260px;
-        margin: 20px auto;
-        display: block;
-        object-fit: contain;
-    }
-
     .teste-button {
         font-size: 16px;
         padding: 12px 24px;
@@ -432,12 +417,5 @@ body {
         justify-content: center;
         align-items: center;
         width: fit-content;
-    }
-
-    .wave-svg {
-        bottom: -2px;
-        width: 100vw;
-        left: 50%;
-        transform: translateX(-50%);
     }
 }
