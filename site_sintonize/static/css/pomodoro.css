@@ -1,16 +1,3 @@
-.pomodoro-container {
-    display: flex;
-    width: 1062px;
-    height: 894.25px;
-    padding: 156px 262px;
-    align-items: center;
-    flex-direction:column;
-    gap: 10px;
-    flex-shrink: 0;
-    border-radius: 12px;
-    background: linear-gradient(180deg, rgba(254, 254, 254, 0.50) 0%, rgba(250, 250, 250, 0.50) 100%);
-    box-shadow: 0px 4px 8px 0px rgba(229, 231, 235, 0.08), 0px 2px 8px 0px rgba(0, 86, 204, 0.06);
-}
 .pomodoro-svg-background{
   background-repeat: no-repeat;
   background-size: cover;
@@ -71,6 +58,7 @@
 .pomodoro-divider-section {
     position: relative;
     height: 143px; /* altura base das imagens */
+    z-index: 10;
   }
 
 .pomodoro-divider-image-1,
@@ -81,32 +69,123 @@
   left: 0;
 }
 .pomodoro-divider-image-1 {
-    z-index: 2;
+    z-index: 10;
   }
 
   .pomodoro-divider-image-2 {
     top: 64px; /* ou o valor que preferir, para "empurrar" ela um pouco pra baixo */
-    z-index: 1;
+    z-index: 9;
     opacity: 0.6; /* opcional, para dar um efeito de camada inferior */
   }
 
+
 /* Pomodoro Timer */
-.pomodoro-container{
+.pomodoro-container {
   display: flex;
   width: 100%;
-  height: 1485px;
-  background: var(--Neutral-colors-Gray-Colors-100, #F3F4F6);
+  height: 1450px;
+  padding: 290px 262px;
+  align-items: center;
+  flex-direction:column;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #F3F4F6;
+  box-shadow: 0px 4px 8px 0px rgba(229, 231, 235, 0.08), 0px 2px 8px 0px rgba(0, 86, 204, 0.06);
+  z-index: 0; /* garante que ele esteja por trás */
+  position: relative; 
+  margin-top: -70px;
 }
 
 .pomodoro-timer{
   display: flex;
+  align-items: center;
+  flex-direction: column; 
+  justify-content: flex-start;
   width: 100%;
   height: 894.25px;
   padding: 220px 262px;
-  align-items: center;
   gap: 10px;
   flex-shrink: 0;
   border-radius: 12px;
   background: linear-gradient(180deg, rgba(254, 254, 254, 0.50) 0%, rgba(250, 250, 250, 0.50) 100%);
   box-shadow: 0px 4px 8px 0px rgba(229, 231, 235, 0.08), 0px 2px 8px 0px rgba(0, 86, 204, 0.06);
+}
+
+/* Botões superiores */
+nav {
+  display: flex;
+  justify-content: center; /* Centraliza os botões horizontalmente */
+  gap: 18px;
+  margin-top: -70px;  
+}
+
+nav button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 167px;
+  max-width: 160px;
+  height: 42px;
+  flex-shrink: 0;
+  background-color: transparent;
+  color: #204551;
+  font-family: 'Mulish', sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%; /* 24px */
+  border: 1.6px solid #204551;
+  border-radius: 8px; /* opcional */
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+nav button.active {
+  background-color: #204551;
+  color: #FEFEFE;
+}
+
+.pomodoro-timer-image{
+  width: 511px;
+  height: 450px;
+  flex-shrink: 0;
+  margin-top: -50px;
+}
+
+/* Cronômetro */
+.cronometer-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 280px;
+  gap: 16px;
+  margin-top: -75px;
+}
+
+.pomodoro-timer h1{
+  display: flex;
+  padding: 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  align-self: stretch;
+  color:#082E49;
+  font-family: Nunito;
+  font-size: 96px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 125%; /* 120px */
+  letter-spacing: -0.5px;
+  margin: 0px;
+}
+
+.pomodoro-action-buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  width: 40.5px;
+  height: 40.5px;
+  aspect-ratio: 40.50/40.50;
 }
