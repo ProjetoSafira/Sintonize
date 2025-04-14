@@ -7,6 +7,7 @@
 :root {
     --Primary-Pressed---500: #204551;
     --Primary-Desabled---100: #BDCCD1;
+   
 }
 
 body {
@@ -79,8 +80,10 @@ body {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    position: relative;  /* Garante que o z-index funcione */
-    z-index: 10;  /* Menor que o z-index do dropdown */
+    position: relative;
+    /* Garante que o z-index funcione */
+    z-index: 10;
+    /* Menor que o z-index do dropdown */
 }
 
 /* Texto */
@@ -121,7 +124,7 @@ body {
     margin-top: 10px;
     width: 100%;
     height: 700px;
-   }
+}
 
 
 .bem-estar-container {
@@ -217,7 +220,7 @@ body {
     flex-shrink: 0;
 }
 
-.texto-card{
+.texto-card {
     display: flex;
     width: 255px;
     flex-direction: column;
@@ -245,19 +248,21 @@ body {
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 143%; /* 20.02px */
+    line-height: 143%;
+    /* 20.02px */
     letter-spacing: 0.17px;
     align-self: stretch;
 }
 
 .action-button {
-    
+
     color: #204551;
     font-family: Roboto;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 143%; /* 20.02px */
+    line-height: 143%;
+    /* 20.02px */
     letter-spacing: 0.17px;
     align-self: stretch;
     text-decoration: none;
@@ -353,7 +358,7 @@ body {
 
     .wave-svg {
         position: absolute;
-        bottom:-3px;
+        bottom: -3px;
         left: 0;
         width: 100%;
         top: auto;
@@ -418,4 +423,141 @@ body {
         align-items: center;
         width: fit-content;
     }
+}
+
+.sua-vida-container {
+    display: flex;
+    width: 1280px;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin: 0 auto;
+    padding: 182px 0;
+    background-color: #F3F4F6;
+}
+
+.sua-vida-titulo {
+    color: var(--Primary-Pressed---500);
+    text-align: center;
+    font-family: "Mulish";
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 120%;
+    position: relative;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    width: 100%;
+}
+
+.sua-vida-titulo::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #F8B490;
+    border-radius: 2px;
+}
+
+.sua-vida-subtitulo {
+    color: #000;
+    text-align: center;
+    font-family: "Nunito";
+    font-style: normal;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 160%;
+    letter-spacing: 0.15px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card-vida {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 32px;
+    background: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.card-title {
+    color: var(--Primary-Pressed---500);
+    font-family: "Roboto";
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 120%;
+}
+
+.card-text {
+    color: #3B3E43;
+    font-family: "Roboto";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+}
+
+@media (max-width: 1024px) {
+    .sua-vida-container {
+        padding: 92px 40px;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sua-vida-container {
+        padding: 60px 20px;
+    }
+
+    .sua-vida-titulo {
+        font-size: 32px;
+    }
+
+    .card-vida {
+        padding: 24px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .card-content {
+        align-items: center;
+    }
+}
+
+.wave-svg-bottom {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 2rem;
+    margin-bottom: -1px;
 }
