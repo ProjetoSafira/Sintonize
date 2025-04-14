@@ -7,7 +7,7 @@
 :root {
     --Primary-Pressed---500: #204551;
     --Primary-Desabled---100: #BDCCD1;
-   
+
 }
 
 body {
@@ -427,13 +427,45 @@ body {
 
 .sua-vida-container {
     display: flex;
-    width: 1280px;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    width: 100%;
+    max-width: 1440px;
     margin: 0 auto;
-    padding: 182px 0;
+    padding: 80px 80px 168px;
+    background: #FEFEFE;
+    position: relative;
+}
+
+.wave-bottom-container {
+    position: absolute;
+    width: 100%;
+    height: 168px;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.wave-svg-bottom {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
     background-color: #F3F4F6;
+}
+
+.wave-svg-bottom path {
+    fill: #FEFEFE;
+}
+
+.sua-vida-texto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 80px;
 }
 
 .sua-vida-titulo {
@@ -444,8 +476,8 @@ body {
     font-weight: 400;
     line-height: 120%;
     position: relative;
-    padding-bottom: 12px;
-    margin-bottom: 12px;
+    padding-bottom: 20px;
+    margin-bottom: 24px;
     width: 100%;
 }
 
@@ -465,99 +497,110 @@ body {
     color: #000;
     text-align: center;
     font-family: "Nunito";
-    font-style: normal;
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 400;
     line-height: 160%;
     letter-spacing: 0.15px;
-    width: 100%;
     max-width: 800px;
     margin: 0 auto;
+    opacity: 0.8;
 }
 
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
+    gap: 32px;
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1280px;
 }
 
 .card-vida {
     display: flex;
+    padding: 32px;
     align-items: flex-start;
     gap: 24px;
-    padding: 32px;
-    background: #FFFFFF;
-    border-radius: 12px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 24px;
+    background: #FFF;
+    box-shadow: 0px 4px 25px 0px rgba(141, 141, 141, 0.05);
 }
 
 .card-icon {
-    width: 48px;
-    height: 48px;
+    width: 32px;
+    height: 32px;
+    position: relative;
+    z-index: 2;
+}
+
+.card-icon-wrapper {
+    position: relative;
+    width: 68px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
+}
+
+.card-icon-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 68px;
+    height: 68px;
+    background-image: url('../images/icon-background.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 1;
 }
 
 .card-content {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
+    flex: 1;
 }
 
 .card-title {
     color: var(--Primary-Pressed---500);
-    font-family: "Roboto";
+    font-family: "Mulish";
     font-size: 24px;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 120%;
+    margin: 0;
 }
 
 .card-text {
-    color: #3B3E43;
-    font-family: "Roboto";
+    color: #000;
+    font-family: "Nunito";
     font-size: 16px;
     font-weight: 400;
     line-height: 150%;
+    margin: 0;
+    opacity: 0.8;
 }
 
 @media (max-width: 1024px) {
     .sua-vida-container {
-        padding: 92px 40px;
+        padding: 60px 40px 100px;
+    }
+
+    .wave-bottom-container {
+        height: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sua-vida-container {
+        padding: 40px 20px 80px;
     }
 
     .cards-grid {
         grid-template-columns: 1fr;
         gap: 24px;
     }
-}
 
-@media (max-width: 768px) {
-    .sua-vida-container {
-        padding: 60px 20px;
+    .wave-bottom-container {
+        height: 80px;
     }
-
-    .sua-vida-titulo {
-        font-size: 32px;
-    }
-
-    .card-vida {
-        padding: 24px;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .card-content {
-        align-items: center;
-    }
-}
-
-.wave-svg-bottom {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin-top: 2rem;
-    margin-bottom: -1px;
 }
