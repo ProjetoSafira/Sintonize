@@ -28,17 +28,20 @@ body {
     overflow: visible;
     position: relative;
     padding-bottom: 87px;
+    background-color: #BDCCD1;
 }
 
 
 /* SVG da onda */
 .wave-svg {
     position: absolute;
-    bottom: -6px;
+    bottom: -4px;
     left: 0;
     width: 100%;
     height: 87px;
     z-index: 1;
+   
+    background: #F3F4F6;
 }
 
 /* Estilos do Cabeçalho */
@@ -145,6 +148,10 @@ body {
     justify-content: center;
     flex-shrink: 0;
     margin-bottom: 92px;
+    background: #F3F4F6;
+    width: 100%;
+    position: relative;
+    z-index: 0;
 }
 
 .bem-estar {
@@ -291,4 +298,13 @@ body {
         width: 100%;
         /* Cartões ocupam 100% em telas menores */
     }
+}
+
+/* Adiciona um container para todo o conteúdo após o SVG */
+.content-after-wave {
+    background: #F3F4F6;
+    width: 100%;
+    position: relative;
+    z-index: 0;
+    padding-top: 1px;
 }
