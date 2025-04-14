@@ -464,20 +464,20 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 800px;
+    max-width: 952px;
     margin-bottom: 80px;
 }
 
 .sua-vida-titulo {
-    color: var(--Primary-Pressed---500);
+    color: #204551;
     text-align: center;
-    font-family: "Mulish";
+    font-family: 'Mulish';
     font-size: 40px;
-    font-weight: 400;
+    font-weight: 600;
     line-height: 120%;
     position: relative;
-    padding-bottom: 20px;
-    margin-bottom: 24px;
+    padding-bottom: 16px;
+    margin-bottom: 40px;
     width: 100%;
 }
 
@@ -496,14 +496,16 @@ body {
 .sua-vida-subtitulo {
     color: #000;
     text-align: center;
-    font-family: "Nunito";
+    font-family: 'Nunito';
+    height: 64px;
     font-size: 20px;
-    font-weight: 400;
+    font-weight: 600;
+    font-style: normal;
     line-height: 160%;
     letter-spacing: 0.15px;
-    max-width: 800px;
+    max-width: 952px;
     margin: 0 auto;
-    opacity: 0.8;
+    padding: 0;
 }
 
 .cards-grid {
@@ -588,6 +590,11 @@ body {
     .wave-bottom-container {
         height: 100px;
     }
+
+    .sua-vida-texto {
+        max-width: 90%;
+        padding: 0 20px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -602,5 +609,14 @@ body {
 
     .wave-bottom-container {
         height: 80px;
+    }
+
+    .sua-vida-titulo {
+        font-size: 32px;
+        margin-bottom: 32px;
+    }
+
+    .sua-vida-subtitulo {
+        font-size: 18px;
     }
 }
