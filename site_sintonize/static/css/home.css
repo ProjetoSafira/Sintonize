@@ -666,11 +666,12 @@ body {
     }
 
     .grey-section {
-        padding: 60px 0;
+        padding: 30px 0;
+        gap: 30px;
     }
     
     .grey-section-content {
-        padding: 0 20px;
+        padding: 0 15px;
     }
 }
 
@@ -691,4 +692,25 @@ body {
     .grey-section-content {
         padding: 0;
     }
+}
+
+.grey-section {
+    width: 100%;
+    background-color: #F3F4F6;
+    padding: 46px 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 46px;
+}
+
+.grey-section-content {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
