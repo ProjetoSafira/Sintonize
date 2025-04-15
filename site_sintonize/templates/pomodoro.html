@@ -43,7 +43,7 @@
 
       <!-- Botão Start/Stop/Reiniciar e Engrenagem -->
       <div class="pomodoro-action-buttons">
-          <button id="saction-button" stop="true" class="image-button">
+          <button id="action-button" stop="true" class="image-button">
             <img src="{% static 'images/pomodoro/pomodoro-play.svg' %}" alt="Iniciar ou Parar">
           </button>
         
@@ -128,7 +128,7 @@
         isTimeStopped = !isTimeStopped;
         const actionButton = document.querySelector("#action-button");
         actionButton.setAttribute("stop", isTimeStopped);
-        actionButton.innerText = isTimeStopped ? "STOP" : "START";
+       // actionButton.innerText = isTimeStopped ? "STOP" : "START";
         if (isTimeStopped) {
             startTimer();
         } else {
@@ -165,7 +165,7 @@
         isTimeStopped = false; // Define como parado
         const actionButton = document.querySelector("#action-button");
         actionButton.setAttribute("stop", "true");
-        actionButton.innerText = "START";
+        //actionButton.innerText = "START";
     }
 
     // Evento para o botão start/stop
