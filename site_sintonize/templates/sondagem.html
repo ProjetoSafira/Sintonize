@@ -103,6 +103,31 @@
     </div>
 </section>
 
+<section class="avaliacao-satisfacao-section"> 
+    <div class="decorative-images">
+        <img src="{% static 'images/sondagem/decorative-left.svg' %}" alt="Decoração Esquerda" class="decorative-left">
+        <img src="{% static 'images/sondagem/rectangle 4419.png' %}" alt="Decoração Direita" class="decorative-right">
+    </div>
+    <div class="container-avaliacao">
+        <div class="white-border-container">
+            <div class="avaliacao-title-container">
+                <h2 class="avaliacao-title">Avalie sua satisfação geral</h2>
+                <div class="decorative-bar-1"></div>
+            </div>
+            
+            <div class="avaliacao-text">
+                <p>Observando as suas respostas, tente identificar, de maneira geral, qual o seu grau de satisfação com a sua vida profissional na perspectiva da Qualidade de Vida no Trabalho. Após a reflexão acerca das perguntas apresentadas, você consideraria que as suas respostas, em sua maioria, se enquadram como:</p>
+            </div>
+
+            <div class="regua-container">
+                <div class="regua-wrapper">
+                    <img src="{% static 'images/sondagem/regua.png' %}" alt="Régua de satisfação" class="regua-imagem">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="autoavaliacao-section">
     <div class="autoavaliacao-content">
       <div class="img-autoavaliacao">
@@ -123,6 +148,9 @@
       </div>
     </div>
   </section>
+  <!-- Div oculta que será preenchida com o conteúdo de burnout_survey.html -->
+    <div id="formulario-sondagem" style="display:none;"></div>
+
 {% endblock %}
 
 {% block extra_css %}
@@ -131,11 +159,76 @@
 
 {% block extra_js %}
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const botaoSondagem = document.getElementById('iniciar-sondagem-btn');
-    botaoSondagem.addEventListener('click', function() {
-        window.location.href = "{% url 'burnout_survey' %}";
+    document.addEventListener('DOMContentLoaded', function() {
+        const botaoSondagem = document.getElementById('iniciar-sondagem-btn');
+        const formularioSondagem = document.getElementById('formulario-sondagem');
+        
+        // Função para posicionar o formulário na tela de forma que a introdução seja visível
+        function ajustarPosicaoFormulario() {
+            const rect = formularioSondagem.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const elementTop = rect.top + scrollTop;
+            
+            // Detecta o tamanho da tela e ajusta o offset de acordo
+            let offsetAjustado = 20; // Valor reduzido para posicionar o formulário mais abaixo
+            
+            // Verifica se a tela é menor ou tem proporções específicas (como 1440x360)
+            if (window.innerHeight <= 600 || (window.innerWidth === 1440 && window.innerHeight <= 600)) {
+                offsetAjustado = 20; // Offset reduzido para garantir que o formulário apareça mais abaixo
+                
+                // Adicionalmente, para telas muito baixas, ajuste conforme necessário
+                if (window.innerHeight <= 400) {
+                    offsetAjustado = 20;
+                }
+            } else if (window.innerHeight <= 768) {
+                offsetAjustado = 20; // Offset reduzido para posicionar o formulário mais abaixo
+            }
+            
+            console.log(`Ajustando com offset: ${offsetAjustado}px para tela ${window.innerWidth}x${window.innerHeight}`);
+            
+            window.scrollTo({
+                top: elementTop - offsetAjustado,
+                behavior: 'smooth'
+            });
+        }
+    
+        botaoSondagem.addEventListener('click', function() {
+            // Verifica se o formulário já foi carregado para evitar múltiplas requisições
+            if (formularioSondagem.innerHTML.trim() !== "") {
+                formularioSondagem.style.display = 'block';
+                // Ajusta a posição do formulário
+                ajustarPosicaoFormulario();
+                return;
+            }
+    
+            fetch("{% url 'burnout_survey' %}") // Django: Garante que a URL esteja correta
+                .then(response => response.text())
+                .then(data => {
+                    formularioSondagem.insertAdjacentHTML('beforeend', data);
+                    formularioSondagem.style.display = 'block';
+    
+                    // Executa scripts embutidos no HTML carregado
+                    formularioSondagem.querySelectorAll('script').forEach(script => {
+                        const newScript = document.createElement('script');
+                        if (script.src) {
+                            newScript.src = script.src;
+                            newScript.async = true; // Evita bloqueio de renderização
+                        } else {
+                            newScript.textContent = script.textContent;
+                        }
+                        document.body.appendChild(newScript);
+                        document.body.removeChild(newScript); // Remove após execução
+                    });
+                    
+                    // Ajusta a posição do formulário após um pequeno atraso
+                    setTimeout(() => {
+                        ajustarPosicaoFormulario();
+                    }, 100); // Pequeno atraso para garantir que o conteúdo seja renderizado
+                })
+                .catch(error => {
+                    console.error("Erro ao carregar o formulário:", error);
+                });
+        });
     });
-});
 </script>
 {% endblock %}

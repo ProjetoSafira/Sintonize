@@ -533,4 +533,54 @@
     }
 }
 
+/* Estilos para o cabeçalho do formulário */
 
+
+.header-title-forms {
+    color: var(--Primary-Pressed---500, #204551);
+    text-align: center;
+    font-family: 'Mulish';
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    align-self: stretch;
+    gap: 25px;
+}
+
+.header-description {
+    color: var(--Neutral-colors-Black-Colors-200, #3B3E43);
+    text-align: center;
+    font-family: 'Nunito';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 160%;
+    height: 64px;
+    align-self: stretch;
+    gap: 60px;
+}
+
+.header-wrapper {
+    background: #F3F4F6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.header-container {
+    max-width: 1442px;
+    margin: 0 auto;
+    position: relative;
+    margin-top: 182px;
+}
+
+.orange-border {
+    width: 111px;
+    height: 6px;
+    border-radius: 4px;
+    background-color: #F8b49d;
+    margin: 15px auto;
+    gap:41px;
+}
