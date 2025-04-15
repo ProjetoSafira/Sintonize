@@ -1,121 +1,236 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Respiração Guiada 4-7-8</title>
-    <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            text-align: center; 
-            margin-top: 10%; 
-            transition: all 0.5s ease-in-out; 
-        }
-        #timer { 
-            font-size: 48px; 
-            margin-top: 20px; 
-            transition: transform 0.5s ease-in-out; 
-        }
-        button { 
-            padding: 10px 20px; 
-            font-size: 16px; 
-            margin: 5px; 
-        }
-        .hidden { 
-            display: none; 
-        }
-    </style>
-</head>
-<body>
-    <h1>Respiração Guiada 4-7-8</h1>
-    <div id="timer">Pressione Iniciar</div>
-    <button id="startButton" onclick="startBreathing()">Iniciar</button>
-    <button id="pauseContinueButton" class="hidden" onclick="togglePause()">Pausar</button>
-    <button id="resetButton" class="hidden" onclick="resetBreathing()">Reiniciar</button>
+{% extends 'base.html' %}
+{% load static %}
 
-    <script>
-        let timer = null;
-        let sequenceIndex = 0;
-        let isPaused = false;
-        const sequences = [
-            { action: 'Inspirar', seconds: 4 },
-            { action: 'Segurar', seconds: 7 },
-            { action: 'Expirar', seconds: 8 }
-        ];
+{% block title %}Respiração Guiada{% endblock %}
 
-        function startBreathing() {
-            clearTimeout(timer); 
-            timer = null;
-            sequenceIndex = 0;
-            isPaused = false;
-            executeSequence();
-            document.getElementById('pauseContinueButton').classList.remove('hidden');
-            document.getElementById('resetButton').classList.remove('hidden');
-            document.getElementById('startButton').classList.add('hidden');
-        }
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/respiracao.css' %}">
+{% endblock %}
 
-        function togglePause() {
-            isPaused = !isPaused;
-            const pauseContinueButton = document.getElementById('pauseContinueButton');
+{% block content %}
+<div class="respiracao-container" role="main" aria-label="Exercício de respiração guiada">
+  <svg xmlns="http://www.w3.org/2000/svg" width="1440px" height="674px" viewBox="0 0 1440 674" fill="none" class="background-svg" aria-hidden="true">
+    <g filter="url(#filter0_dd_11836_5226)">
+      <path d="M1440 18C1440 11.3726 1434.63 6 1428 6H10.9999C4.37256 6 -1 11.3726 -1 18V650C-1 656.627 4.37256 662 11 662H1428C1434.63 662 1440 656.627 1440 650V18Z" fill="url(#paint0_linear_11836_5226)" shape-rendering="crispEdges"/>
+    </g>
+    <defs>
+      <filter id="filter0_dd_11836_5226" x="-9" y="0" width="1457" height="674" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feOffset dy="2"/>
+        <feGaussianBlur stdDeviation="4"/>
+        <feComposite in2="hardAlpha" operator="out"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0.337255 0 0 0 0 0.8 0 0 0 0.06 0"/>
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_11836_5226"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feOffset dy="4"/>
+        <feGaussianBlur stdDeviation="4"/>
+        <feComposite in2="hardAlpha" operator="out"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 0.898039 0 0 0 0 0.905882 0 0 0 0 0.921569 0 0 0 0.08 0"/>
+        <feBlend mode="normal" in2="effect1_dropShadow_11836_5226" result="effect2_dropShadow_11836_5226"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_11836_5226" result="shape"/>
+      </filter>
+      <linearGradient id="paint0_linear_11836_5226" x1="719.5" y1="6" x2="719.5" y2="662" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#FEFEFE"/>
+        <stop offset="1" stop-color="#FAFAFA" stop-opacity="0.5"/>
+      </linearGradient>
+    </defs>
+  </svg>
 
-            if (isPaused) {
-                clearTimeout(timer);
-                timer = null;
-                document.getElementById('timer').textContent = 'Pausado';
-                pauseContinueButton.textContent = 'Continuar';
-            } else {
-                pauseContinueButton.textContent = 'Pausar';
-                executeSequence();
-            }
-        }
+  <div class="animacao-container">
+    <div class="circulo-container" aria-hidden="true">
+      <svg viewBox="0 0 200 200" width="100%" height="100%">
+        <circle cx="100" cy="100" r="80" class="circulo-inspire" />
+        <circle cx="100" cy="100" r="80" class="circulo-segure" />
+        <circle cx="100" cy="100" r="80" class="circulo-expira" />
+      </svg>
 
-        function resetBreathing() {
-            clearTimeout(timer);
-            timer = null;
-            sequenceIndex = 0;
-            isPaused = false;
-            document.getElementById('timer').textContent = 'Pressione Iniciar';
-            resetInterface();
-        }
+      <div class="ponto-topo" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+          <circle cx="4" cy="4" r="4" fill="#476970"/>
+        </svg>
+      </div>
+      
+      <button 
+        class="texto-central" 
+        id="texto-respiracao" 
+        aria-live="assertive"
+        tabindex="0"
+        aria-label="Iniciar exercício de respiração">COMEÇAR</button>
+    </div>
+    
+    <!-- Elemento invisível para leitores de tela -->
+    <div class="sr-only" aria-live="polite" id="contador-tempo"></div>
+  </div>
+</div>
 
-        function executeSequence() {
-            if (!isPaused && sequenceIndex < sequences.length) {
-                const sequence = sequences[sequenceIndex];
-                let timeLeft = sequence.seconds;
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const pontoTopo = document.querySelector('.ponto-topo');
+    const textoRespiracao = document.getElementById('texto-respiracao');
+    const circuloContainer = document.querySelector('.circulo-container');
+    const contadorTempo = document.getElementById('contador-tempo');
+    let animacaoAtiva = false;
+    let intervalo;
+    let tentativasReconexao = 0;
+    const maxTentativas = 3;
 
-                const timerElement = document.getElementById('timer');
-                timerElement.textContent = `${sequence.action} - ${timeLeft}s`;
-                timerElement.style.transform = 'scale(1.2)';
+    // Adicionar elemento para mensagens de erro (invisível inicialmente)
+    const mensagemErro = document.createElement('div');
+    mensagemErro.className = 'mensagem-erro sr-only';
+    mensagemErro.setAttribute('role', 'alert');
+    mensagemErro.style.display = 'none';
+    circuloContainer.appendChild(mensagemErro);
 
-                setTimeout(() => {
-                    timerElement.style.transform = 'scale(1)';
-                }, 500);
+    function mostrarErro(mensagem) {
+        mensagemErro.textContent = mensagem;
+        mensagemErro.style.display = 'block';
+        textoRespiracao.textContent = 'TENTAR NOVAMENTE';
+        pararAnimacao();
+    }
 
-                function countdown() {
-                    if (isPaused) {
-                        return;
-                    }
-                    if (timeLeft >= 0) {
-                        timerElement.textContent = `${sequence.action} - ${timeLeft}s`;
-                        timeLeft--;
-                        timer = setTimeout(countdown, 1000);
-                    } else {
-                        sequenceIndex++;
-                        timer = setTimeout(executeSequence, 500);
-                    }
+    function ocultarErro() {
+        mensagemErro.style.display = 'none';
+        mensagemErro.textContent = '';
+    }
+
+    function verificarPerformance() {
+        return new Promise((resolve, reject) => {
+            const inicioTeste = performance.now();
+            
+            // Simular uma operação para testar a performance
+            requestAnimationFrame(() => {
+                const tempoDecorrido = performance.now() - inicioTeste;
+                if (tempoDecorrido > 100) { // Se demorar mais que 100ms
+                    reject('Desempenho insuficiente para animação suave');
+                } else {
+                    resolve();
                 }
-                countdown();
-            } else if (sequenceIndex >= sequences.length) {
-                document.getElementById('timer').textContent = 'Ciclo Completo!';
-                resetInterface();
+            });
+        });
+    }
+
+    async function iniciarAnimacao() {
+        if (animacaoAtiva) return;
+
+        try {
+            ocultarErro();
+            await verificarPerformance();
+
+            animacaoAtiva = true;
+            let tempoInicio = Date.now();
+            let ultimaAtualizacao = tempoInicio;
+            
+            pontoTopo.classList.add('animando');
+            circuloContainer.classList.add('animando');
+
+            intervalo = setInterval(() => {
+                const agora = Date.now();
+                const tempoDecorrido = agora - tempoInicio;
+                const tempoDesdeUltimaAtualizacao = agora - ultimaAtualizacao;
+
+                // Verificar se houve atraso significativo entre atualizações
+                if (tempoDesdeUltimaAtualizacao > 200) { // Atraso maior que 200ms
+                    throw new Error('Instabilidade detectada na animação');
+                }
+
+                ultimaAtualizacao = agora;
+                atualizarTexto(tempoDecorrido % 19000);
+            }, 100);
+
+        } catch (erro) {
+            tentativasReconexao++;
+            if (tentativasReconexao >= maxTentativas) {
+                mostrarErro('Detectamos instabilidade na conexão. Por favor, verifique sua internet e tente novamente em alguns instantes.');
+            } else {
+                mostrarErro('Carregamento lento detectado. Tentando novamente...');
+                setTimeout(() => {
+                    if (animacaoAtiva) {
+                        iniciarAnimacao();
+                    }
+                }, 2000);
             }
         }
+    }
 
-        function resetInterface() {
-            document.getElementById('startButton').classList.remove('hidden');
-            document.getElementById('pauseContinueButton').classList.add('hidden');
-            document.getElementById('resetButton').classList.add('hidden');
-            document.getElementById('timer').style.transform = 'scale(1)';
+    function pararAnimacao() {
+        animacaoAtiva = false;
+        pontoTopo.classList.remove('animando');
+        circuloContainer.classList.remove('animando');
+        if (intervalo) {
+            clearInterval(intervalo);
         }
-    </script>
-</body>
-</html>
+        tentativasReconexao = 0;
+    }
+
+    function atualizarTexto(tempo) {
+        try {
+            if (tempo <= 4000) {
+                textoRespiracao.textContent = 'INSPIRE';
+                textoRespiracao.className = 'texto-central texto-inspire';
+            } else if (tempo <= 11000) {
+                textoRespiracao.textContent = 'SEGURE';
+                textoRespiracao.className = 'texto-central texto-segure';
+            } else {
+                textoRespiracao.textContent = 'EXPIRE';
+                textoRespiracao.className = 'texto-central texto-expira';
+            }
+        } catch (erro) {
+            mostrarErro('Erro ao atualizar a animação. Tente novamente.');
+            pararAnimacao();
+        }
+    }
+
+    textoRespiracao.onclick = function() {
+        if (animacaoAtiva) {
+            pararAnimacao();
+            textoRespiracao.textContent = 'COMEÇAR';
+            textoRespiracao.className = 'texto-central';
+        } else {
+            iniciarAnimacao();
+        }
+    };
+
+    // Função para reiniciar o exercício
+    function reiniciarExercicio() {
+        pararAnimacao();
+        textoRespiracao.textContent = 'COMEÇAR';
+        textoRespiracao.className = 'texto-central';
+        ocultarErro();
+    }
+
+    // Adicionar evento de visibilidade
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden && animacaoAtiva) {
+            reiniciarExercicio();
+        }
+    });
+
+    // Adicionar evento para quando o usuário sair da página
+    window.addEventListener('beforeunload', function() {
+        reiniciarExercicio();
+    });
+});
+</script>
+
+<style>
+/* Estilo mínimo necessário para acessibilidade */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Adicionar outline apenas quando usar teclado */
+.texto-central:focus {
+    outline: 3px solid #4A90E2;
+    outline-offset: 2px;
+}
+</style>
+{% endblock %}
+

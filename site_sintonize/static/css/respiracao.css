@@ -1,0 +1,232 @@
+.respiracao-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background-svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    width: 100%;
+    max-width: 1440px;
+    height: auto;
+    min-height: 50vh;
+    max-height: 90vh;
+}
+
+.animacao-container {
+    display: flex;
+    width: 440px;
+    height: 428px;
+    padding: 64px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-shrink: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: transparent;
+}
+
+.circulo-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+.ponto-topo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 22.67px;
+    height: 22.579px;
+    z-index: 3;
+    transform-origin: 50% 150px;
+}
+
+/* Estilos completos para remover qualquer borda ou outline */
+.texto-central {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Mulish';
+    font-size: 36px;
+    color: var(--Primary-Defaunt---400, #3A6573);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 125%;
+    width: auto;
+    height: auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 182px;
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Remove outline ao clicar com mouse */
+.texto-central:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Mantém outline apenas na navegação por teclado */
+.texto-central:focus-visible {
+    outline: 2px solid #4A90E2;
+    outline-offset: 2px;
+}
+
+/* Estilos para os círculos da animação */
+.circulo-inspire {
+    fill: none;
+    stroke: #E2F6E3;
+    stroke-width: 8;
+    stroke-dasharray: 115.8 386.85;
+    stroke-dashoffset: 0;
+    transform: rotate(-90deg);
+    transform-origin: 100px 100px;
+}
+
+.circulo-segure {
+    fill: none;
+    stroke: #BDCCD1;
+    stroke-width: 8;
+    stroke-dasharray: 185.1 317.55;
+    stroke-dashoffset: -115.8;
+    transform: rotate(-90deg);
+    transform-origin: 100px 100px;
+}
+
+.circulo-expira {
+    fill: none;
+    stroke: #C7EBC9;
+    stroke-width: 8;
+    stroke-dasharray: 211.8 290.85;
+    stroke-dashoffset: -290.9;
+    transform: rotate(-90deg);
+    transform-origin: 100px 100px;
+}
+
+/* Animações para o ponto */
+@keyframes rotacaoPonto {
+    0% { transform: translateX(-50%) rotate(0deg); }
+    40.05% { transform: translateX(-50%) rotate(150deg); } /* 4s - Inspire */
+    68.89% { transform: translateX(-50%) rotate(240deg); } /* 7s - Segure */
+    100% { transform: translateX(-50%) rotate(360deg); } /* 8s - Expira */
+}
+
+.animando {
+    animation: rotacaoPonto 19s linear infinite;
+}
+
+/* Estados do texto */
+.texto-inspire { color: #3A6573; }
+.texto-segure { color: #476970; }
+.texto-expira { color: #3A6573; }
+
+/* Animação para o círculo container */
+@keyframes escalaCirculo {
+    0% { transform: scale(1); }
+    21.05% { transform: scale(1.2); }  /* Inspire - 4 segundos */
+    57.89% { transform: scale(1.2); }  /* Segure - 7 segundos */
+    100% { transform: scale(1); }      /* Expire - 8 segundos */
+}
+
+/* Manter a animação da bolinha separada */
+.ponto-topo.animando {
+    animation: rotacaoPonto 19s linear infinite;
+}
+
+/* Aplicar a animação de escala no container do círculo */
+.circulo-container.animando {
+    animation: escalaCirculo 19s linear infinite;
+}
+
+/* Adicione estas media queries no final do arquivo */
+@media screen and (max-width: 768px) {
+    .animacao-container {
+        width: 90%;
+        padding: 32px;
+    }
+    
+    .circulo-container {
+        width: 250px;
+        height: 250px;
+    }
+
+    .ponto-topo {
+        width: 18px;
+        height: 18px;
+        transform-origin: 50% 124px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .background-svg {
+        width: 150%;
+        min-height: 100vh;
+    }
+
+    .circulo-container {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .texto-central {
+        font-size: 28px;
+        min-width: 140px;
+    }
+
+    .ponto-topo {
+        width: 16px;
+        height: 16px;
+        transform-origin: 50% 101px;
+    }
+}
+
+/* Media query para telas grandes */
+@media screen and (min-width: 1442px) {
+    .background-svg {
+        width: 100%;
+        max-width: 1920px;
+        min-height: 60vh;
+        max-height: 95vh;
+    }
+
+    .animacao-container {
+        width: 560px;
+        height: 548px;
+        padding: 80px;
+    }
+
+    .circulo-container {
+        width: 400px;
+        height: 400px;
+    }
+
+    .texto-central {
+        font-size: 42px;
+        min-width: 220px;
+    }
+
+    .ponto-topo {
+        width: 28px;
+        height: 28px;
+        transform-origin: 50% 199px;
+    }
+}
