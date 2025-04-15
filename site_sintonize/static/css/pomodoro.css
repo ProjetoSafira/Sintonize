@@ -58,7 +58,7 @@
 .pomodoro-divider-section {
     position: relative;
     height: 143px; /* altura base das imagens */
-    z-index: 10;
+    z-index: 1;
   }
 
 .pomodoro-divider-image-1,
@@ -67,14 +67,15 @@
   width: 100%;
   height: 143px;
   left: 0;
+  z-index: 2; /* Ambas as imagens devem estar acima do fundo */
 }
 .pomodoro-divider-image-1 {
-    z-index: 10;
+    z-index: 3;
   }
 
   .pomodoro-divider-image-2 {
     top: 64px; /* ou o valor que preferir, para "empurrar" ela um pouco pra baixo */
-    z-index: 9;
+    z-index: 2;
     opacity: 0.6; /* opcional, para dar um efeito de camada inferior */
   }
 
@@ -139,8 +140,11 @@ nav button {
   border-radius: 8px; /* opcional */
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
+  position: relative; /* Garantindo que o botão tenha posicionamento */
+  z-index: 10; /* Garante que o botão fique em cima de outros elementos */
 }
 
+nav button:hover,
 nav button.active {
   background-color: #204551;
   color: #FEFEFE;

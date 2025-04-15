@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Sobre o Burnout{% endblock %}
+{% block title %}Pomodoro{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/pomodoro.css' %}">
+{% endblock %}
 
 {% block content %}
     <div class="pomodoro-svg-background" style="background-image: url('{% static 'images/pomodoro/Rectangle-4436-pomodoro.svg' %}');">
@@ -59,7 +63,121 @@
   </section>
 
   {% endblock %}
-  {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/pomodoro.css' %}">
-  {% endblock %}
   
+  {% block extra_js %}
+  <script>
+    const buttons = document.querySelectorAll('nav button');
+    const titleElement = document.querySelector("title");
+    const timerDisplay = document.querySelector("h1");
+    let timerStopwatch;
+    let timerInterval;
+    let isTimeStopped = false;
+    
+    const titles = {
+        pomodoro: "25:00 - Time to Focus!",
+        "short-break": "05:00 - Time for a Break!",
+        "long-break": "15:00 - Time for a Break!",
+    };
+
+    const timerCount = {
+        pomodoro: 25 * 60,
+        "short-break": 5 * 60,
+        "long-break": 15 * 60,
+    };
+
+    // Altera o título da página conforme o botão pressionado
+    function changeTitle(id) {
+        const title = titles[id];
+        if (title) {
+            titleElement.innerHTML = title;
+        }
+    }
+
+    // Função para mudar o cronômetro e iniciar a contagem regressiva
+    function startTimer() {
+        timerInterval = setInterval(() => {
+            if (timerStopwatch > 0) {
+                timerStopwatch--;
+                renderTimerDisplay();
+            } else {
+                stopTimer();
+            }
+        }, 1000);
+    }
+
+    // Função para parar o cronômetro
+    function stopTimer() {
+        clearInterval(timerInterval);
+    }
+
+    // Função para resetar o cronômetro
+    function resetTimer() {
+        timerStopwatch = timerCount[currentButton];
+        renderTimerDisplay();
+    }
+
+    // Função para renderizar o cronômetro
+    function renderTimerDisplay() {
+        const minutes = Math.floor(timerStopwatch / 60);
+        const seconds = timerStopwatch % 60;
+        timerDisplay.innerText = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+    }
+
+    // Função para controlar o botão Start/Stop
+    function handleStartStopButton() {
+        isTimeStopped = !isTimeStopped;
+        const actionButton = document.querySelector("#action-button");
+        actionButton.setAttribute("stop", isTimeStopped);
+        actionButton.innerText = isTimeStopped ? "STOP" : "START";
+        if (isTimeStopped) {
+            startTimer();
+        } else {
+            stopTimer();
+        }
+    }
+
+    // Evento para os botões de navegação
+    buttons.forEach((button) => {
+        button.addEventListener("click", (e) => {
+            // Altera o título e o cronômetro conforme o botão selecionado
+            cleanButtonsAttributes();
+            const button = e.target;
+            button.setAttribute("active", "true");
+            const id = button.getAttribute("id");
+            changeTitle(id);
+            currentButton = id;
+            timerStopwatch = timerCount[id];
+            stopTimer();
+            renderTimerDisplay();
+            resetStartButton();
+        });
+    });
+
+    // Função para limpar o atributo "active" dos botões
+    function cleanButtonsAttributes() {
+        buttons.forEach((button) => {
+            button.setAttribute("active", "false");
+        });
+    }
+
+    // Função para resetar o botão "START/STOP"
+    function resetStartButton() {
+        isTimeStopped = false; // Define como parado
+        const actionButton = document.querySelector("#action-button");
+        actionButton.setAttribute("stop", "true");
+        actionButton.innerText = "START";
+    }
+
+    // Evento para o botão start/stop
+    document.querySelector("#action-button").addEventListener("click", handleStartStopButton);
+
+    // Evento para o botão de reiniciar
+    document.querySelector("#reset-btn").addEventListener("click", resetTimer);
+
+    // Inicializa o cronômetro com o Pomodoro
+    let currentButton = "pomodoro"; // Inicia com o Pomodoro
+    timerStopwatch = timerCount[currentButton]; // Define o tempo inicial para Pomodoro
+    renderTimerDisplay();
+</script>
+
+  {% endblock %}
