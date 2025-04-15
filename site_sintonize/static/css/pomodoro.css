@@ -213,3 +213,40 @@ nav button.active {
   transform: scale(1.05); /* levemente maior no hover */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* sombreamento suave */
 }
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .pomodoro-container {
+      padding: 5vw; /* Ajusta o padding para dispositivos menores */
+  }
+
+  .pomodoro-focus-title h2 {
+      font-size: 6vw; /* Aumenta o tamanho da fonte em telas pequenas */
+  }
+
+  .pomodoro-timer-image {
+      width: 80%; /* Reduz a imagem em telas menores */
+  }
+
+  nav button {
+      width: 40%; /* Ajusta a largura dos botões */
+  }
+}
+
+@media (max-width: 480px) {
+  .pomodoro-container {
+      padding: 2rem; /* Ajusta o padding ainda mais em telas muito pequenas */
+  }
+
+  .pomodoro-focus-title h2 {
+      font-size: 8vw; /* Ajuste do tamanho da fonte em telas muito pequenas */
+  }
+
+  .pomodoro-timer-image {
+      width: 100%; /* Deixa a imagem ocupando toda a largura */
+  }
+
+  nav button {
+      width: 80%; /* Deixa os botões mais largos */
+  }
+}
