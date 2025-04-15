@@ -108,11 +108,10 @@
         button.addEventListener("click", (e) => {
           // Altera seleção
           cleanButtonsAttributes();
-          const button = e.target;
-          button.setAttribute("active", "true");
+          const clickedButton = e.target;
+          clickedButton.setAttribute("active", "true");
           // Altera título e cor de fundo
-          const id = button.getAttribute("id");
-          changeTheme(id);
+          const id = clickedButton.getAttribute("id");
           changeTitle(id);
           timerStopwatch = timerCount[id];
           stopTimer();
@@ -132,18 +131,6 @@
         isTimeStopped = false; // Define como parado
         actionButton.setAttribute("stop", "true");
         actionButton.innerText = "START";
-      }
-
-      const root = document.documentElement;
-      const colors = {
-        pomodoro: "rgb(28, 100, 109)",
-        "short-break": "rgb(21,112,111)",
-        "long-break": "rgb(27,145,144)",
-      };
-
-      function changeTheme(id) {
-        const color = colors[id];
-        root.style.setProperty("--main-color", color);
       }
 
       /* Alterar titles */
