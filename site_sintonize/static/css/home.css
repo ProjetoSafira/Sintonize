@@ -430,9 +430,8 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 1440px;
     margin: 0 auto;
-    padding: 80px 80px 168px;
+    padding: 80px 0 168px;
     background: #FEFEFE;
     position: relative;
 }
@@ -464,8 +463,9 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 952px;
-    margin-bottom: 80px;
+    max-width: 1280px;
+    margin: 0 auto 80px auto;
+    padding: 0 20px;
 }
 
 .sua-vida-titulo {
@@ -476,8 +476,8 @@ body {
     font-weight: 600;
     line-height: 120%;
     position: relative;
-    padding-bottom: 16px;
-    margin-bottom: 40px;
+    padding-bottom: 32px;
+    margin-bottom: 32px;
     width: 100%;
 }
 
@@ -487,56 +487,52 @@ body {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
+    width: 111px;
+    height: 6px;
     background-color: #F8B490;
-    border-radius: 2px;
+    border-radius: 4px;
 }
 
 .sua-vida-subtitulo {
     color: #000;
     text-align: center;
     font-family: 'Nunito';
-    height: 64px;
     font-size: 20px;
-    font-weight: 600;
     font-style: normal;
+    font-weight: 600;
     line-height: 160%;
     letter-spacing: 0.15px;
-    max-width: 952px;
+    max-width: 1280px;
+    width: 100%;
     margin: 0 auto;
-    padding: 0;
+    padding: 0 20px;
 }
 
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
+    gap: 24px;
     width: 100%;
     max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .card-vida {
     display: flex;
-    padding: 32px;
-    align-items: flex-start;
+    padding: 24px;
+    align-items: center;
     gap: 24px;
-    border-radius: 24px;
+    border-radius: 16px;
     background: #FFF;
     box-shadow: 0px 4px 25px 0px rgba(141, 141, 141, 0.05);
-}
-
-.card-icon {
-    width: 32px;
-    height: 32px;
-    position: relative;
-    z-index: 2;
+    height: 120px;
 }
 
 .card-icon-wrapper {
     position: relative;
-    width: 68px;
-    height: 68px;
+    width: 48px;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -548,34 +544,41 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 68px;
-    height: 68px;
+    width: 48px;
+    height: 48px;
     background-image: url('../images/icon-background.svg');
     background-size: contain;
     background-repeat: no-repeat;
     z-index: 1;
 }
 
+.card-icon {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    z-index: 2;
+}
+
 .card-content {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
     flex: 1;
 }
 
 .card-title {
-    color: var(--Primary-Pressed---500);
-    font-family: "Mulish";
-    font-size: 24px;
+    color: #000;
+    font-family: 'Nunito';
+    font-size: 18px;
     font-weight: 600;
-    line-height: 120%;
+    line-height: 133%;
     margin: 0;
 }
 
 .card-text {
-    color: #000;
-    font-family: "Nunito";
-    font-size: 16px;
+    color: #1F0802;
+    font-family: 'Roboto';
+    font-size: 14px;
     font-weight: 400;
     line-height: 150%;
     margin: 0;
@@ -592,8 +595,16 @@ body {
     }
 
     .sua-vida-texto {
-        max-width: 90%;
-        padding: 0 20px;
+        padding: 0 40px;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .sua-vida-subtitulo {
+        padding: 0;
     }
 }
 
@@ -603,8 +614,13 @@ body {
     }
 
     .cards-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
+        padding: 0 16px;
+    }
+    
+    .card-vida {
+        padding: 20px;
+        height: auto;
+        min-height: 100px;
     }
 
     .wave-bottom-container {
@@ -618,5 +634,21 @@ body {
 
     .sua-vida-subtitulo {
         font-size: 18px;
+        padding: 0;
+    }
+
+    .sua-vida-texto {
+        padding: 0 20px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .sua-vida-container {
+        padding: 80px calc((100% - 1280px) / 2) 168px;
+    }
+
+    .sua-vida-texto,
+    .cards-grid {
+        padding: 0;
     }
 }
