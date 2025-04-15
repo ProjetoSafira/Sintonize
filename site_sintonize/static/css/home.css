@@ -29,21 +29,18 @@ body {
     justify-content: center;
     position: relative;
     padding-top: 110px;
-    padding-bottom: 85px;
+    padding-bottom: 0;
     background-color: #BDCCD1;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 /* SVG da onda */
 .wave-svg {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    display: block;
     width: 100%;
     height: auto;
-    z-index: 1;
+    margin-top: -1px;
     background-color: #F3F4F6;
-    display: block;
 }
 
 /* Estilos do Cabeçalho */
@@ -56,6 +53,7 @@ body {
     justify-content: center;
     margin-top: -140px;
     position: relative;
+    padding-bottom: 85px;
 }
 
 .header {
@@ -257,7 +255,7 @@ body {
 .action-button {
 
     color: #204551;
-    font-family: Roboto;
+    font-family: 'Roboto';
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -288,12 +286,11 @@ body {
 
 /* Adiciona um container para todo o conteúdo após o SVG */
 .content-after-wave {
-    background: #F3F4F6;
+    background: #BDCCD1;
     width: 100%;
     position: relative;
     z-index: 0;
     padding-top: 1px;
-    flex: 1;
 }
 
 @media (max-width: 1024px) {
@@ -344,84 +341,99 @@ body {
     }
 }
 
-@media (max-width: 540px) {
+@media (max-width: 550px) {
     .container {
-        padding: 40px 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: auto;
-        width: 100%;
-        overflow: hidden;
-        position: relative;
-    }
-
-    .wave-svg {
-        position: absolute;
-        bottom: -3px;
-        left: 0;
-        width: 100%;
-        top: auto;
-        height: auto;
+        padding: 40px 0 0;
+        text-align: center;
     }
 
     .header-illustration {
         flex-direction: column;
-        margin: 0;
-        padding: 0;
-        gap: 30px;
+        padding: 0 15px 30px;
+        margin-top: 0;
         align-items: center;
-        justify-content: center;
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .illustration {
-        width: 260px;
-        height: 260px;
-        margin: 20px auto 40px auto;
-        display: block;
-        object-fit: contain;
     }
 
     .header {
         width: 100%;
+        text-align: center;
+        padding: 0;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 0 20px;
     }
 
     .Titulo-saude-mental {
-        font-size: 32px;
+        font-size: 26px;
         width: 100%;
-        max-width: 300px;
+        max-width: 100%;
+        line-height: 115%;
+        margin: 0 auto 10px;
+        letter-spacing: -0.3px;
+        padding: 0 15px;
+        word-wrap: break-word;
         text-align: center;
-        margin: 0 auto;
-        padding: 0;
-        line-height: 120%;
     }
 
     .Texto-saude-mental {
-        font-size: 16px;
+        font-size: 15px;
         width: 100%;
-        max-width: 280px;
+        max-width: 260px;
+        line-height: 130%;
+        margin: 10px auto;
         text-align: center;
-        margin: 15px auto;
-        padding: 0;
-        line-height: 140%;
     }
 
     .teste-button {
-        font-size: 16px;
-        padding: 12px 24px;
-        margin: 10px auto;
+        margin: 15px auto;
         display: flex;
         justify-content: center;
         align-items: center;
         width: fit-content;
+        align-self: center;
+    }
+
+    .illustration {
+        width: 240px;
+        height: 240px;
+        margin: 15px auto;
+        display: block;
+    }
+}
+
+@media (max-width: 375px) {
+    .container {
+        padding: 30px 0 0;
+    }
+
+    .Titulo-saude-mental {
+        font-size: 24px;
+        max-width: 100%;
+        padding: 0 10px;
+        text-align: center;
+    }
+
+    .Texto-saude-mental {
+        font-size: 14px;
+        max-width: 240px;
+        padding: 0 10px;
+        text-align: center;
+    }
+
+    .illustration {
+        width: 220px;
+        height: 220px;
+    }
+
+    .teste-button {
+        font-size: 14px;
+        padding: 10px 18px;
+        margin: 15px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: fit-content;
+        align-self: center;
     }
 }
 
