@@ -193,3 +193,11 @@ nav button.active {
   height: 40.5px;
   aspect-ratio: 40.50/40.50;
 }
+
+.image-button {
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
