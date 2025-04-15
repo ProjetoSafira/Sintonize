@@ -200,4 +200,16 @@ nav button.active {
   background: transparent;
   padding: 0;
   cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 8px; /* opcional, só se quiser cantos arredondados */
+}
+
+.image-button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.image-button:hover {
+  transform: scale(1.05); /* levemente maior no hover */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* sombreamento suave */
 }
