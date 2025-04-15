@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/menu.css' %}">
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Wix+Madefor+Display:wght@400;700&display=swap" rel="stylesheet">
@@ -45,6 +46,42 @@
     <!-- Conteúdo principal -->
     {% block content %}
     {% endblock %}
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo-container">
+                <img src="{% static 'images/images_logo/logo.png' %}" alt="Logo">
+                <div class="titulo-ano"> © 2024 — 2025</div>
+                <a href="{% url 'politicas_privacidade' %}" class="politicas" id="politicas">Termos — Politica de privacidade</a>
+            </div>
+
+            <!--   <div class="links-container">
+                <div class="institutional">
+                    <h4>Institucional</h4>
+                    <p>Product</p>
+                    <p>Product</p>
+                    <p>Product</p>
+                </div>
+
+                <div class="support">
+                    <h4>Suporte e Ajuda</h4>
+                    <p>Feature</p>
+                    <p>Feature</p>
+                    <p>Feature</p>
+                </div>
+
+                <div class="connect">
+                    <h4>Conecte-se Conosco</h4>
+                    <div class="social-icons">
+                        <a href="#">Facebook</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        --> </div>
+    </footer>
 
     <!-- Scripts -->
     <script>
