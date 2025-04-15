@@ -1,27 +1,16 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sintonize</title>
-    <link rel="icon" href="site_sintonize\static\images\images_logo\favicon.ico" type="image/x-icon">
-    {% load static %}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Sobre o Burnout{% endblock %}
+
+{% block content %}
+
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
-    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href=<link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-</head>
-<body>
-    {% include 'menu.html' %}
+   
+ 
+
     <div class="container">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 280 1440 866" fill="none">
-            <path d="M0 0H1440V780C1440 780 1002.56 866.093 719 866C436.212 865.907 0 780 0 780V0Z" 
-                  fill="var(--Primary-Desabled---100)" />
-        </svg>
         
         <div class="header-illustration">
             <header>
@@ -35,15 +24,22 @@
             </div>
         </div>
     </div>
+    
+    <div>
+        <!-- SVG da onda (existente) -->
+        <svg class="wave-svg" xmlns="http://www.w3.org/2000/svg" width="1440" height="87" viewBox="0 0 1440 87" fill="none">
+            <path d="M0 6.01596V0H1440V6.01596C1440 6.01596 1058 87 722.5 87C376 87 0 6.01596 0 6.01596Z" fill="#BDCCD1"/>
+        </svg>
+    </div>
       <!-- <div class="bem-estar-container">
         <div class="bem-estar"></div>
         <div class="frase-bem-estar">
             <div class="titulo-bem-estar">Bem-Estar e Equilíbrio para Sua Vida</div>
             <div class="subtitulo-bem-estar">O Sintonize é um espaço dedicado à sua saúde mental no ambiente de trabalho. Nossa plataforma auxilia você a reconhecer e gerenciar o estresse, além de oferecer ferramentas práticas para melhorar seu bem-estar e manter o equilíbrio entre vida pessoal e profissional.</div>
         </div>
-    </div>
+      </div>
 
-     <div class="cards">
+      <div class="cards">
         <div class="card">
             <div class="ilustracao-card">
                 <img src="{% static 'images/images_home/autoavaliacao.png' %}" alt="Autoavaliação Inteligente" class="card-image">
@@ -79,6 +75,66 @@
             <a href="#" class="action-button">Fazer teste</a>
         </div>
     </div> -->
-    {% include 'footer.html' %}
+    <div class="sua-vida-container">
+        <div class="sua-vida-texto">
+            <h2 class="sua-vida-titulo">Sua Vida e Seu Trabalho</h2>
+            <p class="sua-vida-subtitulo">Encontre as ferramentas certas para transformar seu bem-estar mental e emocional no ambiente de trabalho. O Sintonize é mais do que uma plataforma: é seu aliado na busca por equilíbrio e saúde.</p>
+        </div>
+        <div class="cards-grid">
+            <div class="card-vida">
+                <div class="card-icon-wrapper">
+                    <img src="{% static 'images/images_home/rosto-abatido.png' %}" alt="Ícone Entenda" class="card-icon">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Entenda e Transforme</h3>
+                    <p class="card-text">Burnout é um estado de exaustão física, emocional e mental causado pelo estresse crônico no trabalho.</p>
+                </div>
+            </div>
+    
+            <div class="card-vida">
+                <div class="card-icon-wrapper">
+                    <img src="{% static 'images/images_home/vector.png' %}" alt="Ícone Previna" class="card-icon">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Previna o Burnout</h3>
+                    <p class="card-text">Técnicas como pausas estratégicas e relaxamento ajudam a reduzir o estresse e melhorar seu bem-estar.</p>
+                </div>
+            </div>
+    
+            <div class="card-vida">
+                <div class="card-icon-wrapper">
+                    <img src="{% static 'images/images_home/chart.png' %}" alt="Ícone Dados" class="card-icon">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Dados sobre o Burnout</h3>
+                    <p class="card-text">Estudos indicam que aproximadamente 30% dos brasileiros são vítimas da Síndrome de Burnout.</p>
+                </div>
+            </div>
+    
+            <div class="card-vida">
+                <div class="card-icon-wrapper">
+                    <img src="{% static 'images/images_home/estatisticas.png' %}" alt="Ícone Estatística" class="card-icon">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Estatística do Burnout</h3>
+                    <p class="card-text">72% dos trabalhadores brasileiros enfrentam exaustão mental devido ao trabalho, segundo a Associação Brasileira de Psiquiatria.</p>
+                </div>
+            </div>
+        </div>
+        <div class="wave-bottom-container">
+            <svg class="wave-svg-bottom" xmlns="http://www.w3.org/2000/svg" width="1438" height="168" viewBox="0 0 1438 168" fill="none" preserveAspectRatio="none">
+                <path d="M-2 167.98C-2 167.98 146.6 133.203 243 125.052C429.726 109.264 533.847 166.719 721 167.98C923.347 169.345 1036.75 98.867 1238 125.052C1316.83 135.309 1438 167.98 1438 167.98V0H-2V167.98Z" fill="#FEFEFE"/>
+            </svg>
+        </div>
+    </div>
+    <div class="grey-section">
+        <div class="grey-section-content">
+            <!-- Aqui vai o conteúdo da seção -->
+        </div>
+    </div>
+    <div class="footer-section">
+        {% include 'footer.html' %}
+    </div>
 </body>
 </html>
+{% endblock %}
