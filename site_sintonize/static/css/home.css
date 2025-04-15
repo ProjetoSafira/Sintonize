@@ -431,9 +431,21 @@ body {
     align-items: center;
     width: 100%;
     margin: 0 auto;
-    padding: 80px 0 168px;
+    padding: 80px 80px 200px;
     background: #FEFEFE;
     position: relative;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
 }
 
 .wave-bottom-container {
@@ -443,6 +455,7 @@ body {
     left: 0;
     bottom: 0;
     overflow: hidden;
+    z-index: 1;
 }
 
 .wave-svg-bottom {
@@ -508,21 +521,11 @@ body {
     padding: 0 20px;
 }
 
-.cards-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-    width: 100%;
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
 .card-vida {
     display: flex;
     padding: 24px;
     align-items: center;
-    gap: 24px;
+    gap: 32px;
     border-radius: 16px;
     background: #FFF;
     box-shadow: 0px 4px 25px 0px rgba(141, 141, 141, 0.05);
@@ -576,9 +579,10 @@ body {
 }
 
 .card-text {
+    width: 100%;
     color: #1F0802;
     font-family: 'Roboto';
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
     line-height: 150%;
     margin: 0;
@@ -587,15 +591,15 @@ body {
 
 @media (max-width: 1024px) {
     .sua-vida-container {
-        padding: 60px 40px 100px;
+        padding: 80px 40px 220px;
     }
 
     .wave-bottom-container {
-        height: 100px;
+        height: 180px;
     }
 
     .sua-vida-texto {
-        padding: 0 40px;
+        margin-bottom: 80px;
     }
 
     .cards-grid {
@@ -606,11 +610,19 @@ body {
     .sua-vida-subtitulo {
         padding: 0;
     }
+
+    .grey-section {
+        padding: 80px 0;
+    }
+    
+    .grey-section-content {
+        padding: 0 40px;
+    }
 }
 
 @media (max-width: 768px) {
     .sua-vida-container {
-        padding: 40px 20px 80px;
+        padding: 60px 20px 180px;
     }
 
     .cards-grid {
@@ -624,7 +636,7 @@ body {
     }
 
     .wave-bottom-container {
-        height: 80px;
+        height: 120px;
     }
 
     .sua-vida-titulo {
@@ -638,17 +650,33 @@ body {
     }
 
     .sua-vida-texto {
+        margin-bottom: 60px;
+    }
+
+    .grey-section {
+        padding: 60px 0;
+    }
+    
+    .grey-section-content {
         padding: 0 20px;
     }
 }
 
 @media screen and (min-width: 1440px) {
     .sua-vida-container {
-        padding: 80px calc((100% - 1280px) / 2) 168px;
+        padding: 80px calc((100% - 1280px) / 2) 240px;
     }
 
     .sua-vida-texto,
     .cards-grid {
+        padding: 0;
+    }
+
+    .grey-section {
+        padding: 120px calc((100% - 1280px) / 2);
+    }
+    
+    .grey-section-content {
         padding: 0;
     }
 }
