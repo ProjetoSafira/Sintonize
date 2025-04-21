@@ -34,6 +34,10 @@ def tratamento (request):
 def pomodoro (request):
     return render(request, 'pomodoro.html')
 
+def respiracao_guiada (request):
+    return render(request, 'respiracao_guiada.html')
+
+
 
 def search_options(request):
     query = request.GET.get('query', '')
