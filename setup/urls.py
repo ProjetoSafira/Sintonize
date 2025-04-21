@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
-from site_sintonize.views import index, politicas_privacidade, sondagem, sobre_nos, equipe, trilha, diagnostico, tratamento, burnout_survey_view, resultado_view,search_options, pomodoro
 
+from site_sintonize.views import index, politicas_privacidade, sondagem, sobre_nos, equipe, trilha, diagnostico, tratamento, burnout_survey_view, resultado_view,search_options, pomodoro, respiracao_guiada
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -13,9 +13,10 @@ urlpatterns = [
     path('equipe/', equipe, name='equipe'),
     path('trilha/', trilha, name='trilha'),
     path('diagnostico/', diagnostico, name='diagnostico'),
-     path('tratamento/', tratamento, name='tratamento'),
+    path('tratamento/', tratamento, name='tratamento'),
     path('burnout-survey/', burnout_survey_view, name='burnout_survey'),
     path('resultado/<int:score>/', resultado_view, name='resultado'),
     path('search-options/', search_options, name='search_options'),
+    path('respiracao_guiada/', respiracao_guiada, name='respiracao_guiada'),
     path('pomodoro.html', pomodoro, name='pomodoro'),
 ]
