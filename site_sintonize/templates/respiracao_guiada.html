@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const tempoDesdeUltimaAtualizacao = agora - ultimaAtualizacao;
 
                 // Verificar se houve atraso significativo entre atualizações
-                if (tempoDesdeUltimaAtualizacao > 200) { // Atraso maior que 200ms
+                if (tempoDesdeUltimaAtualizacao > 200) {
                     throw new Error('Instabilidade detectada na animação');
                 }
 
