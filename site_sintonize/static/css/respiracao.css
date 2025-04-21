@@ -46,11 +46,9 @@
 .ponto-topo {
     position: absolute;
     left: 50%;
+    top: 0;
     transform: translateX(-50%);
-    width: 22.67px;
-    height: 22.579px;
     z-index: 3;
-    transform-origin: 50% 150px;
 }
 
 /* Estilos completos para remover qualquer borda ou outline */
@@ -130,7 +128,8 @@
     100% { transform: translateX(-50%) rotate(360deg); } /* 8s - Expira */
 }
 
-.animando {
+.ponto-topo.animando {
+    transform-origin: 50% 150px;
     animation: rotacaoPonto 19s linear infinite;
 }
 
@@ -159,44 +158,21 @@
 
 /* Adicione estas media queries no final do arquivo */
 @media screen and (max-width: 768px) {
-    .animacao-container {
-        width: 90%;
-        padding: 32px;
-    }
-    
-    .circulo-container {
-        width: 250px;
-        height: 250px;
-    }
 
     .ponto-topo {
         width: 18px;
         height: 18px;
-        transform-origin: 50% 124px;
+       
     }
-}
+
+  
 
 @media screen and (max-width: 480px) {
     .background-svg {
-        width: 150%;
-        min-height: 100vh;
+        width:800px;
+        height: 400px;
     }
 
-    .circulo-container {
-        width: 200px;
-        height: 200px;
-    }
-    
-    .texto-central {
-        font-size: 28px;
-        min-width: 140px;
-    }
-
-    .ponto-topo {
-        width: 16px;
-        height: 16px;
-        transform-origin: 50% 101px;
-    }
 }
 
 /* Media query para telas grandes */
@@ -227,6 +203,10 @@
     .ponto-topo {
         width: 28px;
         height: 28px;
+        transform-origin: 50% 199px;
+    }
+
+    .ponto-topo.animando {
         transform-origin: 50% 199px;
     }
 }
