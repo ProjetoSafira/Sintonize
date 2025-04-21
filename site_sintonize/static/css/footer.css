@@ -5,23 +5,20 @@ footer {
     align-items: center;
     gap: 10px;
     padding: 20px;
-    /* Adicione preenchimento para telas menores */
     background: var(--Neutral-colors-White-Colors-200, #FDFDFD);
+    position: static;
+    width: 100%;
 }
 
 .footer-content {
     display: flex;
     flex-direction: row;
-    /* Mantenha as colunas em telas grandes */
     width: 100%;
-    /* Use 100% da largura disponível */
     max-width: 1278px;
-    /* Max largura como antes */
     padding: 10px 0;
     align-items: center;
     flex: 1 0 0;
     flex-wrap: wrap;
-    /* Permita que as colunas se empilhem em telas menores */
 }
 
 .logo-container {
@@ -30,10 +27,8 @@ footer {
     justify-content: center;
     align-items: flex-start;
     padding: 30px 15px;
-    /* Ajuste o preenchimento */
     gap: 10px;
     flex-basis: 100%;
-    /* Ocupa toda a largura disponível em telas pequenas */
 }
 
 .logo-container a {
@@ -46,54 +41,10 @@ footer {
     line-height: 145%;
 }
 
-.links-container {
-    display: flex;
-    gap: 40px;
-    flex-basis: 100%;
-    /* Ocupa toda a largura disponível em telas pequenas */
-    justify-content: center;
-    /* Centraliza as colunas em telas pequenas */
-    flex-wrap: wrap;
-    /* Permita que os links se empilhem */
-    text-align: center;
-    /* Centraliza o texto */
-}
-
-.links-container h4 {
-    margin-bottom: 10px;
-    color: #3b3b3b;
-}
-
-.links-container p {
-    margin: 5px 0;
-    color: #666;
-}
-
-.social-icons {
-    display: flex;
-    justify-content: center;
-    /* Centraliza os ícones sociais */
-}
-
-.social-icons a {
-    margin-right: 10px;
-    text-decoration: none;
-    color: #3b3b3b;
-}
-
-/* Media Queries para responsabilidade */
 @media (max-width: 768px) {
     .footer-content {
         flex-direction: column;
-        /* Empilha os conteúdos em telas menores */
         align-items: center;
-        /* Centraliza os itens */
         padding: 10px;
-        /* Ajusta o padding */
     }
-
-    .links-container {
-        gap: 20px;
-        /* Reduz o espaçamento entre os links */
-    }
-}
+} 
