@@ -158,21 +158,17 @@
 
 /* Adicione estas media queries no final do arquivo */
 @media screen and (max-width: 768px) {
-
     .ponto-topo {
         width: 18px;
         height: 18px;
-       
     }
-
-  
+}
 
 @media screen and (max-width: 480px) {
     .background-svg {
         width:800px;
         height: 400px;
     }
-
 }
 
 /* Media query para telas grandes */
