@@ -1,10 +1,11 @@
 .respiracao-container {
     position: relative;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    background: #fff;
 }
 
 .background-svg {
@@ -21,6 +22,9 @@
 }
 
 .animacao-container {
+    margin-top: 60px;
+    position: relative;
+    z-index: 2;
     display: flex;
     width: 440px;
     height: 428px;
@@ -30,11 +34,6 @@
     justify-content: center;
     gap: 10px;
     flex-shrink: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: transparent;
 }
 
 .circulo-container {
@@ -158,13 +157,32 @@
 
 /* Adicione estas media queries no final do arquivo */
 @media screen and (max-width: 768px) {
+    .header-respiracao {
+        padding: 30px 40px 0;
+        margin-bottom: 80px;
+    }
+    
+    .curvas-background {
+        bottom: -80px;
+    }
+
     .ponto-topo {
         width: 18px;
         height: 18px;
+       
     }
 }
 
 @media screen and (max-width: 480px) {
+    .header-respiracao {
+        padding: 20px 20px 0;
+        margin-bottom: 60px;
+    }
+    
+    .curvas-background {
+        bottom: -60px;
+    }
+
     .background-svg {
         width:800px;
         height: 400px;
@@ -206,3 +224,79 @@
         transform-origin: 50% 199px;
     }
 }
+
+.header-respiracao {
+    position: relative;
+    width: 100%;
+    padding: 40px 80px 0;
+    background: #F5F9FA;
+    overflow: visible;
+    margin-bottom: 100px;
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 60px;
+}
+
+.curvas-background {
+    position: absolute;
+    bottom: -100px;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 1;
+}
+
+.respiracao-icon {
+    width: 703.608px;
+    height: 612.172px;
+    flex-shrink: 0;
+    position: absolute;
+    right: -200px;
+    top: -100px;
+    z-index: 2;
+}
+
+/* Ajustes responsivos para a ilustração */
+@media screen and (max-width: 1440px) {
+    .respiracao-icon {
+        width: 503.608px;
+        height: 412.172px;
+        right: -100px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .respiracao-icon {
+        width: 403.608px;
+        height: 312.172px;
+        right: -50px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .respiracao-icon {
+        width: 303.608px;
+        height: 212.172px;
+        right: 0;
+        top: -50px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .respiracao-icon {
+        width: 203.608px;
+        height: 162.172px;
+        position: relative;
+        top: 0;
+        right: 0;
+        margin: 0 auto;
+    }
+}
+
