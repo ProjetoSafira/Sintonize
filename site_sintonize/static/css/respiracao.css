@@ -121,10 +121,25 @@
 
 /* Animações para o ponto */
 @keyframes rotacaoPonto {
-    0% { transform: translateX(-50%) rotate(0deg); }
-    40.05% { transform: translateX(-50%) rotate(150deg); } /* 4s - Inspire */
-    68.89% { transform: translateX(-50%) rotate(240deg); } /* 7s - Segure */
-    100% { transform: translateX(-50%) rotate(360deg); } /* 8s - Expira */
+    0% {
+        transform: translateX(-50%) rotate(0deg);
+    }
+
+    40.05% {
+        transform: translateX(-50%) rotate(150deg);
+    }
+
+    /* 4s - Inspire */
+    68.89% {
+        transform: translateX(-50%) rotate(240deg);
+    }
+
+    /* 7s - Segure */
+    100% {
+        transform: translateX(-50%) rotate(360deg);
+    }
+
+    /* 8s - Expira */
 }
 
 .ponto-topo.animando {
@@ -133,16 +148,39 @@
 }
 
 /* Estados do texto */
-.texto-inspire { color: #3A6573; }
-.texto-segure { color: #476970; }
-.texto-expira { color: #3A6573; }
+.texto-inspire {
+    color: #3A6573;
+}
+
+.texto-segure {
+    color: #476970;
+}
+
+.texto-expira {
+    color: #3A6573;
+}
 
 /* Animação para o círculo container */
 @keyframes escalaCirculo {
-    0% { transform: scale(1); }
-    21.05% { transform: scale(1.2); }  /* Inspire - 4 segundos */
-    57.89% { transform: scale(1.2); }  /* Segure - 7 segundos */
-    100% { transform: scale(1); }      /* Expire - 8 segundos */
+    0% {
+        transform: scale(1);
+    }
+
+    21.05% {
+        transform: scale(1.2);
+    }
+
+    /* Inspire - 4 segundos */
+    57.89% {
+        transform: scale(1.2);
+    }
+
+    /* Segure - 7 segundos */
+    100% {
+        transform: scale(1);
+    }
+
+    /* Expire - 8 segundos */
 }
 
 /* Manter a animação da bolinha separada */
@@ -161,7 +199,7 @@
         padding: 30px 40px 0;
         margin-bottom: 80px;
     }
-    
+
     .curvas-background {
         bottom: -80px;
     }
@@ -169,7 +207,7 @@
     .ponto-topo {
         width: 18px;
         height: 18px;
-       
+
     }
 }
 
@@ -178,13 +216,13 @@
         padding: 20px 20px 0;
         margin-bottom: 60px;
     }
-    
+
     .curvas-background {
         bottom: -60px;
     }
 
     .background-svg {
-        width:800px;
+        width: 800px;
         height: 400px;
     }
 }
@@ -232,16 +270,23 @@
     background: #F5F9FA;
     overflow: visible;
     margin-bottom: 100px;
+    z-index: 1;
 }
 
 .header-content {
     position: relative;
-    z-index: 2;
+    z-index: 1;
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
     align-items: flex-start;
     gap: 60px;
+}
+
+.texto-container {
+    width: 585px;
+    height: 299px;
+    flex-shrink: 0;
 }
 
 .curvas-background {
@@ -253,50 +298,27 @@
     z-index: 1;
 }
 
+.ilustracao-container {
+    position: relative;
+    z-index: 1;
+}
+
+.meditacao-img {
+    width: 983px;
+    height: 681.14px;
+    flex-shrink: 0;
+    margin-bottom: -100px;
+    right: 130px;
+    position: relative;
+    z-index: 0;
+}
+
 .respiracao-icon {
     width: 703.608px;
     height: 612.172px;
     flex-shrink: 0;
     position: absolute;
-    right: -200px;
-    top: -100px;
+    left:-10px;
+    top: 30px;
     z-index: 2;
 }
-
-/* Ajustes responsivos para a ilustração */
-@media screen and (max-width: 1440px) {
-    .respiracao-icon {
-        width: 503.608px;
-        height: 412.172px;
-        right: -100px;
-    }
-}
-
-@media screen and (max-width: 1024px) {
-    .respiracao-icon {
-        width: 403.608px;
-        height: 312.172px;
-        right: -50px;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .respiracao-icon {
-        width: 303.608px;
-        height: 212.172px;
-        right: 0;
-        top: -50px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .respiracao-icon {
-        width: 203.608px;
-        height: 162.172px;
-        position: relative;
-        top: 0;
-        right: 0;
-        margin: 0 auto;
-    }
-}
-
