@@ -276,7 +276,8 @@
 .header-content {
     position: relative;
     z-index: 1;
-    max-width: 1200px;
+    max-width: 1400px;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     align-items: flex-start;
@@ -287,6 +288,28 @@
     width: 585px;
     height: 299px;
     flex-shrink: 0;
+    right: 100px;
+}
+
+.texto-container h1 {
+    color: var(--Primary-Pressed---500, #204551);
+    text-align: center;
+    font-family: "Wix Madefor Display";
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 125%;
+    /* 75px */
+    letter-spacing: -0.5px;
+}
+
+.texto-container p {
+    color: var(--Primary-Pressed---500, #204551);
+font-family: 'Nunito';
+font-size: 22px;
+font-style: normal;
+font-weight: 700;
+line-height: 160%; /* 35.2px */
 }
 
 .curvas-background {
@@ -318,7 +341,7 @@
     height: 612.172px;
     flex-shrink: 0;
     position: absolute;
-    left:-10px;
+    left: -10px;
     top: 30px;
     z-index: 2;
 }
