@@ -349,3 +349,26 @@
     top:10px;
     z-index: 2;
 }
+
+@media screen and (min-width: 1600px) {
+    
+    .meditacao-img {
+        width: 1100px;
+        height: 540px;
+        left: 90px;
+        margin-bottom:190px;
+    }
+
+    .texto-container {
+        margin-left: 120px;
+        margin-right:0;
+    }
+
+    .respiracao-icon {
+        width: 803.608px;
+        height: 712.172px;
+        right:90px;
+        top:-40px;
+    }
+}
+
