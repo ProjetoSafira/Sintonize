@@ -1,3 +1,7 @@
+body {
+    background-color: #F3F4F6;
+}
+
 .session-header {
     display: flex;
     justify-content: space-between;
@@ -28,13 +32,12 @@
     flex-shrink: 0;
     color: var(--Neutral-colors-Black-Colors-400, #292B2F);
     text-align: center;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Nunito';
     font-size: 32px;
     font-weight: 700;
     line-height: 125%;
     display: flex;
     align-items: left;
-    /* 40px */
 }
 
 
@@ -91,7 +94,6 @@
     align-items: center;
     flex-shrink: 0;
     background-color: white;
-    /* Certifique-se que o fundo é branco */
     fill: var(--Neutral-colors-White-Colors-100, #FEFEFE);
     filter: drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.05));
     backdrop-filter: blur(2px);
@@ -105,27 +107,20 @@
 
 .form-content img {
     max-width: 40%;
-    /* Você pode ajustar isto conforme necessário */
     margin-right: 10px;
-    /* Reduza isso para aproximar da form-info */
 }
 
 .form-info {
     display: flex;
     flex-direction: column;
-    /* Para empilhar elementos verticalmente */
     width: 40%;
-    /* Ajuste conforme necessário */
     justify-content: flex-start;
-    /* Alinha ao topo */
     margin-left: -20px;
-    /* Para puxar a form-info mais próxima da imagem */
 }
 
 /* Estilo de título */
 .form-info h2 {
     margin: 0;
-    /* Remove margens padrão para mais proximidade */
 }
 
 
@@ -169,49 +164,25 @@
 
 #prevBtn {
     display: flex;
-    /* Torna o botão um flex container */
     width: 143px;
-    /* Largura desejada */
     height: 56px;
-    /* Altura desejada */
     padding: 16px 28px;
-    /* Preenchimento interno */
     justify-content: center;
-    /* Centraliza o conteúdo */
     align-items: center;
-    /* Centraliza verticalmente */
     gap: 10px;
-    /* Espaço entre ícones e texto */
     border-radius: var(--spacing-spacing-4-spacing-3, 12px);
-    /* Bordas arredondadas com a variável desejada */
     border: 1.4px solid var(--Primary-Defaunt---400, #3A6573);
-    /* Borda com a cor especificada */
     background: transparent;
-    /* Fundo transparente para o botão */
     color: var(--Primary-Defaunt---400, #3A6573);
-    /* Cor do texto */
     cursor: pointer;
-    /* Muda o cursor ao passar o mouse */
     transition: background-color 0.3s;
-    /* Transição suave ao passar o mouse */
-
-    /* Tipografia */
-    font-family: 'Poppins', sans-serif;
-    /* Fonte Poppins */
+    font-family: 'Poppins';
     font-size: 19.2px;
-    /* Tamanho da fonte */
     font-style: normal;
-    /* Estilo normal */
     font-weight: 400;
-    /* Peso da fonte */
     line-height: 24px;
-    /* Altura da linha */
 }
 
-#prevBtn:hover {
-    background: rgba(58, 101, 115, 0.1);
-    /* Cor de fundo ao passar o mouse (opcional) */
-}
 
 #prevBtn:hover,
 #nextBtn:hover,
@@ -227,94 +198,51 @@
 
 #nextBtn {
     display: flex;
-    /* Mantém como flex container */
     width: 143px;
-    /* Largura desejada */
     height: 56px;
-    /* Altura desejada */
     padding: 16px 28px;
-    /* Preenchimento interno */
     justify-content: center;
-    /* Centraliza o conteúdo */
     align-items: center;
-    /* Centraliza verticalmente */
     gap: 10px;
-    /* Espaço entre ícones e texto */
     border-radius: 12px;
-    /* Bordas arredondadas */
     background: #3A6573;
-    /* Cor de fundo */
     box-shadow: 0px 4px 8px 0px rgba(255, 255, 255, 0.08);
-    /* Sombra */
     color: var(--gray-scale-white-white, #FFF);
-    /* Cor do texto */
     border: none;
-    /* Sem borda */
     cursor: pointer;
-    /* Muda o cursor ao passar o mouse */
     transition: background-color 0.3s;
-    /* Transição suave ao passar o mouse */
-
-    /* Tipografia */
-    font-family: 'Nunito', sans-serif;
-    /* Fonte Nunito */
+    font-family: 'Nunito';
     font-size: 24px;
-    /* Tamanho da fonte */
     font-style: normal;
-    /* Estilo normal */
     font-weight: 400;
-    /* Peso da fonte */
     line-height: 133%;
-    /* Altura da linha */
 }
 
 #nextBtn:hover,
 #sendBtn:hover {
     background: #2e5256;
-    /* Cor de fundo ao passar o mouse */
 }
 
 #sendBtn {
     display: flex;
-    /* Mantém como flex container */
     width: 143px;
-    /* Largura desejada */
     height: 56px;
-    /* Altura desejada */
     padding: 16px 28px;
-    /* Preenchimento interno */
     justify-content: center;
-    /* Centraliza o conteúdo */
     align-items: center;
-    /* Centraliza verticalmente */
     gap: 10px;
-    /* Espaço entre ícones e texto */
     border-radius: 12px;
-    /* Bordas arredondadas */
     background: #3A6573;
-    /* Cor de fundo */
     box-shadow: 0px 4px 8px 0px rgba(255, 255, 255, 0.08);
-    /* Sombra */
     color: var(--gray-scale-white-white, #FFF);
-    /* Cor do texto */
     border: none;
-    /* Sem borda */
     cursor: pointer;
-    /* Muda o cursor ao passar o mouse */
     transition: background-color 0.3s;
-    /* Transição suave ao passar o mouse */
-
-    /* Tipografia */
-    font-family: 'Nunito', sans-serif;
-    /* Fonte Nunito */
+    font-family: 'Nunito';
     font-size: 24px;
-    /* Tamanho da fonte */
     font-style: normal;
-    /* Estilo normal */
     font-weight: 400;
-    /* Peso da fonte */
     line-height: 133%;
-    /* Altura da linha */
 }
 
 
@@ -583,4 +511,8 @@
     background-color: #F8b49d;
     margin: 15px auto;
     gap:41px;
+}
+
+.container {
+    background-color: #F3F4F6;
 }
