@@ -285,28 +285,35 @@
 
 .texto-container {
     max-width: 585px;
+    height: 299px;
     flex-shrink: 0;
-    padding-left: 20px;
+    margin-bottom:150px;
+    margin-left: 70px;
+    margin-right:-50px;
+    position: relative;
 }
 
 .texto-container h1 {
     color: #204551;
     font-family: "Wix Madefor Display", sans-serif;
-    font-size: 48px;
+    font-size: 60px;
+    font-style: normal;
     font-weight: 700;
-    line-height: 1.2;
+    line-height: 125%;
     margin-bottom: 24px;
     text-align: left;
+    letter-spacing: -0.5px;
 }
 
 .texto-container p {
     color: #204551;
-    font-family: 'Nunito', sans-serif;
-    font-size: 18px;
-    line-height: 1.6;
-    margin-bottom: 0;
-    opacity: 0.9;
+    font-family: 'Nunito';
+    font-size: 22px;
+    height: 192px;
     text-align: left;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 160%;
 }
 
 
@@ -324,7 +331,7 @@
     align-items: center;
     justify-content: flex-start;
     width: 100%;
-    max-width:1400px;
+    max-width: 1400px;
     z-index: 1;
 }
 
@@ -339,7 +346,10 @@
 }
 
 .respiracao-icon {
+    position: absolute;
     width: 703.608px;
     height: 612.172px;
-    flex-shrink: 0;
+    right: -100px;
+    top: -50px;
+    z-index: 2;
 }
