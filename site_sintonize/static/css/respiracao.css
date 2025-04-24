@@ -271,15 +271,10 @@
 }
 
 .header-content {
-    display: flex;
+    display:flex;
     flex-direction: row-reverse;
     align-items: center;
-    justify-content: space-between;
-    gap: 40px;
-    max-width: 1200px;
     width: 100%;
-    margin: 0 auto;
-    position: relative;
     z-index: 2;
 }
 
@@ -331,25 +326,26 @@
     align-items: center;
     justify-content: flex-start;
     width: 100%;
-    max-width: 1400px;
+    max-width: 1800px;
     z-index: 1;
 }
 
 .meditacao-img {
-    width: 100%;
-    max-width: 1100px;
+    width: 940px;
+    max-width: 1600px;
     height: 540px;
-    object-fit: contain;
     position: relative;
     z-index: 1;
-    margin-bottom: 80px;
+    margin-bottom: 130px;
+  right:-200px;
+  
 }
 
 .respiracao-icon {
     position: absolute;
     width: 703.608px;
     height: 612.172px;
-    right: -100px;
-    top: -50px;
+    right: -60px;
+    top:10px;
     z-index: 2;
 }
