@@ -372,3 +372,63 @@
     }
 }
 
+@media screen and (max-width: 1280px) {
+    .header-content {
+        gap: 20px;
+    }
+
+    .meditacao-img {
+        width: 700px;
+        height: 440px;
+        left: 190px;
+        margin-bottom: 110px;
+    }
+
+    .texto-container {
+        margin-left: 60px;
+        margin-right: 20px;
+        height: 260px;
+    }
+
+    .texto-container h1 {
+        font-size: 48px;
+    }
+
+    .texto-container p {
+        font-size: 18px;
+    }
+
+    .respiracao-icon {
+        width:503.608px;
+        height:512.172px;
+        right:-60px;
+        top:-20px;
+    }
+}
+@media screen and (max-width: 1024px) {
+  
+    .meditacao-img {
+        width: 600px;
+        height: 440px;
+        left: 130px;
+        margin-bottom: 80px;
+    }
+
+    .texto-container {
+        width: 400px;
+        margin-left: 30px;
+        margin-right: 20px;
+        height: 180px;
+    }
+
+    .texto-container h1 {
+        font-size: 38px;
+    }
+
+    .texto-container p {
+        font-size: 14px;
+    }
+
+
+}
+
