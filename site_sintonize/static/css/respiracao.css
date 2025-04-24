@@ -6,6 +6,7 @@
     flex-direction: column;
     align-items: center;
     background: #fff;
+    overflow-x: hidden;
 }
 
 .background-svg {
@@ -194,22 +195,7 @@
 }
 
 /* Adicione estas media queries no final do arquivo */
-@media screen and (max-width: 768px) {
-    .header-respiracao {
-        padding: 30px 40px 0;
-        margin-bottom: 80px;
-    }
 
-    .curvas-background {
-        bottom: -80px;
-    }
-
-    .ponto-topo {
-        width: 18px;
-        height: 18px;
-
-    }
-}
 
 @media screen and (max-width: 480px) {
     .header-respiracao {
@@ -224,6 +210,14 @@
     .background-svg {
         width: 800px;
         height: 400px;
+    }
+
+    .texto-container h1 {
+        font-size: 32px;
+    }
+
+    .ilustracao-container {
+        max-width: 250px;
     }
 }
 
@@ -266,82 +260,85 @@
 .header-respiracao {
     position: relative;
     width: 100%;
-    padding: 40px 80px 0;
+    padding: 40px 80px;
     background: #F5F9FA;
-    overflow: visible;
-    margin-bottom: 100px;
-    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    overflow: hidden;
+    z-index: 0;
 }
 
 .header-content {
-    position: relative;
-    z-index: 1;
-    max-width: 1400px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1200px;
     width: 100%;
     margin: 0 auto;
-    display: flex;
-    align-items: flex-start;
-    gap: 60px;
+    position: relative;
+    z-index: 2;
 }
 
 .texto-container {
-    width: 585px;
-    height: 299px;
+    max-width: 585px;
     flex-shrink: 0;
-    right: 100px;
+    padding-left: 20px;
 }
 
 .texto-container h1 {
-    color: var(--Primary-Pressed---500, #204551);
-    text-align: center;
-    font-family: "Wix Madefor Display";
-    font-size: 60px;
-    font-style: normal;
+    color: #204551;
+    font-family: "Wix Madefor Display", sans-serif;
+    font-size: 48px;
     font-weight: 700;
-    line-height: 125%;
-    /* 75px */
-    letter-spacing: -0.5px;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    text-align: left;
 }
 
 .texto-container p {
-    color: var(--Primary-Pressed---500, #204551);
-font-family: 'Nunito';
-font-size: 22px;
-font-style: normal;
-font-weight: 700;
-line-height: 160%; /* 35.2px */
+    color: #204551;
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 0;
+    opacity: 0.9;
+    text-align: left;
 }
+
 
 .curvas-background {
     position: absolute;
-    bottom: -100px;
+    bottom: -2px;
     left: 0;
-    width: 100%;
-    height: auto;
-    z-index: 1;
+    width: 100vw;
+    z-index: -1;
 }
 
 .ilustracao-container {
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 50%;
+    max-width: 600px;
     z-index: 1;
 }
 
 .meditacao-img {
-    width: 983px;
-    height: 681.14px;
-    flex-shrink: 0;
-    margin-bottom: -100px;
-    right: 130px;
+    width: 100%;
+    max-width: 1100px;
+    height: 640px;
+    object-fit: contain;
     position: relative;
-    z-index: 0;
+    z-index: 1;
 }
 
 .respiracao-icon {
     width: 703.608px;
     height: 612.172px;
     flex-shrink: 0;
-    position: absolute;
-    left: -10px;
-    top: 30px;
-    z-index: 2;
 }
