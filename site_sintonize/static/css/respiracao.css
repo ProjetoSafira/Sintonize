@@ -7,6 +7,63 @@
     align-items: center;
 }
 
+.cabecalho-instrucoes {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.cabecalho-instrucoes h1 {
+    color: #2D3748;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.cabecalho-instrucoes p {
+    color: #4A5568;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.instrucoes-container {
+    background: #F7FAFC;
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 800px;
+}
+
+.instrucoes-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.instrucao-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.instrucao-numero {
+    background: #E6FFFA;
+    color: #234E52;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.contagem-tempo {
+    color: #2C7A7B;
+    font-weight: 500;
+}
+
 .background-svg {
     position: absolute;
     top: 50%;
@@ -51,7 +108,6 @@
     z-index: 3;
 }
 
-/* Estilos completos para remover qualquer borda ou outline */
 .texto-central {
     position: absolute;
     top: 50%;
@@ -78,12 +134,10 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-/* Remove outline ao clicar com mouse */
 .texto-central:focus:not(:focus-visible) {
     outline: none;
 }
 
-/* Mantém outline apenas na navegação por teclado */
 .texto-central:focus-visible {
     outline: 2px solid #4A90E2;
     outline-offset: 2px;
@@ -198,15 +252,5 @@
     .texto-central {
         font-size: 42px;
         min-width: 220px;
-    }
-
-    .ponto-topo {
-        width: 28px;
-        height: 28px;
-        transform-origin: 50% 199px;
-    }
-
-    .ponto-topo.animando {
-        transform-origin: 50% 199px;
     }
 }
