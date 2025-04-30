@@ -8,21 +8,50 @@
 }
 
 .cabecalho-instrucoes {
-    max-width: 800px;
+    max-width: 1279px;
     margin: 2rem auto;
     padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
 }
 
 .cabecalho-instrucoes h1 {
-    color: #2D3748;
-    font-size: 2rem;
+    color: var(--Primary-Pressed---500, #204551);
+    font-family: 'Mulish';
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
+    height: 41px;
+    flex-shrink: 0;
+    align-self: stretch;
     margin-bottom: 1rem;
+    position: relative;
+    padding-left: 1rem;
+}
+
+.cabecalho-instrucoes h1::before {
+    content: "";
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    width: 42px;
+    height: 6px;
+    transform: rotate(-90deg);
+    flex-shrink: 0;
+    border-radius: 4px;
+    background: var(--Complementary-Red-and-orange-300, #F8B490);
 }
 
 .cabecalho-instrucoes p {
-    color: #4A5568;
-    line-height: 1.6;
-    margin-bottom: 2rem;
+    color: var(--Neutral-colors-Black-Colors-200, #3B3E43);
+    font-family: 'Roboto';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
 }
 
 .instrucoes-container {
@@ -176,10 +205,25 @@
 
 /* Animações para o ponto */
 @keyframes rotacaoPonto {
-    0% { transform: translateX(-50%) rotate(0deg); }
-    40.05% { transform: translateX(-50%) rotate(150deg); } /* 4s - Inspire */
-    68.89% { transform: translateX(-50%) rotate(240deg); } /* 7s - Segure */
-    100% { transform: translateX(-50%) rotate(360deg); } /* 8s - Expira */
+    0% {
+        transform: translateX(-50%) rotate(0deg);
+    }
+
+    40.05% {
+        transform: translateX(-50%) rotate(150deg);
+    }
+
+    /* 4s - Inspire */
+    68.89% {
+        transform: translateX(-50%) rotate(240deg);
+    }
+
+    /* 7s - Segure */
+    100% {
+        transform: translateX(-50%) rotate(360deg);
+    }
+
+    /* 8s - Expira */
 }
 
 .ponto-topo.animando {
@@ -188,16 +232,39 @@
 }
 
 /* Estados do texto */
-.texto-inspire { color: #3A6573; }
-.texto-segure { color: #476970; }
-.texto-expira { color: #3A6573; }
+.texto-inspire {
+    color: #3A6573;
+}
+
+.texto-segure {
+    color: #476970;
+}
+
+.texto-expira {
+    color: #3A6573;
+}
 
 /* Animação para o círculo container */
 @keyframes escalaCirculo {
-    0% { transform: scale(1); }
-    21.05% { transform: scale(1.2); }  /* Inspire - 4 segundos */
-    57.89% { transform: scale(1.2); }  /* Segure - 7 segundos */
-    100% { transform: scale(1); }      /* Expire - 8 segundos */
+    0% {
+        transform: scale(1);
+    }
+
+    21.05% {
+        transform: scale(1.2);
+    }
+
+    /* Inspire - 4 segundos */
+    57.89% {
+        transform: scale(1.2);
+    }
+
+    /* Segure - 7 segundos */
+    100% {
+        transform: scale(1);
+    }
+
+    /* Expire - 8 segundos */
 }
 
 /* Manter a animação da bolinha separada */
@@ -216,41 +283,41 @@
     .ponto-topo {
         width: 18px;
         height: 18px;
-       
+
     }
 
-  
 
-@media screen and (max-width: 480px) {
-    .background-svg {
-        width:800px;
-        height: 400px;
+
+    @media screen and (max-width: 480px) {
+        .background-svg {
+            width: 800px;
+            height: 400px;
+        }
+
     }
 
-}
+    /* Media query para telas grandes */
+    @media screen and (min-width: 1442px) {
+        .background-svg {
+            width: 100%;
+            max-width: 1920px;
+            min-height: 60vh;
+            max-height: 95vh;
+        }
 
-/* Media query para telas grandes */
-@media screen and (min-width: 1442px) {
-    .background-svg {
-        width: 100%;
-        max-width: 1920px;
-        min-height: 60vh;
-        max-height: 95vh;
-    }
+        .animacao-container {
+            width: 560px;
+            height: 548px;
+            padding: 80px;
+        }
 
-    .animacao-container {
-        width: 560px;
-        height: 548px;
-        padding: 80px;
-    }
+        .circulo-container {
+            width: 400px;
+            height: 400px;
+        }
 
-    .circulo-container {
-        width: 400px;
-        height: 400px;
+        .texto-central {
+            font-size: 42px;
+            min-width: 220px;
+        }
     }
-
-    .texto-central {
-        font-size: 42px;
-        min-width: 220px;
-    }
-}
