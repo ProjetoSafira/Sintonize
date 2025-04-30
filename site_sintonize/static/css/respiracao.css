@@ -62,32 +62,66 @@
     align-items: flex-end;
 }
 
+.instrucoes-lista-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.instrucoes-titulo {
+    color: #204551;
+    font-family: 'Mulish';
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 125%;
+}
+
+.instrucoes-lista {
+    width: 720px;
+    height: 276px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: var(--Bilbao-50, #F3FAF3);
+    padding: 2rem;
+}
+
 .instrucao-item {
     display: flex;
     align-items: center;
     gap: 1rem;
     margin-bottom: 1rem;
-    width: 533px;
+    width: 680px;
     height: 32px;
     flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.instrucao-item span:last-child {
+    color: #000;
+    font-family: 'Roboto';
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 125%;
+    white-space: nowrap;
 }
 
 .instrucao-numero {
-    fill: var(--Bilbao-100, #E2F6E3);
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    background: var(--Bilbao-100, #E2F6E3);
     color: var(--Bilbao-500, #42A547);
     font-family: 'Nunito';
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
     line-height: 125%;
-    /* 22.5px */
-    width: 24px;
-    height: 24px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
 }
 
 .contagem-tempo-wrapper {
