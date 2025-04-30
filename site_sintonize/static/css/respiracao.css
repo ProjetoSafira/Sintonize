@@ -1,12 +1,23 @@
-/* secao de respiração */
+/* secao de instrucoes*/
+.secao-instrucoes {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #D8E0E3 -1.38%, #F3F4F6 15.95%);
+    padding-top: 182px;
+    padding-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
 .cabecalho-instrucoes {
     max-width: 1279px;
-    margin: 2rem auto;
+    margin: 0 auto;
     padding: 0 1rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     align-self: stretch;
+    margin-bottom: 100px;
 }
 
 .cabecalho-instrucoes h1 {
@@ -47,13 +58,11 @@
 }
 
 .instrucoes-container {
-
     width: 1047px;
     justify-content: space-between;
     align-items: flex-end;
     margin: 2rem auto;
 }
-
 
 .instrucoes-grid {
     display: flex;
@@ -366,21 +375,16 @@
 
 /* Adicione estas media queries no final do arquivo */
 @media screen and (max-width: 768px) {
-
     .ponto-topo {
         width: 18px;
         height: 18px;
-
     }
-
-
 
     @media screen and (max-width: 480px) {
         .background-svg {
             width: 800px;
             height: 400px;
         }
-
     }
 
     /* Media query para telas grandes */
@@ -408,3 +412,4 @@
             min-width: 220px;
         }
     }
+}
