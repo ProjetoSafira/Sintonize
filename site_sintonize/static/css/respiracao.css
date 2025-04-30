@@ -413,3 +413,56 @@
         }
     }
 }
+
+/* Responsividade para seção de instruções */
+@media screen and (max-width: 1300px) {
+    .secao-instrucoes {
+        padding-top: 100px;
+    }
+
+    .cabecalho-instrucoes {
+        max-width: 90%;
+        margin-bottom: 60px;
+    }
+
+    .cabecalho-instrucoes h1 {
+        font-size: 28px;
+    }
+
+    .cabecalho-instrucoes p {
+        font-size: 18px;
+    }
+
+    .instrucoes-container {
+        width: 90%;
+    }
+
+    .instrucoes-grid {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .instrucoes-lista {
+        width: 100%;
+        height: auto;
+        padding: 1.5rem;
+    }
+
+    .instrucao-item {
+        width: 100%;
+        height: auto;
+        white-space: normal;
+    }
+
+    .contagem-tempo {
+        width: 100%;
+        max-width: 307px;
+        margin-top: 2rem;
+    }
+
+    .contagem-tempo-item {
+        font-size: 20px;
+    }
+}
