@@ -380,6 +380,7 @@
         width: 18px;
         height: 18px;
     }
+}
 
     @media screen and (max-width: 480px) {
         .background-svg {
@@ -412,7 +413,7 @@
             font-size: 42px;
             min-width: 220px;
         }
-
+    }
 
 
 @media screen and (max-width: 480px) {
@@ -492,6 +493,7 @@
     .contagem-tempo-item {
         font-size: 20px;
 
+    }
 }
 
 .header-respiracao {
