@@ -1,3 +1,185 @@
+/* secao de instrucoes*/
+.secao-instrucoes {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #D8E0E3 -1.38%, #F3F4F6 15.95%);
+    padding-top: 182px;
+    padding-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.cabecalho-instrucoes {
+    max-width: 1279px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+    margin-bottom: 100px;
+}
+
+.cabecalho-instrucoes h1 {
+    color: var(--Primary-Pressed---500, #204551);
+    font-family: 'Mulish';
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
+    height: 41px;
+    flex-shrink: 0;
+    align-self: stretch;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-left: 1rem;
+}
+
+.cabecalho-instrucoes h1::before {
+    content: "";
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    width: 42px;
+    height: 6px;
+    transform: rotate(-90deg);
+    flex-shrink: 0;
+    border-radius: 4px;
+    background: var(--Complementary-Red-and-orange-300, #F8B490);
+}
+
+.cabecalho-instrucoes p {
+    color: var(--Neutral-colors-Black-Colors-200, #3B3E43);
+    font-family: 'Roboto';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+}
+
+.instrucoes-container {
+    width: 1047px;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 2rem auto;
+}
+
+.instrucoes-grid {
+    display: flex;
+    width: 1047px;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.instrucoes-lista-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.instrucoes-titulo {
+    color: #204551;
+    font-family: 'Mulish';
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 125%;
+}
+
+.instrucoes-lista {
+    width: 720px;
+    height: 276px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: var(--Bilbao-50, #F3FAF3);
+    padding: 2rem;
+}
+
+.instrucao-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    width: 680px;
+    height: 32px;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.instrucao-item span:last-child {
+    color: #000;
+    font-family: 'Roboto';
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 125%;
+    white-space: nowrap;
+}
+
+.instrucao-numero {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    background: var(--Bilbao-100, #E2F6E3);
+    color: var(--Bilbao-500, #42A547);
+    font-family: 'Nunito';
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 125%;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contagem-tempo-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contagem-tempo-titulo {
+    color: #204551;
+    font-family: 'Mulish';
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 125%;
+}
+
+.contagem-tempo {
+    width: 307px;
+    height: 276px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    border-radius: 12px;
+    background: var(--Bilbao-50, #F3FAF3);
+}
+
+.contagem-tempo-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Roboto';
+    font-size: 24px;
+    font-style: normal;
+    line-height: 125%;
+}
+
+.tempo-label {
+    color: var(--Neutral-colors-Black-Colors-200, #3B3E43);
+    font-weight: 400;
+}
+
+.tempo-valor {
+    color: var(--Bilbao-700, #2A6B2D);
+    font-weight: 300;
+}
+
+/* secao de respiração */
 .respiracao-container {
     position: relative;
     width: 100%;
@@ -51,7 +233,6 @@
     z-index: 3;
 }
 
-/* Estilos completos para remover qualquer borda ou outline */
 .texto-central {
     position: absolute;
     top: 50%;
@@ -78,12 +259,10 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-/* Remove outline ao clicar com mouse */
 .texto-central:focus:not(:focus-visible) {
     outline: none;
 }
 
-/* Mantém outline apenas na navegação por teclado */
 .texto-central:focus-visible {
     outline: 2px solid #4A90E2;
     outline-offset: 2px;
@@ -196,6 +375,45 @@
 
 /* Adicione estas media queries no final do arquivo */
 
+@media screen and (max-width: 768px) {
+    .ponto-topo {
+        width: 18px;
+        height: 18px;
+    }
+
+    @media screen and (max-width: 480px) {
+        .background-svg {
+            width: 800px;
+            height: 400px;
+        }
+    }
+
+    /* Media query para telas grandes */
+    @media screen and (min-width: 1442px) {
+        .background-svg {
+            width: 100%;
+            max-width: 1920px;
+            min-height: 60vh;
+            max-height: 95vh;
+        }
+
+        .animacao-container {
+            width: 560px;
+            height: 548px;
+            padding: 80px;
+        }
+
+        .circulo-container {
+            width: 400px;
+            height: 400px;
+        }
+
+        .texto-central {
+            font-size: 42px;
+            min-width: 220px;
+        }
+
+
 
 @media screen and (max-width: 480px) {
     .header-respiracao {
@@ -218,43 +436,62 @@
 
     .ilustracao-container {
         max-width: 250px;
+
     }
 }
 
-/* Media query para telas grandes */
-@media screen and (min-width: 1442px) {
-    .background-svg {
+/* Responsividade para seção de instruções */
+@media screen and (max-width: 1300px) {
+    .secao-instrucoes {
+        padding-top: 100px;
+    }
+
+    .cabecalho-instrucoes {
+        max-width: 90%;
+        margin-bottom: 60px;
+    }
+
+    .cabecalho-instrucoes h1 {
+        font-size: 28px;
+    }
+
+    .cabecalho-instrucoes p {
+        font-size: 18px;
+    }
+
+    .instrucoes-container {
+        width: 90%;
+    }
+
+    .instrucoes-grid {
         width: 100%;
-        max-width: 1920px;
-        min-height: 60vh;
-        max-height: 95vh;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
     }
 
-    .animacao-container {
-        width: 560px;
-        height: 548px;
-        padding: 80px;
+
+    .instrucoes-lista {
+        width: 100%;
+        height: auto;
+        padding: 1.5rem;
     }
 
-    .circulo-container {
-        width: 400px;
-        height: 400px;
+    .instrucao-item {
+        width: 100%;
+        height: auto;
+        white-space: normal;
     }
 
-    .texto-central {
-        font-size: 42px;
-        min-width: 220px;
+    .contagem-tempo {
+        width: 100%;
+        max-width: 307px;
+        margin-top: 2rem;
     }
 
-    .ponto-topo {
-        width: 28px;
-        height: 28px;
-        transform-origin: 50% 199px;
-    }
+    .contagem-tempo-item {
+        font-size: 20px;
 
-    .ponto-topo.animando {
-        transform-origin: 50% 199px;
-    }
 }
 
 .header-respiracao {
@@ -514,5 +751,6 @@
         height: 212.172px;
         right: -50px;
         top: 75px;
+
     }
 }
