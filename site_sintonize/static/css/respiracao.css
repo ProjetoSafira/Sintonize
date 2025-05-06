@@ -180,6 +180,10 @@
 }
 
 /* secao de respiração */
+.header-respiracao{
+    fill: linear-gradient(90deg, rgba(77, 77, 77, 0.21) 22.61%, rgba(13, 13, 13, 0.00) 96.75%);
+}
+
 .respiracao-container {
     position: relative;
     width: 100%;
@@ -494,7 +498,6 @@
     position: relative;
     width: 100%;
     padding: 40px 80px;
-    fill: linear-gradient(90deg, rgba(77, 77, 77, 0.21) 22.61%, rgba(13, 13, 13, 0.00) 96.75%);
     display: flex;
     align-items: center;
     justify-content: center;
