@@ -5,9 +5,75 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/respiracao.css' %}">
+
 {% endblock %}
 
 {% block content %}
+<div class="secao-respiracao">
+<div class="header-respiracao">
+    <div class="header-content">
+      <div class="texto-container">
+        <h1>Respiração guiada</h1>
+        <p>A respiração guiada é uma técnica que orienta o ritmo da respiração para promover relaxamento, reduzir o estresse e melhorar a concentração. Por meio de inspirações e expirações controladas, ativa o sistema nervoso parassimpático, trazendo equilíbrio e bem-estar.</p>
+      </div>
+      <div class="ilustracao-container">
+        <img src="{% static 'images/respiracao/ilustracao-baixo.png' %}" alt="Ilustração de uma pessoa meditando" class="meditacao-img">
+        <div class="circulo-respiracao">
+          <img src="{% static 'images/respiracao/ilustracao-cima.png' %}" alt="Ícone demonstrativo de respiração" class="respiracao-icon">
+        </div>
+      </div>
+    </div>
+    <img src="{% static 'images/respiracao/curvas.png' %}" alt="" class="curvas-background" aria-hidden="true">
+  </div>
+</div>
+  
+<div class="secao-instrucoes">
+    <div class="cabecalho-instrucoes">
+        <h1>Acalme sua mente com a técnica de respiração 4-7-8</h1>
+        <p>Com a prática, essa respiração se tornará sua aliada contra o estresse. Você poderá usá-la sempre que precisar: em casa, no trabalho ou até em público. Basta alguns minutos para trazer mais calma e equilíbrio ao seu dia. Abaixo, você encontrará um guia simples e prático para começar a técnica de respiração 4-7-8. Reserve esse momento para você, siga as instruções com tranquilidade e permita-se sentir os benefícios dessa prática transformadora.</p>
+    </div>
+
+    <div class="instrucoes-container">
+        <div class="instrucoes-grid">
+            <div class="instrucoes-lista-wrapper">
+                <h2 class="instrucoes-titulo">Como praticar a respiração guiada</h2>
+                <div class="instrucoes-lista">
+                    <div class="instrucao-item">
+                        <span class="instrucao-numero">1</span>
+                        <span>Inspire suavemente pelo nariz por 4 segundos</span>
+                    </div>
+                    <div class="instrucao-item">
+                        <span class="instrucao-numero">2</span>
+                        <span>Segure nossos pulmões por 7 segundos</span>
+                    </div>
+                    <div class="instrucao-item">
+                        <span class="instrucao-numero">3</span>
+                        <span>Expire lentamente pela boca por 8 segundos</span>
+                    </div>
+                    <div class="instrucao-item">
+                        <span class="instrucao-numero">4</span>
+                        <span>Repita o ciclo e sinta seu corpo relaxar a cada respiração</span>
+                    </div>
+                </div>
+            </div>
+            <div class="contagem-tempo-wrapper">
+                <h3 class="contagem-tempo-titulo">Contagem de Tempo</h3>
+                <div class="contagem-tempo">
+                    <div class="contagem-tempo-item">
+                        <span class="tempo-label">Inspire</span> - <span class="tempo-valor">4 segundos</span>
+                    </div>
+                    <div class="contagem-tempo-item">
+                        <span class="tempo-label">Segure</span> - <span class="tempo-valor">7 segundos</span>
+                    </div>
+                    <div class="contagem-tempo-item">
+                        <span class="tempo-label">Expira</span> - <span class="tempo-valor">8 segundos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="respiracao-container" role="main" aria-label="Exercício de respiração guiada">
   <svg xmlns="http://www.w3.org/2000/svg" width="1440px" height="674px" viewBox="0 0 1440 674" fill="none" class="background-svg" aria-hidden="true">
     <g filter="url(#filter0_dd_11836_5226)">
@@ -213,24 +279,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<style>
-/* Estilo mínimo necessário para acessibilidade */
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-}
 
-/* Adicionar outline apenas quando usar teclado */
-.texto-central:focus {
-    outline: 3px solid #4A90E2;
-    outline-offset: 2px;
-}
-</style>
 {% endblock %}
 
