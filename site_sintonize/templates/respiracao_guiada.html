@@ -57,6 +57,23 @@
 </div>
 
 <div class="respiracao-container" role="main" aria-label="Exercício de respiração guiada">
+  <!-- Seção de cabeçalho -->
+  <div class="header-respiracao">
+    <div class="header-content">
+      <div class="texto-container">
+        <h1>Respiração guiada</h1>
+        <p>A respiração guiada é uma técnica que orienta o ritmo da respiração para promover relaxamento, reduzir o estresse e melhorar a concentração. Por meio de inspirações e expirações controladas, ativa o sistema nervoso parassimpático, trazendo equilíbrio e bem-estar.</p>
+      </div>
+      <div class="ilustracao-container">
+        <img src="{% static 'images/respiracao/ilustracao-baixo.png' %}" alt="Ilustração de uma pessoa meditando" class="meditacao-img">
+        <div class="circulo-respiracao">
+          <img src="{% static 'images/respiracao/ilustracao-cima.png' %}" alt="Ícone demonstrativo de respiração" class="respiracao-icon">
+        </div>
+      </div>
+    </div>
+    <img src="{% static 'images/respiracao/curvas.png' %}" alt="" class="curvas-background" aria-hidden="true">
+  </div>
+
   <svg xmlns="http://www.w3.org/2000/svg" width="1440px" height="674px" viewBox="0 0 1440 674" fill="none" class="background-svg" aria-hidden="true">
     <g filter="url(#filter0_dd_11836_5226)">
       <path d="M1440 18C1440 11.3726 1434.63 6 1428 6H10.9999C4.37256 6 -1 11.3726 -1 18V650C-1 656.627 4.37256 662 11 662H1428C1434.63 662 1440 656.627 1440 650V18Z" fill="url(#paint0_linear_11836_5226)" shape-rendering="crispEdges"/>
@@ -261,24 +278,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<style>
-/* Estilo mínimo necessário para acessibilidade */
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-}
 
-/* Adicionar outline apenas quando usar teclado */
-.texto-central:focus {
-    outline: 3px solid #4A90E2;
-    outline-offset: 2px;
-}
-</style>
 {% endblock %}
 
