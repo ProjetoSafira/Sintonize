@@ -183,12 +183,10 @@
 .respiracao-container {
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    min-height: 656px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #fff;
-    overflow-x: hidden;
 }
 
 .background-svg {
@@ -398,15 +396,11 @@
             max-height: 95vh;
         }
 
-        .animacao-container {
-            width: 560px;
-            height: 548px;
-            padding: 80px;
-        }
+     }
 
         .circulo-container {
-            width: 400px;
-            height: 400px;
+            width: auto;
+            height: auto;
         }
 
         .texto-central {
