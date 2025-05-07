@@ -1,0 +1,39 @@
+.container-sintomas {
+    display: flex;
+    width: 1440px;
+    padding: var(--spacing-spacing-8-spacing-21, 160px) var(--spacing-spacing-8-spacing-24, 152px) 0px var(--spacing-spacing-8-spacing-24, 152px);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.texto-sintomas h1 {
+    color: #204551;
+    font-family: 'Mulish';
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
+
+.texto-sintomas p{
+color: var(--Neutral-colors-Black-Colors-200, #3B3E43);
+font-family: 'Nunito';
+font-size: 24px;
+font-style: normal;
+font-weight: 700;
+line-height: 133%;
+}
+
+.texto-sintomas ::before {
+    content: "";
+    position: absolute;
+    left: 50px;
+    top: 50%;
+    width: 153px;
+    height: 6px;
+    transform: rotate(-90deg);
+    flex-shrink: 0;
+    border-radius: 4px;
+    background: var(--Complementary-Red-and-orange-300, #F8B490);
+}
