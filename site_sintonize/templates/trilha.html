@@ -1,99 +1,12 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Trilha do conhecimento</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/trilha.css' %}" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@600&display=swap" rel="stylesheet" />
-  </head>
+{% extends 'base.html' %}
+{% load static %}
 
-  <body>
-    {% include 'menu.html' %}
-    <header>
-        <div class="container-burnout">
-            <h1 class="titulo-burnout">Burnout: O que é, sintomas e diagnóstico</h1>
-            <p class="subtitulo-burnout">Preencha o formulário e verifique se você se identifica com os sintomas da Síndrome de Burnout.</p>
-        </div>
-    </header>
-    
-    <div class="pagina" id="pagina">
-      <div class="container" id="container-principal">
-        <div class="textos">
-          <h2 id="titulo-principal">O que é a Síndrome de Burnout?</h2>
-          <div class="textos-principais" id="texto-principal">
-            <h3 id="sindrome-burnout">Síndrome de Burnout</h3>
-            <p id="descricao-principal">A Síndrome de Burnout é uma condição resultante de estresse crônico no trabalho, levando a exaustão emocional, mental e física.</p>
-          </div>
-        </div>
-        <div class="imagem-dormindo" id="imagem-container">
-          <img src="{% static 'images/dormindo.png' %}" alt="Ilustração sobre Burnout" class="imagem" id="imagem-principal" />
-        </div>
-      </div>
-    </div>
-    <div class="sintomas-comuns">
-      <h2>Sintomas Comuns</h2>
-      <p id="sintomas-frequentes">Conheça os sintomas frequentes da Síndrome de Burnout.</p>
-      <div class="sintomas-container">
-        <div class="sintoma">
-          <img src="{% static 'images/desgaste.png' %}" alt="Desgaste Emocional" />
-          <h3>Desgaste Emocional</h3>
-          <p>Sentimento de esgotamento constante</p>
-        </div>
-        <div class="sintoma">
-          <img src="{% static 'images/fadiga.png' %}" alt="Fadiga Mental" />
-          <h3>Fadiga Mental</h3>
-          <p>Dificuldades de concentração e memória</p>
-        </div>
-        <div class="sintoma">
-          <img src="{% static 'images/triste.png' %}" alt="Despersonalização" />
-          <h3>Despersonalização</h3>
-          <p>Sensação de distanciamento em relação ao trabalho</p>
-        </div>
-        <div class="sintoma">
-          <img src="{% static 'images/sintomas.png' %}" alt="Sintomas Físicos" />
-          <h3>Sintomas Físicos</h3>
-          <p>Dores de cabeça, insônia, problemas gastrointestinais</p>
-        </div>
-      </div>
-      <!-- <button class="botao">Ver Mais Sintomas</button> -->
-    </div>
-    <hr />
-    <div class="diagnostico-container">
-      <div class="diagnostico">
-        <h3>Como é Feito o Diagnóstico?</h3>
-        <p>Entenda o processo de diagnóstico da Síndrome de Burnout.</p>
-      </div>
-      <div class="diagnostico-botao">
-        <a href="{% url 'diagnostico' %}" class="botao">Saiba Mais</a>
-    </div>
-      <div class="diagnosticos">
-        <div class="diagnostico-item">
-          <img src="{% static 'images/historia.png' %}" alt="História do paciente" />
-          <div class="diagnostico-texto">
-            <h4>História do Paciente</h4>
-            <p>O diagnóstico é focado na história do paciente, seu envolvimento no trabalho e realização pessoal relacionada à profissão.</p>
-          </div>
-        </div>
-        <div class="diagnostico-item">
-          <img src="{% static 'images/profissionais.png' %}" alt="Profissionais de saúde" />
-          <div class="diagnostico-texto">
-            <h4>Profissionais de Saúde</h4>
-            <p>Psiquiatras e psicólogos são especializados em identificar o problema e orientar o tratamento adequado.</p>
-          </div>
-        </div>
-        <div class="diagnostico-item">
-          <img src="{% static 'images/diagnostico.png' %}" alt="Diagnóstico preciso" />
-          <div class="diagnostico-texto">
-            <h4>Diagnóstico Preciso</h4>
-            <p>É essencial considerar a história pessoal do paciente, o tipo de trabalho que realiza e os sintomas apresentados.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <hr />
-    {% include 'footer.html' %}
-  </body>
-</html>
+{% block title %}Respiração Guiada{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/trilha.css' %}">
+
+{% endblock %}
+
+{% block content %}
+{% endblock %}
