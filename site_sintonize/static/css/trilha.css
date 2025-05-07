@@ -16,24 +16,77 @@
     line-height: 120%;
 }
 
-.texto-sintomas p{
-color: var(--Neutral-colors-Black-Colors-200, #3B3E43);
-font-family: 'Nunito';
-font-size: 24px;
-font-style: normal;
-font-weight: 700;
-line-height: 133%;
+.container-sintomas {
+    padding: 50px;
 }
 
-.texto-sintomas ::before {
+.texto-sintomas h1 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 36px;
+    color: #00323D;
+    margin-bottom: 10px;
+}
+
+.texto-sintomas p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #3B3E43;
+    line-height: 1.4;
+    max-width: 800px;
+}
+
+.texto-sintomas::before {
     content: "";
-    position: absolute;
-    left: 50px;
-    top: 50%;
-    width: 153px;
-    height: 6px;
-    transform: rotate(-90deg);
-    flex-shrink: 0;
+    display: block;
+    width: 6px;
+    height: 153px;
+    background: #F8B490;
     border-radius: 4px;
-    background: var(--Complementary-Red-and-orange-300, #F8B490);
+    position: absolute;
+    margin-left: -30px;
+    margin-top: 10px;
+}
+
+.sintomas-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.sintoma-bloco {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sintoma-bloco .icone {
+    font-size: 28px;
+}
+
+.sintoma-bloco h3 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #00323D;
+}
+
+.sintoma-bloco ul {
+    padding-left: 20px;
+    list-style-type: disc;
+    color: #3B3E43;
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.icone-img {
+    display: flex;
+    width: 24px;
+    height: 24px;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1/1;
+    
 }
