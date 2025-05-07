@@ -1,0 +1,81 @@
+.burnout-trilha {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden; /* importante para controlar fundo */
+}
+
+.trilha-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 95%; /* ajuste conforme desejado */
+    background: url('../images/trilha-background.png') center bottom / cover no-repeat;
+    z-index: 0;
+}
+
+.wave-wrapper-trilha {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: -2;
+}
+
+.wave-wrapper-trilha img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.burnout-trilha-text {
+    position: relative;
+    z-index: 1;
+    margin: 222px 589px 191px 189px;
+    display: flex;
+    width: 664px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+
+.burnout-trilha-text h1{
+    display: flex;
+    width: 311px;
+    flex-direction: column;
+    align-items: flex-start;
+    color: #FEFEFE;
+    font-family: Wix Madefor Display;
+    font-size: 80px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 125%; /* 100px */
+    letter-spacing: -0.5px;
+    position: relative;
+    margin: 0;
+}
+
+.burnout-trilha-text h1::before{
+    position:absolute;
+    content: '';
+    height: 6px;
+    align-self: stretch;
+    border-radius: 4px;
+    background: #F8B490;
+    width: 100%;
+    bottom: -6px;
+}
+
+.burnout-trilha-text h2{
+    height: 62px;
+    align-self: stretch;    
+    color: #FEFEFE;
+    font-family: Nunito;
+    font-size: 44px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 160%; /* 70.4px */
+    margin: 0;
+}
