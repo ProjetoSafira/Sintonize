@@ -1,52 +1,50 @@
 .container-sintomas {
     display: flex;
-    width: 1440px;
-    padding: var(--spacing-spacing-8-spacing-21, 160px) var(--spacing-spacing-8-spacing-24, 152px) 0px var(--spacing-spacing-8-spacing-24, 152px);
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1440px;
+    padding: 80px 120px 0;
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 40px;
+    position: relative;
 }
+
 
 .texto-sintomas h1 {
-    color: #204551;
-    font-family: 'Mulish';
-    font-size: 40px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 120%;
-}
-
-.container-sintomas {
-    padding: 50px;
-}
-
-.texto-sintomas h1 {
+    color: #00323D;
     font-family: 'Nunito', sans-serif;
     font-size: 36px;
-    color: #00323D;
-    margin-bottom: 10px;
+    font-weight: 700;
+    margin-bottom: 16px;
 }
 
 .texto-sintomas p {
-    font-family: 'Nunito', sans-serif;
-    font-size: 24px;
-    font-weight: 700;
     color: #3B3E43;
-    line-height: 1.4;
-    max-width: 800px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5;
+    max-width: 700px;
+}
+
+
+.texto-sintomas {
+    position: relative;
+    padding-left: 30px;
 }
 
 .texto-sintomas::before {
     content: "";
-    display: block;
-    width: 6px;
-    height: 153px;
+    width: 4px;
+    height: 100%;
     background: #F8B490;
-    border-radius: 4px;
     position: absolute;
-    margin-left: -30px;
-    margin-top: 10px;
+    top: 0;
+    left: 0;
+    border-radius: 4px;
 }
+
 
 .sintomas-grid {
     display: grid;
@@ -58,35 +56,33 @@
 .sintoma-bloco {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
+    padding-left: 32px;
+    position: relative;
 }
 
-.sintoma-bloco .icone {
-    font-size: 28px;
+.sintoma-bloco img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 24px;
+    height: 24px;
 }
 
 .sintoma-bloco h3 {
+    color: #00323D;
     font-family: 'Nunito', sans-serif;
     font-size: 20px;
     font-weight: 700;
-    color: #00323D;
+    margin-left: 32px;
 }
 
 .sintoma-bloco ul {
-    padding-left: 20px;
-    list-style-type: disc;
-    color: #3B3E43;
     font-family: 'Nunito', sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
+    color: #3B3E43;
+    list-style-type: disc;
+    padding-left: 52px;
 }
 
-.icone-img {
-    display: flex;
-    width: 24px;
-    height: 24px;
-    justify-content: center;
-    align-items: center;
-    aspect-ratio: 1/1;
-    
-}
