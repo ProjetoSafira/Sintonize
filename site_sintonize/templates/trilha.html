@@ -5,30 +5,6 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/trilha.css' %}">
-
-<style>
-.icone-titulo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.icone-titulo img {
-    position: static;
-    width: 24px;
-    height: 24px;
-    margin: 0;
-}
-
-.sintoma-bloco h3 {
-    margin: 0;
-    font-size: 20px;
-    font-weight: 700;
-    color: #00323D;
-    font-family: 'Nunito', sans-serif;
-}
-</style>
-
 {% endblock %}
 
 {% block content %}
@@ -43,7 +19,7 @@
       <div class="sintoma-bloco">
         <div class="icone-titulo">
           <img src="{% static 'images/trilha/brain.png' %}" alt="Distanciamento" class="icone-img">
-          <h3>Distanciamento Mental do Trabalho</h3>
+          <span class="titulo-sintoma">Distanciamento Mental do Trabalho:</span>
         </div>
         <ul>
           <li>Indiferença ou apatia</li>
@@ -53,8 +29,10 @@
       </div>
     
       <div class="sintoma-bloco">
-        <img src="{% static 'images/trilha/BatteryLow.png' %}" alt="Falta de Energia" class="icone-img">
-        <h3>Falta de energia e exaustão</h3>
+        <div class="icone-titulo">
+          <img src="{% static 'images/trilha/BatteryLow.png' %}" alt="Falta de Energia" class="icone-img">
+          <span class="titulo-sintoma">Falta de energia e exaustão:</span>
+        </div>
         <ul>
           <li>Cansaço extremo, mesmo após descanso</li>
           <li>Sensação de estar no limite, sem energia</li>
@@ -62,8 +40,10 @@
       </div>
     
       <div class="sintoma-bloco">
-        <img src="{% static 'images/trilha/vector1.png' %}" alt="Redução de Eficácia" class="icone-img">
-        <h3>Redução de Eficácia Profissional</h3>
+        <div class="icone-titulo">
+          <img src="{% static 'images/trilha/vector1.png' %}" alt="Redução de Eficácia" class="icone-img">
+          <span class="titulo-sintoma">Redução de Eficácia Profissional:</span>
+        </div>
         <ul>
           <li>Queda de produtividade</li>
           <li>Dificuldade de concentração e memória</li>
@@ -72,8 +52,10 @@
       </div>
     
       <div class="sintoma-bloco">
-        <img src="{% static 'images/trilha/vector2.png' %}" alt="Sintomas Físicos" class="icone-img">
-        <h3>Sintomas Físicos</h3>
+        <div class="icone-titulo">
+          <img src="{% static 'images/trilha/vector2.png' %}" alt="Sintomas Físicos" class="icone-img">
+          <span class="titulo-sintoma">Sintomas Físicos:</span>
+        </div>
         <ul>
           <li>Dores musculares e tensão</li>
           <li>Distúrbios do sono</li>
@@ -81,8 +63,13 @@
         </ul>
       </div>
     </div>
-    
-    
-  </div>
+
+
+
+<div class="diagnostico-section">
+  <h2>Como é Feito o Diagnóstico?</h2>
+  <p>O Burnout é diagnosticado por psicólogos ou psiquiatras, que avaliam seu histórico, rotina de trabalho e sintomas.<br>
+  Muitas vezes, as pessoas demoram a procurar ajuda por subestimarem os sinais. Mas um diagnóstico precoce faz toda a diferença na recuperação.</p>
+</div>
 </div>
 {% endblock %}
