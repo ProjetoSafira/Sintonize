@@ -70,6 +70,8 @@
     left: 60px;
     position: relative;
     width: 100%;
+    opacity: 0;
+    transition: opacity 2s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .sintoma-bloco img {
@@ -130,4 +132,9 @@
     letter-spacing: 0.15px;
     height: 90px;
     align-self: stretch;
+}
+
+
+.sintoma-bloco.visible {
+    opacity: 1;
 }
