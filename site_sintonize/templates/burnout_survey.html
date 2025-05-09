@@ -207,7 +207,7 @@
                     document.getElementById('modalTitle').innerText = data.title;
                     document.getElementById('modalBody').innerText = data.body;
                     document.getElementById('modalImage').src = data.image;
-                    document.getElementById('userMessage').textContent = data.userMessage;
+                    document.getElementById('userMessage').innerHTML = data.userMessage;
                     document.getElementById('modalIcon').src = data.icon;
                     document.getElementById('resultModal').classList.remove('hidden');
                 })
