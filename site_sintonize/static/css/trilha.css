@@ -155,3 +155,10 @@
     max-width: 100vw;
     background: var(--Neutral-colors-Gray-Colors-100, #F3F4F6);
 }
+
+@media (max-width: 853px) {
+  .svg-container1 {
+    margin-top: 100px;
+   
+  }
+}
