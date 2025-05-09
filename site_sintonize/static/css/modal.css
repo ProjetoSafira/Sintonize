@@ -10,7 +10,7 @@
     /* Limite máximo de largura */
     align-items: flex-start;
     position: relative;
-    overflow-y: auto;
+    overflow-y: visible;
     scrollbar-width: thin;
     /* Para Firefox */
     scrollbar-color: #D3D3D3 transparent;
@@ -30,7 +30,13 @@
     background: transparent; /* Torna a trilha invisível */
 }
 
-
+.modal-content,
+.modal-body,
+.flex-container {
+    overflow-y: visible !important;
+    max-height: none !important;
+    height: auto !important;
+}
 
 .flex-container {
     display: flex;
@@ -38,8 +44,8 @@
     gap: 10px;
     height: 306px;
     /* Altura fixa */
-    overflow-y: auto;
-    /* Permite rolagem apenas aqui */
+    max-height: none;
+    overflow-y: visible;
 }
 
 .modal-body {
@@ -95,50 +101,6 @@
 }
 
 
-
-#confirmButton {
-    display: flex;
-    /* Define o botão como flexível */
-    padding: 8px 24px;
-    /* Padding do botão */
-    justify-content: center;
-    /* Centraliza o conteúdo do botão */
-    align-items: center;
-    /* Alinha itens do botão no centro */
-    gap: 10px;
-    /* Espaçamento entre ícones e texto no botão */
-    border-radius: 50px;
-    /* Arredondamento do botão */
-    border: 1px solid var(--Primary-Pressed---500, #204551);
-    background: var(--Primary-Defaunt---400, #3A6573);
-    color: var(--gray-scale-white-white, #FFF);
-    font-family: 'nunito';
-    /* Fonte do botão */
-    font-size: 20px;
-    line-height: 160%;
-    /* Altura da linha */
-    letter-spacing: 0.15px;
-    /* Espacemento das letras */
-}
-
-#backButton {
-    display: flex;
-    height: 42px;
-    padding: 8px 16px;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
-    border-radius: 42px;
-    color: #888;
-
-    /* Typography/Subtitle/subtitle2 */
-    font-family: 'nunito';
-    font-size: 20px;
-    font-style: normal;
-    line-height: 160%;
-    /* 32px */
-    letter-spacing: 0.15px;
-}
 
 .modal-header {
     display: flex;
