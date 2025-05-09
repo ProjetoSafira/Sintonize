@@ -6,6 +6,29 @@
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/trilha.css' %}">
 
+<style>
+.icone-titulo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icone-titulo img {
+    position: static;
+    width: 24px;
+    height: 24px;
+    margin: 0;
+}
+
+.sintoma-bloco h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #00323D;
+    font-family: 'Nunito', sans-serif;
+}
+</style>
+
 {% endblock %}
 
 {% block content %}
@@ -18,8 +41,10 @@
   <div class="principais-sintomas">
     <div class="sintomas-grid">
       <div class="sintoma-bloco">
-        <img src="{% static 'images/trilha/brain.png' %}" alt="Distanciamento" class="icone-img">
-        <h3>Distanciamento Mental do Trabalho</h3>
+        <div class="icone-titulo">
+          <img src="{% static 'images/trilha/brain.png' %}" alt="Distanciamento" class="icone-img">
+          <h3>Distanciamento Mental do Trabalho</h3>
+        </div>
         <ul>
           <li>Indiferença ou apatia</li>
           <li>Falta de motivação e prazer na rotina profissional</li>
