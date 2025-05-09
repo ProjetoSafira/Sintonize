@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Respiração Guiada{% endblock %}
+{% block title %}Trilha de Conhecimento{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/trilha.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/trilha.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -64,28 +68,16 @@
         </ul>
       </div>
     </div>
-
-
-
 <div class="diagnostico-section">
   <h2>Como é Feito o Diagnóstico?</h2>
   <p>O Burnout é diagnosticado por psicólogos ou psiquiatras, que avaliam seu histórico, rotina de trabalho e sintomas.<br>
   Muitas vezes, as pessoas demoram a procurar ajuda por subestimarem os sinais. Mas um diagnóstico precoce faz toda a diferença na recuperação.</p>
 </div>
 </div>
+<div class="svg-container1">
+  <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="160" viewBox="0 0 1440 160" fill="none">
+    <path d="M0 159.981C0 159.981 148.6 126.86 245 119.097C431.726 104.061 535.847 158.78 723 159.981C925.347 161.281 1038.75 94.159 1240 119.097C1318.83 128.865 1440 159.981 1440 159.981V0H0L0 159.981Z" fill="#FEFEFE"/>
+  </svg>
+</div>
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const blocks = document.querySelectorAll('.sintoma-bloco');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.2 });
-
-    blocks.forEach(block => observer.observe(block));
-});
-</script>
 {% endblock %}
