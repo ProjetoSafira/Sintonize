@@ -152,3 +152,9 @@
 .hidden {
     display: none !important;
 }
+
+#userMessage a {
+    color: #1a0dab;      /* Azul padrão de link do Google */
+    text-decoration: underline;
+    font-weight: 500;    /* Opcional: deixa o link um pouco mais destacado */
+}
