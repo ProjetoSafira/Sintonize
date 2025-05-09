@@ -161,4 +161,7 @@
     margin-top: 100px;
    
   }
+  .texto-sintomas::before {
+    height: 230px;
+  }
 }
