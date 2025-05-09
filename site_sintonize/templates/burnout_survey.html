@@ -120,12 +120,7 @@
                     Isso indica que você está mantendo um bom equilíbrio entre trabalho e vida pessoal.
                 </p>
             </div>
-            <div style="width: 440px; height: 1px; background: #E1E1E1;" class="mt-2"></div>
-
-            <div class="modal-footer">
-                <button id="backButton" class="modal-button">Voltar</button>
-                <button id="confirmButton" class="modal-button">OK, Entendido</button>
-            </div>
+       
             
         </div>
     </div>
@@ -228,9 +223,7 @@
         }
 
         document.getElementById('closeModal').addEventListener('click', closeModal);
-        document.getElementById('confirmButton').addEventListener('click', closeModal);
-        document.getElementById('backButton').addEventListener('click', closeModal);
-
+       
 
         window.addEventListener('click', (event) => {
             const modal = document.getElementById('resultModal');
