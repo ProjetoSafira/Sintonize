@@ -38,6 +38,7 @@
           <li>Sensação de estar no limite, sem energia</li>
         </ul>
       </div>
+      
     
       <div class="sintoma-bloco">
         <div class="icone-titulo">
@@ -72,4 +73,19 @@
   Muitas vezes, as pessoas demoram a procurar ajuda por subestimarem os sinais. Mas um diagnóstico precoce faz toda a diferença na recuperação.</p>
 </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const blocks = document.querySelectorAll('.sintoma-bloco');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.2 });
+
+    blocks.forEach(block => observer.observe(block));
+});
+</script>
 {% endblock %}
