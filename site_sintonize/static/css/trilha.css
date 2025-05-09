@@ -47,6 +47,7 @@
     background: #F8B490;
     position: absolute;
     left: 0;
+    top: 15px;
     border-radius: 4px;
 }
 
@@ -92,6 +93,10 @@
     line-height: 120%;
 }
 
+.sintoma-bloco.visible {
+    opacity: 1;
+}
+
 .sintoma-bloco ul {
     font-family: 'Mulish';
     font-size: 20px;
@@ -110,6 +115,14 @@
     flex-direction: column;
     align-items: flex-start;
     align-self: stretch;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1), transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.diagnostico-section.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .diagnostico-section h2 {
@@ -134,7 +147,11 @@
     align-self: stretch;
 }
 
-
-.sintoma-bloco.visible {
-    opacity: 1;
+.svg-container1 svg {
+    display: block;
+    width: 100vw;
+    height: auto;
+    min-width: 100%;
+    max-width: 100vw;
+    background: var(--Neutral-colors-Gray-Colors-100, #F3F4F6);
 }
