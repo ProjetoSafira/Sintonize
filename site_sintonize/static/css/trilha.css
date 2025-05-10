@@ -20,7 +20,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    z-index: -2;
+    z-index: -2; /* acima do fundo, abaixo do texto */
 }
 
 .wave-wrapper-trilha img {
