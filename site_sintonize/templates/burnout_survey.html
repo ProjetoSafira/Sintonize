@@ -112,13 +112,10 @@
             
 
             <div class="modal-body mt-4 flex-container">
-                <p id="modalBody" class="result-text text-gray-700 text-base">
+                <p id="modalBody" class="result-text">
                     Resultado será exibido aqui.
                 </p>
                 <img id="modalImage" src="" alt="Resultado da imagem" class="result-image mb-4">
-                <p id="userMessage" class="user-message text-gray-700 text-base mt-4">
-                    Isso indica que você está mantendo um bom equilíbrio entre trabalho e vida pessoal.
-                </p>
             </div>
        
             
@@ -205,9 +202,8 @@
                 })
                 .then(data => {
                     document.getElementById('modalTitle').innerText = data.title;
-                    document.getElementById('modalBody').innerText = data.body;
+                    document.getElementById('modalBody').innerHTML = data.body;
                     document.getElementById('modalImage').src = data.image;
-                    document.getElementById('userMessage').innerHTML = data.userMessage;
                     document.getElementById('modalIcon').src = data.icon;
                     document.getElementById('resultModal').classList.remove('hidden');
                 })
