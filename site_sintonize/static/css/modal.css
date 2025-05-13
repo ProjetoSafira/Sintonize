@@ -2,35 +2,27 @@
     display: flex;
     flex-direction: column;
     padding: 20px;
-    background: white;
-    border-radius: 8px;
+    background:#fff;
+    border-radius: 16px;
     width: 100%;
-    /* Ajuste conforme necessário */
     max-width: 480px;
-    /* Limite máximo de largura */
     align-items: flex-start;
     position: relative;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    /* Para Firefox */
-    scrollbar-color: #D3D3D3 transparent;
-    /* Para Firefox */
+    overflow-y: visible;
 }
 
-.modal-body::-webkit-scrollbar {
-    width: 8px;
-}
-
-.modal-body::-webkit-scrollbar-thumb {
-    background-color: #D3D3D3; /* Cor do polegar */
-    border-radius: 6px; /* Corrigido de '6x' para '6px' */
-}
 
 .modal-body::-webkit-scrollbar-track {
     background: transparent; /* Torna a trilha invisível */
 }
 
-
+.modal-content,
+.modal-body,
+.flex-container {
+    overflow-y: visible !important;
+    max-height: none !important;
+    height: auto !important;
+}
 
 .flex-container {
     display: flex;
@@ -38,14 +30,14 @@
     gap: 10px;
     height: 306px;
     /* Altura fixa */
-    overflow-y: auto;
-    /* Permite rolagem apenas aqui */
+    max-height: none;
+    overflow-y: visible;
 }
 
 .modal-body {
     display: flex;
     flex-direction: column; 
-    max-height: 60vh; /* Limite a altura máxima da área visível */
+
     overflow-y: auto; /* Permite a rolagem vertical */
     gap: 10px; /* Espaçamento entre os elementos */
 }
@@ -73,20 +65,7 @@
     margin-top: 20px;
 }
 
-.result-text,
-.user-message {
-    width: 422px;
-    flex-shrink: 0;
-    align-self: stretch;
-    color: #000;
-    font-family: 'Roboto';
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 143%;
-    /* 20.02px */
-    letter-spacing: 0.17px;
-}
+
 
 .result-image {
     width: 422px;
@@ -95,50 +74,6 @@
 }
 
 
-
-#confirmButton {
-    display: flex;
-    /* Define o botão como flexível */
-    padding: 8px 24px;
-    /* Padding do botão */
-    justify-content: center;
-    /* Centraliza o conteúdo do botão */
-    align-items: center;
-    /* Alinha itens do botão no centro */
-    gap: 10px;
-    /* Espaçamento entre ícones e texto no botão */
-    border-radius: 50px;
-    /* Arredondamento do botão */
-    border: 1px solid var(--Primary-Pressed---500, #204551);
-    background: var(--Primary-Defaunt---400, #3A6573);
-    color: var(--gray-scale-white-white, #FFF);
-    font-family: 'nunito';
-    /* Fonte do botão */
-    font-size: 20px;
-    line-height: 160%;
-    /* Altura da linha */
-    letter-spacing: 0.15px;
-    /* Espacemento das letras */
-}
-
-#backButton {
-    display: flex;
-    height: 42px;
-    padding: 8px 16px;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
-    border-radius: 42px;
-    color: #888;
-
-    /* Typography/Subtitle/subtitle2 */
-    font-family: 'nunito';
-    font-size: 20px;
-    font-style: normal;
-    line-height: 160%;
-    /* 32px */
-    letter-spacing: 0.15px;
-}
 
 .modal-header {
     display: flex;
@@ -189,4 +124,32 @@
 
 .hidden {
     display: none !important;
+}
+
+.result-text a {
+    color: var(--Complementary-Blue-500, #2645AE);
+    font-family: 'Roboto';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 143%;
+    letter-spacing: 0.17px;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+}
+
+.result-text{
+    color: #000;
+    font-family: 'Roboto';
+    max-width: 420px;
+    word-break: break-word;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 143%;
+    letter-spacing: 0.17px;
 }
