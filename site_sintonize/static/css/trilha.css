@@ -1,4 +1,150 @@
 
+.o-que-e-burnout{
+    display: flex;
+    width: 100%;
+    height: auto;
+    padding: 160px 80px;
+    justify-content: center;
+    align-items: center;
+    gap: 26px;
+    flex-shrink: 0;
+    background: #F3F4F6;
+}
+
+.o-que-e-burnout img{
+    width: 100%;
+    max-width: 519px;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.o-que-e-burnout-container{
+    display: flex;
+    width: 100%;
+    max-width: 730px;
+    height: 379px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    flex-shrink: 0;
+    margin-left: 24px;
+}
+
+.o-que-e-burnout-title::before{
+    left: -24px; 
+    flex-shrink: 0;
+    content: "";
+    position: absolute;
+    background: #F8B490;
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    width: 6px;
+    height: 168px;
+    border-radius: 4px;
+}
+
+.o-que-e-burnout-title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+    position:relative;
+}
+
+.o-que-e-burnout-title h2{
+    color:  #204551;
+    font-family: Mulish, sans-serif;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 48px */
+}
+
+.o-que-e-burnout-title h4{
+    width: 100%;
+    max-width: 730px;
+    color: #3B3E43;
+    font-family: Nunito, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 133%; /* 31.92px */
+}
+
+.o-que-e-burnout-text p{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 16px;
+    align-self: stretch;
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 30px */
+}
+
+.o-que-e-burnout-title h2,
+.o-que-e-burnout-title h4,
+.o-que-e-burnout-text p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* Media queries para responsividade */
+
+/* Telas pequenas (mobile) */
+@media (max-width: 768px) {
+    .o-que-e-burnout {
+        flex-direction: column; /* Coloca os itens em coluna */
+        padding: 80px 20px; /* Reduz o padding */
+    }
+
+    .o-que-e-burnout img {
+        width: 80%; /* A imagem ocupa 80% da tela */
+        max-width: none; /* Remove o limite máximo de largura */
+    }
+
+    .o-que-e-burnout-container {
+        width: 90%; /* Aumenta a largura do container */
+        padding: 0 10%; /* Diminui o padding */
+    }
+
+    .o-que-e-burnout-title h2 {
+        font-size: 30px; /* Reduz o tamanho da fonte */
+    }
+
+    .o-que-e-burnout-title h4 {
+        font-size: 18px; /* Reduz o tamanho da fonte */
+    }
+
+    .o-que-e-burnout-text p {
+        font-size: 16px; /* Reduz o tamanho da fonte */
+    }
+}
+
+/* Telas médias (tablets) */
+@media (max-width: 1024px) {
+    .o-que-e-burnout {
+        padding: 120px 40px;
+    }
+
+    .o-que-e-burnout img {
+        width: 90%; /* A imagem ocupa 90% da tela */
+    }
+
+    .o-que-e-burnout-title h2 {
+        font-size: 35px; /* Ajusta o tamanho da fonte */
+    }
+
+    .o-que-e-burnout-title h4 {
+        font-size: 20px;
+    }
+}
+
 .container-sintomas {
     display: flex;
     margin: 0 auto;
