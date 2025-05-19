@@ -3,7 +3,7 @@
     width: 100%;
     min-height: 100vh;
     position: relative;
-    overflow: hidden; /* importante para controlar fundo */
+    overflow: hidden; 
 }
 
 .trilha-background {
@@ -11,7 +11,7 @@
     top: 0;
     left: 0;
     width: 100vw;
-    height: 95%; /* ajuste conforme desejado */
+    height: 95%; 
     background: url('../images/trilha-background.png') center bottom / cover no-repeat;
     z-index: 0;
 }
@@ -21,7 +21,8 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    z-index: -2; /* acima do fundo, abaixo do texto */
+    z-index: -2; 
+    background: var(--Neutral-colors-Gray-Colors-100, #F3F4F6);
 }
 
 .wave-wrapper-trilha img {
