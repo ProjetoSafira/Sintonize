@@ -1,3 +1,4 @@
+
 .burnout-trilha {
     width: 100%;
     min-height: 100vh;
@@ -79,3 +80,320 @@
     line-height: 160%; /* 70.4px */
     margin: 0;
 }
+
+
+.o-que-e-burnout{
+    display: flex;
+    width: 100%;
+    height: auto;
+    padding: 160px 80px;
+    justify-content: center;
+    align-items: center;
+    gap: 26px;
+    flex-shrink: 0;
+    background: #F3F4F6;
+}
+
+.o-que-e-burnout img{
+    width: 100%;
+    max-width: 519px;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.o-que-e-burnout-container{
+    display: flex;
+    width: 100%;
+    max-width: 730px;
+    height: 379px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    flex-shrink: 0;
+    margin-left: 24px;
+}
+
+.o-que-e-burnout-title::before{
+    left: -24px; 
+    flex-shrink: 0;
+    content: "";
+    position: absolute;
+    background: #F8B490;
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    width: 6px;
+    height: 168px;
+    border-radius: 4px;
+}
+
+.o-que-e-burnout-title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+    position:relative;
+}
+
+.o-que-e-burnout-title h2{
+    color:  #204551;
+    font-family: Mulish, sans-serif;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 48px */
+}
+
+.o-que-e-burnout-title h4{
+    width: 100%;
+    max-width: 730px;
+    color: #3B3E43;
+    font-family: Nunito, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 133%; /* 31.92px */
+}
+
+.o-que-e-burnout-text p{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 16px;
+    align-self: stretch;
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 30px */
+}
+
+.o-que-e-burnout-title h2,
+.o-que-e-burnout-title h4,
+.o-que-e-burnout-text p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* Media queries para responsividade */
+
+/* Telas pequenas (mobile) */
+@media (max-width: 768px) {
+    .o-que-e-burnout {
+        flex-direction: column; /* Coloca os itens em coluna */
+        padding: 80px 20px; /* Reduz o padding */
+    }
+
+    .o-que-e-burnout img {
+        width: 80%; /* A imagem ocupa 80% da tela */
+        max-width: none; /* Remove o limite máximo de largura */
+    }
+
+    .o-que-e-burnout-container {
+        width: 90%; /* Aumenta a largura do container */
+        padding: 0 10%; /* Diminui o padding */
+    }
+
+    .o-que-e-burnout-title h2 {
+        font-size: 30px; /* Reduz o tamanho da fonte */
+    }
+
+    .o-que-e-burnout-title h4 {
+        font-size: 18px; /* Reduz o tamanho da fonte */
+    }
+
+    .o-que-e-burnout-text p {
+        font-size: 16px; /* Reduz o tamanho da fonte */
+    }
+}
+
+/* Telas médias (tablets) */
+@media (max-width: 1024px) {
+    .o-que-e-burnout {
+        padding: 120px 40px;
+    }
+
+    .o-que-e-burnout img {
+        width: 90%; /* A imagem ocupa 90% da tela */
+    }
+
+    .o-que-e-burnout-title h2 {
+        font-size: 35px; /* Ajusta o tamanho da fonte */
+    }
+
+    .o-que-e-burnout-title h4 {
+        font-size: 20px;
+    }
+}
+
+.container-sintomas {
+    display: flex;
+    margin: 0 auto;
+    padding: var(--spacing-spacing-8-spacing-21, 160px) var(--spacing-spacing-8-spacing-24, 152px) 0px var(--spacing-spacing-8-spacing-24, 152px);
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background: var(--Neutral-colors-White-Colors-100, #FEFEFE);
+
+}
+
+.texto-sintomas h1 {
+    color: #204551;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 120%;
+    margin-bottom: 16px;
+}
+
+.texto-sintomas p {
+    color: #3B3E43;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.5;
+    max-width: 100%;
+    line-height: 133%;
+}
+
+
+.texto-sintomas {
+    position: relative;
+    padding-left: 30px;
+    align-items: flex-start;
+    gap: 27px;
+    max-width: 1100px;
+    width: 100%;
+}
+
+.texto-sintomas::before {
+    content: "";
+    width: 6px;
+    height: 153px;
+    background: #F8B490;
+    position: absolute;
+    left: 0;
+    top: 15px;
+    border-radius: 4px;
+}
+
+
+.sintomas-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px 150px;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 50px;
+    width: 100%;
+    max-width: 1300px;
+    justify-content: center;
+}
+
+.sintoma-bloco {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    left: 60px;
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.sintoma-bloco img {
+    position: absolute;
+    left: -35px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    gap: 12px;
+}
+
+.titulo-sintoma {
+    color: var(--Neutral-colors-Black-Colors-400, #292B2F);
+    font-family: 'Mulish';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+}
+
+.sintoma-bloco.visible {
+    opacity: 1;
+}
+
+.sintoma-bloco ul {
+    font-family: 'Mulish';
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--Neutral-colors-Black-Colors-300, #374151);
+    list-style-type: disc;
+    padding-left: 18px;
+    font-style: normal;
+    line-height: 160%;
+}
+
+.diagnostico-section {
+    max-width: 1100px;
+    margin: 48px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1), transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.diagnostico-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.diagnostico-section h2 {
+    color: var(--Neutral-colors-Gray-Colors-500, #5A626C);
+    font-family: 'Nunito';
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 125%;
+    letter-spacing: 0.25px;
+}
+
+.diagnostico-section p {
+    color: var(--Neutral-colors-Black-Colors-200, #3B3E43);
+    font-family: 'Mulish';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 160%;
+    letter-spacing: 0.15px;
+    height: 90px;
+    align-self: stretch;
+}
+
+.svg-container1 svg {
+    display: block;
+    width: 100vw;
+    height: auto;
+    min-width: 100%;
+    max-width: 100vw;
+    background: var(--Neutral-colors-Gray-Colors-100, #F3F4F6);
+}
+
+@media (max-width: 853px) {
+  .svg-container1 {
+    margin-top: 100px;
+   
+  }
+  .texto-sintomas::before {
+    height: 230px;
+  }
+}
+
+
