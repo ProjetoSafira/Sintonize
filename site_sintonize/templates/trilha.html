@@ -1,99 +1,114 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Trilha do conhecimento</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/trilha.css' %}" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@600&display=swap" rel="stylesheet" />
-  </head>
+{% extends 'base.html' %}
+{% load static %}
 
-  <body>
-    {% include 'menu.html' %}
-    <header>
-        <div class="container-burnout">
-            <h1 class="titulo-burnout">Burnout: O que é, sintomas e diagnóstico</h1>
-            <p class="subtitulo-burnout">Preencha o formulário e verifique se você se identifica com os sintomas da Síndrome de Burnout.</p>
+
+{% block title %}Burnout - O que é, sintomas e diagnóstico{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/trilha.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/trilha.js' %}"></script>
+{% endblock %}
+
+
+
+{% block content %}
+
+    <section class="burnout-trilha">
+        <div class="trilha-background"></div>
+        <div class="wave-wrapper-trilha">
+            <img src="{% static 'images/wave-trilha.png' %}">
         </div>
-    </header>
+        <div class ="burnout-trilha-text">
+            <h1>Burnout</h1>
+            <h2>O que é, sintomas e diagnóstico</h2>
+        </div>
+    </section>
+
+<section class="o-que-e-burnout">
+  <img src="{% static 'images/trilha/o-que-e.png' %}" alt="">
+  <div class="o-que-e-burnout-container">
+      <div class="o-que-e-burnout-title">
+      <h2>O que é a Síndrome de Burnout?</h2>
+      <h4>Burnout é um esgotamento físico, emocional e mental causado por estresse crônico no trabalho. Vai muito além do simples cansaço e pode afetar sua saúde de forma séria.</h4>
+  </div>
+  <div class="o-que-e-burnout-text">
+      <p>Mais do que simples cansaço, o Burnout representa um estado persistente de esgotamento que pode levar a sérios problemas de saúde mental e física, incluindo depressão, ansiedade e doenças cardiovasculares.Reconhecido pela Organização Mundial da Saúde (OMS), o Burnout é comum em profissões com alta carga emocional, como educação, saúde e serviços sociais.</p>
+  </div>
+  </div>
+</section>
+
+<div class="container-sintomas">
+  <div class="texto-sintomas">
+    <h1>Principais Sintomas</h1>
+    <p>O Burnout se desenvolve aos poucos, de maneira gradativa, começando de forma leve e se intensificando ao longo do tempo. Fique atento aos sinais:</p>
+  </div>
+
+  <div class="principais-sintomas">
+    <div class="sintomas-grid">
+      <div class="sintoma-bloco">
+        <div class="icone-titulo">
+          <img src="{% static 'images/trilha/brain.png' %}" alt="Distanciamento" class="icone-img">
+          <span class="titulo-sintoma">Distanciamento Mental do Trabalho:</span>
+        </div>
+        <ul>
+          <li>Indiferença ou apatia</li>
+          <li>Falta de motivação e prazer na rotina profissional</li>
+          <li>Postura cínica ou alienada</li>
+        </ul>
+      </div>
     
-    <div class="pagina" id="pagina">
-      <div class="container" id="container-principal">
-        <div class="textos">
-          <h2 id="titulo-principal">O que é a Síndrome de Burnout?</h2>
-          <div class="textos-principais" id="texto-principal">
-            <h3 id="sindrome-burnout">Síndrome de Burnout</h3>
-            <p id="descricao-principal">A Síndrome de Burnout é uma condição resultante de estresse crônico no trabalho, levando a exaustão emocional, mental e física.</p>
-          </div>
+      <div class="sintoma-bloco">
+        <div class="icone-titulo">
+          <img src="{% static 'images/trilha/BatteryLow.png' %}" alt="Falta de Energia" class="icone-img">
+          <span class="titulo-sintoma">Falta de energia e exaustão:</span>
         </div>
-        <div class="imagem-dormindo" id="imagem-container">
-          <img src="{% static 'images/dormindo.png' %}" alt="Ilustração sobre Burnout" class="imagem" id="imagem-principal" />
+        <ul>
+          <li>Cansaço extremo, mesmo após descanso</li>
+          <li>Sensação de estar no limite, sem energia</li>
+        </ul>
+      </div>
+      
+    
+      <div class="sintoma-bloco">
+        <div class="icone-titulo">
+          <img src="{% static 'images/trilha/vector1.png' %}" alt="Redução de Eficácia" class="icone-img">
+          <span class="titulo-sintoma">Redução de Eficácia Profissional:</span>
         </div>
+        <ul>
+          <li>Queda de produtividade</li>
+          <li>Dificuldade de concentração e memória</li>
+          <li>Sensação de incompetência</li>
+        </ul>
+      </div>
+    
+      <div class="sintoma-bloco">
+        <div class="icone-titulo">
+          <img src="{% static 'images/trilha/vector2.png' %}" alt="Sintomas Físicos" class="icone-img">
+          <span class="titulo-sintoma">Sintomas Físicos:</span>
+        </div>
+        <ul>
+          <li>Dores musculares e tensão</li>
+          <li>Distúrbios do sono</li>
+          <li>Alterações no apetite e libido</li>
+        </ul>
       </div>
     </div>
-    <div class="sintomas-comuns">
-      <h2>Sintomas Comuns</h2>
-      <p id="sintomas-frequentes">Conheça os sintomas frequentes da Síndrome de Burnout.</p>
-      <div class="sintomas-container">
-        <div class="sintoma">
-          <img src="{% static 'images/desgaste.png' %}" alt="Desgaste Emocional" />
-          <h3>Desgaste Emocional</h3>
-          <p>Sentimento de esgotamento constante</p>
-        </div>
-        <div class="sintoma">
-          <img src="{% static 'images/fadiga.png' %}" alt="Fadiga Mental" />
-          <h3>Fadiga Mental</h3>
-          <p>Dificuldades de concentração e memória</p>
-        </div>
-        <div class="sintoma">
-          <img src="{% static 'images/triste.png' %}" alt="Despersonalização" />
-          <h3>Despersonalização</h3>
-          <p>Sensação de distanciamento em relação ao trabalho</p>
-        </div>
-        <div class="sintoma">
-          <img src="{% static 'images/sintomas.png' %}" alt="Sintomas Físicos" />
-          <h3>Sintomas Físicos</h3>
-          <p>Dores de cabeça, insônia, problemas gastrointestinais</p>
-        </div>
-      </div>
-      <!-- <button class="botao">Ver Mais Sintomas</button> -->
-    </div>
-    <hr />
-    <div class="diagnostico-container">
-      <div class="diagnostico">
-        <h3>Como é Feito o Diagnóstico?</h3>
-        <p>Entenda o processo de diagnóstico da Síndrome de Burnout.</p>
-      </div>
-      <div class="diagnostico-botao">
-        <a href="{% url 'diagnostico' %}" class="botao">Saiba Mais</a>
-    </div>
-      <div class="diagnosticos">
-        <div class="diagnostico-item">
-          <img src="{% static 'images/historia.png' %}" alt="História do paciente" />
-          <div class="diagnostico-texto">
-            <h4>História do Paciente</h4>
-            <p>O diagnóstico é focado na história do paciente, seu envolvimento no trabalho e realização pessoal relacionada à profissão.</p>
-          </div>
-        </div>
-        <div class="diagnostico-item">
-          <img src="{% static 'images/profissionais.png' %}" alt="Profissionais de saúde" />
-          <div class="diagnostico-texto">
-            <h4>Profissionais de Saúde</h4>
-            <p>Psiquiatras e psicólogos são especializados em identificar o problema e orientar o tratamento adequado.</p>
-          </div>
-        </div>
-        <div class="diagnostico-item">
-          <img src="{% static 'images/diagnostico.png' %}" alt="Diagnóstico preciso" />
-          <div class="diagnostico-texto">
-            <h4>Diagnóstico Preciso</h4>
-            <p>É essencial considerar a história pessoal do paciente, o tipo de trabalho que realiza e os sintomas apresentados.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <hr />
-    {% include 'footer.html' %}
-  </body>
-</html>
+<div class="diagnostico-section">
+  <h2>Como é Feito o Diagnóstico?</h2>
+  <p>O Burnout é diagnosticado por psicólogos ou psiquiatras, que avaliam seu histórico, rotina de trabalho e sintomas.<br>
+  Muitas vezes, as pessoas demoram a procurar ajuda por subestimarem os sinais. Mas um diagnóstico precoce faz toda a diferença na recuperação.</p>
+</div>
+</div>
+<div class="svg-container1">
+  <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="160" viewBox="0 0 1440 160" fill="none">
+    <path d="M0 159.981C0 159.981 148.6 126.86 245 119.097C431.726 104.061 535.847 158.78 723 159.981C925.347 161.281 1038.75 94.159 1240 119.097C1318.83 128.865 1440 159.981 1440 159.981V0H0L0 159.981Z" fill="#FEFEFE"/>
+  </svg>
+</div>
+
+
+{% endblock %}
+
+

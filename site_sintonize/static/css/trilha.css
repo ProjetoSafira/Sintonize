@@ -1,397 +1,400 @@
-/* Estilos Gerais da Página */
-.pagina {
-    max-width: 100%;
-    background: #CEF09D;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    /* Reduzido para melhorar responsividade */
-}
 
-.container {
-    display: flex;
-    flex-direction: row;
-    /* Alinhamento em linha */
-    align-items: center;
-    justify-content: space-between;
-    /* Espaço entre texto e imagem */
+.burnout-trilha {
     width: 100%;
-    /* Garantir que o container use toda a largura */
-    max-width: 1200px;
-    /* Limitar a largura máxima */
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden; 
 }
 
-/* Ajustes de Responsividade */
-.textos {
-    flex: 1;
-    /* O texto ocupará o espaço disponível */
-    padding-right: 20px;
-    /* Espaço entre texto e imagem */
+.trilha-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 95%; 
+    background: url('../images/trilha-background.png') center bottom / cover no-repeat;
+    z-index: 0;
 }
 
-.textos-principais {
-    display: flexbox;
-    padding: 16px;
-    justify-content: center;
+.wave-wrapper-trilha {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: -2; 
+    background: var(--Neutral-colors-Gray-Colors-100, #F3F4F6);
+}
+
+.wave-wrapper-trilha img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.burnout-trilha-text {
+    position: relative;
+    z-index: 1;
+    margin: 222px 589px 191px 189px;
+    display: flex;
+    width: 664px;
+    flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
-    flex: 1 0 0;
-    border-radius: 6px;
-    border: 1px solid rgba(0, 0, 0, 0.10);
-    margin-top: 20px;
-    word-break: break-word;
-    /* Quebrar palavras longas */
-
-}
-
-#titulo-principal {
-    color: #1C646D;
-    font-family: Roboto;
-    font-size: 40px;
-    font-style: normal;
-    font-weight: 800;
-    line-height: 48px;
-}
-
-#sindrome-burnout {
-    color: #000;
-    font-family: Roboto;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 500px;
-    line-height: 28px;
-    padding-left: 10px;
-}
-
-#descricao-principal {
-
-    color: #000;
-    font-family: Roboto;
-    font-size: 20px;
-    font-style: normal;
-    line-height: 24px;
-    text-overflow: ellipsis;
-    /* Para manter a altura das linhas */
-    padding: 10px;
-    /* Adiciona espaço interno */
-    margin-top: 10px;
-    /* Espaço entre o título e a descrição */
-    overflow: hidden;
-    /* Permitir rolagem se necessário */
-    height: auto;
-    /* Remova ou ajuste o height fixo */
-}
-
-.imagem-dormindo {
-    flex: 0 0 auto;
-    /* A imagem manterá seu tamanho natural */
-}
-
-#imagem-container img {
-    max-width: 100%;
-    /* A imagem ocupará a largura do contêiner */
-    height: auto;
-    /* Manter a proporção da imagem */
+    gap: 20px;
 }
 
 
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        /* Alinhar em coluna em telas menores */
-        align-items: center;
-    }
-
-    .text-container {
-        font-size: 14px;
-        /* Ajuste a fonte */
-        padding: 10px;
-        /* Ajuste o padding */
-    }
-
-    .textos {
-        padding-right: 0;
-        /* Remover espaço entre texto e imagem */
-        text-align: center;
-        /* Centralizar texto em telas menores */
-    }
-
-    #descricao-principal {
-        padding: 10px;
-        /* Ajuste o padding para telas menores */
-        font-size: 16px;
-        /* Considere reduzir o tamanho da fonte em telas pequenas */
-    }
-}
-
-.sintomas-comuns {
-    background-color: #F2f0ff;
-    /* Cor do fundo da seção */
-    padding: 20px;
-    text-align: center;
-}
-
-.sintomas-comuns h2 {
-    color: #1C646D;
-    font-family: Roboto;
-    font-size: 40px;
-    font-weight: 800;
-    line-height: 48px;
-    margin-top: 60px;
-}
-
-#sintomas-frequentes {
-    color: #000;
-    text-align: center;
-    font-family: Roboto;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 24px;
-    margin-top: 24px;
-    margin: 16px 0;
-    /* Margem superior e inferior ajustadas */
-}
-
-.sintomas-container {
+.burnout-trilha-text h1{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    /* Centraliza os itens */
+    width: 311px;
+    flex-direction: column;
     align-items: flex-start;
-    /* Alinhando todos ao topo */
-    margin-top: 20px;
-}
-
-.sintoma {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 20px;
-    /* Use margin em vez de padding */
-    text-align: center;
-    /* Centralizando o texto também */
-    background-color: #F2f0ff;
-    /* Cor do fundo dos sintomas */
-    padding: 20px;
-    /* Ajuste o padding para ter um espaço interno consistente */
-    border-radius: 10px;
-    /* Borda arredondada para visual agradável */
-    box-shadow: 0 2px 4px rgba(245, 242, 242, 0.897);
-    /* Sombra leve para destaque */
-    width: 200px;
-    /* Largura constante para cada sintoma */
-}
-
-.sintoma:hover {
-    transform: scale(1.1);
-    /* Aumenta a escala da imagem ao passar o mouse */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    /* Aumenta a sombra ao passar o mouse */
-}
-
-.sintoma img {
-    max-width: 80px;
-    /* Tamanho máximo da imagem */
-    height: auto;
-    /* Manter proporções */
-    border-radius: 50%;
-    /* Define a borda como círculo */
-    background-color: #e1e3eb;
-    /* Cor de fundo cinza */
-    padding: 12px;
-    /* Ajuste em relação ao padding */
-    box-shadow: 0 2px 4px rgba(245, 242, 242, 0.897);
-    /* Sombra leve */
-}
-
-.sintoma:hover img {
-    transform: scale(1.1);
-    /* Aumenta a escala da imagem ao passar o mouse */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    /* Aumenta a sombra ao passar o mouse */
-}
-
-.sintoma h3 {
-
-    color: #000;
-    text-align: center;
-    font-family: Roboto;
-    font-size: 20px;
+    color: #FEFEFE;
+    font-family: Wix Madefor Display;
+    font-size: 80px;
     font-style: normal;
-    font-weight: 400;
-    line-height: 28px;
-    margin: 8px 0;
-    /* Margem para o título */
-    font-weight: bold;
-
-}
-
-.sintoma p {
-    color: #000;
-    font-family: Roboto;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 24px;
-}
-
-
-.diagnostico-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* Centraliza o conteúdo geral */
-    gap: 24px;
-    width: 100%;
-    background-color: #F2F0FF;
-    /* Cor de fundo */
-    padding: 20px;
-    /* Padding interno */
-    border-radius: 6px;
-    /* Bordas arredondadas */
-}
-
-.diagnostico {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    /* Centraliza o conteúdo */
-    gap: 10px;
-    /* Ajustar o espaço entre título e descrição */
-    width: 100%;
-
-    max-width: 756px;
-}
-
-.diagnostico h3 {
-    color: #1C646D;
-    font-family: Roboto, sans-serif;
-    font-size: 40px;
     font-weight: 700;
-    line-height: 48px;
+    line-height: 125%; /* 100px */
+    letter-spacing: -0.5px;
+    position: relative;
+    margin: 0;
 }
 
-.diagnostico p {
-    color: #000;
-    font-family: Roboto, sans-serif;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 24px;
-    margin-top: 10px;
-    margin-bottom: -20px;
+.burnout-trilha-text h1::before{
+    position:absolute;
+    content: '';
+    height: 6px;
+    align-self: stretch;
+    border-radius: 4px;
+    background: #F8B490;
+    width: 100%;
+    bottom: -6px;
 }
 
-.diagnosticos {
+.burnout-trilha-text h2{
+    height: 62px;
+    align-self: stretch;    
+    color: #FEFEFE;
+    font-family: Nunito;
+    font-size: 44px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 160%; /* 70.4px */
+    margin: 0;
+}
+
+
+.o-que-e-burnout{
+    display: flex;
+    width: 100%;
+    height: auto;
+    padding: 160px 80px;
+    justify-content: center;
+    align-items: center;
+    gap: 26px;
+    flex-shrink: 0;
+    background: #F3F4F6;
+}
+
+.o-que-e-burnout img{
+    width: 100%;
+    max-width: 519px;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.o-que-e-burnout-container{
+    display: flex;
+    width: 100%;
+    max-width: 730px;
+    height: 379px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    flex-shrink: 0;
+    margin-left: 24px;
+}
+
+.o-que-e-burnout-title::before{
+    left: -24px; 
+    flex-shrink: 0;
+    content: "";
+    position: absolute;
+    background: #F8B490;
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    width: 6px;
+    height: 168px;
+    border-radius: 4px;
+}
+
+.o-que-e-burnout-title{
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    /* Espaçamento entre os diagnósticos */
-    width: 100%;
-    align-items: center;
-    /* Centraliza os itens */
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+    position:relative;
 }
 
-.diagnostico-item {
-    display: flex;
-    padding: 20px 0px;
-    justify-content: flex-start;
-    /* Alinhar texto à esquerda */
-    align-items: flex;
-    gap: 8px;
-    border-radius: 6px;
-    border: 1px solid rgba(0, 0, 0, 0.10);
-    width: 100%;
-    /* Pode usar 100% */
-    max-width: 756px;
-    box-sizing: border-box;
-    /* Inclui padding e bordas no cálculo da largura */
-}
-
-.diagnostico-item h4 {
-    color: #000;
-    font-family: Roboto;
-    font-size: 20px;
+.o-que-e-burnout-title h2{
+    color:  #204551;
+    font-family: Mulish, sans-serif;
+    font-size: 40px;
     font-style: normal;
-    font-weight: 500;
-    line-height: 28px;
-    /* 140% */
-    align-self: stretch;
-    margin-bottom: 8px;
+    font-weight: 400;
+    line-height: 120%; /* 48px */
 }
 
-.diagnostico-item p {
-    overflow: hidden;
-    /* Essa propriedade pode ser removida se não for necessária */
-    color: #000;
-    text-overflow: ellipsis;
-    /* Isso mostra reticências se o texto for muito longo, mas só é aplicável se o overflow for visível */
-    white-space: normal;
-    /* Permite que o texto quebre em linhas normais */
-    font-family: Roboto;
+.o-que-e-burnout-title h4{
+    width: 100%;
+    max-width: 730px;
+    color: #3B3E43;
+    font-family: Nunito, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 133%; /* 31.92px */
+}
+
+.o-que-e-burnout-text p{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 16px;
+    align-self: stretch;
+    font-family: Roboto, sans-serif;
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
-    line-height: 24px;
-    margin: 0;
-    /* Remove a margem padrão para melhor controle */
-    width: 100%;
-    /* Opcional, garante que use toda a largura disponível */
+    line-height: 150%; /* 30px */
 }
 
-.diagnostico-botao {
-    width: auto; /* Permite que a largura do botão seja determinada pelo seu conteúdo */
-    margin: 20px 0; /* Adiciona margem superior e inferior, ajustável conforme necessário */
-    text-align: left; /* Garante que o conteúdo seja alinhado à esquerda */
-    margin-right: 33%;
-    
+.o-que-e-burnout-title h2,
+.o-que-e-burnout-title h4,
+.o-que-e-burnout-text p {
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
-hr {
-    border: none; /* Remove a borda padrão */
-    border: 1px solid rgba(0, 0, 0, 0.10);
-   
-}
+/* Media queries para responsividade */
 
-
-/* Estilo para o container da seção header */
-.container-burnout {
-    text-align: center; 
-    padding: 50px 20px; 
-    background-color: #1C646D; 
-    color: white; 
-    margin-top: 80px; /* Espaçamento superior */   
-}
-
-/* Estilo para o título da seção Burnout */
-.titulo-burnout {
-    font-size: 36px; 
-    font-family: 'Roboto', sans-serif; 
-    font-weight: 700; 
-    margin-bottom: 20px; /* Espaçamento inferior */
-    color: #FFFFFF; 
-}
-/* Estilo para o subtítulo da seção Burnout */
-.subtitulo-burnout {
-    font-size: 20px; 
-    font-family: 'Roboto', sans-serif; 
-    font-weight: 400; 
-    color: #FFFFFF;
-}
-
-/* Responsividade */
+/* Telas pequenas (mobile) */
 @media (max-width: 768px) {
-    .titulo-burnout {
-        font-size: 28px; /* Tamanho do título menor para telas pequenas */
+    .o-que-e-burnout {
+        flex-direction: column; /* Coloca os itens em coluna */
+        padding: 80px 20px; /* Reduz o padding */
     }
 
-    .subtitulo-burnout {
-        font-size: 16px; /* Ajuste do subtítulo em telas pequenas */
+    .o-que-e-burnout img {
+        width: 80%; /* A imagem ocupa 80% da tela */
+        max-width: none; /* Remove o limite máximo de largura */
     }
 
-    .container-burnout { 
-        margin-top: 1%;
+    .o-que-e-burnout-container {
+        width: 90%; /* Aumenta a largura do container */
+        padding: 0 10%; /* Diminui o padding */
     }
-    
+
+    .o-que-e-burnout-title h2 {
+        font-size: 30px; /* Reduz o tamanho da fonte */
+    }
+
+    .o-que-e-burnout-title h4 {
+        font-size: 18px; /* Reduz o tamanho da fonte */
+    }
+
+    .o-que-e-burnout-text p {
+        font-size: 16px; /* Reduz o tamanho da fonte */
+    }
 }
+
+/* Telas médias (tablets) */
+@media (max-width: 1024px) {
+    .o-que-e-burnout {
+        padding: 120px 40px;
+    }
+
+    .o-que-e-burnout img {
+        width: 90%; /* A imagem ocupa 90% da tela */
+    }
+
+    .o-que-e-burnout-title h2 {
+        font-size: 35px; /* Ajusta o tamanho da fonte */
+    }
+
+    .o-que-e-burnout-title h4 {
+        font-size: 20px;
+    }
+}
+
+.container-sintomas {
+    display: flex;
+    margin: 0 auto;
+    padding: var(--spacing-spacing-8-spacing-21, 160px) var(--spacing-spacing-8-spacing-24, 152px) 0px var(--spacing-spacing-8-spacing-24, 152px);
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background: var(--Neutral-colors-White-Colors-100, #FEFEFE);
+
+}
+
+.texto-sintomas h1 {
+    color: #204551;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 120%;
+    margin-bottom: 16px;
+}
+
+.texto-sintomas p {
+    color: #3B3E43;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.5;
+    max-width: 100%;
+    line-height: 133%;
+}
+
+
+.texto-sintomas {
+    position: relative;
+    padding-left: 30px;
+    align-items: flex-start;
+    gap: 27px;
+    max-width: 1100px;
+    width: 100%;
+}
+
+.texto-sintomas::before {
+    content: "";
+    width: 6px;
+    height: 153px;
+    background: #F8B490;
+    position: absolute;
+    left: 0;
+    top: 15px;
+    border-radius: 4px;
+}
+
+
+.sintomas-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px 150px;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 50px;
+    width: 100%;
+    max-width: 1300px;
+    justify-content: center;
+}
+
+.sintoma-bloco {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    left: 60px;
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.sintoma-bloco img {
+    position: absolute;
+    left: -35px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    gap: 12px;
+}
+
+.titulo-sintoma {
+    color: var(--Neutral-colors-Black-Colors-400, #292B2F);
+    font-family: 'Mulish';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+}
+
+.sintoma-bloco.visible {
+    opacity: 1;
+}
+
+.sintoma-bloco ul {
+    font-family: 'Mulish';
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--Neutral-colors-Black-Colors-300, #374151);
+    list-style-type: disc;
+    padding-left: 18px;
+    font-style: normal;
+    line-height: 160%;
+}
+
+.diagnostico-section {
+    max-width: 1100px;
+    margin: 48px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1), transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.diagnostico-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.diagnostico-section h2 {
+    color: var(--Neutral-colors-Gray-Colors-500, #5A626C);
+    font-family: 'Nunito';
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 125%;
+    letter-spacing: 0.25px;
+}
+
+.diagnostico-section p {
+    color: var(--Neutral-colors-Black-Colors-200, #3B3E43);
+    font-family: 'Mulish';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 160%;
+    letter-spacing: 0.15px;
+    height: 90px;
+    align-self: stretch;
+}
+
+.svg-container1 svg {
+    display: block;
+    width: 100vw;
+    height: auto;
+    min-width: 100%;
+    max-width: 100vw;
+    background: var(--Neutral-colors-Gray-Colors-100, #F3F4F6);
+}
+
+@media (max-width: 853px) {
+  .svg-container1 {
+    margin-top: 100px;
+   
+  }
+  .texto-sintomas::before {
+    height: 230px;
+  }
+}
+
+
