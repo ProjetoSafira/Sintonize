@@ -161,22 +161,22 @@ def resultado_view(request, score):
     
     # Defina as mensagens para cada pontuação
     mensagens = {
-        "none": "Isso indica que você está mantendo um bom equilíbrio entre trabalho e vida pessoal. Continue adotando hábitos saudáveis, como pausas regulares, atividades relaxantes e uma boa rotina de sono.",
-        "cuidado": "Pequenos níveis de estresse podem se acumular com o tempo. Considere adotar medidas preventivas, como organizar melhor sua rotina, praticar exercícios físicos e estabelecer limites saudáveis ​​no trabalho. Prevenir é sempre o melhor caminho!",
-        "alerta": "Esse é o momento ideal para entrevir e evitar que o quadro se agrave. Pratique atividades que te relaxem, estabeleça momentos de descanso e, se necessário, busque apoio profissional.",
-        "atencao": " Esse é o momento ideal para entrevir e evitar que o quadro se agrave. Pratique atividades que te relaxem, estabeleça momentos de descanso e, se necessário, busque apoio profissional.",
-        "critico": "Recomendamos que você agende uma consulta com um médico para avaliação e acompanhamento do seu estado de saúde."
+        "none": "Ótimo trabalho em cuidar de si! Que tal explorar nossa <a href='/trilha/' target='_blank'>trilha de conhecimento sobre burnout</a>? Ou manter seu bem-estar com uma <a href='/respiracao_guiada/' target='_blank'> sessão de respiração guiada </a> ou um <a href='/pomodoro.html' target='_blank'> Pomodoro </a> para manter o foco sem esgotar sua energia?",
+        "cuidado": "Pequenos cuidados fazem toda a diferença. Você pode aprender mais na nossa  <a href='/trilha/' target='_blank'>trilha de conhecimento</a> ou fazer uma<a href='/respiracao_guiada/' target='_blank'> pausa consciente com a  respiração guiada </a>. Nosso<a href='/pomodoro.html' target='_blank'> Pomodoro online</a> pode ajudar a evitar sobrecarga.",
+        "alerta": "Agora é um ótimo momento para agir! Conheça técnicas eficazes na <a href='/trilha/' target='_blank'>trilha de conhecimento</a>, experimente um<a href='/pomodoro.html' target='_blank'> Pomodoro estruturado</a> ou pratique nossa<a href='/respiracao_guiada' target='_blank'> respiração guiada para relaxar. </a>",
+        "atencao": "Sabemos que esse momento pode ser difícil. Recomendamos consultar um profissional e, aqui no site, você pode encontrar apoio com a <a href='/trilha/' target='_blank'>trilha de conhecimento</a>,<a href='/respiracao_guiada/' target='_blank'> exercícios de respiração </a> e um <a href='/pomodoro.html' target='_blank'>  Pomodoro adaptado para você </a>.",
+        "critico": "É fundamental procurar ajuda médica agora. Enquanto isso, você pode acessar nossa  <a href='/trilha/' target='_blank'>trilha de conhecimento</a> e, se sentir confortável, usar a <a href='/respiracao_guiada/' target='_blank'> respiração guiada </a> como primeiro passo de autocuidado.",
     }
     
     if score <= 20:
         icon = icons["none"]
-        result_text = "Parabéns! Seu nível de estresse está bem equilibrado, sem sinais de Burnout."
+        result_text = mensagens["none"]
         title = "Tudo sob controle! Continue assim"
         image = imagens["none"]
         user_message = mensagens["none"]
     
     elif 21 <= score <= 30:
-        result_text = "Possibilidade de desenvolver recomendações de prevenção da Síndrome de Burnout."
+        result_text = mensagens["cuidado"]
         icon = icons["cuidado"]
         title = "Fique de olho! Pequenos sinais de estresse"
         image = imagens["cuidado"]
@@ -184,21 +184,21 @@ def resultado_view(request, score):
 
     elif 31 <= score <= 40:
         icon = icons["alerta"]
-        result_text = "Atenção! Alguns sintomas de Burnout podem começar a aparecer. "
+        result_text = mensagens["alerta"]
         title = "Possível Risco de Burnout! Hora de Prevenir"
         image = imagens["alerta"]
         user_message = mensagens["alerta"]
 
     elif 41 <= score <= 50:
         icon = icons["atencao"]
-        result_text = "Atenção! Alguns sintomas de Burnout podem começar a aparecer. "
+        result_text = mensagens["atencao"]
         title = "Risco Alto de Burnout! Procure Ajuda "
         image = imagens["atencao"]
         user_message = mensagens["atencao"]
 
     elif 51 <= score <= 60:
         icon = icons["critico"]
-        result_text = "Você pode estar em uma fase considerável do Burnout. Procure tratamento."
+        result_text =  mensagens["critico"]
         title = "Nível Crítico de Burnout! Procure Ajuda "
         image = imagens["critico"]
         user_message = mensagens["critico"]
