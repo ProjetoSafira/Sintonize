@@ -167,8 +167,7 @@ def resultado_view(request, score):
         "atencao": "Sabemos que esse momento pode ser difícil. Recomendamos consultar um profissional e, aqui no site, você pode encontrar apoio com a <a href='/trilha/' target='_blank'>trilha de conhecimento</a>,<a href='/respiracao_guiada/' target='_blank'> exercícios de respiração </a> e um <a href='/pomodoro.html' target='_blank'>  Pomodoro adaptado para você </a>.",
         "critico": "É fundamental procurar ajuda médica agora. Enquanto isso, você pode acessar nossa  <a href='/trilha/' target='_blank'>trilha de conhecimento</a> e, se sentir confortável, usar a <a href='/respiracao_guiada/' target='_blank'> respiração guiada </a> como primeiro passo de autocuidado.",
     }
-
-    # Determine o texto do resultado, a imagem e a mensagem com base na pontuação
+    
     if score <= 20:
         icon = icons["none"]
         result_text = mensagens["none"]
