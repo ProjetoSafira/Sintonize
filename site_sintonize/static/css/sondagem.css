@@ -1257,7 +1257,11 @@ body {
     align-self: stretch;
 }
 
-.health-burnout-title ::before {
+.health-burnout-title {
+    position: relative;
+}
+
+.health-burnout-title::before {
     content: '';
     position: absolute;
     width: 47px;
@@ -1496,6 +1500,7 @@ body {
     }
 }
 
+
 @media screen and (max-width: 768px) {
     .health-burnout-container {
         padding: 80px 20px;
@@ -1507,9 +1512,24 @@ body {
         padding: 0 10px;
     }
 
+    .health-burnout-title {
+        position: relative;
+        left:15px;
+    }
+
+    .health-burnout-title::before {
+        left:-50px;
+        top: 50%;
+        width: 100px;
+        height: 6px;
+        background-color: #F8B490;
+        transform: rotate(-90deg);
+        border-radius: 4px;
+    }
+
     .health-burnout-title h2 {
         font-size: 32px;
-        margin-left: 20px;
+        margin-left: 10px;
         width: calc(100% - 40px);
         word-wrap: break-word;
         overflow-wrap: break-word;
@@ -1540,6 +1560,40 @@ body {
         width: 200px;
         right: -150px;
     }
+}
+@media screen and (max-width: 430px) {
+    .health-burnout-title {
+        position: relative;
+        left:10px;
+        width:375px;
+        display: flex;
+    }
+
+    .health-burnout-title::before {
+        left:-80px;
+        width: 160px; 
+    }
+
+    .health-burnout-title h2 {
+        color: var(--Primary-Pressed---500, #204551);
+        font-family: 'Nunito';
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 125%;
+        letter-spacing: 0.25px;
+    }
+
+    .health-burnout-text p {
+        color: var(--Neutral-colors-Black-Colors-200, #3B3E43);
+        font-family: 'Roboto';
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 143%;
+        letter-spacing: 0.17px;
+    }
+
 }
 
 @media screen and (max-width: 430px) {
