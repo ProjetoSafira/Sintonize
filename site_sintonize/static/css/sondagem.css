@@ -909,6 +909,37 @@ body {
         width: 100%;
         height: auto;
     }
+
+    .sondagem-title {
+        font-size: 20px !important;
+        padding-left: 10px;
+        margin-bottom: 20px;
+        line-height: 1.2;
+        margin-top: 0;
+        text-align: left;
+        word-break: break-word;
+        max-width: 100%;
+    }
+    .sondagem-title::before {
+        left: -8px;
+        top: 10px;
+        width: 24px;
+        height: 4px;
+        background-color: #F8B490;
+        border-radius: 2px;
+        transform: rotate(-90deg);
+    }
+    .sondagem-container {
+        padding: 0 8px 32px 8px; /* padding extra embaixo */
+    }
+    .sondagem-text {
+        height: auto !important;
+        margin-bottom: 40px !important;
+        padding-bottom: 16px;
+    }
+    .sondagem-container {
+        padding-bottom: 32px !important;
+    }
 }
 
 @media screen and (max-width: 600px) {
