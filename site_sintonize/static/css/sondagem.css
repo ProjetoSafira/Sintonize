@@ -32,7 +32,7 @@ body {
     height: 95%;
     background: url('../images/sondagem/union.png') center/cover no-repeat;
     /* Alterado para cover */
-    background-position: center bottom;
+    background-position: center bottom; 
     z-index: 4;
 }
 
@@ -74,14 +74,13 @@ body {
     color: #FEFEFE;
     text-align: center;
     font-family: "Wix Madefor Display";
-    font-size: clamp(40px, 5vw, 64px);
+    font-size: clamp(32px, 5vw, 64px);
     font-style: normal;
     font-weight: 700;
     line-height: 125%;
     letter-spacing: -0.5px;
     margin-bottom: 2rem;
     margin-top: 0;
-    /* Garantir que não tenha margem superior */
 }
 
 .decorative-bar {
@@ -121,28 +120,13 @@ body {
     display: block;
 }
 
-@media screen and (max-width: 430px) {
-    .text-desktop {
-        display: none;
-    }
-    .text-mobile {
-        display: block;
-        font-size: 15px;
-        line-height: 1.5;
-    }
-    .hero-text {
-        padding: 0 10px;
-        margin: 1rem auto 0 auto;
-    }
-}
+
 
 .sondagem-content {
     position: relative;
     background: var(--Neutral-colors-Gray-Colors-100, #F3F4F6);
-    /* Alterado o background */
     padding: 80px 0;
     margin-top: 0;
-    /* Removido margin-top */
     z-index: 2;
     width: 100vw;
     max-width: 100%;
@@ -842,7 +826,7 @@ body {
     }
 
     .hero-text {
-        font-size: 16px;
+        font-size: 50px;
         padding: 10px;
     }
 
@@ -978,19 +962,23 @@ body {
 }
 
 @media screen and (max-width: 430px) {
-    .main-title {
-        font-size: 32px;
-        line-height: 1.2;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: auto;
+    .text-desktop {
+        display: none;
+    }
+    .text-mobile {
+        display: block;
+        font-size: 20px !important;
+        line-height: 1.5;
+    }
+    .hero-text {
         padding: 0 10px;
-        margin-bottom: 1.5rem;
-        margin-top: 0;
-        word-break: break-word;
+        margin: 1rem auto 0 auto;
+    }
+    .container-sondagem .hero-text .text-mobile {
+        font-size: 20px !important;
+    }
+    .main-title {
+        font-size: 48px !important;
     }
     .hero-text-desktop {
         display: none;
@@ -1003,8 +991,15 @@ body {
         padding: 0 10px;
         margin: 1rem auto 0 auto;
     }
+    .decorative-bar {
+        margin: 1rem auto;
+        width: 80px;
+        height: 4px;
+    }
+    .wave-wrapper {
+        display: none;
+    }
 }
-
 /* Estilos para a seção de avaliação de satisfação */
 .avaliacao-satisfacao-section {
     width: 100%;
@@ -1501,18 +1496,7 @@ body {
 
 @media screen and (max-width: 430px) {
     .main-title {
-        font-size: 32px;
-        line-height: 1.2;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: auto;
-        padding: 0 10px;
-        margin-bottom: 1.5rem;
-        margin-top: 0;
-        word-break: break-word;
+        font-size: 48px !important;
     }
     .hero-text-desktop {
         display: none;
