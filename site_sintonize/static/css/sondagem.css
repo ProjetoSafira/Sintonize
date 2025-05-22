@@ -316,6 +316,7 @@ body {
         gap: 24px;
         align-items: center;
         text-align: center;
+        
     }
 
     .autoavaliacao-titulo-texto h1 {
@@ -388,19 +389,6 @@ body {
 }
 
 
-/* Responsividade */
-@media (max-width: 768px) {
-    .sondagem-title {
-        font-size: 32px;
-        padding-left: 15px;
-
-    }
-
-    .sondagem-text {
-        font-size: 16px;
-    }
-}
-
 /* Adicionando media query específica para tela de 853px */
 @media screen and (max-width: 1024px) {
     .hero-section {
@@ -436,12 +424,6 @@ body {
     .decorative-bar {
         margin: 1.5rem auto;
     }
-
-    .sondagem-title {
-        font-size: 32px;
-        padding-left: 15px;
-    }
-
     .decorative-right {
         width: 500px;
         right: -400px;
@@ -746,19 +728,7 @@ body {
     }
 }
 
-/* Ajuste para telas maiores */
-@media screen and (min-width: 1920px) {
-    .sondagem-content {
-        display: flex;
-        justify-content: center;
-    }
 
-    .sondagem-container {
-        width: 100%;
-        max-width: 1440px;
-        /* Aumentado para telas maiores */
-    }
-}
 
 /* Media Queries */
 @media screen and (max-width: 1200px) {
@@ -766,9 +736,6 @@ body {
         padding: 60px 20px;
     }
 
-    .sondagem-container {
-        padding: 120px 20px;
-    }
 }
 
 @media screen and (max-width: 820px) {
@@ -977,44 +944,6 @@ body {
         margin: 20px auto;
         width: 100%;
         height: auto;
-    }
-
-    .sondagem-title {
-        font-size: 32px !important;
-        padding: 96px 16px;
-        margin-bottom: 20px;
-        right: -15px;
-        line-height: 1.2;
-        margin-top: 0;
-        text-align: left;
-        word-break: break-word;
-        max-width: 100%;
-    }
-
-    .sondagem-title::before {
-        left: -67px;
-        margin-top: 50px;
-        width: 120px;
-        height: 4px;
-        background-color: #F8B490;
-        border-radius: 4px;
-        transform: rotate(-90deg);
-    }
-
-    .sondagem-container {
-        padding: 0 8px 32px 8px;
-        /* padding extra embaixo */
-    }
-
-    .sondagem-text {
-        margin-top: 42px !important;
-        margin-bottom: 40px !important;
-        height: auto !important;
-        padding-bottom: 16px;
-    }
-
-    .sondagem-container {
-        padding-bottom: 32px !important;
     }
 }
 
@@ -1709,15 +1638,6 @@ body {
         max-height: 100vh;
     }
 
-    .container-sondagem {
-        padding: 10px 15px 20px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: auto;
-    }
-
     .main-title {
         font-size: 26px;
         margin-bottom: 1rem;
@@ -1920,6 +1840,20 @@ body {
 }
 
 /* Tablet grande (max-width: 1024px) */
+/* Ajuste para telas maiores */
+@media screen and (min-width: 1920px) {
+    .sondagem-content {
+        display: flex;
+        justify-content: center;
+    }
+
+    .sondagem-container {
+        width: 100%;
+        max-width: 1440px;
+        /* Aumentado para telas maiores */
+    }
+}
+
 @media screen and (max-width: 1024px) {
     .sondagem-title {
         font-size: 32px;
@@ -1962,6 +1896,7 @@ body {
         height: auto;
     }
 }
+
 
 @media screen and (max-width: 540px) {
     .sondagem-title {
@@ -2059,6 +1994,43 @@ body {
         font-weight: 400;
         line-height: 143%;
         letter-spacing: 0.17px;
+    }
+
+    .sondagem-container {
+        padding-bottom: 32px !important;
+    }
+    .sondagem-title {
+        font-size: 32px !important;
+        padding: 96px 16px;
+        margin-bottom: 20px;
+        right: -15px;
+        line-height: 1.2;
+        margin-top: 0;
+        text-align: left;
+        word-break: break-word;
+        max-width: 100%;
+    }
+
+    .sondagem-title::before {
+        left: -67px;
+        margin-top: 50px;
+        width: 120px;
+        height: 4px;
+        background-color: #F8B490;
+        border-radius: 4px;
+        transform: rotate(-90deg);
+    }
+
+    .sondagem-container {
+        padding: 0 8px 32px 8px;
+        /* padding extra embaixo */
+    }
+
+    .sondagem-text {
+        margin-top: 42px !important;
+        margin-bottom: 40px !important;
+        height: auto !important;
+        padding-bottom: 16px;
     }
 
     .sondagem-container {
