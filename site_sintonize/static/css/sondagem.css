@@ -186,6 +186,7 @@ body {
 }
 
 /*autoavaliação*/
+
 .autoavaliacao-section {
     width: 100%;
     height: auto;
@@ -212,14 +213,15 @@ body {
 }
 
 /* Estilo para a imagem */
-.img-autoavaliacao img {
+.img-autoavaliacao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    max-width: 270px;
-    height: auto;
-    margin-bottom: 16px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 583px;
+    height: 500px;
+    flex-shrink: 0;
+    filter: drop-shadow(0px 4px 40px rgba(0, 0, 0, 0.25));
 }
 
 /* Estilo para o texto */
@@ -2095,9 +2097,9 @@ body {
       justify-content: flex-start !important;
     }
   
-    .img-autoavaliacao {
-      width: 20% !important;
-      max-width: 170px !important;
+    .img-autoavaliacao img{
+      width: 100% !important;
+      max-width: 314.5px !important;
       height: auto !important;
       margin: 0 auto 16px auto !important;
       display: flex !important;
@@ -2108,7 +2110,7 @@ body {
 
     .autoavaliacao-titulo-texto {
       width: 100% !important;
-      max-width: 340px !important;
+      max-width: 329px !important;
       align-items: center !important;
       gap: 12px !important;
       margin: 0 auto 8px auto !important;
@@ -2118,19 +2120,26 @@ body {
     }
   
     .autoavaliacao-titulo-texto h1 {
-      font-size: 34px !important;
-      line-height: 1.2 !important;
-      width: 100% !important;
-      height: auto !important;
-      text-align: center !important;
-      margin-bottom: 0 !important;
+        color: var(--Neutral-colors-Black-Colors-400, #292B2F);
+        font-family: 'Nunito';
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 125%;
+        letter-spacing: 0.25px;
+        text-align: left !important;
     }
   
     .autoavaliacao-titulo-texto p {
-      font-size: 15px !important;
-      width: 100% !important;
-      text-align: center !important;
-      margin: 0 !important;
+        color: var(--Neutral-colors-Black-Colors-400, #292B2F);
+        width: 329px;
+        font-family: 'Roboto';
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
+        text-align: left  !important;
+        width: 329px;
     }
   
     .autoavaliacao-btn {
