@@ -2042,6 +2042,47 @@ body {
     }
 }
 
+@media (max-width: 1024px) {
+    .autoavaliacao-content {
+        flex-direction: column;
+        width: 95%;
+        padding: 60px 0;
+        gap: 24px;
+    }
+
+    .img-autoavaliacao {
+        width: 90%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .autoavaliacao-titulo-texto {
+        width: 100%;
+        gap: 20px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .autoavaliacao-titulo-texto h1 {
+        font-size: 36px;
+        line-height: 120%;
+    }
+
+    .autoavaliacao-titulo-texto p {
+        font-size: 15px;
+        line-height: 150%;
+    }
+
+    .autoavaliacao-titulo-texto button,
+    .autoavaliacao-titulo-texto .button-class { /* ajuste para o botão */
+        width: 100%;
+        max-width: 300px;
+        font-size: 16px;
+        align-items: center;
+    
+    }
+}
+
 @media (max-width: 768px) {
     .autoavaliacao-content {
         flex-direction: column;
