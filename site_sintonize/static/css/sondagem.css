@@ -184,6 +184,7 @@ body {
 .sondagem-text p:last-child {
     margin-bottom: 0;
 }
+
 /*autoavaliação*/
 .autoavaliacao-section {
     width: 100%;
@@ -211,14 +212,14 @@ body {
 }
 
 /* Estilo para a imagem */
-.img-autoavaliacao {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 583px;
-    height: 500px;
-    flex-shrink: 0;
-    filter: drop-shadow(0px 4px 40px rgba(0, 0, 0, 0.25));
+.img-autoavaliacao img {
+    width: 100%;
+    max-width: 270px;
+    height: auto;
+    margin-bottom: 16px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Estilo para o texto */
@@ -299,106 +300,6 @@ body {
 }
 
 /* Responsividade */
-@media (max-width: 768px) {
-    .sondagem-title {
-        font-size: 32px;
-        padding-left: 15px;
-        @media (max-width: 768px) {
-            .autoavaliacao-content {
-                flex-direction: column;
-                width: 90%;
-                padding: 100px 0;
-                gap: 20px;
-            }
-        
-            .img-autoavaliacao {
-                width: 100%;
-                height: auto;
-            }
-        
-            .autoavaliacao-titulo-texto {
-                width: 100%;
-                gap: 24px;
-                align-items: center;
-                text-align: center;
-                
-            }
-        
-            .autoavaliacao-titulo-texto h1 {
-                width: 100%;
-                height: auto;
-                font-size: 42px;
-                line-height: 120%;
-            }
-        
-            .autoavaliacao-titulo-texto p {
-                width: 100%;
-                font-size: 14px;
-                line-height: 150%;
-            }
-        }
-        @media (max-width: 480px) {
-            .autoavaliacao-section {
-                width: 100%;
-                height: auto;
-                padding: 96px 16px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-        
-            .autoavaliacao-content {
-                flex-direction: column;
-                width: 100%;
-                gap: 24px;
-                align-items: center;
-                justify-content: center;
-            }
-        
-            .img-autoavaliacao {
-                width: 80%;
-                max-width: 250px;
-                height: auto;
-                flex-shrink: 0;
-                object-fit: contain;
-            }
-        
-            .autoavaliacao-titulo-texto {
-                width: 100%;
-                max-width: 329px;
-                gap: 24px;
-                align-items: center;
-                text-align: center;
-            }
-        
-            .autoavaliacao-titulo-texto h1 {
-                font-family:'Nunito';
-                font-size: 32px;
-                font-weight: 600;
-                line-height: 125%;
-                letter-spacing: 0.25px;
-                width: 100%;
-                height: auto;
-                justify-content: center;
-                display: flex;
-                text-align: center;
-            }
-        
-            .autoavaliacao-titulo-texto p {
-                font-family: 'Roboto';
-                font-size: 16px;
-                font-weight: 400;
-                line-height: 150%;
-                width:
-            }
-        }
-        
-    }
-
-    .sondagem-text {
-        font-size: 16px;
-    }
-}
 
 /* Adicionando media query específica para tela de 853px */
 @media screen and (max-width: 1024px) {
@@ -1337,6 +1238,7 @@ body {
     gap: 32px;
     align-self: stretch;
 }
+
 .health-burnout-title {
     position: relative;
 }
@@ -1591,18 +1493,20 @@ body {
         width: 100%;
         padding: 0 10px;
     }
+
     .health-burnout-title {
         position: relative;
-        left:15px;
+        left: 15px;
     }
+
     .health-burnout-title::before {
-        left:-50px;
+        left: -50px;
         top: 50%;
         width: 100px;
         height: 6px;
         background-color: #F8B490;
         transform: rotate(-90deg);
-        border-radius: 4px;0
+        border-radius: 4px;
     }
 
     .health-burnout-title h2 {
@@ -1643,14 +1547,14 @@ body {
 @media screen and (max-width: 430px) {
     .health-burnout-title {
         position: relative;
-        left:10px;
-        width:375px;
+        left: 10px;
+        width: 375px;
         display: flex;
     }
 
     .health-burnout-title::before {
-        left:-80px;
-        width: 160px; 
+        left: -80px;
+        width: 160px;
     }
 
     .health-burnout-title h2 {
@@ -1901,7 +1805,7 @@ body {
    MEDIA QUERIES SONDAGEM
    ======================= */
 
-/* Desktop grande (min-width: 1920px) */
+
 @media screen and (min-width: 1920px) {
     .sondagem-content {
         display: flex;
@@ -1920,7 +1824,8 @@ body {
         padding: 120px 20px;
     }
 }
-/@media screen and (min-width: 1920px) {
+
+@media screen and (min-width: 1920px) {
     .sondagem-content {
         display: flex;
         justify-content: center;
@@ -2074,10 +1979,11 @@ body {
         line-height: 143%;
         letter-spacing: 0.17px;
     }
-    
+
     .sondagem-container {
         padding-bottom: 32px !important;
     }
+
     .sondagem-title {
         font-size: 32px !important;
         padding: 96px 16px;
@@ -2133,3 +2039,116 @@ body {
         left: 10px;
     }
 }
+
+@media (max-width: 768px) {
+    .autoavaliacao-content {
+        flex-direction: column;
+        width: 90%;
+        padding: 100px 0;
+        gap: 20px;
+    }
+
+    .img-autoavaliacao {
+        width: 100%;
+        height: auto;
+    }
+
+    .autoavaliacao-titulo-texto {
+        width: 100%;
+        gap: 24px;
+        align-items: center;
+        text-align: center;
+
+    }
+
+    .autoavaliacao-titulo-texto h1 {
+        width: 100%;
+        height: auto;
+        font-size: 42px;
+        line-height: 120%;
+    }
+
+    .autoavaliacao-titulo-texto p {
+        width: 100%;
+        font-size: 14px;
+        line-height: 150%;
+    }
+}
+@media (max-width: 480px) {
+    
+    .autoavaliacao-section {
+      width: 100% !important;
+      min-height: auto !important;
+      padding: 24px 8px !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+    }
+  
+    .autoavaliacao-content {
+      width: 100% !important;
+      max-width: 100vw !important;
+      padding: 0 !important;
+      flex-direction: column !important;
+      gap: 16px !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+    }
+  
+    .img-autoavaliacao {
+      width: 20% !important;
+      max-width: 170px !important;
+      height: auto !important;
+      margin: 0 auto 16px auto !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+  
+
+    .autoavaliacao-titulo-texto {
+      width: 100% !important;
+      max-width: 340px !important;
+      align-items: center !important;
+      gap: 12px !important;
+      margin: 0 auto 8px auto !important;
+      text-align: center !important;
+      display: flex !important;
+      flex-direction: column !important;
+    }
+  
+    .autoavaliacao-titulo-texto h1 {
+      font-size: 34px !important;
+      line-height: 1.2 !important;
+      width: 100% !important;
+      height: auto !important;
+      text-align: center !important;
+      margin-bottom: 0 !important;
+    }
+  
+    .autoavaliacao-titulo-texto p {
+      font-size: 15px !important;
+      width: 100% !important;
+      text-align: center !important;
+      margin: 0 !important;
+    }
+  
+    .autoavaliacao-btn {
+      width: 100% !important;
+      display: flex !important;
+      justify-content: center !important;
+      margin-top: 24px !important;
+    }
+  
+    .autoavaliacao-btn .btn {
+      width: 100% !important;
+      max-width: 320px !important;
+      margin: 0 auto !important;
+      padding: 14px 0 !important;
+      font-size: 16px !important;
+      border-radius: 8px !important;
+      position: static !important;
+      display: block !important;
+    }
+    
+  }
