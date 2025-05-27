@@ -82,6 +82,38 @@
     margin: 0;
 }
 
+@media (max-width: 540px) {
+    .burnout-trilha-text {
+      margin: 120px 20px 80px 20px; /* Reduz as margens laterais e superior */
+      width: auto;
+      gap: 16px;
+    }
+  
+    .burnout-trilha-text h1 {
+      font-size: 42px; /* Reduz tamanho da fonte */
+      line-height: 120%;
+      width: 100%;
+    }
+  
+    .burnout-trilha-text h1::before {
+      height: 4px;
+    }
+  
+    .burnout-trilha-text h2 {
+      font-size: 22px;
+      line-height: 140%;
+    }
+  
+    .trilha-background {
+        background-image: url('../images/trilha/Union.png');
+      height: 624px; /* Garante que o fundo cubra a tela toda */
+      background-position: center;
+    }
+    .wave-wrapper-trilha {
+        display: none;
+      }
+  }
+  
 
 .o-que-e-burnout{
     display: flex;
