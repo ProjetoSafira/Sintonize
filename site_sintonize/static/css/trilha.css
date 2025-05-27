@@ -1,9 +1,8 @@
-
 .burnout-trilha {
     width: 100%;
     min-height: 100vh;
     position: relative;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 .trilha-background {
@@ -11,7 +10,7 @@
     top: 0;
     left: 0;
     width: 100vw;
-    height: 95%; 
+    height: 95%;
     background: url('../images/trilha-background.png') center bottom / cover no-repeat;
     z-index: 0;
 }
@@ -21,7 +20,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    z-index: -2; 
+    z-index: -2;
     background: var(--Neutral-colors-Gray-Colors-100, #F3F4F6);
 }
 
@@ -43,7 +42,7 @@
 }
 
 
-.burnout-trilha-text h1{
+.burnout-trilha-text h1 {
     display: flex;
     width: 311px;
     flex-direction: column;
@@ -53,14 +52,15 @@
     font-size: 80px;
     font-style: normal;
     font-weight: 700;
-    line-height: 125%; /* 100px */
+    line-height: 125%;
+    /* 100px */
     letter-spacing: -0.5px;
     position: relative;
     margin: 0;
 }
 
-.burnout-trilha-text h1::before{
-    position:absolute;
+.burnout-trilha-text h1::before {
+    position: absolute;
     content: '';
     height: 6px;
     align-self: stretch;
@@ -70,52 +70,69 @@
     bottom: -6px;
 }
 
-.burnout-trilha-text h2{
+.burnout-trilha-text h2 {
     height: 62px;
-    align-self: stretch;    
+    align-self: stretch;
     color: #FEFEFE;
     font-family: Nunito;
     font-size: 44px;
     font-style: normal;
     font-weight: 700;
-    line-height: 160%; /* 70.4px */
+    line-height: 160%;
+    /* 70.4px */
     margin: 0;
 }
 
 @media (max-width: 540px) {
+
     .burnout-trilha-text {
-      margin: 120px 20px 80px 20px; /* Reduz as margens laterais e superior */
-      width: auto;
-      gap: 16px;
+        width: 273.52px;
+        margin: 120px 20px 80px 20px;
+        display: flex;
+      
     }
-  
+
     .burnout-trilha-text h1 {
-      font-size: 42px; /* Reduz tamanho da fonte */
-      line-height: 120%;
-      width: 100%;
+        color: var(--Neutral-colors-White-Colors-100, #FEFEFE);
+        font-family: 'Mulish';
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 120%;
     }
-  
+
     .burnout-trilha-text h1::before {
-      height: 4px;
+        height: 6px;
     }
-  
+
     .burnout-trilha-text h2 {
-      font-size: 22px;
-      line-height: 140%;
+        color: var(--Neutral-colors-White-Colors-100, #FEFEFE);
+        font-family: 'Mulish';
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 160%;
+        height: 62px;
+        flex-shrink: 0;
+        align-self: stretch;
     }
-  
+
     .trilha-background {
         background-image: url('../images/trilha/Union.png');
-      height: 624px; /* Garante que o fundo cubra a tela toda */
-      background-position: center;
+        height: 624px;
+        /* Garante que o fundo cubra a tela toda */
+        background-position: center;
     }
+
     .wave-wrapper-trilha {
         display: none;
       }
-  }
+    
   
+}
 
-.o-que-e-burnout{
+
+.o-que-e-burnout {
     display: flex;
     width: 100%;
     height: auto;
@@ -127,14 +144,14 @@
     background: #F3F4F6;
 }
 
-.o-que-e-burnout img{
+.o-que-e-burnout img {
     width: 100%;
     max-width: 519px;
     height: auto;
     flex-shrink: 0;
 }
 
-.o-que-e-burnout-container{
+.o-que-e-burnout-container {
     display: flex;
     width: 100%;
     max-width: 730px;
@@ -146,8 +163,8 @@
     margin-left: 24px;
 }
 
-.o-que-e-burnout-title::before{
-    left: -24px; 
+.o-que-e-burnout-title::before {
+    left: -24px;
     flex-shrink: 0;
     content: "";
     position: absolute;
@@ -160,25 +177,26 @@
     border-radius: 4px;
 }
 
-.o-que-e-burnout-title{
+.o-que-e-burnout-title {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     gap: 24px;
-    position:relative;
+    position: relative;
 }
 
-.o-que-e-burnout-title h2{
-    color:  #204551;
+.o-que-e-burnout-title h2 {
+    color: #204551;
     font-family: Mulish, sans-serif;
     font-size: 40px;
     font-style: normal;
     font-weight: 400;
-    line-height: 120%; /* 48px */
+    line-height: 120%;
+    /* 48px */
 }
 
-.o-que-e-burnout-title h4{
+.o-que-e-burnout-title h4 {
     width: 100%;
     max-width: 730px;
     color: #3B3E43;
@@ -186,10 +204,11 @@
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
-    line-height: 133%; /* 31.92px */
+    line-height: 133%;
+    /* 31.92px */
 }
 
-.o-que-e-burnout-text p{
+.o-que-e-burnout-text p {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -200,7 +219,8 @@
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
-    line-height: 150%; /* 30px */
+    line-height: 150%;
+    /* 30px */
 }
 
 .o-que-e-burnout-title h2,
@@ -215,30 +235,39 @@
 /* Telas pequenas (mobile) */
 @media (max-width: 768px) {
     .o-que-e-burnout {
-        flex-direction: column; /* Coloca os itens em coluna */
-        padding: 80px 20px; /* Reduz o padding */
+        flex-direction: column;
+        /* Coloca os itens em coluna */
+        padding: 80px 20px;
+        /* Reduz o padding */
     }
 
     .o-que-e-burnout img {
-        width: 80%; /* A imagem ocupa 80% da tela */
-        max-width: none; /* Remove o limite máximo de largura */
+        width: 80%;
+        /* A imagem ocupa 80% da tela */
+        max-width: none;
+        /* Remove o limite máximo de largura */
     }
 
     .o-que-e-burnout-container {
-        width: 90%; /* Aumenta a largura do container */
-        padding: 0 10%; /* Diminui o padding */
+        width: 90%;
+        /* Aumenta a largura do container */
+        padding: 0 10%;
+        /* Diminui o padding */
     }
 
     .o-que-e-burnout-title h2 {
-        font-size: 30px; /* Reduz o tamanho da fonte */
+        font-size: 30px;
+        /* Reduz o tamanho da fonte */
     }
 
     .o-que-e-burnout-title h4 {
-        font-size: 18px; /* Reduz o tamanho da fonte */
+        font-size: 18px;
+        /* Reduz o tamanho da fonte */
     }
 
     .o-que-e-burnout-text p {
-        font-size: 16px; /* Reduz o tamanho da fonte */
+        font-size: 16px;
+        /* Reduz o tamanho da fonte */
     }
 }
 
@@ -249,11 +278,13 @@
     }
 
     .o-que-e-burnout img {
-        width: 90%; /* A imagem ocupa 90% da tela */
+        width: 90%;
+        /* A imagem ocupa 90% da tela */
     }
 
     .o-que-e-burnout-title h2 {
-        font-size: 35px; /* Ajusta o tamanho da fonte */
+        font-size: 35px;
+        /* Ajusta o tamanho da fonte */
     }
 
     .o-que-e-burnout-title h4 {
@@ -420,13 +451,12 @@
 }
 
 @media (max-width: 853px) {
-  .svg-container1 {
-    margin-top: 100px;
-   
-  }
-  .texto-sintomas::before {
-    height: 230px;
-  }
+    .svg-container1 {
+        margin-top: 100px;
+
+    }
+
+    .texto-sintomas::before {
+        height: 230px;
+    }
 }
-
-
