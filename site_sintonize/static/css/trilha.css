@@ -1,3 +1,4 @@
+
 .burnout-trilha {
     width: 100%;
     min-height: 100vh;
@@ -84,11 +85,20 @@
 }
 
 @media (max-width: 540px) {
+    
+      
+    .burnout-trilha {
+        width: 100%;
+        min-height: 624px;
+        position: relative;
+        overflow: hidden;
+    }
+
     .burnout-trilha-text {
         width: 273.52px;
         margin: 120px 20px 80px 20px;
         display: flex;
-      
+        
     }
 
     .burnout-trilha-text h1 {
@@ -234,6 +244,7 @@
 
 /* Telas pequenas (mobile) */
 @media (max-width: 768px) {
+    
     .o-que-e-burnout {
         flex-direction: column;
         padding: 60px 24px;
