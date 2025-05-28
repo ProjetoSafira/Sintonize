@@ -84,7 +84,6 @@
 }
 
 @media (max-width: 540px) {
-
     .burnout-trilha-text {
         width: 273.52px;
         margin: 120px 20px 80px 20px;
@@ -134,6 +133,7 @@
 
 .o-que-e-burnout {
     display: flex;
+    flex-direction: row;
     width: 100%;
     height: auto;
     padding: 160px 80px;
@@ -144,7 +144,7 @@
     background: #F3F4F6;
 }
 
-.o-que-e-burnout img {
+.o-que-e-burnout picture  {
     width: 100%;
     max-width: 519px;
     height: auto;
@@ -236,40 +236,95 @@
 @media (max-width: 768px) {
     .o-que-e-burnout {
         flex-direction: column;
-        /* Coloca os itens em coluna */
-        padding: 80px 20px;
-        /* Reduz o padding */
+        padding: 60px 24px;
+        gap: 24px;
     }
 
-    .o-que-e-burnout img {
-        width: 80%;
-        /* A imagem ocupa 80% da tela */
-        max-width: none;
-        /* Remove o limite máximo de largura */
+    .o-que-e-burnout picture {
+        order: 2; /* 🔥 imagem vai pra baixo */
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto;
     }
 
     .o-que-e-burnout-container {
-        width: 90%;
-        /* Aumenta a largura do container */
-        padding: 0 10%;
-        /* Diminui o padding */
+        order: 1; /* 🔥 texto vai pra cima */
+        margin-left: 0;
+        width: 100%;
+        max-width: 100%;
+        gap: 24px;
+    }
+
+    .o-que-e-burnout-title::before {
+        height: 100%;
+        position: absolute;
+        left: -16px;
     }
 
     .o-que-e-burnout-title h2 {
-        font-size: 30px;
-        /* Reduz o tamanho da fonte */
+        font-size: 28px;
+        line-height: 130%;
     }
 
     .o-que-e-burnout-title h4 {
-        font-size: 18px;
-        /* Reduz o tamanho da fonte */
+        font-size: 20px;
+        line-height: 140%;
     }
 
     .o-que-e-burnout-text p {
-        font-size: 16px;
-        /* Reduz o tamanho da fonte */
+        font-size: 18px;
+        line-height: 150%;
     }
 }
+
+/* Responsividade para telas menores que 768px */
+@media (max-width: 540px) {
+    .o-que-e-burnout {
+        flex-direction: column;
+        padding: 60px 24px;
+        gap: 24px;
+    }
+
+    .o-que-e-burnout img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto;
+        order: 2; /* 🔥 Faz a imagem ir para baixo */
+    }
+
+    .o-que-e-burnout-container {
+        margin-left: 0;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        gap: 24px;
+        order: 1; /* 🔥 Faz o texto ir para cima */
+    }
+
+    .o-que-e-burnout-title::before {
+        height: 100%;
+        position: absolute;
+        left: -16px;
+    }
+
+    .o-que-e-burnout-title h2 {
+        font-size: 28px;
+        line-height: 130%;
+    }
+
+    .o-que-e-burnout-title h4 {
+        font-size: 20px;
+        line-height: 140%;
+    }
+
+    .o-que-e-burnout-text p {
+        font-size: 18px;
+        line-height: 150%;
+    }
+}
+
 
 /* Telas médias (tablets) */
 @media (max-width: 1024px) {
