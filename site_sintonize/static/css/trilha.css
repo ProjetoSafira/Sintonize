@@ -1,4 +1,3 @@
-
 .burnout-trilha {
     width: 100%;
     min-height: 100vh;
@@ -85,8 +84,8 @@
 }
 
 @media (max-width: 540px) {
-    
-      
+
+
     .burnout-trilha {
         width: 100%;
         min-height: 624px;
@@ -98,7 +97,7 @@
         width: 273.52px;
         margin: 120px 20px 80px 20px;
         display: flex;
-        
+
     }
 
     .burnout-trilha-text h1 {
@@ -135,9 +134,9 @@
 
     .wave-wrapper-trilha {
         display: none;
-      }
-    
-  
+    }
+
+
 }
 
 
@@ -154,7 +153,7 @@
     background: #F3F4F6;
 }
 
-.o-que-e-burnout picture  {
+.o-que-e-burnout picture {
     width: 100%;
     max-width: 519px;
     height: auto;
@@ -242,9 +241,31 @@
 
 /* Media queries para responsividade */
 
+/* Telas médias (tablets) */
+@media (max-width: 1024px) {
+    .o-que-e-burnout {
+        padding: 120px 40px;
+    }
+
+    .o-que-e-burnout img {
+        width: 90%;
+        /* A imagem ocupa 90% da tela */
+    }
+
+    .o-que-e-burnout-title h2 {
+        font-size: 35px;
+        /* Ajusta o tamanho da fonte */
+    }
+
+    .o-que-e-burnout-title h4 {
+        font-size: 20px;
+    }
+}
+
+
 /* Telas pequenas (mobile) */
 @media (max-width: 768px) {
-    
+
     .o-que-e-burnout {
         flex-direction: column;
         padding: 60px 24px;
@@ -252,7 +273,8 @@
     }
 
     .o-que-e-burnout picture {
-        order: 2; /* 🔥 imagem vai pra baixo */
+        order: 2;
+        /* 🔥 imagem vai pra baixo */
         width: 100%;
         max-width: 100%;
         height: auto;
@@ -260,7 +282,8 @@
     }
 
     .o-que-e-burnout-container {
-        order: 1; /* 🔥 texto vai pra cima */
+        order: 1;
+        /* 🔥 texto vai pra cima */
         margin-left: 0;
         width: 100%;
         max-width: 100%;
@@ -302,59 +325,54 @@
         max-width: 100%;
         height: auto;
         margin: 0 auto;
-        order: 2; /* 🔥 Faz a imagem ir para baixo */
+        order: 2;
+        /* 🔥 Faz a imagem ir para baixo */
     }
 
     .o-que-e-burnout-container {
-        margin-left: 0;
+        margin-left:20px;
         width: 100%;
         max-width: 100%;
         height: auto;
         gap: 24px;
-        order: 1; /* 🔥 Faz o texto ir para cima */
+        order: 1;
+        /* 🔥 Faz o texto ir para cima */
     }
 
     .o-que-e-burnout-title::before {
         height: 100%;
         position: absolute;
-        left: -16px;
+        left: -12px;
     }
 
     .o-que-e-burnout-title h2 {
-        font-size: 28px;
-        line-height: 130%;
+        color: var(--Primary-Pressed---500, #204551);
+        font-family: 'Nunito';
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 125%;
+        letter-spacing: 0.25px;
     }
 
     .o-que-e-burnout-title h4 {
-        font-size: 20px;
-        line-height: 140%;
+        color: var(--Neutral-colors-Black-Colors-500, #1F2123);
+        font-family: 'Roboto';
+        font-size: 17px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%;
+        letter-spacing: 0.15px;
     }
 
     .o-que-e-burnout-text p {
-        font-size: 18px;
-        line-height: 150%;
-    }
-}
-
-
-/* Telas médias (tablets) */
-@media (max-width: 1024px) {
-    .o-que-e-burnout {
-        padding: 120px 40px;
-    }
-
-    .o-que-e-burnout img {
-        width: 90%;
-        /* A imagem ocupa 90% da tela */
-    }
-
-    .o-que-e-burnout-title h2 {
-        font-size: 35px;
-        /* Ajusta o tamanho da fonte */
-    }
-
-    .o-que-e-burnout-title h4 {
-        font-size: 20px;
+        color: var(--Neutral-colors-Black-Colors-200, #3B3E43);
+        font-family: 'Roboto';
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 143%;
+        letter-spacing: 0.17px;
     }
 }
 
