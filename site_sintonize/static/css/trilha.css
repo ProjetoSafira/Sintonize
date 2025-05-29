@@ -238,42 +238,42 @@
     margin-bottom: 0;
 }
 
-/* Media queries para responsividade */
+/* Media queries para responsividade o quue é */
 @media (max-width: 1280px) {
     .o-que-e-burnout {
-      padding: 60px 340px;
-      gap: 40px;
+        padding: 60px 340px;
+        gap: 40px;
     }
-  
+
     .o-que-e-burnout picture {
-      max-width: 100%;
-      width: 100%;
+        max-width: 100%;
+        width: 100%;
     }
-  
+
     .o-que-e-burnout-container {
-    
-      width: 80%;
-      height: auto;
-      margin-left: 0;
+
+        width: 80%;
+        height: auto;
+        margin-left: 0;
     }
-  
+
     .o-que-e-burnout-title::before {
-      height: 100%;
+        height: 100%;
     }
-  
+
     .o-que-e-burnout-title h2 {
-      font-size: 32px;
+        font-size: 32px;
     }
-  
+
     .o-que-e-burnout-title h4 {
-      font-size: 20px;
+        font-size: 20px;
     }
-  
+
     .o-que-e-burnout-text p {
-      font-size: 18px;
+        font-size: 18px;
     }
-  }
-  
+}
+
 
 /* Telas médias (tablets) */
 @media (max-width: 1024px) {
@@ -289,7 +289,7 @@
         display: flex;
         justify-content: center;
     }
-    
+
 
     .o-que-e-burnout-container {
         order: 1;
@@ -310,7 +310,7 @@
     .o-que-e-burnout-text p {
         font-size: 18px;
         width: 90%;
-    
+
     }
 }
 
@@ -373,7 +373,7 @@
     }
 
     .o-que-e-burnout-container {
-        margin-left:20px;
+        margin-left: 20px;
         width: 100%;
         max-width: 100%;
         height: auto;
@@ -585,5 +585,87 @@
 
     .texto-sintomas::before {
         height: 230px;
+    }
+}
+
+@media (max-width: 540px) {
+    .container-sintomas {
+        padding: 60px 24px 0 34px;
+        gap: 24px;
+    }
+
+    .texto-sintomas {
+        display: flex;
+        width: 285px;
+        flex-direction: column;
+        align-items: center;
+         
+    }
+
+    .texto-sintomas h1 {
+        color: #204551;
+        font-family: 'Nunito';
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 125%;
+        letter-spacing: 0.25px;
+        margin-bottom:-20px ;
+    }
+
+    .texto-sintomas p {
+        color: var(--Neutral-colors-Black-Colors-500, #1F2123);
+        font-family: 'Roboto';
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%;
+        letter-spacing: 0.15px;
+    }
+
+    .texto-sintomas::before {
+        height: 100%;
+        top: 0;
+        width: 6px;
+    }
+
+    .sintomas-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        margin-top: 32px;
+    }
+
+    .sintoma-bloco {
+        left: 24px;
+        gap: 8px;
+    }
+
+    .sintoma-bloco img {
+        left: -24px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .titulo-sintoma {
+        font-size: 18px;
+    }
+
+    .sintoma-bloco ul {
+        font-size: 16px;
+        padding-left: 16px;
+    }
+
+    .diagnostico-section {
+        margin: 32px auto 0 auto;
+        padding: 0 16px;
+    }
+
+    .diagnostico-section h2 {
+        font-size: 24px;
+    }
+
+    .diagnostico-section p {
+        font-size: 16px;
+        height: auto;
     }
 }
