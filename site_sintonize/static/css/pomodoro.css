@@ -1,101 +1,122 @@
+/* Definição de variáveis para facilitar a responsividade */
+:root {
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 3rem;
+  --font-size-4xl: 4rem;
+}
+
+/* Reset para box-sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Estilos base */
 .pomodoro-svg-background{
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  padding: 4rem 1rem; /* espaço interno */
-  min-height: 706px; /* ou o tamanho do seu SVG */
+  padding: var(--spacing-lg) var(--spacing-sm); /* espaço interno */
+  min-height: 50vh; /* Altura relativa à viewport em vez de pixels fixos */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .pomodoro-focus-text{
-    width: 710px;
-    height: 244px;
-    flex-shrink: 0;
+  width: 100%;
+  max-width: 710px; /* Máximo em vez de fixo */
+  margin: 0 auto;
 }
 
 .pomodoro-focus-title h2{
-    width: 670px;
-    color: var(--Primary-Pressed---500, #204551);
-    text-align: center;
-    text-shadow: var(--sds-size-depth-0) var(--sds-size-depth-100) var(--sds-size-depth-100) var(--sds-color-black-200), var(--sds-size-depth-0) var(--sds-size-depth-100) var(--sds-size-depth-100) var(--sds-color-black-100);
-    font-family: "Wix Madefor Display";
-    font-size: 64px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 125%; /* 80px */
-    letter-spacing: -0.5px;
-    margin: 0;
+  width: 100%;
+  max-width: 670px; /* Máximo em vez de fixo */
+  color: var(--Primary-Pressed---500, #204551);
+  text-align: center;
+  text-shadow: var(--sds-size-depth-0) var(--sds-size-depth-100) var(--sds-size-depth-100) var(--sds-color-black-200), var(--sds-size-depth-0) var(--sds-size-depth-100) var(--sds-size-depth-100) var(--sds-color-black-100);
+  font-family: "Wix Madefor Display", sans-serif;
+  font-size: var(--font-size-4xl); /* 4rem ~= 64px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: 125%;
+  letter-spacing: -0.5px;
+  margin: 0;
 }
 
 .pomodoro-decorative-bar{
-    margin: 0 auto;
-    width: 133px;
-    height: 6px;
-    border-radius: 4px;
-    background: var(--Complementary-Red-and-orange-300, #F8B490);
-    margin-top: 28px;
-    margin-bottom: 28px;
+  margin: 0 auto;
+  width: 133px;
+  height: 6px;
+  border-radius: 4px;
+  background: var(--Complementary-Red-and-orange-300, #F8B490);
+  margin-top: 1.75rem; /* 28px */
+  margin-bottom: 1.75rem; /* 28px */
 }
 
 .pomodoro-focus-text p{
-    width: 710px;
-    height: 102px;
-    flex-shrink: 0;
-    color: var(--Primary-Defaunt---400, #3A6573);
-    text-align: center;
-    font-family: Nunito;
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 160%; /* 51.2px */
-    margin: 0;
+  width: 100%;
+  max-width: 710px; /* Máximo em vez de fixo */
+  color: var(--Primary-Defaunt---400, #3A6573);
+  text-align: center;
+  font-family: Nunito, sans-serif;
+  font-size: var(--font-size-2xl); /* 2rem ~= 32px */
+  font-style: normal;
+  font-weight: 700;
+  line-height: 160%;
+  margin: 0;
 }
 
 /* Divisor */
-
 .pomodoro-divider-section {
-    position: relative;
-    height: 143px; /* altura base das imagens */
-    z-index: 1;
-  }
+  position: relative;
+  height: 10vw; /* Altura relativa à largura da viewport */
+  min-height: 80px; /* Altura mínima para garantir visibilidade */
+  max-height: 143px; /* Altura máxima para telas grandes */
+  z-index: 1;
+  overflow: hidden; /* Evita que as imagens vazem */
+}
 
 .pomodoro-divider-image-1,
 .pomodoro-divider-image-2 {
   position: absolute;
   width: 100%;
-  height: 143px;
+  height: auto; /* Altura automática para manter proporção */
   left: 0;
-  z-index: 2; /* Ambas as imagens devem estar acima do fundo */
+  z-index: 2;
 }
+
 .pomodoro-divider-image-1 {
-    z-index: 3;
-  }
+  z-index: 3;
+}
 
-  .pomodoro-divider-image-2 {
-    top: 64px; /* ou o valor que preferir, para "empurrar" ela um pouco pra baixo */
-    z-index: 2;
-    opacity: 0.6; /* opcional, para dar um efeito de camada inferior */
-  }
-
+.pomodoro-divider-image-2 {
+  top: 30%; /* Valor relativo em vez de fixo */
+  z-index: 2;
+  opacity: 0.6;
+}
 
 /* Pomodoro Timer */
 .pomodoro-container {
   display: flex;
   width: 100%;
-  height: 1450px;
-  padding: 290px 262px;
+  min-height: 80vh; /* Altura mínima relativa à viewport */
+  padding: 10vh 5%; /* Padding relativo à viewport */
   align-items: center;
-  flex-direction:column;
-  gap: 10px;
-  flex-shrink: 0;
+  flex-direction: column;
+  gap: 0.625rem; /* 10px */
   border-radius: 12px;
   background: #F3F4F6;
   box-shadow: 0px 4px 8px 0px rgba(229, 231, 235, 0.08), 0px 2px 8px 0px rgba(0, 86, 204, 0.06);
-  z-index: 0; /* garante que ele esteja por trás */
+  z-index: 0;
   position: relative; 
-  margin-top: -70px;
+  margin-top: -4.375rem; /* -70px */
 }
 
 .pomodoro-timer{
@@ -104,10 +125,9 @@
   flex-direction: column; 
   justify-content: flex-start;
   width: 100%;
-  height: 894.25px;
-  padding: 220px 262px;
-  gap: 10px;
-  flex-shrink: 0;
+  max-width: 1200px; /* Largura máxima para telas grandes */
+  padding: 10vh 5%; /* Padding relativo à viewport */
+  gap: 0.625rem; /* 10px */
   border-radius: 12px;
   background: linear-gradient(180deg, rgba(254, 254, 254, 0.50) 0%, rgba(250, 250, 250, 0.50) 100%);
   box-shadow: 0px 4px 8px 0px rgba(229, 231, 235, 0.08), 0px 2px 8px 0px rgba(0, 86, 204, 0.06);
@@ -116,9 +136,11 @@
 /* Botões superiores */
 nav {
   display: flex;
-  justify-content: center; /* Centraliza os botões horizontalmente */
-  gap: 18px;
-  margin-top: -70px;  
+  justify-content: center;
+  flex-wrap: wrap; /* Permite quebra de linha em telas pequenas */
+  gap: 1.125rem; /* 18px */
+  margin-top: -4.375rem; /* -70px */
+  width: 100%;
 }
 
 nav button {
@@ -132,16 +154,16 @@ nav button {
   background-color: transparent;
   color: #204551;
   font-family: 'Mulish', sans-serif;
-  font-size: 20px;
+  font-size: var(--font-size-lg); /* 1.25rem ~= 20px */
   font-style: normal;
   font-weight: 700;
-  line-height: 120%; /* 24px */
+  line-height: 120%;
   border: 1.6px solid #204551;
-  border-radius: 8px; /* opcional */
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
-  position: relative; /* Garantindo que o botão tenha posicionamento */
-  z-index: 10; /* Garante que o botão fique em cima de outros elementos */
+  position: relative;
+  z-index: 10;
 }
 
 nav button:hover,
@@ -151,10 +173,10 @@ nav button.active {
 }
 
 .pomodoro-timer-image{
-  width: 511px;
-  height: 450px;
-  flex-shrink: 0;
-  margin-top: -50px;
+  width: 100%;
+  max-width: 511px; /* Máximo em vez de fixo */
+  height: auto; /* Altura automática para manter proporção */
+  margin-top: -3.125rem; /* -50px */
 }
 
 /* Cronômetro */
@@ -162,24 +184,25 @@ nav button.active {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 280px;
-  gap: 16px;
-  margin-top: -75px;
+  width: 100%;
+  max-width: 280px; /* Máximo em vez de fixo */
+  gap: 1rem; /* 16px */
+  margin-top: -4.6875rem; /* -75px */
 }
 
 .pomodoro-timer h1{
   display: flex;
-  padding: 8px;
+  padding: 0.5rem; /* 8px */
   justify-content: center;
   align-items: center;
-  gap: 2px;
+  gap: 0.125rem; /* 2px */
   align-self: stretch;
-  color:#082E49;
-  font-family: Nunito;
-  font-size: 96px;
+  color: #082E49;
+  font-family: Nunito, sans-serif;
+  font-size: 6rem; /* 96px */
   font-style: normal;
   font-weight: 700;
-  line-height: 125%; /* 120px */
+  line-height: 125%;
   letter-spacing: -0.5px;
   margin: 0px;
 }
@@ -188,10 +211,9 @@ nav button.active {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 24px;
-  width: 40.5px;
-  height: 40.5px;
-  aspect-ratio: 40.50/40.50;
+  gap: 1.5rem; /* 24px */
+  width: 100%;
+  max-width: 200px; /* Largura máxima para acomodar os botões */
 }
 
 .image-button {
@@ -201,7 +223,9 @@ nav button.active {
   padding: 0;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border-radius: 8px; /* opcional, só se quiser cantos arredondados */
+  border-radius: 8px;
+  width: 40.5px;
+  height: 40.5px;
 }
 
 .image-button:focus {
@@ -210,43 +234,165 @@ nav button.active {
 }
 
 .image-button:hover {
-  transform: scale(1.05); /* levemente maior no hover */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* sombreamento suave */
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-  .pomodoro-container {
-      padding: 5vw; /* Ajusta o padding para dispositivos menores */
-  }
-
-  .pomodoro-focus-title h2 {
-      font-size: 6vw; /* Aumenta o tamanho da fonte em telas pequenas */
-  }
-
-  .pomodoro-timer-image {
-      width: 80%; /* Reduz a imagem em telas menores */
-  }
-
-  nav button {
-      width: 40%; /* Ajusta a largura dos botões */
-  }
+.image-button img {
+  width: 100%;
+  height: auto;
 }
 
+/* Responsividade - Breakpoints aprimorados */
+/* Smartphones pequenos */
 @media (max-width: 480px) {
+  :root {
+    --font-size-4xl: 2.5rem; /* Reduz o tamanho do título */
+    --font-size-2xl: 1.25rem; /* Reduz o tamanho do parágrafo */
+  }
+  
+  .pomodoro-svg-background {
+    padding: var(--spacing-md) var(--spacing-xs);
+    min-height: 40vh;
+  }
+  
   .pomodoro-container {
-      padding: 2rem; /* Ajusta o padding ainda mais em telas muito pequenas */
+    padding: 5vh 1rem;
+    margin-top: -2rem;
   }
-
-  .pomodoro-focus-title h2 {
-      font-size: 8vw; /* Ajuste do tamanho da fonte em telas muito pequenas */
+  
+  .pomodoro-timer {
+    padding: 5vh 1rem;
   }
-
-  .pomodoro-timer-image {
-      width: 100%; /* Deixa a imagem ocupando toda a largura */
+  
+  nav {
+    flex-direction: column;
+    align-items: center;
+    margin-top: -2rem;
+    gap: 0.5rem;
   }
-
+  
   nav button {
-      width: 80%; /* Deixa os botões mais largos */
+    width: 100%;
+    max-width: 200px;
   }
+  
+  .pomodoro-timer h1 {
+    font-size: 3.5rem; /* ~56px */
+  }
+  
+  .pomodoro-decorative-bar {
+    width: 80px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .pomodoro-action-buttons {
+    gap: 1rem;
+  }
+  
+  .cronometer-container {
+    margin-top: -2rem;
+  }
+}
+
+/* Smartphones grandes */
+@media (min-width: 481px) and (max-width: 767px) {
+  :root {
+    --font-size-4xl: 3rem; /* ~48px */
+    --font-size-2xl: 1.5rem; /* ~24px */
+  }
+  
+  .pomodoro-svg-background {
+    min-height: 45vh;
+  }
+  
+  .pomodoro-container {
+    padding: 8vh 2rem;
+    margin-top: -3rem;
+  }
+  
+  .pomodoro-timer {
+    padding: 8vh 2rem;
+  }
+  
+  nav {
+    margin-top: -3rem;
+  }
+  
+  .pomodoro-timer h1 {
+    font-size: 4.5rem; /* ~72px */
+  }
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+  :root {
+    --font-size-4xl: 3.5rem; /* ~56px */
+    --font-size-2xl: 1.75rem; /* ~28px */
+  }
+  
+  .pomodoro-container {
+    padding: 15vh 3rem;
+  }
+  
+  .pomodoro-timer {
+    padding: 15vh 3rem;
+  }
+  
+  .pomodoro-timer h1 {
+    font-size: 5rem; /* ~80px */
+  }
+}
+
+/* Desktops */
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .pomodoro-container {
+    padding: 18vh 4rem;
+  }
+  
+  .pomodoro-timer {
+    padding: 18vh 4rem;
+  }
+}
+
+/* Telas grandes */
+@media (min-width: 1201px) {
+  .pomodoro-container {
+    padding: 20vh 5rem;
+  }
+  
+  .pomodoro-timer {
+    padding: 20vh 5rem;
+  }
+}
+
+/* Ajustes para orientação paisagem em dispositivos móveis */
+@media (max-height: 500px) and (orientation: landscape) {
+  .pomodoro-svg-background {
+    min-height: 100vh;
+  }
+  
+  .pomodoro-container {
+    min-height: 120vh;
+    padding: 5vh 2rem;
+  }
+  
+  .pomodoro-timer {
+    padding: 5vh 2rem;
+  }
+  
+  .pomodoro-timer h1 {
+    font-size: 3rem; /* ~48px */
+  }
+  
+  .pomodoro-timer-image {
+    max-width: 300px;
+  }
+}
+
+/* Ajuste para botões ativos */
+nav button[active="true"] {
+  background-color: #204551;
+  color: #FEFEFE;
 }
