@@ -27,18 +27,22 @@
         </div>
     </section>
 
-<section class="o-que-e-burnout">
-  <img src="{% static 'images/trilha/o-que-e.png' %}" alt="">
-  <div class="o-que-e-burnout-container">
-      <div class="o-que-e-burnout-title">
-      <h2>O que é a Síndrome de Burnout?</h2>
-      <h4>Burnout é um esgotamento físico, emocional e mental causado por estresse crônico no trabalho. Vai muito além do simples cansaço e pode afetar sua saúde de forma séria.</h4>
-  </div>
-  <div class="o-que-e-burnout-text">
-      <p>Mais do que simples cansaço, o Burnout representa um estado persistente de esgotamento que pode levar a sérios problemas de saúde mental e física, incluindo depressão, ansiedade e doenças cardiovasculares.Reconhecido pela Organização Mundial da Saúde (OMS), o Burnout é comum em profissões com alta carga emocional, como educação, saúde e serviços sociais.</p>
-  </div>
-  </div>
-</section>
+    <section class="o-que-e-burnout">
+      <picture>
+          <source media="(max-width: 768px)" srcset="{% static 'images/trilha/o-que-e-mobile.png' %}">
+          <img src="{% static 'images/trilha/o-que-e.png' %}" alt="Imagem sobre burnout">
+      </picture>
+  
+      <div class="o-que-e-burnout-container">
+          <div class="o-que-e-burnout-title">
+              <h2>O que é a Síndrome de Burnout?</h2>
+              <h4>Burnout é um esgotamento físico, emocional e mental causado por estresse crônico no trabalho. Vai muito além do simples cansaço e pode afetar sua saúde de forma séria.</h4>
+          </div>
+          <div class="o-que-e-burnout-text">
+              <p>Mais do que simples cansaço, o Burnout representa um estado persistente de esgotamento que pode levar a sérios problemas de saúde mental e física, incluindo depressão, ansiedade e doenças cardiovasculares.Reconhecido pela Organização Mundial da Saúde (OMS), o Burnout é comum em profissões com alta carga emocional, como educação, saúde e serviços sociais.</p>
+          </div>
+      </div>
+  </section> 
 
 <div class="container-sintomas">
   <div class="texto-sintomas">
