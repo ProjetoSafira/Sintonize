@@ -184,7 +184,9 @@ body {
 .sondagem-text p:last-child {
     margin-bottom: 0;
 }
+
 /*autoavaliação*/
+
 .autoavaliacao-section {
     width: 100%;
     height: auto;
@@ -215,7 +217,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 583px;
+    width: 100%;
+    max-width: 583px;
     height: 500px;
     flex-shrink: 0;
     filter: drop-shadow(0px 4px 40px rgba(0, 0, 0, 0.25));
@@ -299,106 +302,6 @@ body {
 }
 
 /* Responsividade */
-@media (max-width: 768px) {
-    .sondagem-title {
-        font-size: 32px;
-        padding-left: 15px;
-        @media (max-width: 768px) {
-            .autoavaliacao-content {
-                flex-direction: column;
-                width: 90%;
-                padding: 100px 0;
-                gap: 20px;
-            }
-        
-            .img-autoavaliacao {
-                width: 100%;
-                height: auto;
-            }
-        
-            .autoavaliacao-titulo-texto {
-                width: 100%;
-                gap: 24px;
-                align-items: center;
-                text-align: center;
-                
-            }
-        
-            .autoavaliacao-titulo-texto h1 {
-                width: 100%;
-                height: auto;
-                font-size: 42px;
-                line-height: 120%;
-            }
-        
-            .autoavaliacao-titulo-texto p {
-                width: 100%;
-                font-size: 14px;
-                line-height: 150%;
-            }
-        }
-        @media (max-width: 480px) {
-            .autoavaliacao-section {
-                width: 100%;
-                height: auto;
-                padding: 96px 16px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-        
-            .autoavaliacao-content {
-                flex-direction: column;
-                width: 100%;
-                gap: 24px;
-                align-items: center;
-                justify-content: center;
-            }
-        
-            .img-autoavaliacao {
-                width: 80%;
-                max-width: 250px;
-                height: auto;
-                flex-shrink: 0;
-                object-fit: contain;
-            }
-        
-            .autoavaliacao-titulo-texto {
-                width: 100%;
-                max-width: 329px;
-                gap: 24px;
-                align-items: center;
-                text-align: center;
-            }
-        
-            .autoavaliacao-titulo-texto h1 {
-                font-family:'Nunito';
-                font-size: 32px;
-                font-weight: 600;
-                line-height: 125%;
-                letter-spacing: 0.25px;
-                width: 100%;
-                height: auto;
-                justify-content: center;
-                display: flex;
-                text-align: center;
-            }
-        
-            .autoavaliacao-titulo-texto p {
-                font-family: 'Roboto';
-                font-size: 16px;
-                font-weight: 400;
-                line-height: 150%;
-                width:
-            }
-        }
-        
-    }
-
-    .sondagem-text {
-        font-size: 16px;
-    }
-}
 
 /* Adicionando media query específica para tela de 853px */
 @media screen and (max-width: 1024px) {
@@ -708,6 +611,53 @@ body {
     margin-top: 50px;
 }
 
+/* Responsividade para reflexao */
+@media (max-width: 1280px) {
+    .reflexao-section {
+        display: flex;
+        width: auto;
+        padding: 122px 79px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 48px;
+        flex-shrink: 0;
+        background: #FAFAFA;
+    }
+
+    .reflexao-texto-box {
+      width: 100%;
+      max-width: 98vw;
+      padding-right: 0;
+      padding-left: 0;
+    }
+  
+    .reflexao-texto {
+      width: 100%;
+      max-width: 96vw;
+      padding-left: 18px;
+      padding-right: 8px;
+    }
+  
+    .reflexao-cards-box-1,
+    .reflexao-cards-box-2 {
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      padding-bottom: 32px;
+    }
+  
+    .card-1,
+    .card-2,
+    .card-3,
+    .card-4,
+    .card-5,
+    .card-6 {
+      width: 90vw;
+      max-width: 368px;
+      min-width: 250px;
+    }
+  }
+  
 @media (max-width: 768px) {
     .reflexao-section {
         padding: 60px 20px;
@@ -907,8 +857,86 @@ body {
         margin-top: 20px;
         padding: 0 10px;
     }
+    .sondagem-title {
+        font-size: 32px !important;
+        padding: 96px 16px;
+        margin-bottom: 20px;
+        right: -15px;
+        line-height: 1.2;
+        margin-top: 0;
+        text-align: left;
+        word-break: break-word;
+        max-width: 100%;
+    }
+
+    .sondagem-title::before {
+        left: -27px;
+        margin-top: 20px;
+        width:60px;
+        height: 4px;
+        background-color: #F8B490;
+        border-radius: 4px;
+        transform: rotate(-90deg);
+    }
+
+    .sondagem-container {
+        padding: 0 8px 32px 8px;
+        /* padding extra embaixo */
+    }
+
+    .sondagem-text {
+        margin-top: 42px !important;
+        margin-bottom: 40px !important;
+        height: auto !important;
+        padding-bottom: 16px;
+    }
+
+    .sondagem-container {
+        padding-bottom: 32px !important;
+    }
+
 }
 
+@media screen and (max-width: 540px) {
+    .sondagem-title {
+        font-size: 32px !important;
+        padding: 96px 16px;
+        margin-bottom: 20px;
+        right: -15px;
+        line-height: 1.2;
+        margin-top: 0;
+        text-align: left;
+        word-break: break-word;
+        max-width: 100%;
+    }
+
+    .sondagem-title::before {
+        left: -67px;
+        margin-top: 50px;
+        width: 120px;
+        height: 4px;
+        background-color: #F8B490;
+        border-radius: 4px;
+        transform: rotate(-90deg);
+    }
+
+    .sondagem-container {
+        padding: 0 8px 32px 8px;
+        /* padding extra embaixo */
+    }
+
+    .sondagem-text {
+        margin-top: 42px !important;
+        margin-bottom: 40px !important;
+        height: auto !important;
+        padding-bottom: 16px;
+    }
+
+    .sondagem-container {
+        padding-bottom: 32px !important;
+    }
+
+}
 @media screen and (max-width: 480px) {
     .hero-section {
         padding: 70px 0 30px;
@@ -990,44 +1018,6 @@ body {
         margin: 20px auto;
         width: 100%;
         height: auto;
-    }
-
-    .sondagem-title {
-        font-size: 32px !important;
-        padding: 96px 16px;
-        margin-bottom: 20px;
-        right: -15px;
-        line-height: 1.2;
-        margin-top: 0;
-        text-align: left;
-        word-break: break-word;
-        max-width: 100%;
-    }
-
-    .sondagem-title::before {
-        left: -67px;
-        margin-top: 50px;
-        width: 120px;
-        height: 4px;
-        background-color: #F8B490;
-        border-radius: 4px;
-        transform: rotate(-90deg);
-    }
-
-    .sondagem-container {
-        padding: 0 8px 32px 8px;
-        /* padding extra embaixo */
-    }
-
-    .sondagem-text {
-        margin-top: 42px !important;
-        margin-bottom: 40px !important;
-        height: auto !important;
-        padding-bottom: 16px;
-    }
-
-    .sondagem-container {
-        padding-bottom: 32px !important;
     }
 }
 
@@ -1337,6 +1327,7 @@ body {
     gap: 32px;
     align-self: stretch;
 }
+
 .health-burnout-title {
     position: relative;
 }
@@ -1529,8 +1520,8 @@ body {
     }
 
     .health-burnout-title::before {
-        left: 0;
-        top: 50%;
+        left: -30px;
+       width: 80px;
     }
 
     .health-burnout-title h2 {
@@ -1591,18 +1582,20 @@ body {
         width: 100%;
         padding: 0 10px;
     }
+
     .health-burnout-title {
         position: relative;
-        left:15px;
+        left: 15px;
     }
+
     .health-burnout-title::before {
-        left:-50px;
+        left: -50px;
         top: 50%;
         width: 100px;
         height: 6px;
         background-color: #F8B490;
         transform: rotate(-90deg);
-        border-radius: 4px;0
+        border-radius: 4px;
     }
 
     .health-burnout-title h2 {
@@ -1643,14 +1636,14 @@ body {
 @media screen and (max-width: 430px) {
     .health-burnout-title {
         position: relative;
-        left:10px;
-        width:375px;
+        left: 0px;
+        width: 375px;
         display: flex;
     }
 
     .health-burnout-title::before {
-        left:-80px;
-        width: 160px; 
+        left: -65px;
+        width: 160px;
     }
 
     .health-burnout-title h2 {
@@ -1675,6 +1668,13 @@ body {
 
 }
 
+@media screen and (max-width: 360px) {
+    .health-burnout-title {
+      
+        left: -10px;
+        
+    }
+}
 
 @media screen and (max-width: 430px) {
     .main-title {
@@ -1901,7 +1901,6 @@ body {
    MEDIA QUERIES SONDAGEM
    ======================= */
 
-/* Desktop grande (min-width: 1920px) */
 @media screen and (min-width: 1920px) {
     .sondagem-content {
         display: flex;
@@ -1917,52 +1916,68 @@ body {
 /* Desktop pequeno (max-width: 1280px) */
 @media screen and (max-width: 1280px) {
     .sondagem-container {
-        padding: 120px 20px;
+        padding: 150px 80px;
     }
-}
-/@media screen and (min-width: 1920px) {
-    .sondagem-content {
-        display: flex;
-        justify-content: center;
-    }
-
-    .sondagem-container {
-        width: 100%;
-        max-width: 1440px;
-        /* Aumentado para telas maiores */
-    }
-}
-
-@media screen and (max-width: 1024px) {
-
-    .sondagem-title {
-        font-size: 32px;
-        padding-left: 15px;
-    }
-
-    .sondagem-container {
-        padding: 20px 15px 30px;
-        margin-top: 0;
-    }
+    
 }
 
 /* Tablet pequeno (max-width: 820px) */
 @media screen and (max-width: 820px) {
-    .sondagem-container {
-        padding: 15px 15px 30px;
+    .sondagem-title {
+        font-size: 32px !important;
+        padding: 96px 16px;
+        margin-bottom: 20px;
+        right: -15px;
+        line-height: 1.2;
+        margin-top: 0;
+        text-align: left;
+        word-break: break-word;
+        max-width: 100%;
     }
+
+    .sondagem-title::before {
+        left: -27px;
+        margin-top: 20px;
+        width:60px;
+        height: 4px;
+        background-color: #F8B490;
+        border-radius: 4px;
+        transform: rotate(-90deg);
+    }
+
+    .sondagem-container {
+        padding: 0 8px 32px 8px;
+        /* padding extra embaixo */
+    }
+
+    .sondagem-text {
+        margin-top: 42px !important;
+        margin-bottom: 40px !important;
+        height: auto !important;
+        padding-bottom: 16px;
+    }
+
+    .sondagem-container {
+        padding-bottom: 32px !important;
+    }
+
 }
+
 
 /* Tablet pequeno (max-width: 768px) */
 @media screen and (max-width: 768px) {
     .sondagem-title {
         font-size: 32px;
-        padding-left: 15px;
+      margin-bottom: -35px; 
     }
 
     .sondagem-text {
         font-size: 16px;
     }
+    .sondagem-container {
+        padding: 0px 32px 32px;
+    }
+    
 }
 
 /* Mobile grande (max-width: 600px) */
@@ -1980,54 +1995,43 @@ body {
 @media screen and (max-width: 540px) {
     .sondagem-title {
         font-size: 32px !important;
-        max-width: 350px;
         padding: 96px 16px;
         margin-bottom: 20px;
-        font-weight: 600;
-        right: 0;
+        right: -15px;
         line-height: 1.2;
         margin-top: 0;
         text-align: left;
         word-break: break-word;
-        font-family: 'Nunito';
-
+        max-width: 100%;
     }
 
     .sondagem-title::before {
-        top: 90px;
-        left: -60px;
+        left: -67px;
         margin-top: 50px;
         width: 120px;
-        height: 6px;
+        height: 4px;
         background-color: #F8B490;
         border-radius: 4px;
         transform: rotate(-90deg);
     }
 
     .sondagem-container {
-        display: flex;
-        width: 361px;
-        padding: 0 8px 48px 8px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
+        padding: 0 8px 32px 8px;
+        /* padding extra embaixo */
     }
 
     .sondagem-text {
-        color: var(--Neutral-colors-Black-Colors-200, #3B3E43);
-        font-family: 'Roboto';
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 143%;
-        letter-spacing: 0.17px;
+        margin-top: 42px !important;
+        margin-bottom: 40px !important;
+        height: auto !important;
+        padding-bottom: 16px;
     }
 
     .sondagem-container {
         padding-bottom: 32px !important;
     }
-}
 
+}
 /* Mobile pequeno (max-width: 480px) */
 @media screen and (max-width: 480px) {
     .sondagem-title {
@@ -2074,10 +2078,11 @@ body {
         line-height: 143%;
         letter-spacing: 0.17px;
     }
-    
+
     .sondagem-container {
         padding-bottom: 32px !important;
     }
+
     .sondagem-title {
         font-size: 32px !important;
         padding: 96px 16px;
@@ -2122,6 +2127,7 @@ body {
 @media screen and (max-width: 375px) {
     .sondagem-container {
         margin-top: -20px;
+        padding: 0 38px 32px 38px;
     }
 
     .sondagem-title {
@@ -2133,3 +2139,167 @@ body {
         left: 10px;
     }
 }
+
+/* =======================
+   MEDIA QUERIES AUTOAVALIACAO
+   ======================= */
+@media (max-width: 1024px) {
+    .autoavaliacao-content {
+        flex-direction: column;
+        width: 95%;
+        padding: 60px 0;
+        gap: 24px;
+    }
+
+    .img-autoavaliacao {
+        width: 90%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .autoavaliacao-titulo-texto {
+        width: 100%;
+        gap: 20px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .autoavaliacao-titulo-texto h1 {
+        font-size: 36px;
+        line-height: 120%;
+    }
+
+    .autoavaliacao-titulo-texto p {
+        font-size: 15px;
+        line-height: 150%;
+    }
+
+    .autoavaliacao-titulo-texto button,
+    .autoavaliacao-titulo-texto .button-class { /* ajuste para o botão */
+        width: 100%;
+        max-width: 300px;
+        font-size: 16px;
+        align-items: center;
+    
+    }
+}
+
+@media (max-width: 768px) {
+    .autoavaliacao-content {
+        flex-direction: column;
+        width: 90%;
+        padding: 100px 0;
+        gap: 20px;
+    }
+
+    .img-autoavaliacao {
+        width: 100%;
+        height: auto;
+    }
+
+    .autoavaliacao-titulo-texto {
+        width: 100%;
+        gap: 24px;
+        align-items: center;
+        text-align: center;
+
+    }
+
+    .autoavaliacao-titulo-texto h1 {
+        width: 100%;
+        height: auto;
+        font-size: 42px;
+        line-height: 120%;
+    }
+
+    .autoavaliacao-titulo-texto p {
+        width: 100%;
+        font-size: 14px;
+        line-height: 150%;
+    }
+}
+@media (max-width: 480px) {
+    
+    .autoavaliacao-section {
+      width: 100% !important;
+      min-height: auto !important;
+      padding: 24px 8px !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+    }
+  
+    .autoavaliacao-content {
+      width: 100% !important;
+      max-width: 100vw !important;
+      padding: 0 !important;
+      flex-direction: column !important;
+      gap: 16px !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+    }
+  
+    .img-autoavaliacao img{
+      width: 100% !important;
+      max-width: 314.5px !important;
+      height: auto !important;
+      margin: 0 auto 16px auto !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+  
+
+    .autoavaliacao-titulo-texto {
+      width: 100% !important;
+      max-width: 329px !important;
+      align-items: center !important;
+      gap: 12px !important;
+      margin: 0 auto 8px auto !important;
+      text-align: center !important;
+      display: flex !important;
+      flex-direction: column !important;
+    }
+  
+    .autoavaliacao-titulo-texto h1 {
+        color: var(--Neutral-colors-Black-Colors-400, #292B2F);
+        font-family: 'Nunito';
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 125%;
+        letter-spacing: 0.25px;
+        text-align: left !important;
+    }
+  
+    .autoavaliacao-titulo-texto p {
+        color: var(--Neutral-colors-Black-Colors-400, #292B2F);
+        width: 329px;
+        font-family: 'Roboto';
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
+        text-align: left  !important;
+        width: 329px;
+    }
+  
+    .autoavaliacao-btn {
+      width: 100% !important;
+      display: flex !important;
+      justify-content: center !important;
+      margin-top: 24px !important;
+    }
+  
+    .autoavaliacao-btn .btn {
+      width: 100% !important;
+      max-width: 320px !important;
+      margin: 0 auto !important;
+      padding: 14px 0 !important;
+      font-size: 16px !important;
+      border-radius: 8px !important;
+      position: static !important;
+      display: block !important;
+    }
+    
+  }
