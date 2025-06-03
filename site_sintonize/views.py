@@ -169,6 +169,12 @@ def resultado_view(request, score):
     }
 
     # Determine o texto do resultado, a imagem e a mensagem com base na pontuação
+    if score > 60:
+        return JsonResponse({
+            'error': True,
+            'message': 'Pontuação inválida. O score máximo permitido é 60.'
+        }, status=400)
+    
     if score <= 20:
         icon = icons["none"]
         result_text = mensagens["none"]
@@ -199,7 +205,7 @@ def resultado_view(request, score):
 
     elif 51 <= score <= 60:
         icon = icons["critico"]
-        result_text =  mensagens["critico"]
+        result_text = mensagens["critico"]
         title = "Nível Crítico de Burnout! Procure Ajuda "
         image = imagens["critico"]
         user_message = mensagens["critico"]
