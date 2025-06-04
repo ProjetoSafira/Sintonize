@@ -2,6 +2,10 @@ body {
     background-color: #F3F4F6;
 }
 
+.container {
+    background-color: #F3F4F6;
+}
+
 .session-header {
     display: flex;
     justify-content: space-between;
@@ -47,7 +51,15 @@ body {
 
 .question.active {
     display: block;
-}
+    width: 845px;
+    margin-top: 20px;
+    color: #000;
+    font-family: 'Roboto';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    }
 
 .radio-container {
     display: flex;
@@ -435,7 +447,6 @@ body {
     font-style: normal;
     font-weight: 700;
     line-height: 160%;
-    height: 64px;
     align-self: stretch;
     gap: 60px;
 }
@@ -473,7 +484,6 @@ body {
         display: none;
     }
 
- 
     .form-info h2 {
         font-family: 'Nunito';
         font-size: 32px;
@@ -481,8 +491,31 @@ body {
         font-weight: 600;
         line-height: 115%;
         letter-spacing: 0.25px;
-        width: 324px;
-        height: 114px;
+        width: 100%;
+        height: auto;
         text-align: left;
+    }
+}
+
+@media (max-width: 540px) {
+
+    .header-title-forms {
+        display: flex;
+        width: 360px;
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .header-description {
+        color: var(--Neutral-colors-Black-Colors-200, #3B3E43);
+        font-family: 'Mulish';
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 160%;
+        width: 340px;
+        height: 192px;
+        text-align: justify;
     }
 }
