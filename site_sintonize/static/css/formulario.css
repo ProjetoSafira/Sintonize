@@ -59,7 +59,7 @@ body {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    }
+}
 
 .radio-container {
     display: flex;
@@ -495,6 +495,32 @@ body {
         height: auto;
         text-align: left;
     }
+
+    .question.active {
+        display: block;
+        width: 345px;
+        text-align: left;
+    }
+
+
+    .progress-bar-container {
+        width: 100%;
+        min-width: 0;
+        padding-right: 0;
+    }
+
+    .progress-bar {
+        width: 100%;
+        height: 12px;
+        min-width: 265px;
+        flex: 1 0 0;
+    }
+
+    #progressText {
+        width: auto;
+        font-size: 16px;
+    }
+
 }
 
 @media (max-width: 540px) {
