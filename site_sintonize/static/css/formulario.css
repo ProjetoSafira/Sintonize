@@ -121,6 +121,16 @@ body {
 /* Estilo de título */
 .form-info h2 {
     margin: 0;
+    width: 845.045px;
+    height: 40.567px;
+    flex-shrink: 0;
+    color: var(--Primary-Pressed---500, #204551);
+    font-family: 'Nunito', sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 125%;
+    letter-spacing: 0.25px;
 }
 
 
@@ -451,7 +461,7 @@ body {
     border-radius: 4px;
     background-color: #F8b49d;
     margin: 15px auto;
-    gap:41px;
+    gap: 41px;
 }
 
 .container {
@@ -461,5 +471,18 @@ body {
 @media (max-width: 540px) {
     .session-header {
         display: none;
+    }
+
+ 
+    .form-info h2 {
+        font-family: 'Nunito';
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 115%;
+        letter-spacing: 0.25px;
+        width: 324px;
+        height: 114px;
+        text-align: left;
     }
 }
