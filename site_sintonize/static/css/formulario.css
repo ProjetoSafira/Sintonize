@@ -346,14 +346,6 @@ body {
 }
 
 
-/* Estilos para telas menores que 480px (smartphones) */
-
-
-.radio-container {
-    padding: 10px;
-    /* Adicione algum preenchimento para conforto */
-}
-
 
 /* Estilos gerais para telas pequenas */
 
@@ -464,4 +456,10 @@ body {
 
 .container {
     background-color: #F3F4F6;
+}
+
+@media (max-width: 540px) {
+    .session-header {
+        display: none;
+    }
 }
