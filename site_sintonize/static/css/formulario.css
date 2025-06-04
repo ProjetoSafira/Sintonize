@@ -347,38 +347,7 @@ body {
 
 
 /* Estilos para telas menores que 480px (smartphones) */
-@media (max-width: 480px) {
-    .session-title {
-        font-size: 18px;
-        /* Tamanho de fonte ainda menor */
-    }
 
-    .session-subtitle {
-        font-size: 20px;
-        /* Tamanho de fonte ainda menor */
-    }
-
-    #prevBtn,
-    #nextBtn,
-    #sendBtn {
-        width: 100%;
-        /* Botões ocupando toda a largura disponível */
-        height: auto;
-        /* Altura ajustável */
-        font-size: 18px;
-        /* Tamanho da fonte menor */
-    }
-
-    .progress-bar-container {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        /* Alinha os itens na coluna */
-        align-items: start;
-        /* Alinha os itens à esquerda */
-    }
-
-}
 
 .radio-container {
     padding: 10px;
@@ -420,46 +389,26 @@ body {
         padding: 10px;
         /* Adicione preenchimento para um layout confortável */
     }
-}
 
-@media (max-width: 480px) {
-    .session-title {
-        font-size: 18px;
-        /* Tamanho de fonte ainda menor */
+    .form-content img {
+        display: none;
     }
 
-    .session-subtitle {
-        font-size: 20px;
-        /* Tamanho de fonte ainda menor */
-    }
-
-    #prevBtn,
-    #nextBtn,
-    #sendBtn {
+    .form-info {
         width: 100%;
-        /* Botões ocupando toda a largura disponível */
-        height: auto;
-        /* Altura ajustável */
-        font-size: 18px;
-        /* Tamanho da fonte menor */
-        padding: 12px;
-        /* Ajusta padding */
-    }
-
-    .progress-bar-container {
-        width: 100%;
-        /* Assegura que a barra de progresso ocupe toda a largura */
-        flex-direction: column;
-        /* Coluna para dispositivos pequenos */
-        align-items: flex-start;
-        /* Alinha os itens à esquerda */
+        margin-left: 0;
     }
 
     .radio-container {
-        padding: 10px;
-        /* Adicione algum preenchimento para conforto */
+        width: 100%;
+    }
+
+    .radio-label {
+        width: 100%;
     }
 }
+
+
 
 /* Estilos para o cabeçalho do formulário */
 
