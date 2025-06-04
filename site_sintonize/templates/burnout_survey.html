@@ -52,7 +52,6 @@
                         {% for field in form %}
                         <div class="question {% if forloop.first %}active{% endif %}"
                             id="question-{{ forloop.counter }}"
-                            style="width: 845px; margin-top: 20px; color: #000; font-family: 'Roboto', sans-serif; font-size: 20px; font-style: normal; font-weight: 400; line-height: normal;">
                             <h3 class="text-lg ">{{ field.label }}</h3>
                             <div class="radio-container mt-4">
                                 {% for subfield in field %}
