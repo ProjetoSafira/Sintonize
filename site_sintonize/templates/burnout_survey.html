@@ -65,7 +65,7 @@
                                         <div id="progress" class="progress" style="height: 100%;"></div>
                                     </div>
                                 </div>
-                                <div class="flex space-x-2">
+                                <div class="flex space-x-2 button-footer-mobile">
                                     <button type="button" id="prevBtn"
                                         class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700"
                                         onclick="changeQuestion(-1)" style="display: none;">Voltar</button>
@@ -74,8 +74,7 @@
                                         onclick="changeQuestion(1)">Próximo</button>
                                         <button type="button" id="sendBtn"
                                         class="px-4 py-2 bg-green-500 text-white rounded hover:bg-blue-700"
-                                        style="display: none;">Enviar</button>
-                                    
+                                        style="display: none;">Enviar</button>     
                             </div>
                             
                     </form>
@@ -168,11 +167,13 @@
             if (!isOptionSelected()) {
                 // Exibe a mensagem de erro na última pergunta
                 document.getElementById(`error-${currentQuestion + 1}`).style.display = 'block';
+                document.querySelector('.form-card').classList.add('with-error-padding');
                 return; // Impede a execução do código abaixo se não houver seleção
             }
 
             // Esconde a mensagem de erro caso tenha sido exibida antes
             document.getElementById(`error-${currentQuestion + 1}`).style.display = 'none';
+            document.querySelector('.form-card').classList.remove('with-error-padding');
 
             // Calcula a pontuação da última questão antes de enviar
             calculateScore();

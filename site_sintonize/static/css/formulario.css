@@ -265,6 +265,8 @@ body {
     font-style: normal;
     font-weight: 400;
     line-height: 133%;
+    position: relative;
+
 }
 
 
@@ -479,7 +481,7 @@ body {
     background-color: #F3F4F6;
 }
 
-@media (max-width: 540px) {
+@media (max-width:540px) {
     .session-header {
         display: none;
     }
@@ -498,10 +500,40 @@ body {
 
     .question.active {
         display: block;
-        width: 345px;
+        width: 445px;
         text-align: left;
     }
 
+    .progress-bar {
+        width: 100%;
+        height: 12px;
+        min-width: 320px;
+     
+    }
+
+    .button-footer-mobile {
+        position:fixed;
+        left: 320px;
+        padding: 10px 0;
+        bottom: 80px;
+        display: flex;
+        width: 183px;
+        height: 56px;
+        padding: 16px 28px;
+        justify-content: center !important;
+        align-items: center;
+        gap: 10px;        
+    }
+}
+
+@media (max-width:400px) {
+
+
+    .question.active {
+        display: block;
+        width: 345px;
+        text-align: left;
+    }
 
     .progress-bar-container {
         width: 100%;
@@ -513,7 +545,7 @@ body {
         width: 100%;
         height: 12px;
         min-width: 265px;
-        flex: 1 0 0;
+     
     }
 
     #progressText {
@@ -521,7 +553,58 @@ body {
         font-size: 16px;
     }
 
+    #sendBtn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 120px;
+        height: 48px;
+        font-size: 20px;
+        padding: 12px 20px;
+    }
+
+    .form-card {
+        padding-bottom: 80px;
+        /* Adiciona espaço para o botão fixo */
+    }
+
+    .button-footer-mobile {
+        position:fixed;
+        left: 210px;
+        padding: 10px 0;
+        bottom: 50px;
+        display: flex;
+        width: 183px;
+        height: 56px;
+        padding: 16px 28px;
+        justify-content: center !important;
+        align-items: center;
+        gap: 10px;        
+    }
 }
+
+@media (max-width: 375px) {
+
+    .question.active {
+        display: block;
+        width: 300px;
+        text-align: left;
+    }
+
+    .progress-bar-container {
+        width: 100%;
+        min-width: 0;
+        padding-right: 0;
+    }
+
+    .progress-bar {
+        width: 100%;
+        height: 12px;
+        min-width: 200px;
+     
+    }
+  }
+
 
 @media (max-width: 540px) {
 
