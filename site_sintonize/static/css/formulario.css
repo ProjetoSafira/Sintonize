@@ -312,98 +312,81 @@ body {
 }
 
 @media (max-width: 1024px) {
-    .session-header {
-        flex-direction: column;
-        align-items: center;
-        padding: 10px 20px;
-    }
-
-    .session-title,
-    .session-subtitle {
-        width: 100%;
-        text-align: center;
-        font-size: 20px;
-    }
-
     .form-card {
-        padding: 20px;
+        width: 100%;
+        max-width:980px;
+    }
+  
+    .form-info h2 {
+        font-family: 'Nunito';
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 115%;
+        letter-spacing: 0.25px;
+        width: 100%;
+        height: auto;
+        text-align: left;
     }
 
-    .form-content {
-        flex-direction: column;
+    .question.active {
+        display: block;
+        width: 515px;
+        text-align: left;
+    }
+
+    .progress-bar {
+        width: 100%;
+        height: 12px;
+        min-width: 220px;
+     
+    }
+
+    .button-footer-mobile { 
+        left: 480px;
+        padding: 10px 0;
+        bottom: 80px;
+        display: flex;
+        width: 283px;
+        height: 56px;
+        padding: 16px 28px;
+        justify-content: center !important;
         align-items: center;
+        gap: 10px;        
     }
 
-    .form-content img {
-        max-width: 80%;
-        margin-bottom: 10px;
-    }
-
-    .form-info {
-        width: 40%;
-        margin-left: 0;
-        text-align: center;
-    }
-
-    .radio-container {
-        width: 100%;
-        padding: 0;
-    }
-
-    .radio-label {
-        width: 100%;
-        padding: 10px;
-    }
-
-    #prevBtn,
-    #nextBtn,
-    #sendBtn {
-        width: 100%;
-        font-size: 16px;
-        padding: 10px;
-    }
-
-    .progress-bar-container {
-        width: 90%;
-        margin: 0 auto;
+    .radio-container{
+        width:490px;
     }
 }
-
 
 
 /* Estilos gerais para telas pequenas */
 
 
-@media (max-width: 768px) {
+@media (max-width: 820px) {
     .session-header {
         flex-direction: column;
-        /* Muda a direção do layout para coluna */
         align-items: flex-start;
-        /* Alinha tudo à esquerda */
         padding: 10px 5%;
-        /* Ajusta padding */
+        display: none;
     }
 
     .session-title {
         font-size: 20px;
-        /* Tamanho de fonte menor */
     }
 
     .session-subtitle {
         font-size: 24px;
-        /* Tamanho de fonte menor */
         width: 100%;
-        /* Largura total para dispositivos móveis */
     }
 
     .radio-label {
         width: 100%;
-        /* Ajusta a largura para que ocupe a tela toda */
     }
 
     .form-card {
         padding: 10px;
-        /* Adicione preenchimento para um layout confortável */
     }
 
     .form-content img {
@@ -421,6 +404,38 @@ body {
 
     .radio-label {
         width: 100%;
+    }
+
+    .form-info h2 {
+        font-family: 'Nunito';
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 115%;
+        letter-spacing: 0.25px;
+        width: 100%;
+        height: auto;
+        text-align: left;
+    }
+
+    .question.active {
+        display: block;
+        width: 645px;
+        text-align: left;
+    }
+
+    .progress-bar {
+        width: 100%;
+        height: 12px;
+        min-width: 320px;
+     
+    }
+ 
+    .button-footer-mobile {
+        padding-left: 110px;
+        width: 240px;
+        align-items: left;
+        gap: 10px;        
     }
 }
 
@@ -526,7 +541,7 @@ body {
     }
 }
 
-@media (max-width:400px) {
+@media (max-width:412px){
 
 
     .question.active {
