@@ -4,6 +4,8 @@ body {
 
 .container {
     background-color: #F3F4F6;
+    padding: 0 10px 80px 10px;
+    box-sizing: border-box;
 }
 
 .session-header {
@@ -21,8 +23,8 @@ body {
     font-size: 24px;
     font-weight: 400;
     line-height: 133%;
+    box-sizing: border-box;
 }
-
 
 /* Estilo para o título da seção */
 .session-title {
@@ -32,7 +34,8 @@ body {
 
 /* Estilo para o subtítulo da seção */
 .session-subtitle {
-    width: 729px;
+    width: 100%;
+    max-width: 729px;
     flex-shrink: 0;
     color: var(--Neutral-colors-Black-Colors-400, #292B2F);
     text-align: center;
@@ -44,14 +47,14 @@ body {
     align-items: left;
 }
 
-
 .question {
     display: none;
 }
 
 .question.active {
     display: block;
-    width: 845px;
+    width: 100%;
+    max-width: 845px;
     margin-top: 20px;
     color: #000;
     font-family: 'Roboto';
@@ -59,19 +62,23 @@ body {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    box-sizing: border-box;
 }
 
 .radio-container {
     display: flex;
-    width: 845px;
+    width: 100%;
+    max-width: 845px;
     flex-direction: column;
     align-items: flex-start;
     gap: var(--spacing-spacing-4-spacing-3, 12px);
+    box-sizing: border-box;
 }
 
 .radio-label {
     display: flex;
-    width: 845px;
+    width: 100%;
+    max-width: 845px;
     height: var(--6, 48px);
     padding: 12px 10px 12px 16px;
     align-items: center;
@@ -80,6 +87,7 @@ body {
     border: 1px solid #B7BAC1;
     background: rgba(254, 254, 254, 0.50);
     backdrop-filter: blur(2px);
+    box-sizing: border-box;
 }
 
 .form-content .radio-container .radio-label input[type="radio"] {
@@ -96,11 +104,10 @@ body {
     border-color: #204551;
 }
 
-
 .form-card {
     width: 100%;
     max-width: 1411px;
-    height: 712px;
+    min-height: 712px;
     border-radius: 32px;
     justify-content: center;
     align-items: center;
@@ -109,32 +116,39 @@ body {
     fill: var(--Neutral-colors-White-Colors-100, #FEFEFE);
     filter: drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.05));
     backdrop-filter: blur(2px);
+    margin: 0 auto 60px auto;
+    padding: 20px 20px 60px 20px;
+    box-sizing: border-box;
 }
 
 .form-content {
     display: flex;
     align-items: flex-start;
-    /* Alinha ao topo */
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .form-content img {
     max-width: 40%;
     margin-right: 10px;
+    height: auto;
 }
 
 .form-info {
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 60%;
     justify-content: flex-start;
     margin-left: -20px;
+    box-sizing: border-box;
 }
 
 /* Estilo de título */
 .form-info h2 {
     margin: 0;
-    width: 845.045px;
-    height: 40.567px;
+    width: 100%;
+    max-width: 845px;
+    height: auto;
     flex-shrink: 0;
     color: var(--Primary-Pressed---500, #204551);
     font-family: 'Nunito', sans-serif;
@@ -143,16 +157,28 @@ body {
     font-weight: 600;
     line-height: 125%;
     letter-spacing: 0.25px;
+    box-sizing: border-box;
 }
-
 
 .progress-bar-container {
     display: flex;
     width: 443px;
     height: 21px;
-    padding-right: 14px;
     align-items: center;
+    gap: var(--1, 8px);
     flex-shrink: 0;
+    box-sizing: border-box;
+    margin-bottom: 0;
+}
+
+.progress-and-button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 845px;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 .progress-bar {
@@ -163,9 +189,7 @@ body {
     background: #D9D9D9;
 }
 
-
 .progress {
-
     left: 59px;
     top: 4px;
     border-radius: 10px;
@@ -203,8 +227,8 @@ body {
     font-style: normal;
     font-weight: 400;
     line-height: 24px;
+    box-sizing: border-box;
 }
-
 
 #prevBtn:hover,
 #nextBtn:hover,
@@ -238,6 +262,7 @@ body {
     font-style: normal;
     font-weight: 400;
     line-height: 133%;
+    box-sizing: border-box;
 }
 
 #nextBtn:hover,
@@ -266,7 +291,16 @@ body {
     font-weight: 400;
     line-height: 133%;
     position: relative;
+    box-sizing: border-box;
+}
 
+.button-footer-mobile {
+    display: flex;
+    gap: 10px;
+    margin-top: 0;
+    justify-content: flex-end;
+    align-items: center;
+    width: auto;
 }
 
 /* Regra geral para quando há erro - funciona em todas as telas */
@@ -279,29 +313,23 @@ body {
 @media (max-width: 1440px) {
     .radio-container {
         display: flex;
-        width: 40%;
+        width: 100%;
+        max-width: 745px;
         flex-direction: column;
         align-items: flex-start;
         gap: var(--spacing-spacing-4-spacing-3, 12px);
     }
 
     .radio-label {
-
-        width: 745px;
+        width: 100%;
+        max-width: 745px;
     }
 
     .form-info {
-
         flex-direction: column;
-        /* Para empilhar elementos verticalmente */
-        width: 594px;
-        /* Ajuste conforme necessário */
-
+        width: 60%;
         justify-content: flex-start;
-        /* Alinha ao topo */
         margin-left: -40px;
-        /* Para puxar a form-info mais próxima da imagem */
-
     }
 
     .text-lg {
@@ -311,21 +339,24 @@ body {
         font-style: normal;
         font-weight: 400;
         line-height: normal;
-        width: 745px;
+        width: 100%;
+        max-width: 745px;
     }
 
     .question.active {
         display: block;
-        width: 745px;
+        width: 100%;
+        max-width: 745px;
         text-align: left;
     }
-
 }
 
 @media (max-width: 1024px) {
     .form-card {
         width: 100%;
-        max-width:980px;
+        max-width: 980px;
+        padding: 15px 15px 50px 15px;
+        margin-bottom: 50px;
     }
   
     .form-info h2 {
@@ -342,19 +373,22 @@ body {
 
     .question.active {
         display: block;
-        width: 600px;
+        width: 100%;
+        max-width: 600px;
         text-align: left;
     }
 
     .progress-bar-container {
-        margin-left: -20px;
+        width: 100%;
+        max-width: 443px;
+        margin-left: 0;
     }
 
     .progress-bar {
         width: 100%;
+        max-width: 383px;
         height: 12px;
-        min-width: 220px;
-     
+        min-width: 300px;
     }
 
     #prevBtn, #nextBtn, #sendBtn {
@@ -364,19 +398,27 @@ body {
         font-size: 16px;
     }
 
+    .progress-and-button-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
     .button-footer-mobile { 
-       margin-left:50px;
-        bottom: 80px;
+        margin-left: 0;
+        margin-top: 0;
         display: flex;
-        width: 200px;
+        width: 100%;
+        max-width: 200px;
         height: 48px;
-        justify-content: center !important;
+        justify-content: flex-start;
         align-items: center;
         gap: 8px;        
     }
 
-    .radio-container{
-        width: 515px;
+    .radio-container {
+        width: 100%;
+        max-width: 515px;
     }
 
     .radio-label {
@@ -384,10 +426,6 @@ body {
         max-width: 515px;
     }
 }
-
-
-/* Estilos gerais para telas pequenas */
-
 
 @media (max-width: 912px) {
     .session-header {
@@ -411,7 +449,12 @@ body {
     }
 
     .form-card {
-        padding: 10px;
+        padding: 15px 15px 50px 15px;
+        margin-bottom: 40px;
+    }
+
+    .form-content {
+        flex-direction: column;
     }
 
     .form-content img {
@@ -423,7 +466,6 @@ body {
         margin-left: 0;
     }
 
-  
     .radio-container {
         width: 100%;
         max-width: 780px;
@@ -451,29 +493,47 @@ body {
 
     .question.active {
         display: block;
-        width: 645px;
+        width: 100%;
+        max-width: 645px;
         text-align: left;
+    }
+
+    .progress-bar-container {
+        width: 100%;
+        max-width: 400px;
     }
 
     .progress-bar {
         width: 100%;
         height: 12px;
-        min-width: 340px;
-     
+        min-width: 280px;
+        max-width: 350px;
     }
  
+    .progress-and-button-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
     .button-footer-mobile {
-      
-        width: 240px;
-        align-items: left;
+        width: 100%;
+        max-width: 240px;
+        justify-content: flex-start;
+        align-items: center;
         gap: 10px;        
     }
 }
 
-
 @media (max-width: 768px) {
+    .container {
+        padding: 0 5px 60px 5px;
+    }
 
-
+    .form-card {
+        padding: 10px 10px 40px 10px;
+        margin-bottom: 30px;
+    }
 
     .radio-container {
         width: 100%;
@@ -488,24 +548,35 @@ body {
         font-size: 18px;
     }
 
+    .progress-bar-container {
+        width: 100%;
+        max-width: 350px;
+    }
+
     .progress-bar {
         width: 100%;
         height: 12px;
-        min-width: 380px;
-     
+        min-width: 250px;
+        max-width: 300px;
     }
  
+    .progress-and-button-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
     .button-footer-mobile {
-        padding-left:10px;
-        width: 240px;
-        align-items: left;
+        padding-left: 0;
+        width: 100%;
+        max-width: 240px;
+        justify-content: flex-start;
+        align-items: center;
         gap: 10px;        
     }
 }
 
 /* Estilos para o cabeçalho do formulário */
-
-
 .header-title-forms {
     color: var(--Primary-Pressed---500, #204551);
     text-align: center;
@@ -543,6 +614,8 @@ body {
     margin: 0 auto;
     position: relative;
     margin-top: 182px;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 .orange-border {
@@ -554,18 +627,23 @@ body {
     gap: 41px;
 }
 
-.container {
-    background-color: #F3F4F6;
-}
-
-@media (max-width:540px) {
+@media (max-width: 540px) {
     .session-header {
         display: none;
     }
 
+    .container {
+        padding: 0 5px 80px 5px;
+    }
+
+    .form-card {
+        padding: 10px 10px 50px 10px;
+        margin-bottom: 40px;
+    }
+
     .form-info h2 {
         font-family: 'Nunito';
-        font-size: 32px;
+        font-size: 28px;
         font-style: normal;
         font-weight: 600;
         line-height: 115%;
@@ -577,20 +655,33 @@ body {
 
     .question.active {
         display: block;
-        width: 445px;
+        width: 100%;
+        max-width: 445px;
         text-align: left;
+    }
+
+    .progress-bar-container {
+        width: 100%;
+        max-width: 320px;
     }
 
     .progress-bar {
         width: 100%;
         height: 12px;
-        min-width: 320px;
-     
+        min-width: 220px;
+        max-width: 280px;
+    }
+
+    .progress-and-button-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
     }
 
     .button-footer-mobile {
-        position:fixed;
-       left: 280px;
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
         bottom: 70px;
         display: flex;
         width: 183px;
@@ -599,20 +690,41 @@ body {
         align-items: center;
         gap: 10px;        
     }
+
+    .header-title-forms {
+        display: flex;
+        width: 100%;
+        max-width: 360px;
+        flex-direction: column;
+        align-items: center;
+        font-size: 32px;
+    }
+
+    .header-description {
+        color: var(--Neutral-colors-Black-Colors-200, #3B3E43);
+        font-family: 'Mulish';
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 160%;
+        width: 100%;
+        max-width: 340px;
+        height: auto;
+        text-align: justify;
+    }
 }
 
-@media (max-width:430px){
-
+@media (max-width: 430px) {
     .form-card {
         height: auto;
         min-height: 800px;
-        padding-bottom: 50px;
-        /* Adiciona mais espaço para acomodar mensagem de erro */
+        padding: 15px 10px 80px 10px;
     }
 
     .question.active {
         display: block;
-        width: 345px;
+        width: 100%;
+        max-width: 345px;
         text-align: left;
     }
 
@@ -622,11 +734,16 @@ body {
         padding-right: 0;
     }
 
+    .progress-bar-container {
+        width: 100%;
+        max-width: 300px;
+    }
+
     .progress-bar {
         width: 100%;
         height: 12px;
-        min-width: 265px;
-     
+        min-width: 200px;
+        max-width: 260px;
     }
 
     #progressText {
@@ -634,9 +751,16 @@ body {
         font-size: 16px;
     }
 
+    .progress-and-button-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
     .button-footer-mobile {
         position: fixed;
-        left: 160px;
+        left: 50%;
+        transform: translateX(-50%);
         bottom: 100px;
         display: flex;
         width: 183px;
@@ -648,16 +772,26 @@ body {
     }
 
     /* Quando há mensagem de erro, o botão desce mais */
-    .form-card.with-error-padding .button-footer-mobile {
+    .form-content.with-error-padding .button-footer-mobile {
         bottom: 90px !important;
         transition: bottom 0.3s ease;
     }
+}
 
 @media (max-width: 375px) {
+    .container {
+        padding: 0 5px 100px 5px;
+    }
+
+    .form-card {
+        padding: 10px 5px 60px 5px;
+        margin-bottom: 50px;
+    }
 
     .question.active {
         display: block;
-        width: 300px;
+        width: 100%;
+        max-width: 300px;
         text-align: left;
     }
 
@@ -667,34 +801,37 @@ body {
         padding-right: 0;
     }
 
+    .progress-bar-container {
+        width: 100%;
+        max-width: 280px;
+    }
+
     .progress-bar {
         width: 100%;
         height: 12px;
-        min-width: 200px;
-     
+        min-width: 180px;
+        max-width: 230px;
     }
-  }
 
+    .radio-container {
+        width: 100%;
+    }
 
-@media (max-width: 540px) {
+    .radio-label {
+        width: 100%;
+        padding: 12px 10px;
+        font-size: 16px;
+    }
 
     .header-title-forms {
-        display: flex;
-        width: 360px;
-        flex-direction: column;
-        align-items: center;
-
+        font-size: 28px;
+        width: 100%;
+        max-width: 320px;
     }
 
     .header-description {
-        color: var(--Neutral-colors-Black-Colors-200, #3B3E43);
-        font-family: 'Mulish';
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 160%;
-        width: 340px;
-        height: 192px;
-        text-align: justify;
+        font-size: 16px;
+        width: 100%;
+        max-width: 300px;
     }
 }
