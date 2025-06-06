@@ -269,6 +269,11 @@ body {
 
 }
 
+/* Regra geral para quando há erro - funciona em todas as telas */
+.form-card.with-error-padding .button-footer-mobile {
+    bottom: 30px !important;
+    transition: bottom 0.3s ease;
+}
 
 /* Estilos gerais para telas pequenas */
 @media (max-width: 1440px) {
@@ -598,6 +603,12 @@ body {
 
 @media (max-width:430px){
 
+    .form-card {
+        height: auto;
+        min-height: 800px;
+        padding-bottom: 50px;
+        /* Adiciona mais espaço para acomodar mensagem de erro */
+    }
 
     .question.active {
         display: block;
@@ -623,35 +634,24 @@ body {
         font-size: 16px;
     }
 
-    #sendBtn {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        width: 120px;
-        height: 48px;
-        font-size: 20px;
-        padding: 12px 20px;
-    }
-
-    .form-card {
-        padding-bottom: 80px;
-        /* Adiciona espaço para o botão fixo */
-    }
-
     .button-footer-mobile {
-        position:fixed;
-        left: 210px;
-        padding: 10px 0;
-        bottom: 50px;
+        position: fixed;
+        left: 160px;
+        bottom: 100px;
         display: flex;
         width: 183px;
         height: 56px;
-        padding: 16px 28px;
         justify-content: center !important;
         align-items: center;
         gap: 10px;        
+        transition: bottom 0.3s ease;
     }
-}
+
+    /* Quando há mensagem de erro, o botão desce mais */
+    .form-card.with-error-padding .button-footer-mobile {
+        bottom: 90px !important;
+        transition: bottom 0.3s ease;
+    }
 
 @media (max-width: 375px) {
 
