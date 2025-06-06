@@ -311,6 +311,11 @@ body {
 
 /* Estilos gerais para telas pequenas */
 @media (max-width: 1440px) {
+    .form-content {
+        padding: 35px;
+        max-width: 1300px;
+    }
+
     .radio-container {
         display: flex;
         width: 100%;
@@ -354,6 +359,35 @@ body {
 @media (max-width: 1024px) {
     .form-card {
         width: 100%;
+        max-width: 320px;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 1279px) {
+    .progress-and-button-container {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .button-footer-mobile {
+        position: fixed; /* ou absolute, dependendo do layout */
+        bottom: 20px; /* Ajuste conforme necessário */
+        left: 80%;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 240px;
+        gap: 10px;
+        z-index: 10; /* Certifique-se de que está acima de outros elementos */
+    }
+}
+
+@media (max-width: 1050px) {
+    .form-content {
+        padding: 30px;
         max-width: 980px;
         padding: 15px 15px 50px 15px;
         margin-bottom: 50px;
