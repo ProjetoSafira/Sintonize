@@ -310,6 +310,13 @@ body {
 }
 
 /* Estilos gerais para telas pequenas */
+
+@media (min-width: 1441px) {
+ 
+    .container {
+        max-width: 1411px;
+    }
+}
 @media (max-width: 1440px) {
     .form-content {
         padding: 35px;
@@ -356,13 +363,6 @@ body {
     }
 }
 
-@media (max-width: 1024px) {
-    .form-card {
-        width: 100%;
-        max-width: 320px;
-        gap: 12px;
-    }
-}
 
 @media (max-width: 1279px) {
     .progress-and-button-container {
@@ -440,7 +440,7 @@ body {
 
     .button-footer-mobile { 
         margin-left: 0;
-        margin-top: 0;
+        bottom: 100px;
         display: flex;
         width: 100%;
         max-width: 200px;
@@ -460,6 +460,8 @@ body {
         max-width: 515px;
     }
 }
+
+
 
 @media (max-width: 912px) {
     .session-header {
@@ -555,7 +557,8 @@ body {
         max-width: 240px;
         justify-content: flex-start;
         align-items: center;
-        gap: 10px;        
+        gap: 10px;     
+        bottom:130px;   
     }
 }
 
@@ -590,7 +593,7 @@ body {
     .progress-bar {
         width: 100%;
         height: 12px;
-        min-width: 250px;
+        min-width: 400px;
         max-width: 300px;
     }
  
@@ -606,7 +609,8 @@ body {
         max-width: 240px;
         justify-content: flex-start;
         align-items: center;
-        gap: 10px;        
+        gap: 10px;    
+        bottom:60px;     
     }
 }
 
