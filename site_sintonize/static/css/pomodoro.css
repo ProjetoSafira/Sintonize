@@ -116,7 +116,7 @@
   box-shadow: 0px 4px 8px 0px rgba(229, 231, 235, 0.08), 0px 2px 8px 0px rgba(0, 86, 204, 0.06);
   z-index: 0;
   position: relative; 
-  margin-top: -4.375rem; /* -70px */
+  /* margin-top: -4.375rem; */ /* -70px - Comentado/Removido para evitar sobreposição */
 }
 
 .pomodoro-timer{
@@ -258,7 +258,7 @@ nav button.active {
   
   .pomodoro-container {
     padding: 5vh 1rem;
-    margin-top: -2rem;
+    /* margin-top: -2rem; */ /* Ajuste correspondente se necessário */
   }
   
   .pomodoro-timer {
@@ -309,7 +309,7 @@ nav button.active {
   
   .pomodoro-container {
     padding: 8vh 2rem;
-    margin-top: -3rem;
+    /* margin-top: -3rem; */ /* Ajuste correspondente se necessário */
   }
   
   .pomodoro-timer {
@@ -396,3 +396,4 @@ nav button[active="true"] {
   background-color: #204551;
   color: #FEFEFE;
 }
+
