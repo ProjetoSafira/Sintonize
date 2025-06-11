@@ -637,6 +637,7 @@ body {
     line-height: 160%;
     align-self: stretch;
     gap: 60px;
+    margin-bottom: 30px;
 }
 
 .header-wrapper {
@@ -741,14 +742,14 @@ body {
     .header-description {
         color: var(--Neutral-colors-Black-Colors-200, #3B3E43);
         font-family: 'Mulish';
-        font-size: 18px;
+        font-size: 20px;
         font-style: normal;
         font-weight: 700;
         line-height: 160%;
         width: 100%;
         max-width: 340px;
-        height: auto;
-        text-align: left;
+        height: 192px;
+        text-align: justify;
     }
 }
 
