@@ -748,7 +748,7 @@ body {
         width: 100%;
         max-width: 340px;
         height: auto;
-        text-align: justify;
+        text-align: left;
     }
 }
 
