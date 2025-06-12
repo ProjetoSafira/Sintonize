@@ -9,17 +9,8 @@
     --Primary-Desabled---100: #BDCCD1;
 
 }
-html, body {
-    background: #fff !important;   /* Fundo sempre claro */
-    color: #222 !important;        /* Texto sempre escuro */
-}
-
-@media (prefers-color-scheme: dark) {
-    html, body {
-        background: #fff !important;
-        color: #222 !important;
-    }
-    /* Se quiser, pode reforçar outras cores aqui */
+.container, .content-after-wave, .sua-vida-container {
+    background: #fff !important;
 }
 
 body {
