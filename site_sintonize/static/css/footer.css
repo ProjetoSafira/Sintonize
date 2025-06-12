@@ -16,7 +16,7 @@ footer {
     width: 100%;
     max-width: 1278px;
     padding: 10px 0;
-    align-items: center;
+    align-items: flex-start;
     flex: 1 0 0;
     flex-wrap: wrap;
 }
@@ -44,7 +44,22 @@ footer {
 @media (max-width: 768px) {
     .footer-content {
         flex-direction: column;
-        align-items: center;
+        align-items: left;
         padding: 10px;
+    }
+}
+
+@media (max-width: 540px) {
+    .footer-content {
+        padding: 5px;
+    }
+
+    .logo-container {
+        padding: 15px 5px;
+    }
+
+    .logo-container a {
+        font-size: 14px;
+        font-family: 'Roboto';
     }
 } 
