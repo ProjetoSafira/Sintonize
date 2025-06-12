@@ -167,6 +167,15 @@ def resultado_view(request, score):
         "atencao": "Sabemos que esse momento pode ser difícil. Recomendamos consultar um profissional e, aqui no site, você pode encontrar apoio com a <a href='/trilha/' target='_blank'>trilha de conhecimento</a>,<a href='/respiracao_guiada/' target='_blank'> exercícios de respiração </a> e um <a href='/pomodoro.html' target='_blank'>  Pomodoro adaptado para você </a>.",
         "critico": "É fundamental procurar ajuda médica agora. Enquanto isso, você pode acessar nossa  <a href='/trilha/' target='_blank'>trilha de conhecimento</a> e, se sentir confortável, usar a <a href='/respiracao_guiada/' target='_blank'> respiração guiada </a> como primeiro passo de autocuidado.",
     }
+
+
+    # Determine o texto do resultado, a imagem e a mensagem com base na pontuação
+    if score > 60:
+        return JsonResponse({
+            'error': True,
+            'message': 'Pontuação inválida. O score máximo permitido é 60.'
+        }, status=400)
+
     
     if score <= 20:
         icon = icons["none"]
@@ -198,7 +207,7 @@ def resultado_view(request, score):
 
     elif 51 <= score <= 60:
         icon = icons["critico"]
-        result_text =  mensagens["critico"]
+        result_text = mensagens["critico"]
         title = "Nível Crítico de Burnout! Procure Ajuda "
         image = imagens["critico"]
         user_message = mensagens["critico"]

@@ -18,14 +18,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
         rel="stylesheet">
     <title>Teste de Burnout</title>
-    <style>
-        body {
-            background-color: #F3F4F6;
-        }
-        .container {
-            background-color: #F3F4F6;
-        }
-    </style>
 </head>
 
 <body>
@@ -44,8 +36,7 @@
             <div class="p-4 form-content">
                 <img src="{% static 'images/forms/formulario.png' %}" alt="Ícone formulário">
                 <div class="form-info">
-                    <h2
-                        style="width: 845.045px; height: 40.567px; flex-shrink: 0; color: var(--Primary-Pressed---500, #204551); font-family: 'Nunito', sans-serif; font-size: 32px; font-style: normal; font-weight: 600; line-height: 125%; letter-spacing: 0.25px;">
+                    <h2>
                         Identifique sinais respondendo ao formulário.
                     </h2>
                     <form method="post" id="surveyForm">
@@ -53,7 +44,6 @@
                         {% for field in form %}
                         <div class="question {% if forloop.first %}active{% endif %}"
                             id="question-{{ forloop.counter }}"
-                            style="width: 845px; margin-top: 20px; color: #000; font-family: 'Roboto', sans-serif; font-size: 20px; font-style: normal; font-weight: 400; line-height: normal;">
                             <h3 class="text-lg ">{{ field.label }}</h3>
                             <div class="radio-container mt-4">
                                 {% for subfield in field %}
@@ -75,7 +65,7 @@
                                         <div id="progress" class="progress" style="height: 100%;"></div>
                                     </div>
                                 </div>
-                                <div class="flex space-x-2">
+                                <div class="flex space-x-2 button-footer-mobile">
                                     <button type="button" id="prevBtn"
                                         class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700"
                                         onclick="changeQuestion(-1)" style="display: none;">Voltar</button>
@@ -84,8 +74,7 @@
                                         onclick="changeQuestion(1)">Próximo</button>
                                         <button type="button" id="sendBtn"
                                         class="px-4 py-2 bg-green-500 text-white rounded hover:bg-blue-700"
-                                        style="display: none;">Enviar</button>
-                                    
+                                        style="display: none;">Enviar</button>     
                             </div>
                             
                     </form>
@@ -178,11 +167,14 @@
             if (!isOptionSelected()) {
                 // Exibe a mensagem de erro na última pergunta
                 document.getElementById(`error-${currentQuestion + 1}`).style.display = 'block';
+                document.querySelector('.form-card').classList.add('with-error-padding');
                 return; // Impede a execução do código abaixo se não houver seleção
             }
 
             // Esconde a mensagem de erro caso tenha sido exibida antes
             document.getElementById(`error-${currentQuestion + 1}`).style.display = 'none';
+            document.querySelector('.form-card').classList.remove('with-error-padding');
+
 
             // Calcula a pontuação da última questão antes de enviar
             calculateScore();

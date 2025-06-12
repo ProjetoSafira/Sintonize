@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Responsividade - Formulário</title>
+    <link rel="stylesheet" href="static/css/formulario.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Roboto:wght@400&family=Poppins:wght@400&family=Mulish:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header-wrapper">
+            <div class="header-container">
+                <h1 class="header-title-forms">Teste de Responsividade</h1>
+                <div class="orange-border"></div>
+                <p class="header-description">Este é um teste para verificar se o formulário está responsivo em diferentes tamanhos de tela</p>
+            </div>
+        </div>
+
+        <!-- Session Header -->
+        <div class="session-header">
+            <div class="session-title">Seção 1</div>
+            <div class="session-subtitle">Subtítulo da Seção</div>
+        </div>
+
+        <!-- Form Card -->
+        <div class="form-card">
+            <div class="form-content">
+                <img src="https://via.placeholder.com/400x300" alt="Imagem de teste">
+                
+                <div class="form-info">
+                    <h2>Título do Formulário</h2>
+                    
+                    <!-- Question -->
+                    <div class="question active">
+                        <p class="text-lg">Esta é uma pergunta de teste para verificar como o texto se comporta em diferentes tamanhos de tela. O texto deve se adaptar adequadamente ao tamanho da tela.</p>
+                    </div>
+
+                    <!-- Radio Options -->
+                    <div class="radio-container">
+                        <label class="radio-label">
+                            <input type="radio" name="test" class="radio-input">
+                            <span>Opção 1 - Esta é uma opção de teste</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="test" class="radio-input">
+                            <span>Opção 2 - Esta é outra opção de teste</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="test" class="radio-input">
+                            <span>Opção 3 - Esta é mais uma opção</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="test" class="radio-input">
+                            <span>Opção 4 - Última opção de teste</span>
+                        </label>
+                    </div>
+
+                    <!-- Progress Bar and Buttons Container -->
+                    <div class="progress-and-button-container">
+                        <div class="progress-bar-container">
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 50%; height: 12px;"></div>
+                            </div>
+                            <div id="progressText">1/12</div>
+                        </div>
+                        
+                        <div class="button-footer-mobile">
+                            <button id="prevBtn">Voltar</button>
+                            <button id="nextBtn">Próximo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Test Info -->
+    <div style="position: fixed; top: 10px; right: 10px; background: rgba(0,0,0,0.8); color: white; padding: 10px; border-radius: 5px; font-family: monospace; z-index: 9999;">
+        <div id="screenSize">Tamanho da tela: <span id="dimensions"></span></div>
+        <div id="breakpoint">Breakpoint: <span id="currentBreakpoint"></span></div>
+    </div>
+
+    <script>
+        // Script para mostrar informações de teste de responsividade
+        function updateScreenInfo() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            const dimensions = document.getElementById('dimensions');
+            const breakpoint = document.getElementById('currentBreakpoint');
+            
+            dimensions.textContent = `${width}x${height}`;
+            
+            // Determinar o breakpoint atual
+            if (width <= 375) {
+                breakpoint.textContent = 'Mobile Pequeno (≤375px)';
+            } else if (width <= 430) {
+                breakpoint.textContent = 'Mobile (≤430px)';
+            } else if (width <= 540) {
+                breakpoint.textContent = 'Mobile Grande (≤540px)';
+            } else if (width <= 768) {
+                breakpoint.textContent = 'Tablet (≤768px)';
+            } else if (width <= 912) {
+                breakpoint.textContent = 'Tablet Grande (≤912px)';
+            } else if (width <= 1024) {
+                breakpoint.textContent = 'Desktop Pequeno (≤1024px)';
+            } else if (width <= 1440) {
+                breakpoint.textContent = 'Desktop Médio (≤1440px)';
+            } else {
+                breakpoint.textContent = 'Desktop Grande (>1440px)';
+            }
+        }
+
+        // Atualizar informações quando a tela for redimensionada
+        window.addEventListener('resize', updateScreenInfo);
+        updateScreenInfo(); // Executar na inicialização
+    </script>
+</body>
+</html> 
