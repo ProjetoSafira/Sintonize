@@ -384,12 +384,7 @@
     }
 }
 
-    @media screen and (max-width: 480px) {
-        .background-svg {
-            width: 800px;
-            height: 400px;
-        }
-    }
+  
 
     /* Media query para telas grandes */
     @media screen and (min-width: 1442px) {
@@ -424,10 +419,7 @@
         bottom: -60px;
     }
 
-    .background-svg {
-        width: 800px;
-        height: 400px;
-    }
+   
 
     .texto-container h1 {
         font-size: 32px;
@@ -751,5 +743,12 @@
         right: -50px;
         top: 75px;
 
+    }
+    
+    .background-svg {
+        width: auto;
+        height: 656px;
+        min-height: 600px;
+        max-height: 656px;
     }
 }
