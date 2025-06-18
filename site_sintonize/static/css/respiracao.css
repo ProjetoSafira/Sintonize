@@ -425,8 +425,10 @@
     }
 
     .background-svg {
-        width: 800px;
-        height: 400px;
+        width: auto;
+        height: 600px;
+        min-height: 600px;
+        max-height: 600px;
     }
 
     .texto-container h1 {
