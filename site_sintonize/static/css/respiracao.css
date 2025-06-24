@@ -383,9 +383,6 @@
         height: 18px;
     }
 }
-
-
-
 /* Media query para telas grandes */
 @media screen and (min-width: 1442px) {
     .background-svg {
@@ -394,9 +391,7 @@
         min-height: 60vh;
         max-height: 95vh;
     }
-
-
-
+  
     .circulo-container {
         width: auto;
         height: auto;
@@ -418,8 +413,6 @@
     .curvas-background {
         bottom: -60px;
     }
-
-
 
     .texto-container h1 {
         font-size: 32px;
@@ -897,7 +890,7 @@
         top: 75px;
 
     }
-
+  
     .background-svg {
         width: auto;
         height: 656px;
