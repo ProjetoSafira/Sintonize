@@ -533,9 +533,10 @@
     }
 
     .instrucoes-titulo {
-        font-size: 20px;
-        text-align: center;
+        font-size: 32px;
+        text-align: left;
         margin-bottom: 0.5rem;
+        color: #204551;
     }
 
     .instrucoes-lista {
@@ -568,7 +569,6 @@
         margin-top: 2px;
     }
 
-
 }
 
 /* Ajustes para seção de instruções em telas de 540px */
@@ -579,7 +579,7 @@
 
     .cabecalho-instrucoes {
         display: flex;
-        width: 329px;
+        width: 100%;
         flex-direction: column;
         align-items: flex-start;
         gap: 32px;
@@ -599,7 +599,7 @@
         transform: rotate(-90deg);
         align-self: stretch;
         margin-top: 30px;
-        left: -55px;
+        left: -60px;
     }
 
     .cabecalho-instrucoes p {
@@ -610,6 +610,30 @@
         line-height: 143%;
         letter-spacing: 0.17px;
         margin-top: 50px;
+    }
+
+    .contagem-tempo-titulo h3 {
+        color: #204551;
+        font-family: 'Mulish';
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 125%;
+        text-align: left;
+        margin-bottom: -20px;
+    }
+
+    .instrucoes-lista {
+
+        height: 276px;
+        flex-shrink: 0;
+        padding: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .instrucao-item {
+        width: 260px;
     }
 }
 
