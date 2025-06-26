@@ -894,17 +894,41 @@
         height: 300px;
     }
 
+  
+}
 
-    @media screen and (max-width: 390px) {
-        .animacao-container {
-            width: 100%;
-
-        }
-
-        .respiracao-container {
-            min-height: 500px;
-            width: 100%;
-
-        }
-
+@media screen and (max-width: 390px) {
+    .animacao-container {
+        width: 100%;
     }
+
+    .respiracao-container {
+        min-height: 500px;
+        width: 100%;
+    }
+
+    .contagem-tempo-titulo,
+    .contagem-tempo-titulo h3 {
+        color: #204551;
+        font-family: 'Mulish';
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 125%;
+        text-align: left !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+        width: 100% !important;
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+    }
+    
+    .contagem-tempo-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+        width: 100% !important;
+    } 
+}
