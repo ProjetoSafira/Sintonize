@@ -883,7 +883,6 @@
         font-size: 14px;
     }
 
-
     .background-svg {
         display: none;
     }
@@ -892,9 +891,7 @@
     .animacao-container {
         width: 100%;
         height: 300px;
-    }
-
-  
+    }  
 }
 
 @media screen and (max-width: 390px) {
