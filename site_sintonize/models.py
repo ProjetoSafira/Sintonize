@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils import timezone
+from django.contrib.auth.models import User
 
 class BurnoutSurvey(models.Model):
     # Pontuação padrão (para perguntas com ordem direta)
@@ -90,3 +92,74 @@ class BurnoutSurvey(models.Model):
             self.statement_12 
         )
         return score
+
+
+class SiteAccess(models.Model):
+    """Modelo para registrar acessos ao site"""
+    
+    # Informações básicas do acesso
+    timestamp = models.DateTimeField(default=timezone.now, verbose_name="Data e Hora")
+    ip_address = models.GenericIPAddressField(verbose_name="Endereço IP")
+    
+    # Informações da página acessada
+    page_url = models.CharField(max_length=500, verbose_name="URL da Página")
+    page_title = models.CharField(max_length=200, blank=True, verbose_name="Título da Página")
+    
+    # Informações do navegador e origem
+    user_agent = models.TextField(verbose_name="User Agent")
+    referrer = models.CharField(max_length=500, blank=True, null=True, verbose_name="Referrer")
+    
+    # Informações geográficas (quando disponível)
+    country = models.CharField(max_length=100, blank=True, verbose_name="País")
+    city = models.CharField(max_length=100, blank=True, verbose_name="Cidade")
+    
+    # Informações do dispositivo
+    device_type = models.CharField(max_length=50, blank=True, verbose_name="Tipo de Dispositivo")
+    browser = models.CharField(max_length=100, blank=True, verbose_name="Navegador")
+    os = models.CharField(max_length=100, blank=True, verbose_name="Sistema Operacional")
+    
+    # Informações da sessão
+    session_id = models.CharField(max_length=40, blank=True, verbose_name="ID da Sessão")
+    is_new_session = models.BooleanField(default=True, verbose_name="Nova Sessão")
+    
+    class Meta:
+        verbose_name = "Acesso ao Site"
+        verbose_name_plural = "Acessos ao Site"
+        ordering = ['-timestamp']
+    
+    def __str__(self):
+        return f"{self.ip_address} - {self.page_url} - {self.timestamp}"
+    
+    @property
+    def is_mobile(self):
+        """Verifica se o acesso foi feito via mobile"""
+        return 'Mobile' in self.user_agent or 'Android' in self.user_agent or 'iPhone' in self.user_agent
+    
+    @property
+    def get_referrer_domain(self):
+        """Extrai o domínio do referrer"""
+        if self.referrer:
+            try:
+                from urllib.parse import urlparse
+                return urlparse(self.referrer).netloc
+            except:
+                return "Desconhecido"
+        return "Direto"
+
+
+class SiteStats(models.Model):
+    """Modelo para armazenar estatísticas agregadas do site"""
+    
+    date = models.DateField(unique=True, verbose_name="Data")
+    total_visits = models.IntegerField(default=0, verbose_name="Total de Visitas")
+    unique_visitors = models.IntegerField(default=0, verbose_name="Visitantes Únicos")
+    page_views = models.IntegerField(default=0, verbose_name="Visualizações de Página")
+    bounce_rate = models.FloatField(default=0.0, verbose_name="Taxa de Rejeição")
+    
+    class Meta:
+        verbose_name = "Estatística do Site"
+        verbose_name_plural = "Estatísticas do Site"
+        ordering = ['-date']
+    
+    def __str__(self):
+        return f"Estatísticas - {self.date}"
