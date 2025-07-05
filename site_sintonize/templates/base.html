@@ -16,6 +16,53 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <meta name="color-scheme" content="light">
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BRR6F0VRZ7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        
+        // Configurar o ID do Google Analytics (substitua GA_MEASUREMENT_ID pelo seu ID real)
+        gtag('config', 'G-BRR6F0VRZ7', {
+            page_title: '{% block page_title %}{{ request.resolver_match.url_name|default:"home" }}{% endblock %}',
+            page_location: window.location.href,
+            custom_map: {
+                'custom_parameter_1': 'section'
+            }
+        });
+        
+        // Função para rastrear eventos customizados
+        function trackEvent(action, category, label, value) {
+            gtag('event', action, {
+                event_category: category,
+                event_label: label,
+                value: value
+            });
+        }
+        
+        // Rastrear cliques no botão de sondagem
+        function trackBurnoutSurvey() {
+            trackEvent('click', 'engagement', 'burnout_survey_start', 1);
+        }
+        
+        // Rastrear downloads/exportações
+        function trackDownload(filename) {
+            trackEvent('download', 'file', filename, 1);
+        }
+        
+        // Rastrear tempo na página
+        let startTime = Date.now();
+        window.addEventListener('beforeunload', function() {
+            let timeSpent = Math.round((Date.now() - startTime) / 1000);
+            gtag('event', 'timing_complete', {
+                name: 'page_view_time',
+                value: timeSpent
+            });
+        });
+    </script>
+    
     {% block extra_css %}{% endblock %}
 </head>
 <body>

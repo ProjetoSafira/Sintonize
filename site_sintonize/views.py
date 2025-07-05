@@ -1,9 +1,14 @@
 from django.shortcuts import render, redirect
 from requests.exceptions import Timeout
 from .forms import BurnoutSurveyForm
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.contrib import messages
 from django.templatetags.static import static
+from django.contrib.auth.decorators import login_required
+from django.utils import timezone
+from datetime import datetime, timedelta
+import json
+import csv
 
 
 
@@ -214,3 +219,192 @@ def resultado_view(request, score):
 
     # Retorne um JsonResponse com os dados necessários para o modal
     return JsonResponse({'title': title, 'body': result_text, 'image': image, 'userMessage': user_message, 'icon': icon})
+
+
+@login_required
+def analytics_dashboard(request):
+    """Painel de monitoramento com Google Analytics"""
+    
+    # Dados simulados para demonstração (você pode remover após configurar o GA)
+    hoje = timezone.now().date()
+    
+    # Estatísticas básicas simuladas
+    stats = {
+        'total_visitors_today': 0,
+        'total_visitors_week': 0,
+        'total_visitors_month': 0,
+        'top_pages': [],
+        'top_referrers': [],
+        'device_breakdown': {
+            'desktop': 0,
+            'mobile': 0,
+            'tablet': 0
+        },
+        'browser_breakdown': {},
+        'last_updated': timezone.now()
+    }
+    
+    return render(request, 'analytics/dashboard.html', {
+        'stats': stats,
+        'today': hoje
+    })
+
+
+@login_required
+def analytics_export(request):
+    """Exportar dados do Google Analytics"""
+    
+    periodo = request.GET.get('periodo', 'week')  # day, week, month
+    formato = request.GET.get('formato', 'csv')   # csv, json
+    
+    # Configurar datas baseado no período
+    hoje = timezone.now().date()
+    if periodo == 'day':
+        data_inicio = hoje
+        data_fim = hoje
+    elif periodo == 'week':
+        data_inicio = hoje - timedelta(days=7)
+        data_fim = hoje
+    elif periodo == 'month':
+        data_inicio = hoje - timedelta(days=30)
+        data_fim = hoje
+    else:
+        data_inicio = hoje - timedelta(days=7)
+        data_fim = hoje
+    
+    # Dados simulados para exportação
+    dados = {
+        'periodo': {
+            'inicio': data_inicio.strftime('%Y-%m-%d'),
+            'fim': data_fim.strftime('%Y-%m-%d')
+        },
+        'resumo': {
+            'total_visitantes': 0,
+            'total_visualizacoes': 0,
+            'taxa_rejeicao': 0,
+            'tempo_medio_sessao': 0
+        },
+        'dados_diarios': [
+            # Formato: {'data': '2024-01-01', 'visitantes': 100, 'visualizacoes': 150}
+        ],
+        'paginas_populares': [
+            # Formato: {'pagina': '/', 'titulo': 'Página Inicial', 'visualizacoes': 100}
+        ],
+        'fontes_trafego': [
+            # Formato: {'fonte': 'google.com', 'visitantes': 50, 'percentual': 25.0}
+        ],
+        'dispositivos': {
+            'desktop': 0,
+            'mobile': 0,
+            'tablet': 0
+        },
+        'navegadores': {
+            # Formato: {'chrome': 60, 'firefox': 25, 'safari': 15}
+        },
+        'gerado_em': timezone.now().isoformat()
+    }
+    
+    if formato == 'json':
+        response = HttpResponse(
+            json.dumps(dados, indent=2, ensure_ascii=False),
+            content_type='application/json; charset=utf-8'
+        )
+        response['Content-Disposition'] = f'attachment; filename="analytics_sintonize_{periodo}_{hoje}.json"'
+        
+        # Rastrear download
+        return response
+    
+    elif formato == 'csv':
+        response = HttpResponse(content_type='text/csv; charset=utf-8')
+        response['Content-Disposition'] = f'attachment; filename="analytics_sintonize_{periodo}_{hoje}.csv"'
+        
+        writer = csv.writer(response)
+        
+        # Cabeçalho do CSV
+        writer.writerow(['Relatório de Analytics - Sintonize'])
+        writer.writerow(['Período:', f"{data_inicio} até {data_fim}"])
+        writer.writerow(['Gerado em:', timezone.now().strftime('%Y-%m-%d %H:%M:%S')])
+        writer.writerow([])
+        
+        # Resumo
+        writer.writerow(['RESUMO'])
+        writer.writerow(['Total de Visitantes:', dados['resumo']['total_visitantes']])
+        writer.writerow(['Total de Visualizações:', dados['resumo']['total_visualizacoes']])
+        writer.writerow(['Taxa de Rejeição:', f"{dados['resumo']['taxa_rejeicao']}%"])
+        writer.writerow(['Tempo Médio de Sessão:', f"{dados['resumo']['tempo_medio_sessao']} segundos"])
+        writer.writerow([])
+        
+        # Dados diários
+        writer.writerow(['DADOS DIÁRIOS'])
+        writer.writerow(['Data', 'Visitantes', 'Visualizações'])
+        for dia in dados['dados_diarios']:
+            writer.writerow([dia['data'], dia['visitantes'], dia['visualizacoes']])
+        writer.writerow([])
+        
+        # Páginas populares
+        writer.writerow(['PÁGINAS MAIS VISITADAS'])
+        writer.writerow(['Página', 'Título', 'Visualizações'])
+        for pagina in dados['paginas_populares']:
+            writer.writerow([pagina['pagina'], pagina['titulo'], pagina['visualizacoes']])
+        writer.writerow([])
+        
+        # Fontes de tráfego
+        writer.writerow(['FONTES DE TRÁFEGO'])
+        writer.writerow(['Fonte', 'Visitantes', 'Percentual'])
+        for fonte in dados['fontes_trafego']:
+            writer.writerow([fonte['fonte'], fonte['visitantes'], f"{fonte['percentual']}%"])
+        writer.writerow([])
+        
+        # Dispositivos
+        writer.writerow(['DISPOSITIVOS'])
+        writer.writerow(['Tipo', 'Quantidade'])
+        for dispositivo, quantidade in dados['dispositivos'].items():
+            writer.writerow([dispositivo.title(), quantidade])
+        writer.writerow([])
+        
+        # Navegadores
+        writer.writerow(['NAVEGADORES'])
+        writer.writerow(['Navegador', 'Quantidade'])
+        for navegador, quantidade in dados['navegadores'].items():
+            writer.writerow([navegador.title(), quantidade])
+        
+        return response
+    
+    else:
+        return JsonResponse({'error': 'Formato não suportado'}, status=400)
+
+
+def analytics_api(request):
+    """API para fornecer dados do Google Analytics via AJAX"""
+    
+    periodo = request.GET.get('periodo', 'week')
+    
+    # Aqui você integraria com a API do Google Analytics
+    # Por enquanto, retornamos dados simulados
+    
+    dados = {
+        'visitantes_hoje': 0,
+        'visitantes_semana': 0,
+        'visitantes_mes': 0,
+        'paginas_populares': [
+            {'pagina': '/', 'titulo': 'Página Inicial', 'visualizacoes': 0},
+            {'pagina': '/sondagem.html', 'titulo': 'Sondagem de Burnout', 'visualizacoes': 0},
+            {'pagina': '/trilha/', 'titulo': 'Trilha de Conhecimento', 'visualizacoes': 0},
+        ],
+        'fontes_trafego': [
+            {'fonte': 'Direto', 'visitantes': 0, 'percentual': 0},
+            {'fonte': 'Google', 'visitantes': 0, 'percentual': 0},
+            {'fonte': 'Redes Sociais', 'visitantes': 0, 'percentual': 0},
+        ],
+        'dispositivos': {
+            'desktop': 0,
+            'mobile': 0,
+            'tablet': 0
+        },
+        'dados_tempo_real': {
+            'usuarios_ativos': 0,
+            'paginas_ativas': []
+        }
+    }
+    
+    return JsonResponse(dados)
