@@ -180,8 +180,16 @@
 }
 
 /* secao de respiração */
-.header-respiracao {
-    fill: linear-gradient(90deg, rgba(77, 77, 77, 0.21) 22.61%, rgba(13, 13, 13, 0.00) 96.75%);
+
+.header-respiracao::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, rgba(77, 77, 77, 0.21) 22.61%, rgba(13, 13, 13, 0.00) 96.75%);
+    z-index: -2;
 }
 
 .respiracao-container {
@@ -391,7 +399,7 @@
         min-height: 60vh;
         max-height: 95vh;
     }
-  
+ 
     .circulo-container {
         width: auto;
         height: auto;
@@ -631,6 +639,10 @@
 }
 
 /* Media query para smartphones */
+.secao-respiracao {
+    width: 100%;
+    position: relative;
+}
 
 .header-respiracao {
     position: relative;
@@ -928,4 +940,79 @@
         text-align: left !important;
         width: 100% !important;
     } 
+}
+
+
+/* ============================================================== */
+/* === REGRAS PARA RESPONSIVIDADE (Telas menores que 768px) === */
+/* ============================================================== */
+@media (max-width: 768px) {
+  /* Esconde o container das ilustrações */
+  .ilustracao-container {
+    display: none;
+  }
+
+  /* Ajusta o padding e a justificação do conteúdo */
+  .header-respiracao {
+    padding: 40px 20px;
+    justify-content: flex-start;
+    align-items: flex-start; /* Alinha os itens no topo */
+    min-height: auto; /* Remove a altura mínima para se ajustar ao conteúdo */
+  }
+
+  /* Garante que o container do conteúdo ocupe o espaço */
+  .header-content {
+    justify-content: flex-start;
+    width: 100%;
+    flex-direction: column; /* Organiza o texto em coluna */
+    align-items: flex-start; /* Alinha o texto à esquerda */
+  }
+
+  /* Ajusta o container do texto para o layout desejado */
+  .texto-container {
+    margin: 0;
+    height: auto;
+    display: block;
+    text-align: left;
+    width: 100%;
+    max-width: 100%; /* Permite que o texto ocupe toda a largura */
+    position: static; /* Remove posicionamento complexo */
+  }
+  
+  /* Aplica o novo gradiente de fundo para o mobile */
+  .header-respiracao::before {
+    background: linear-gradient(359deg, rgba(77, 77, 77, 0.21) 5.83%, rgba(37, 37, 37, 0.08) 20.39%, rgba(13, 13, 13, 0.00) 77.49%);
+}
+
+  /* Aplica os novos estilos para o H1 em mobile */
+  .texto-container h1 {
+    width: auto; /* Largura automática */
+    color: var(--Primary-Pressed---500, #204551);
+    font-family: Mulish;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.2; /* 48px */
+    letter-spacing: -0.5px;
+    text-align: left;
+  }
+
+  /* Aplica os novos estilos para o P em mobile */
+  .texto-container p {
+    color: var(--Primary-Pressed---500, #204551);
+    font-family: Mulish;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 160%; /* 32px */
+    width: 100%; /* Ocupa toda a largura disponível */
+    height: auto; /* Altura automática */
+    flex-shrink: 0;
+    text-align: left;
+  }
+
+  /* Garante que a imagem de meditação seja ocultada */
+  .meditacao-img {
+      display: none;
+  }
 }
