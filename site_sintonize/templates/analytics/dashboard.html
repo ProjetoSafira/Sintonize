@@ -371,17 +371,17 @@ function atualizarDados() {
 
 // Função para atualizar gráficos
 function atualizarGraficos(data) {
-    // Gráfico de visitantes (simulado)
+    // Gráfico de visitantes
     const ctxVisitantes = document.getElementById('chartVisitantes').getContext('2d');
     if (chartVisitantes) chartVisitantes.destroy();
     
     chartVisitantes = new Chart(ctxVisitantes, {
         type: 'line',
         data: {
-            labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+            labels: data.visitantes_por_dia.map(d => d.data),
             datasets: [{
-                label: 'Visitantes',
-                data: [0, 0, 0, 0, 0, 0, 0],
+                label: 'Visitantes por Dia',
+                data: data.visitantes_por_dia.map(d => d.visitantes),
                 borderColor: '#3498db',
                 backgroundColor: 'rgba(52, 152, 219, 0.1)',
                 tension: 0.4

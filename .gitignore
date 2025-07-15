@@ -3,6 +3,7 @@ venv/
 **.DS_Store
 .vscode
 db.sqlite3
+sintonize-analytics-credentials.json
 db_backup.sqlite3
 0001_initial.py
 migrations
