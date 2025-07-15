@@ -119,6 +119,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+# Em desenvolvimento, desative cookies seguras
+SESSION_COOKIE_SECURE = False if DEBUG else True
+CSRF_COOKIE_SECURE = False if DEBUG else True
 X_FRAME_OPTIONS = 'DENY'
+
+# Configurações de autenticação
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/analytics/'
+LOGOUT_REDIRECT_URL = '/'

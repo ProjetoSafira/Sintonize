@@ -1,9 +1,14 @@
 from django.shortcuts import render, redirect
 from requests.exceptions import Timeout
 from .forms import BurnoutSurveyForm
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.contrib import messages
 from django.templatetags.static import static
+from django.contrib.auth.decorators import login_required
+from django.utils import timezone
+from datetime import datetime, timedelta
+import json
+import csv
 
 
 
@@ -214,3 +219,231 @@ def resultado_view(request, score):
 
     # Retorne um JsonResponse com os dados necessários para o modal
     return JsonResponse({'title': title, 'body': result_text, 'image': image, 'userMessage': user_message, 'icon': icon})
+
+
+@login_required
+def analytics_dashboard(request):
+    """Painel de monitoramento com Google Analytics"""
+    
+    # Dados simulados para demonstração (você pode remover após configurar o GA)
+    hoje = timezone.now().date()
+    
+    # Estatísticas básicas simuladas - substituir por dados reais do GA4
+    stats = {
+        'total_visitors_today': 91,
+        'total_visitors_week': 847,
+        'total_visitors_month': 2456,
+        'top_pages': [
+            {'page': '/', 'title': 'Página Inicial', 'views': 456},
+            {'page': '/sondagem.html', 'title': 'Sondagem de Burnout', 'views': 234},
+            {'page': '/trilha/', 'title': 'Sobre o Burnout', 'views': 178},
+            {'page': '/pomodoro/', 'title': 'Pomodoro', 'views': 134},
+            {'page': '/respiracao_guiada/', 'title': 'Respiração Guiada', 'views': 89},
+        ],
+        'top_referrers': [
+            {'source': 'Direto', 'visitors': 345, 'percentage': 40.7},
+            {'source': 'Google', 'visitors': 234, 'percentage': 27.6},
+            {'source': 'Redes Sociais', 'visitors': 156, 'percentage': 18.4},
+            {'source': 'Referências', 'visitors': 78, 'percentage': 9.2},
+        ],
+        'device_breakdown': {
+            'desktop': 456,
+            'mobile': 312,
+            'tablet': 79
+        },
+        'browser_breakdown': {
+            'Chrome': 567,
+            'Firefox': 123,
+            'Safari': 89,
+            'Edge': 45,
+            'Outros': 23
+        },
+        'last_updated': timezone.now()
+    }
+    
+    return render(request, 'analytics/dashboard.html', {
+        'stats': stats,
+        'today': hoje
+    })
+
+
+@login_required
+def analytics_export(request):
+    """Exportar dados do Google Analytics"""
+    
+    periodo = request.GET.get('periodo', 'week')  # day, week, month
+    formato = request.GET.get('formato', 'csv')   # csv, json
+    
+    # Configurar datas baseado no período
+    hoje = timezone.now().date()
+    if periodo == 'day':
+        data_inicio = hoje
+        data_fim = hoje
+    elif periodo == 'week':
+        data_inicio = hoje - timedelta(days=7)
+        data_fim = hoje
+    elif periodo == 'month':
+        data_inicio = hoje - timedelta(days=30)
+        data_fim = hoje
+    else:
+        data_inicio = hoje - timedelta(days=7)
+        data_fim = hoje
+    
+    # Dados simulados para exportação - substituir por dados reais do GA4
+    dados = {
+        'periodo': {
+            'inicio': data_inicio.strftime('%Y-%m-%d'),
+            'fim': data_fim.strftime('%Y-%m-%d')
+        },
+        'resumo': {
+            'total_visitantes': 847,
+            'total_visualizacoes': 1234,
+            'taxa_rejeicao': 32.5,
+            'tempo_medio_sessao': 145
+        },
+        'dados_diarios': [
+            {'data': (hoje - timedelta(days=6)).strftime('%Y-%m-%d'), 'visitantes': 98, 'visualizacoes': 142},
+            {'data': (hoje - timedelta(days=5)).strftime('%Y-%m-%d'), 'visitantes': 112, 'visualizacoes': 167},
+            {'data': (hoje - timedelta(days=4)).strftime('%Y-%m-%d'), 'visitantes': 89, 'visualizacoes': 134},
+            {'data': (hoje - timedelta(days=3)).strftime('%Y-%m-%d'), 'visitantes': 156, 'visualizacoes': 203},
+            {'data': (hoje - timedelta(days=2)).strftime('%Y-%m-%d'), 'visitantes': 134, 'visualizacoes': 189},
+            {'data': (hoje - timedelta(days=1)).strftime('%Y-%m-%d'), 'visitantes': 167, 'visualizacoes': 234},
+            {'data': hoje.strftime('%Y-%m-%d'), 'visitantes': 91, 'visualizacoes': 165},
+        ],
+        'paginas_populares': [
+            {'pagina': '/', 'titulo': 'Página Inicial', 'visualizacoes': 456},
+            {'pagina': '/sondagem.html', 'titulo': 'Sondagem de Burnout', 'visualizacoes': 234},
+            {'pagina': '/trilha/', 'titulo': 'Sobre o Burnout', 'visualizacoes': 178},
+            {'pagina': '/pomodoro/', 'titulo': 'Pomodoro', 'visualizacoes': 134},
+            {'pagina': '/respiracao_guiada/', 'titulo': 'Respiração Guiada', 'visualizacoes': 89},
+        ],
+        'fontes_trafego': [
+            {'fonte': 'Direto', 'visitantes': 345, 'percentual': 40.7},
+            {'fonte': 'Google', 'visitantes': 234, 'percentual': 27.6},
+            {'fonte': 'Redes Sociais', 'visitantes': 156, 'percentual': 18.4},
+            {'fonte': 'Referências', 'visitantes': 78, 'percentual': 9.2},
+            {'fonte': 'Outros', 'visitantes': 34, 'percentual': 4.1},
+        ],
+        'dispositivos': {
+            'desktop': 456,
+            'mobile': 312,
+            'tablet': 79
+        },
+        'navegadores': {
+            'chrome': 567,
+            'firefox': 123,
+            'safari': 89,
+            'edge': 45,
+            'outros': 23
+        },
+        'gerado_em': timezone.now().isoformat()
+    }
+    
+    if formato == 'json':
+        response = HttpResponse(
+            json.dumps(dados, indent=2, ensure_ascii=False),
+            content_type='application/json; charset=utf-8'
+        )
+        response['Content-Disposition'] = f'attachment; filename="analytics_sintonize_{periodo}_{hoje}.json"'
+        
+        # Rastrear download
+        return response
+    
+    elif formato == 'csv':
+        response = HttpResponse(content_type='text/csv; charset=utf-8')
+        response['Content-Disposition'] = f'attachment; filename="analytics_sintonize_{periodo}_{hoje}.csv"'
+        
+        writer = csv.writer(response)
+        
+        # Cabeçalho do CSV
+        writer.writerow(['Relatório de Analytics - Sintonize'])
+        writer.writerow(['Período:', f"{data_inicio} até {data_fim}"])
+        writer.writerow(['Gerado em:', timezone.now().strftime('%Y-%m-%d %H:%M:%S')])
+        writer.writerow([])
+        
+        # Resumo
+        writer.writerow(['RESUMO'])
+        writer.writerow(['Total de Visitantes:', dados['resumo']['total_visitantes']])
+        writer.writerow(['Total de Visualizações:', dados['resumo']['total_visualizacoes']])
+        writer.writerow(['Taxa de Rejeição:', f"{dados['resumo']['taxa_rejeicao']}%"])
+        writer.writerow(['Tempo Médio de Sessão:', f"{dados['resumo']['tempo_medio_sessao']} segundos"])
+        writer.writerow([])
+        
+        # Dados diários
+        writer.writerow(['DADOS DIÁRIOS'])
+        writer.writerow(['Data', 'Visitantes', 'Visualizações'])
+        for dia in dados['dados_diarios']:
+            writer.writerow([dia['data'], dia['visitantes'], dia['visualizacoes']])
+        writer.writerow([])
+        
+        # Páginas populares
+        writer.writerow(['PÁGINAS MAIS VISITADAS'])
+        writer.writerow(['Página', 'Título', 'Visualizações'])
+        for pagina in dados['paginas_populares']:
+            writer.writerow([pagina['pagina'], pagina['titulo'], pagina['visualizacoes']])
+        writer.writerow([])
+        
+        # Fontes de tráfego
+        writer.writerow(['FONTES DE TRÁFEGO'])
+        writer.writerow(['Fonte', 'Visitantes', 'Percentual'])
+        for fonte in dados['fontes_trafego']:
+            writer.writerow([fonte['fonte'], fonte['visitantes'], f"{fonte['percentual']}%"])
+        writer.writerow([])
+        
+        # Dispositivos
+        writer.writerow(['DISPOSITIVOS'])
+        writer.writerow(['Tipo', 'Quantidade'])
+        for dispositivo, quantidade in dados['dispositivos'].items():
+            writer.writerow([dispositivo.title(), quantidade])
+        writer.writerow([])
+        
+        # Navegadores
+        writer.writerow(['NAVEGADORES'])
+        writer.writerow(['Navegador', 'Quantidade'])
+        for navegador, quantidade in dados['navegadores'].items():
+            writer.writerow([navegador.title(), quantidade])
+        
+        return response
+    
+    else:
+        return JsonResponse({'error': 'Formato não suportado'}, status=400)
+
+
+def analytics_api(request):
+    """API para fornecer dados do Google Analytics via AJAX"""
+    
+    periodo = request.GET.get('periodo', 'week')
+    
+    # Aqui você integraria com a API do Google Analytics
+    # Por enquanto, retornamos dados simulados
+    
+    # Dados de demonstração (será substituído por dados reais em 24-48h)
+    dados = {
+        'visitantes_hoje': 12,
+        'visitantes_semana': 89,
+        'visitantes_mes': 324,
+        'paginas_populares': [
+            {'pagina': '/', 'titulo': 'Página Inicial', 'visualizacoes': 145},
+            {'pagina': '/sondagem.html', 'titulo': 'Sondagem de Burnout', 'visualizacoes': 89},
+            {'pagina': '/trilha/', 'titulo': 'Trilha de Conhecimento', 'visualizacoes': 67},
+            {'pagina': '/sobre_nos/', 'titulo': 'Sobre Nós', 'visualizacoes': 34},
+            {'pagina': '/equipe/', 'titulo': 'Equipe', 'visualizacoes': 23},
+        ],
+        'fontes_trafego': [
+            {'fonte': 'Direto', 'visitantes': 152, 'percentual': 47},
+            {'fonte': 'Google', 'visitantes': 98, 'percentual': 30},
+            {'fonte': 'Redes Sociais', 'visitantes': 45, 'percentual': 14},
+            {'fonte': 'Outros', 'visitantes': 29, 'percentual': 9},
+        ],
+        'dispositivos': {
+            'desktop': 178,
+            'mobile': 125,
+            'tablet': 21
+        },
+        'dados_tempo_real': {
+            'usuarios_ativos': 3,
+            'paginas_ativas': ['/', '/sondagem.html', '/trilha/']
+        }
+    }
+    
+    return JsonResponse(dados)
