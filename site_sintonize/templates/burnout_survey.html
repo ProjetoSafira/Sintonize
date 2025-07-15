@@ -53,8 +53,7 @@
                                 </label>
                                 {% endfor %}
                             </div>
-                            <div id="error-{{ forloop.counter }}" class="text-red-500 mt-2" style="display: none;">Por
-                                favor, selecione uma opção para prosseguir.</div>
+                            <div id="error-{{ forloop.counter }}" class="text-red-500 mt-2" style="display: none;">Por favor, selecione uma opção para prosseguir.</div>
                         </div>
                         {% endfor %}
                         <div class="flex items-center justify-between mt-4">
@@ -179,8 +178,19 @@
             // Calcula a pontuação da última questão antes de enviar
             calculateScore();
 
+            // Rastreia a finalização da sondagem
+            if (typeof trackBurnoutSurveyCompletion === 'function') {
+                trackBurnoutSurveyCompletion();
+            }
+
             // Chama a função openModal que fará a requisição para o backend
             openModal();
+        });
+
+        document.getElementById('sendBtn').addEventListener('click', () => {
+            if (isOptionSelected() && typeof trackBurnoutSurveyCompletion === 'function') {
+                trackBurnoutSurveyCompletion();
+            }
         });
 
         function openModal() {
