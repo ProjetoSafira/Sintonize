@@ -24,7 +24,7 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         
-        // Configurar o ID do Google Analytics (substitua GA_MEASUREMENT_ID pelo seu ID real)
+        // Configurar o ID do Google Analytics 
         gtag('config', 'G-BRR6F0VRZ7', {
             page_title: '{% block page_title %}{{ request.resolver_match.url_name|default:"home" }}{% endblock %}',
             page_location: window.location.href,
@@ -45,6 +45,11 @@
         // Rastrear cliques no botão de sondagem
         function trackBurnoutSurvey() {
             trackEvent('click', 'engagement', 'burnout_survey_start', 1);
+        }
+
+        // Rastrear finalização da sondagem
+        function trackBurnoutSurveyCompletion() {
+            trackEvent('submit', 'engagement', 'burnout_survey_complete', 1);
         }
         
         // Rastrear downloads/exportações

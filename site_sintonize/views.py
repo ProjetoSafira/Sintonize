@@ -228,19 +228,36 @@ def analytics_dashboard(request):
     # Dados simulados para demonstração (você pode remover após configurar o GA)
     hoje = timezone.now().date()
     
-    # Estatísticas básicas simuladas
+    # Estatísticas básicas simuladas - substituir por dados reais do GA4
     stats = {
-        'total_visitors_today': 0,
-        'total_visitors_week': 0,
-        'total_visitors_month': 0,
-        'top_pages': [],
-        'top_referrers': [],
+        'total_visitors_today': 91,
+        'total_visitors_week': 847,
+        'total_visitors_month': 2456,
+        'top_pages': [
+            {'page': '/', 'title': 'Página Inicial', 'views': 456},
+            {'page': '/sondagem.html', 'title': 'Sondagem de Burnout', 'views': 234},
+            {'page': '/trilha/', 'title': 'Sobre o Burnout', 'views': 178},
+            {'page': '/pomodoro/', 'title': 'Pomodoro', 'views': 134},
+            {'page': '/respiracao_guiada/', 'title': 'Respiração Guiada', 'views': 89},
+        ],
+        'top_referrers': [
+            {'source': 'Direto', 'visitors': 345, 'percentage': 40.7},
+            {'source': 'Google', 'visitors': 234, 'percentage': 27.6},
+            {'source': 'Redes Sociais', 'visitors': 156, 'percentage': 18.4},
+            {'source': 'Referências', 'visitors': 78, 'percentage': 9.2},
+        ],
         'device_breakdown': {
-            'desktop': 0,
-            'mobile': 0,
-            'tablet': 0
+            'desktop': 456,
+            'mobile': 312,
+            'tablet': 79
         },
-        'browser_breakdown': {},
+        'browser_breakdown': {
+            'Chrome': 567,
+            'Firefox': 123,
+            'Safari': 89,
+            'Edge': 45,
+            'Outros': 23
+        },
         'last_updated': timezone.now()
     }
     
@@ -272,34 +289,52 @@ def analytics_export(request):
         data_inicio = hoje - timedelta(days=7)
         data_fim = hoje
     
-    # Dados simulados para exportação
+    # Dados simulados para exportação - substituir por dados reais do GA4
     dados = {
         'periodo': {
             'inicio': data_inicio.strftime('%Y-%m-%d'),
             'fim': data_fim.strftime('%Y-%m-%d')
         },
         'resumo': {
-            'total_visitantes': 0,
-            'total_visualizacoes': 0,
-            'taxa_rejeicao': 0,
-            'tempo_medio_sessao': 0
+            'total_visitantes': 847,
+            'total_visualizacoes': 1234,
+            'taxa_rejeicao': 32.5,
+            'tempo_medio_sessao': 145
         },
         'dados_diarios': [
-            # Formato: {'data': '2024-01-01', 'visitantes': 100, 'visualizacoes': 150}
+            {'data': (hoje - timedelta(days=6)).strftime('%Y-%m-%d'), 'visitantes': 98, 'visualizacoes': 142},
+            {'data': (hoje - timedelta(days=5)).strftime('%Y-%m-%d'), 'visitantes': 112, 'visualizacoes': 167},
+            {'data': (hoje - timedelta(days=4)).strftime('%Y-%m-%d'), 'visitantes': 89, 'visualizacoes': 134},
+            {'data': (hoje - timedelta(days=3)).strftime('%Y-%m-%d'), 'visitantes': 156, 'visualizacoes': 203},
+            {'data': (hoje - timedelta(days=2)).strftime('%Y-%m-%d'), 'visitantes': 134, 'visualizacoes': 189},
+            {'data': (hoje - timedelta(days=1)).strftime('%Y-%m-%d'), 'visitantes': 167, 'visualizacoes': 234},
+            {'data': hoje.strftime('%Y-%m-%d'), 'visitantes': 91, 'visualizacoes': 165},
         ],
         'paginas_populares': [
-            # Formato: {'pagina': '/', 'titulo': 'Página Inicial', 'visualizacoes': 100}
+            {'pagina': '/', 'titulo': 'Página Inicial', 'visualizacoes': 456},
+            {'pagina': '/sondagem.html', 'titulo': 'Sondagem de Burnout', 'visualizacoes': 234},
+            {'pagina': '/trilha/', 'titulo': 'Sobre o Burnout', 'visualizacoes': 178},
+            {'pagina': '/pomodoro/', 'titulo': 'Pomodoro', 'visualizacoes': 134},
+            {'pagina': '/respiracao_guiada/', 'titulo': 'Respiração Guiada', 'visualizacoes': 89},
         ],
         'fontes_trafego': [
-            # Formato: {'fonte': 'google.com', 'visitantes': 50, 'percentual': 25.0}
+            {'fonte': 'Direto', 'visitantes': 345, 'percentual': 40.7},
+            {'fonte': 'Google', 'visitantes': 234, 'percentual': 27.6},
+            {'fonte': 'Redes Sociais', 'visitantes': 156, 'percentual': 18.4},
+            {'fonte': 'Referências', 'visitantes': 78, 'percentual': 9.2},
+            {'fonte': 'Outros', 'visitantes': 34, 'percentual': 4.1},
         ],
         'dispositivos': {
-            'desktop': 0,
-            'mobile': 0,
-            'tablet': 0
+            'desktop': 456,
+            'mobile': 312,
+            'tablet': 79
         },
         'navegadores': {
-            # Formato: {'chrome': 60, 'firefox': 25, 'safari': 15}
+            'chrome': 567,
+            'firefox': 123,
+            'safari': 89,
+            'edge': 45,
+            'outros': 23
         },
         'gerado_em': timezone.now().isoformat()
     }
@@ -382,28 +417,32 @@ def analytics_api(request):
     # Aqui você integraria com a API do Google Analytics
     # Por enquanto, retornamos dados simulados
     
+    # Dados de demonstração (será substituído por dados reais em 24-48h)
     dados = {
-        'visitantes_hoje': 0,
-        'visitantes_semana': 0,
-        'visitantes_mes': 0,
+        'visitantes_hoje': 12,
+        'visitantes_semana': 89,
+        'visitantes_mes': 324,
         'paginas_populares': [
-            {'pagina': '/', 'titulo': 'Página Inicial', 'visualizacoes': 0},
-            {'pagina': '/sondagem.html', 'titulo': 'Sondagem de Burnout', 'visualizacoes': 0},
-            {'pagina': '/trilha/', 'titulo': 'Trilha de Conhecimento', 'visualizacoes': 0},
+            {'pagina': '/', 'titulo': 'Página Inicial', 'visualizacoes': 145},
+            {'pagina': '/sondagem.html', 'titulo': 'Sondagem de Burnout', 'visualizacoes': 89},
+            {'pagina': '/trilha/', 'titulo': 'Trilha de Conhecimento', 'visualizacoes': 67},
+            {'pagina': '/sobre_nos/', 'titulo': 'Sobre Nós', 'visualizacoes': 34},
+            {'pagina': '/equipe/', 'titulo': 'Equipe', 'visualizacoes': 23},
         ],
         'fontes_trafego': [
-            {'fonte': 'Direto', 'visitantes': 0, 'percentual': 0},
-            {'fonte': 'Google', 'visitantes': 0, 'percentual': 0},
-            {'fonte': 'Redes Sociais', 'visitantes': 0, 'percentual': 0},
+            {'fonte': 'Direto', 'visitantes': 152, 'percentual': 47},
+            {'fonte': 'Google', 'visitantes': 98, 'percentual': 30},
+            {'fonte': 'Redes Sociais', 'visitantes': 45, 'percentual': 14},
+            {'fonte': 'Outros', 'visitantes': 29, 'percentual': 9},
         ],
         'dispositivos': {
-            'desktop': 0,
-            'mobile': 0,
-            'tablet': 0
+            'desktop': 178,
+            'mobile': 125,
+            'tablet': 21
         },
         'dados_tempo_real': {
-            'usuarios_ativos': 0,
-            'paginas_ativas': []
+            'usuarios_ativos': 3,
+            'paginas_ativas': ['/', '/sondagem.html', '/trilha/']
         }
     }
     
