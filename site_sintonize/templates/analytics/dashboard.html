@@ -201,19 +201,6 @@
         <p><strong>Última atualização:</strong> {{ stats.last_updated|date:"d/m/Y H:i:s" }}</p>
     </div>
     
-    <!-- Instruções de Configuração -->
-    <div class="setup-instructions">
-        <h3>🔧 Configuração do Google Analytics</h3>
-        <p>Para começar a monitorar seu site, siga estes passos:</p>
-        <ol>
-            <li>Acesse <a href="https://analytics.google.com" target="_blank">Google Analytics</a></li>
-            <li>Crie uma conta e propriedade para o site Sintonize</li>
-            <li>Copie o ID de medição (formato: GA_MEASUREMENT_ID)</li>
-            <li>Substitua <code>GA_MEASUREMENT_ID</code> no template base.html pelo seu ID real</li>
-            <li>Aguarde algumas horas para os dados aparecerem</li>
-        </ol>
-    </div>
-    
     <!-- Controles -->
     <div class="controls-section">
         <div class="control-group">
@@ -250,6 +237,16 @@
         <div class="stat-card">
             <div class="stat-number" id="usuarios-ativos">0</div>
             <div class="stat-label">Usuários Ativos Agora</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-number" id="sondagem">0</div>
+            <div class="stat-label">Inícios sondagem</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-number" id="Formulario">0</div>
+            <div class="stat-label">Formulário</div>
         </div>
     </div>
     
@@ -341,6 +338,12 @@ function atualizarDados() {
             document.getElementById('visitantes-mes').textContent = data.visitantes_mes;
             document.getElementById('usuarios-ativos').textContent = data.dados_tempo_real.usuarios_ativos;
             
+            // Atualiza os cartões de eventos da sondagem
+            if (data.eventos) {
+                document.getElementById('sondagem').textContent = data.eventos.sondagem_inicios;
+                document.getElementById('Formulario').textContent = data.eventos.sondagem_conclusoes;
+            }
+            
             // Atualizar tabela de páginas
             const tabelaPaginas = document.getElementById('dados-paginas');
             tabelaPaginas.innerHTML = '';
@@ -371,17 +374,17 @@ function atualizarDados() {
 
 // Função para atualizar gráficos
 function atualizarGraficos(data) {
-    // Gráfico de visitantes (simulado)
+    // Gráfico de visitantes
     const ctxVisitantes = document.getElementById('chartVisitantes').getContext('2d');
     if (chartVisitantes) chartVisitantes.destroy();
     
     chartVisitantes = new Chart(ctxVisitantes, {
         type: 'line',
         data: {
-            labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+            labels: data.visitantes_por_dia.map(d => d.data),
             datasets: [{
-                label: 'Visitantes',
-                data: [0, 0, 0, 0, 0, 0, 0],
+                label: 'Visitantes por Dia',
+                data: data.visitantes_por_dia.map(d => d.visitantes),
                 borderColor: '#3498db',
                 backgroundColor: 'rgba(52, 152, 219, 0.1)',
                 tension: 0.4

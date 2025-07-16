@@ -9,6 +9,8 @@ from django.utils import timezone
 from datetime import datetime, timedelta
 import json
 import csv
+from .analytics_client import get_analytics_client, get_report, get_active_users, get_event_count, format_report_data, PROPERTY_ID
+from google.analytics.data_v1beta.types import Dimension, Metric
 
 
 
@@ -18,8 +20,17 @@ def index (request):
 def politicas_privacidade (request):
     return render(request, 'politicas_privacidade.html')
 
-def sondagem (requests):
-    return render (requests, 'sondagem.html')
+def sondagem(request):
+    if request.method == 'POST':
+        form = BurnoutSurveyForm(request.POST)
+        if form.is_valid():
+            survey = form.save()
+            score = survey.total_score()
+            return redirect('resultado', score=score)
+    else:
+        form = BurnoutSurveyForm()
+
+    return render(request, 'sondagem.html', {'form': form})
 
 def sobre_nos (request):
     return render(request, 'sobre_nos.html') 
@@ -224,226 +235,182 @@ def resultado_view(request, score):
 @login_required
 def analytics_dashboard(request):
     """Painel de monitoramento com Google Analytics"""
-    
-    # Dados simulados para demonstração (você pode remover após configurar o GA)
-    hoje = timezone.now().date()
-    
-    # Estatísticas básicas simuladas - substituir por dados reais do GA4
-    stats = {
-        'total_visitors_today': 91,
-        'total_visitors_week': 847,
-        'total_visitors_month': 2456,
-        'top_pages': [
-            {'page': '/', 'title': 'Página Inicial', 'views': 456},
-            {'page': '/sondagem.html', 'title': 'Sondagem de Burnout', 'views': 234},
-            {'page': '/trilha/', 'title': 'Sobre o Burnout', 'views': 178},
-            {'page': '/pomodoro/', 'title': 'Pomodoro', 'views': 134},
-            {'page': '/respiracao_guiada/', 'title': 'Respiração Guiada', 'views': 89},
-        ],
-        'top_referrers': [
-            {'source': 'Direto', 'visitors': 345, 'percentage': 40.7},
-            {'source': 'Google', 'visitors': 234, 'percentage': 27.6},
-            {'source': 'Redes Sociais', 'visitors': 156, 'percentage': 18.4},
-            {'source': 'Referências', 'visitors': 78, 'percentage': 9.2},
-        ],
-        'device_breakdown': {
-            'desktop': 456,
-            'mobile': 312,
-            'tablet': 79
-        },
-        'browser_breakdown': {
-            'Chrome': 567,
-            'Firefox': 123,
-            'Safari': 89,
-            'Edge': 45,
-            'Outros': 23
-        },
-        'last_updated': timezone.now()
-    }
-    
-    return render(request, 'analytics/dashboard.html', {
-        'stats': stats,
-        'today': hoje
-    })
+    try:
+        client = get_analytics_client()
+        
+        # Obter estatísticas para os cartões
+        today = datetime.now().strftime('%Y-%m-%d')
+        start_of_week = (datetime.now() - timedelta(days=datetime.now().weekday())).strftime('%Y-%m-%d')
+        start_of_month = datetime.now().replace(day=1).strftime('%Y-%m-%d')
 
+        visitors_today_response = get_report(client, PROPERTY_ID, today, today, [], [Metric(name='totalUsers')])
+        visitors_week_response = get_report(client, PROPERTY_ID, start_of_week, today, [], [Metric(name='totalUsers')])
+        visitors_month_response = get_report(client, PROPERTY_ID, start_of_month, today, [], [Metric(name='totalUsers')])
+        
+        stats = {
+            'total_visitors_today': int(visitors_today_response.rows[0].metric_values[0].value) if visitors_today_response.rows else 0,
+            'total_visitors_week': int(visitors_week_response.rows[0].metric_values[0].value) if visitors_week_response.rows else 0,
+            'total_visitors_month': int(visitors_month_response.rows[0].metric_values[0].value) if visitors_month_response.rows else 0,
+            'last_updated': timezone.now()
+        }
+        
+        return render(request, 'analytics/dashboard.html', {'stats': stats})
+
+    except Exception as e:
+        # Em caso de erro (ex: credenciais inválidas), exibe uma mensagem amigável
+        # e renderiza o painel com dados zerados para não quebrar a página.
+        messages.error(request, f"Erro ao conectar com o Google Analytics: {e}. Verifique a configuração.")
+        stats = {
+            'total_visitors_today': 0,
+            'total_visitors_week': 0,
+            'total_visitors_month': 0,
+            'last_updated': timezone.now()
+        }
+        return render(request, 'analytics/dashboard.html', {'stats': stats})
 
 @login_required
 def analytics_export(request):
-    """Exportar dados do Google Analytics"""
-    
-    periodo = request.GET.get('periodo', 'week')  # day, week, month
-    formato = request.GET.get('formato', 'csv')   # csv, json
-    
-    # Configurar datas baseado no período
-    hoje = timezone.now().date()
-    if periodo == 'day':
-        data_inicio = hoje
-        data_fim = hoje
-    elif periodo == 'week':
-        data_inicio = hoje - timedelta(days=7)
-        data_fim = hoje
-    elif periodo == 'month':
-        data_inicio = hoje - timedelta(days=30)
-        data_fim = hoje
-    else:
-        data_inicio = hoje - timedelta(days=7)
-        data_fim = hoje
-    
-    # Dados simulados para exportação - substituir por dados reais do GA4
-    dados = {
-        'periodo': {
-            'inicio': data_inicio.strftime('%Y-%m-%d'),
-            'fim': data_fim.strftime('%Y-%m-%d')
-        },
-        'resumo': {
-            'total_visitantes': 847,
-            'total_visualizacoes': 1234,
-            'taxa_rejeicao': 32.5,
-            'tempo_medio_sessao': 145
-        },
-        'dados_diarios': [
-            {'data': (hoje - timedelta(days=6)).strftime('%Y-%m-%d'), 'visitantes': 98, 'visualizacoes': 142},
-            {'data': (hoje - timedelta(days=5)).strftime('%Y-%m-%d'), 'visitantes': 112, 'visualizacoes': 167},
-            {'data': (hoje - timedelta(days=4)).strftime('%Y-%m-%d'), 'visitantes': 89, 'visualizacoes': 134},
-            {'data': (hoje - timedelta(days=3)).strftime('%Y-%m-%d'), 'visitantes': 156, 'visualizacoes': 203},
-            {'data': (hoje - timedelta(days=2)).strftime('%Y-%m-%d'), 'visitantes': 134, 'visualizacoes': 189},
-            {'data': (hoje - timedelta(days=1)).strftime('%Y-%m-%d'), 'visitantes': 167, 'visualizacoes': 234},
-            {'data': hoje.strftime('%Y-%m-%d'), 'visitantes': 91, 'visualizacoes': 165},
-        ],
-        'paginas_populares': [
-            {'pagina': '/', 'titulo': 'Página Inicial', 'visualizacoes': 456},
-            {'pagina': '/sondagem.html', 'titulo': 'Sondagem de Burnout', 'visualizacoes': 234},
-            {'pagina': '/trilha/', 'titulo': 'Sobre o Burnout', 'visualizacoes': 178},
-            {'pagina': '/pomodoro/', 'titulo': 'Pomodoro', 'visualizacoes': 134},
-            {'pagina': '/respiracao_guiada/', 'titulo': 'Respiração Guiada', 'visualizacoes': 89},
-        ],
-        'fontes_trafego': [
-            {'fonte': 'Direto', 'visitantes': 345, 'percentual': 40.7},
-            {'fonte': 'Google', 'visitantes': 234, 'percentual': 27.6},
-            {'fonte': 'Redes Sociais', 'visitantes': 156, 'percentual': 18.4},
-            {'fonte': 'Referências', 'visitantes': 78, 'percentual': 9.2},
-            {'fonte': 'Outros', 'visitantes': 34, 'percentual': 4.1},
-        ],
-        'dispositivos': {
-            'desktop': 456,
-            'mobile': 312,
-            'tablet': 79
-        },
-        'navegadores': {
-            'chrome': 567,
-            'firefox': 123,
-            'safari': 89,
-            'edge': 45,
-            'outros': 23
-        },
-        'gerado_em': timezone.now().isoformat()
-    }
-    
-    if formato == 'json':
-        response = HttpResponse(
-            json.dumps(dados, indent=2, ensure_ascii=False),
-            content_type='application/json; charset=utf-8'
-        )
-        response['Content-Disposition'] = f'attachment; filename="analytics_sintonize_{periodo}_{hoje}.json"'
-        
-        # Rastrear download
-        return response
-    
-    elif formato == 'csv':
-        response = HttpResponse(content_type='text/csv; charset=utf-8')
-        response['Content-Disposition'] = f'attachment; filename="analytics_sintonize_{periodo}_{hoje}.csv"'
-        
-        writer = csv.writer(response)
-        
-        # Cabeçalho do CSV
-        writer.writerow(['Relatório de Analytics - Sintonize'])
-        writer.writerow(['Período:', f"{data_inicio} até {data_fim}"])
-        writer.writerow(['Gerado em:', timezone.now().strftime('%Y-%m-%d %H:%M:%S')])
-        writer.writerow([])
-        
-        # Resumo
-        writer.writerow(['RESUMO'])
-        writer.writerow(['Total de Visitantes:', dados['resumo']['total_visitantes']])
-        writer.writerow(['Total de Visualizações:', dados['resumo']['total_visualizacoes']])
-        writer.writerow(['Taxa de Rejeição:', f"{dados['resumo']['taxa_rejeicao']}%"])
-        writer.writerow(['Tempo Médio de Sessão:', f"{dados['resumo']['tempo_medio_sessao']} segundos"])
-        writer.writerow([])
-        
-        # Dados diários
-        writer.writerow(['DADOS DIÁRIOS'])
-        writer.writerow(['Data', 'Visitantes', 'Visualizações'])
-        for dia in dados['dados_diarios']:
-            writer.writerow([dia['data'], dia['visitantes'], dia['visualizacoes']])
-        writer.writerow([])
-        
-        # Páginas populares
-        writer.writerow(['PÁGINAS MAIS VISITADAS'])
-        writer.writerow(['Página', 'Título', 'Visualizações'])
-        for pagina in dados['paginas_populares']:
-            writer.writerow([pagina['pagina'], pagina['titulo'], pagina['visualizacoes']])
-        writer.writerow([])
-        
-        # Fontes de tráfego
-        writer.writerow(['FONTES DE TRÁFEGO'])
-        writer.writerow(['Fonte', 'Visitantes', 'Percentual'])
-        for fonte in dados['fontes_trafego']:
-            writer.writerow([fonte['fonte'], fonte['visitantes'], f"{fonte['percentual']}%"])
-        writer.writerow([])
-        
-        # Dispositivos
-        writer.writerow(['DISPOSITIVOS'])
-        writer.writerow(['Tipo', 'Quantidade'])
-        for dispositivo, quantidade in dados['dispositivos'].items():
-            writer.writerow([dispositivo.title(), quantidade])
-        writer.writerow([])
-        
-        # Navegadores
-        writer.writerow(['NAVEGADORES'])
-        writer.writerow(['Navegador', 'Quantidade'])
-        for navegador, quantidade in dados['navegadores'].items():
-            writer.writerow([navegador.title(), quantidade])
-        
-        return response
-    
-    else:
-        return JsonResponse({'error': 'Formato não suportado'}, status=400)
-
-
-def analytics_api(request):
-    """API para fornecer dados do Google Analytics via AJAX"""
-    
+    """Exporta dados do Google Analytics para CSV ou JSON."""
+    formato = request.GET.get('formato', 'csv')
     periodo = request.GET.get('periodo', 'week')
-    
-    # Aqui você integraria com a API do Google Analytics
-    # Por enquanto, retornamos dados simulados
-    
-    # Dados de demonstração (será substituído por dados reais em 24-48h)
-    dados = {
-        'visitantes_hoje': 12,
-        'visitantes_semana': 89,
-        'visitantes_mes': 324,
-        'paginas_populares': [
-            {'pagina': '/', 'titulo': 'Página Inicial', 'visualizacoes': 145},
-            {'pagina': '/sondagem.html', 'titulo': 'Sondagem de Burnout', 'visualizacoes': 89},
-            {'pagina': '/trilha/', 'titulo': 'Trilha de Conhecimento', 'visualizacoes': 67},
-            {'pagina': '/sobre_nos/', 'titulo': 'Sobre Nós', 'visualizacoes': 34},
-            {'pagina': '/equipe/', 'titulo': 'Equipe', 'visualizacoes': 23},
-        ],
-        'fontes_trafego': [
-            {'fonte': 'Direto', 'visitantes': 152, 'percentual': 47},
-            {'fonte': 'Google', 'visitantes': 98, 'percentual': 30},
-            {'fonte': 'Redes Sociais', 'visitantes': 45, 'percentual': 14},
-            {'fonte': 'Outros', 'visitantes': 29, 'percentual': 9},
-        ],
-        'dispositivos': {
-            'desktop': 178,
-            'mobile': 125,
-            'tablet': 21
-        },
-        'dados_tempo_real': {
-            'usuarios_ativos': 3,
-            'paginas_ativas': ['/', '/sondagem.html', '/trilha/']
+
+    end_date = datetime.now().strftime('%Y-%m-%d')
+    if periodo == 'day':
+        start_date = end_date
+    elif periodo == 'month':
+        start_date = (datetime.now().replace(day=1)).strftime('%Y-%m-%d')
+    else: # week
+        start_date = (datetime.now() - timedelta(days=datetime.now().weekday())).strftime('%Y-%m-%d')
+
+    try:
+        client = get_analytics_client()
+        
+        # Obter dados de páginas populares para o período selecionado
+        pages_response = get_report(
+            client,
+            PROPERTY_ID,
+            start_date,
+            end_date,
+            [Dimension(name='pageTitle')],
+            [Metric(name='screenPageViews')]
+        )
+        paginas_populares = format_report_data(pages_response, 'titulo', 'visualizacoes')
+        
+        if formato == 'csv':
+            response = HttpResponse(content_type='text/csv')
+            response['Content-Disposition'] = f'attachment; filename="analytics_export_{periodo}.csv"'
+            
+            writer = csv.writer(response)
+            writer.writerow(['Página', 'Visualizações'])
+            for pagina in paginas_populares:
+                writer.writerow([pagina['titulo'], pagina['visualizacoes']])
+            
+            return response
+
+        elif formato == 'json':
+            return JsonResponse({
+                'periodo': periodo,
+                'paginas_populares': paginas_populares
+            }, json_dumps_params={'indent': 2})
+
+    except Exception as e:
+        return HttpResponse(f"Erro ao exportar dados: {e}", status=500)
+
+
+@login_required
+def analytics_api(request):
+    """API para fornecer dados do Google Analytics ao frontend."""
+    try:
+        client = get_analytics_client()
+        periodo = request.GET.get('periodo', 'week')
+
+        # Define as datas com base no período
+        end_date = datetime.now().strftime('%Y-%m-%d')
+        if periodo == 'day':
+            start_date = end_date
+        elif periodo == 'week':
+            start_date = (datetime.now() - timedelta(days=6)).strftime('%Y-%m-%d')
+        elif periodo == 'month':
+            start_date = (datetime.now() - timedelta(days=29)).strftime('%Y-%m-%d')
+        else:
+            start_date = (datetime.now() - timedelta(days=6)).strftime('%Y-%m-%d')
+
+        # 1. Visitantes por dia (para o gráfico)
+        visitors_per_day_response = get_report(
+            client, PROPERTY_ID, start_date, end_date,
+            [Dimension(name='date')],
+            [Metric(name='totalUsers')]
+        )
+        visitors_per_day = [
+            {'data': datetime.strptime(row.dimension_values[0].value, '%Y%m%d').strftime('%d/%m'), 'visitantes': int(row.metric_values[0].value)}
+            for row in visitors_per_day_response.rows
+        ]
+
+        # 2. Dispositivos
+        devices_response = get_report(
+            client, PROPERTY_ID, start_date, end_date,
+            [Dimension(name='deviceCategory')],
+            [Metric(name='totalUsers')]
+        )
+        devices_data = {row.dimension_values[0].value.lower(): int(row.metric_values[0].value) for row in devices_response.rows}
+        
+        # 3. Páginas mais populares
+        pages_response = get_report(
+            client, PROPERTY_ID, start_date, end_date,
+            [Dimension(name='pageTitle')],
+            [Metric(name='screenPageViews')],
+            # Adicionar ordenação aqui se a API suportar
+        )
+        popular_pages = format_report_data(pages_response, 'titulo', 'visualizacoes')
+
+        # 4. Fontes de tráfego
+        traffic_response = get_report(
+            client, PROPERTY_ID, start_date, end_date,
+            [Dimension(name='sessionSource')],
+            [Metric(name='totalUsers')]
+        )
+        traffic_sources_raw = format_report_data(traffic_response, 'fonte', 'visitantes')
+        total_visitors_period = sum(item['visitantes'] for item in traffic_sources_raw)
+        traffic_sources = [
+            {**item, 'percentual': round((item['visitantes'] / total_visitors_period) * 100, 1) if total_visitors_period > 0 else 0}
+            for item in traffic_sources_raw
+        ]
+        
+        # 5. Dados em tempo real
+        active_users = get_active_users(client, PROPERTY_ID)
+
+        # 6. Contagem de eventos específicos
+        sondagem_starts = get_event_count(client, PROPERTY_ID, start_date, end_date, 'click')
+        sondagem_completes = get_event_count(client, PROPERTY_ID, start_date, end_date, 'submit')
+
+
+        # Monta a resposta final
+        data = {
+            'visitantes_por_dia': sorted(visitors_per_day, key=lambda x: datetime.strptime(x['data'], '%d/%m')),
+            'dispositivos': {
+                'desktop': devices_data.get('desktop', 0),
+                'mobile': devices_data.get('mobile', 0),
+                'tablet': devices_data.get('tablet', 0),
+            },
+            'paginas_populares': popular_pages[:10], # Limita a 10
+            'fontes_trafego': traffic_sources[:10], # Limita a 10
+            'dados_tempo_real': {
+                'usuarios_ativos': active_users,
+            },
+            'eventos': {
+                'sondagem_inicios': sondagem_starts,
+                'sondagem_conclusoes': sondagem_completes,
+            },
+             # Incluir totais para os cartões principais, se necessário (exemplo)
+            'visitantes_hoje': get_report(client, PROPERTY_ID, datetime.now().strftime('%Y-%m-%d'), datetime.now().strftime('%Y-%m-%d'), [], [Metric(name='totalUsers')]).rows[0].metric_values[0].value if get_report(client, PROPERTY_ID, datetime.now().strftime('%Y-%m-%d'), datetime.now().strftime('%Y-%m-%d'), [], [Metric(name='totalUsers')]).rows else 0,
+            'visitantes_semana': get_report(client, PROPERTY_ID, (datetime.now() - timedelta(days=6)).strftime('%Y-%m-%d'), datetime.now().strftime('%Y-%m-%d'), [], [Metric(name='totalUsers')]).rows[0].metric_values[0].value if get_report(client, PROPERTY_ID, (datetime.now() - timedelta(days=6)).strftime('%Y-%m-%d'), datetime.now().strftime('%Y-%m-%d'), [], [Metric(name='totalUsers')]).rows else 0,
+            'visitantes_mes': get_report(client, PROPERTY_ID, (datetime.now() - timedelta(days=29)).strftime('%Y-%m-%d'), datetime.now().strftime('%Y-%m-%d'), [], [Metric(name='totalUsers')]).rows[0].metric_values[0].value if get_report(client, PROPERTY_ID, (datetime.now() - timedelta(days=29)).strftime('%Y-%m-%d'), datetime.now().strftime('%Y-%m-%d'), [], [Metric(name='totalUsers')]).rows else 0,
         }
-    }
-    
-    return JsonResponse(dados)
+        
+        return JsonResponse(data)
+
+    except Exception as e:
+        # Log do erro para depuração
+        print(f"Erro na API de Analytics: {e}")
+        # Retorna uma resposta de erro clara para o frontend
+        return JsonResponse({'error': 'Não foi possível obter os dados do Google Analytics. Verifique a configuração e as permissões da API.'}, status=500)
