@@ -20,8 +20,17 @@ def index (request):
 def politicas_privacidade (request):
     return render(request, 'politicas_privacidade.html')
 
-def sondagem (requests):
-    return render (requests, 'sondagem.html')
+def sondagem(request):
+    if request.method == 'POST':
+        form = BurnoutSurveyForm(request.POST)
+        if form.is_valid():
+            survey = form.save()
+            score = survey.total_score()
+            return redirect('resultado', score=score)
+    else:
+        form = BurnoutSurveyForm()
+
+    return render(request, 'sondagem.html', {'form': form})
 
 def sobre_nos (request):
     return render(request, 'sobre_nos.html') 

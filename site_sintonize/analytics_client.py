@@ -5,6 +5,7 @@ from google.analytics.data_v1beta.types import (
     Dimension,
     Metric,
     RunReportRequest,
+    RunRealtimeReportRequest,
 )
 from google.oauth2 import service_account
 from datetime import datetime, timedelta
@@ -12,7 +13,8 @@ from datetime import datetime, timedelta
 # Configurações do Google Analytics
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CREDENTIALS_PATH = os.path.join(BASE_DIR, 'setup', 'sintonize-analytics-credentials.json')
-PROPERTY_ID = 'G-BRR6F0VRZ7'.split('-')[-1] # Extrai o ID numérico
+# IMPORTANTE: Substitua 'SEU_PROPERTY_ID' pelo ID numérico da sua propriedade do Google Analytics 4.
+PROPERTY_ID = '495597072' 
 
 def get_analytics_client():
     """Cria um cliente autenticado para a API do Google Analytics."""
@@ -33,18 +35,21 @@ def get_report(client, property_id, start_date, end_date, dimensions, metrics):
     return client.run_report(request)
 
 def get_active_users(client, property_id):
-    """Busca o número de usuários ativos nos últimos 5 minutos."""
-    request = RunReportRequest(
+    """Busca o número de usuários ativos em tempo real."""
+    request = RunRealtimeReportRequest(
         property=f"properties/{property_id}",
-        dimensions=[Dimension(name="unifiedScreenName")], # ou pagePath
         metrics=[Metric(name="activeUsers")],
-        date_ranges=[DateRange(start_date="5minutesAgo", end_date="today")],
     )
-    response = client.run_report(request)
+    response = client.run_realtime_report(request)
+    
     total_active_users = 0
     if response.rows:
+        # A resposta de tempo real pode ter vários valores, somamos todos
         for row in response.rows:
-            total_active_users += int(row.metric_values[0].value)
+            metric_value = row.metric_values[0].value
+            if metric_value.isdigit():
+                total_active_users += int(metric_value)
+                
     return total_active_users
 
 def format_report_data(response, dimension_key, metric_key, value_type=int):
