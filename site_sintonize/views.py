@@ -9,7 +9,7 @@ from django.utils import timezone
 from datetime import datetime, timedelta
 import json
 import csv
-from .analytics_client import get_analytics_client, get_report, get_active_users, format_report_data, PROPERTY_ID
+from .analytics_client import get_analytics_client, get_report, get_active_users, get_event_count, format_report_data, PROPERTY_ID
 from google.analytics.data_v1beta.types import Dimension, Metric
 
 
@@ -319,84 +319,98 @@ def analytics_export(request):
 
 @login_required
 def analytics_api(request):
-    """Fornece dados da API para o frontend do dashboard."""
-    periodo = request.GET.get('periodo', 'week')
-
-    end_date = datetime.now().strftime('%Y-%m-%d')
-    if periodo == 'day':
-        start_date = end_date
-    elif periodo == 'month':
-        start_date = (datetime.now().replace(day=1)).strftime('%Y-%m-%d')
-    else:  # week
-        start_date = (datetime.now() - timedelta(days=6)).strftime('%Y-%m-%d')
-
+    """API para fornecer dados do Google Analytics ao frontend."""
     try:
         client = get_analytics_client()
+        periodo = request.GET.get('periodo', 'week')
+
+        # Define as datas com base no período
+        end_date = datetime.now().strftime('%Y-%m-%d')
+        if periodo == 'day':
+            start_date = end_date
+        elif periodo == 'week':
+            start_date = (datetime.now() - timedelta(days=6)).strftime('%Y-%m-%d')
+        elif periodo == 'month':
+            start_date = (datetime.now() - timedelta(days=29)).strftime('%Y-%m-%d')
+        else:
+            start_date = (datetime.now() - timedelta(days=6)).strftime('%Y-%m-%d')
+
+        # 1. Visitantes por dia (para o gráfico)
+        visitors_per_day_response = get_report(
+            client, PROPERTY_ID, start_date, end_date,
+            [Dimension(name='date')],
+            [Metric(name='totalUsers')]
+        )
+        visitors_per_day = [
+            {'data': datetime.strptime(row.dimension_values[0].value, '%Y%m%d').strftime('%d/%m'), 'visitantes': int(row.metric_values[0].value)}
+            for row in visitors_per_day_response.rows
+        ]
+
+        # 2. Dispositivos
+        devices_response = get_report(
+            client, PROPERTY_ID, start_date, end_date,
+            [Dimension(name='deviceCategory')],
+            [Metric(name='totalUsers')]
+        )
+        devices_data = {row.dimension_values[0].value.lower(): int(row.metric_values[0].value) for row in devices_response.rows}
         
-        # 1. Dados para os cards
-        today_str = datetime.now().strftime('%Y-%m-%d')
-        start_of_week_str = (datetime.now() - timedelta(days=datetime.now().weekday())).strftime('%Y-%m-%d')
-        start_of_month_str = datetime.now().replace(day=1).strftime('%Y-%m-%d')
+        # 3. Páginas mais populares
+        pages_response = get_report(
+            client, PROPERTY_ID, start_date, end_date,
+            [Dimension(name='pageTitle')],
+            [Metric(name='screenPageViews')],
+            # Adicionar ordenação aqui se a API suportar
+        )
+        popular_pages = format_report_data(pages_response, 'titulo', 'visualizacoes')
 
-        visitors_today_res = get_report(client, PROPERTY_ID, today_str, today_str, [], [Metric(name='totalUsers')])
-        visitors_week_res = get_report(client, PROPERTY_ID, start_of_week_str, today_str, [], [Metric(name='totalUsers')])
-        visitors_month_res = get_report(client, PROPERTY_ID, start_of_month_str, today_str, [], [Metric(name='totalUsers')])
-
-        # 2. Dados de tempo real
+        # 4. Fontes de tráfego
+        traffic_response = get_report(
+            client, PROPERTY_ID, start_date, end_date,
+            [Dimension(name='sessionSource')],
+            [Metric(name='totalUsers')]
+        )
+        traffic_sources_raw = format_report_data(traffic_response, 'fonte', 'visitantes')
+        total_visitors_period = sum(item['visitantes'] for item in traffic_sources_raw)
+        traffic_sources = [
+            {**item, 'percentual': round((item['visitantes'] / total_visitors_period) * 100, 1) if total_visitors_period > 0 else 0}
+            for item in traffic_sources_raw
+        ]
+        
+        # 5. Dados em tempo real
         active_users = get_active_users(client, PROPERTY_ID)
 
-        # 3. Páginas populares
-        pages_response = get_report(client, PROPERTY_ID, start_date, end_date, [Dimension(name='pageTitle')], [Metric(name='screenPageViews')])
-        paginas_populares_raw = format_report_data(pages_response, 'titulo', 'visualizacoes')
-        paginas_populares = [p for p in paginas_populares_raw if p['titulo'] != 'analytics_dashboard']
-        
-        # 4. Fontes de tráfego
-        traffic_response = get_report(client, PROPERTY_ID, start_date, end_date, [Dimension(name='sessionDefaultChannelGroup')], [Metric(name='totalUsers')])
-        fontes_trafego_raw = format_report_data(traffic_response, 'fonte', 'visitantes')
-        total_visitantes = sum(f['visitantes'] for f in fontes_trafego_raw)
-        fontes_trafego = []
-        if total_visitantes > 0:
-            for fonte in fontes_trafego_raw:
-                fontes_trafego.append({
-                    'fonte': fonte['fonte'],
-                    'visitantes': fonte['visitantes'],
-                    'percentual': round((fonte['visitantes'] / total_visitantes) * 100, 1)
-                })
+        # 6. Contagem de eventos específicos
+        sondagem_starts = get_event_count(client, PROPERTY_ID, start_date, end_date, 'click')
+        sondagem_completes = get_event_count(client, PROPERTY_ID, start_date, end_date, 'submit')
 
-        # 5. Dispositivos
-        device_response = get_report(client, PROPERTY_ID, start_date, end_date, [Dimension(name='deviceCategory')], [Metric(name='totalUsers')])
-        dispositivos_raw = format_report_data(device_response, 'device', 'users')
-        dispositivos = {'desktop': 0, 'mobile': 0, 'tablet': 0}
-        for item in dispositivos_raw:
-            dispositivos[item['device'].lower()] = item['users']
-            
-        # 6. Gráfico de visitantes por dia
-        visitors_by_day_response = get_report(client, PROPERTY_ID, start_date, end_date, [Dimension(name='date')], [Metric(name='totalUsers')])
-        visitantes_por_dia = []
-        for row in visitors_by_day_response.rows:
-            # Formata a data de '20231225' para '25/12'
-            formatted_date = datetime.strptime(row.dimension_values[0].value, '%Y%m%d').strftime('%d/%m')
-            visitantes_por_dia.append({
-                'data': formatted_date,
-                'visitantes': int(row.metric_values[0].value)
-            })
 
+        # Monta a resposta final
         data = {
-            'visitantes_hoje': int(visitors_today_res.rows[0].metric_values[0].value) if visitors_today_res.rows else 0,
-            'visitantes_semana': int(visitors_week_res.rows[0].metric_values[0].value) if visitors_week_res.rows else 0,
-            'visitantes_mes': int(visitors_month_res.rows[0].metric_values[0].value) if visitors_month_res.rows else 0,
-            'dados_tempo_real': {
-                'usuarios_ativos': active_users
+            'visitantes_por_dia': sorted(visitors_per_day, key=lambda x: datetime.strptime(x['data'], '%d/%m')),
+            'dispositivos': {
+                'desktop': devices_data.get('desktop', 0),
+                'mobile': devices_data.get('mobile', 0),
+                'tablet': devices_data.get('tablet', 0),
             },
-            'paginas_populares': paginas_populares[:5],
-            'fontes_trafego': fontes_trafego,
-            'dispositivos': dispositivos,
-            'visitantes_por_dia': visitantes_por_dia
+            'paginas_populares': popular_pages[:10], # Limita a 10
+            'fontes_trafego': traffic_sources[:10], # Limita a 10
+            'dados_tempo_real': {
+                'usuarios_ativos': active_users,
+            },
+            'eventos': {
+                'sondagem_inicios': sondagem_starts,
+                'sondagem_conclusoes': sondagem_completes,
+            },
+             # Incluir totais para os cartões principais, se necessário (exemplo)
+            'visitantes_hoje': get_report(client, PROPERTY_ID, datetime.now().strftime('%Y-%m-%d'), datetime.now().strftime('%Y-%m-%d'), [], [Metric(name='totalUsers')]).rows[0].metric_values[0].value if get_report(client, PROPERTY_ID, datetime.now().strftime('%Y-%m-%d'), datetime.now().strftime('%Y-%m-%d'), [], [Metric(name='totalUsers')]).rows else 0,
+            'visitantes_semana': get_report(client, PROPERTY_ID, (datetime.now() - timedelta(days=6)).strftime('%Y-%m-%d'), datetime.now().strftime('%Y-%m-%d'), [], [Metric(name='totalUsers')]).rows[0].metric_values[0].value if get_report(client, PROPERTY_ID, (datetime.now() - timedelta(days=6)).strftime('%Y-%m-%d'), datetime.now().strftime('%Y-%m-%d'), [], [Metric(name='totalUsers')]).rows else 0,
+            'visitantes_mes': get_report(client, PROPERTY_ID, (datetime.now() - timedelta(days=29)).strftime('%Y-%m-%d'), datetime.now().strftime('%Y-%m-%d'), [], [Metric(name='totalUsers')]).rows[0].metric_values[0].value if get_report(client, PROPERTY_ID, (datetime.now() - timedelta(days=29)).strftime('%Y-%m-%d'), datetime.now().strftime('%Y-%m-%d'), [], [Metric(name='totalUsers')]).rows else 0,
         }
         
         return JsonResponse(data)
 
     except Exception as e:
-        # Logar o erro no servidor para depuração
-        print(f"Erro na API do Analytics: {e}")
+        # Log do erro para depuração
+        print(f"Erro na API de Analytics: {e}")
+        # Retorna uma resposta de erro clara para o frontend
         return JsonResponse({'error': 'Não foi possível obter os dados do Google Analytics. Verifique a configuração e as permissões da API.'}, status=500)
