@@ -52,6 +52,31 @@ def get_active_users(client, property_id):
                 
     return total_active_users
 
+
+def get_event_count(client, property_id, start_date, end_date, event_name):
+    """Busca a contagem de um evento específico."""
+    request = RunReportRequest(
+        property=f"properties/{property_id}",
+        dimensions=[Dimension(name="eventName")],
+        metrics=[Metric(name="eventCount")],
+        date_ranges=[DateRange(start_date=start_date, end_date=end_date)],
+        dimension_filter={
+            "filter": {
+                "field_name": "eventName",
+                "string_filter": {"value": event_name, "match_type": "EXACT"},
+            }
+        },
+    )
+    response = client.run_report(request)
+    
+    if response.rows:
+        # Se houver linhas, o valor estará na primeira linha e primeira métrica
+        return int(response.rows[0].metric_values[0].value)
+    
+    # Se não houver linhas, significa que o evento não ocorreu
+    return 0
+
+
 def format_report_data(response, dimension_key, metric_key, value_type=int):
     """Formata os dados do relatório em uma lista de dicionários."""
     data = []
