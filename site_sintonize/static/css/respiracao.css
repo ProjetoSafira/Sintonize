@@ -2,7 +2,7 @@
 .secao-instrucoes {
     width: 100%;
     min-height: 100vh;
-    background: linear-gradient(180deg, #D8E0E3 -1.38%, #F3F4F6 15.95%);
+    background-color: linear-gradient(180deg, #D8E0E3 -1.38%, #F3F4F6 15.95%);
     padding-top: 182px;
     padding-bottom: 2rem;
     display: flex;
@@ -17,7 +17,7 @@
     flex-direction: column;
     align-items: flex-start;
     align-self: stretch;
-    margin-bottom: 100px;
+   
 }
 
 .cabecalho-instrucoes h1 {
@@ -188,8 +188,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(90deg, rgba(77, 77, 77, 0.21) 22.61%, rgba(13, 13, 13, 0.00) 96.75%);
-    z-index: -2;
+    background-color: linear-gradient(180deg, #D8E0E3 -1.38%, #F3F4F6 15.95%);
+    z-index: -1;
 }
 
 .respiracao-container {
@@ -946,7 +946,7 @@
 /* ============================================================== */
 /* === REGRAS PARA RESPONSIVIDADE (Telas menores que 768px) === */
 /* ============================================================== */
-@media (max-width: 668px) {
+@media (max-width: 540px) {
   /* Esconde o container das ilustrações */
  
 
