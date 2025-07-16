@@ -203,8 +203,10 @@
 
 .background-svg {
     position: absolute;
-    top: 50%;
+    top: 60%;
+    right: 50%;
     left: 50%;
+  
     transform: translate(-50%, -50%);
     z-index: -1;
     width: 100%;
@@ -212,6 +214,7 @@
     height: auto;
     min-height: 50vh;
     max-height: 90vh;
+    background-color:white;
 }
 
 .animacao-container {
