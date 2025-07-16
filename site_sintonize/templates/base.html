@@ -44,12 +44,12 @@
         
         // Rastrear cliques no botão de sondagem
         function trackBurnoutSurvey() {
-            trackEvent('click', 'engagement', 'burnout_survey_start', 1);
+            trackEvent('begin_burnout_survey', 'engagement', 'burnout_survey_start', 1);
         }
 
         // Rastrear finalização da sondagem
         function trackBurnoutSurveyCompletion() {
-            trackEvent('submit', 'engagement', 'burnout_survey_complete', 1);
+            trackEvent('submit_burnout_survey', 'engagement', 'burnout_survey_complete', 1);
         }
         
         // Rastrear downloads/exportações
