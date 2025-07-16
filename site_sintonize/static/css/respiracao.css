@@ -946,11 +946,9 @@
 /* ============================================================== */
 /* === REGRAS PARA RESPONSIVIDADE (Telas menores que 768px) === */
 /* ============================================================== */
-@media (max-width: 768px) {
+@media (max-width: 668px) {
   /* Esconde o container das ilustrações */
-  .ilustracao-container {
-    display: none;
-  }
+ 
 
   /* Ajusta o padding e a justificação do conteúdo */
   .header-respiracao {
