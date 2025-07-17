@@ -23,16 +23,24 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        
-        // Configurar o ID do Google Analytics 
-        gtag('config', 'G-BRR6F0VRZ7', {
-            page_title: '{% block page_title %}{{ request.resolver_match.url_name|default:"home" }}{% endblock %}',
+    
+        // Configurar o ID do Google Analytics
+        {% with url_name=request.resolver_match.url_name|default:"home" %}
+        const config = {
+            page_title: '{% block page_title %}{{ url_name }}{% endblock %}',
             page_location: window.location.href,
             custom_map: {
                 'custom_parameter_1': 'section'
             }
-        });
-        
+        };
+    
+        if ('{{ url_name }}' === 'analytics_dashboard' || '{{ url_name }}' === 'login') {
+            config.send_page_view = false;
+        }
+    
+        gtag('config', 'G-BRR6F0VRZ7', config);
+        {% endwith %}
+    
         // Função para rastrear eventos customizados
         function trackEvent(action, category, label, value) {
             gtag('event', action, {
