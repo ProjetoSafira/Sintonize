@@ -8,4 +8,5 @@ db_backup.sqlite3
 0001_initial.py
 migrations
 setup/sintonize-analytics-credentials.json
+.env
 
