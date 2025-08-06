@@ -323,6 +323,44 @@
             }
         });
     });
+
+
+
+//Abrir/Fechar Menu Mobile
+    document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.getElementById('hamburgerMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const menuLinks = mobileMenu.querySelectorAll('a');
+
+    function openMenu() {
+        mobileMenu.classList.add('open');
+        menuOverlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeMenuFunc() {
+        mobileMenu.classList.remove('open');
+        menuOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    hamburger.addEventListener('click', openMenu);
+    closeMenu.addEventListener('click', closeMenuFunc);
+    menuOverlay.addEventListener('click', closeMenuFunc);
+
+    // Fecha ao clicar em qualquer item do menu
+    menuLinks.forEach(link => {
+        link.addEventListener('click', closeMenuFunc);
+    });
+
+    // Acessibilidade: fecha com ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === "Escape" && mobileMenu.classList.contains('open')) {
+            closeMenuFunc();
+        }
+    });
+});
     </script>
 
     {% block extra_js %}{% endblock %}
