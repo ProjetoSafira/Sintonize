@@ -91,8 +91,15 @@
                 <input type="text" id="searchInput" placeholder="Pesquisa" maxlength="50" aria-label="Pesquisa" autocomplete="off">
                 <img src="{% static 'images/images_menu/lupa.png' %}" alt="Lupa" class="search-icon">
                 <div class="dropdown-options" id="dropdownOptions"></div>
-                <p id="noResultsMessage" style="display:none;"> Nenhum resultado encontrado para sua pesquisa </p> 
+                <p id="noResultsMessage" style="display:none;"> Nenhum resultado encontrado para sua pesquisa </p>
             </div>
+            <div class="hamburger" id="hamburgerMenu" tabindex="0" aria-label="Abrir menu" role="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <path d="M30 14H2C0.895437 14 0 14.4477 0 15C0 15.5523 0.895437 16 2 16H30C31.1046 16 32 15.5523 32 15C32 14.4477 31.1046 14 30 14Z" fill="#204551"/>
+                  <path d="M2 7H30C31.1046 7 32 6.55228 32 6C32 5.44772 31.1046 5 30 5H2C0.895437 5 0 5.44772 0 6C0 6.55228 0.895437 7 2 7Z" fill="#204551"/>
+                  <path d="M30 23H2C0.895437 23 0 23.4477 0 24C0 24.5523 0.895437 25 2 25H30C31.1046 25 32 24.5523 32 24C32 23.4477 31.1046 23 30 23Z" fill="#204551"/>
+                </svg>
+            </div> 
  
             <ul class="menu">
                 <li class="menu-item"><a href="{% url 'index' %}">Início</a></li>
@@ -104,6 +111,21 @@
             </ul>
         </div>
     </div>
+
+    <!-- Ícone Hambúrguer (visível só no mobile) -->
+<!-- Painel do Menu Mobile -->
+<nav class="mobile-menu" id="mobileMenu">
+    <button class="close-menu" id="closeMenu" aria-label="Fechar menu">&times;</button>
+    <ul>
+        <li><a href="{% url 'index' %}">Início</a></li>
+        <li><a href="{% url 'trilha' %}">Sobre o Burnout</a></li>
+        <li><a href="{% url 'sondagem' %}">Sondagem de Burnout</a></li>
+        <li><a href="{% url 'pomodoro' %}">Pomodoro</a></li>
+        <li><a href="{% url 'respiracao_guiada' %}">Respiração Guiada</a></li>
+    </ul>
+</nav>
+
+
 
     <!-- Conteúdo principal -->
     {% block content %}
