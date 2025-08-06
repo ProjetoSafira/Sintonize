@@ -111,17 +111,15 @@
             </ul>
         </div>
     </div>
-
-    <!-- Ícone Hambúrguer (visível só no mobile) -->
-<!-- Painel do Menu Mobile -->
-<nav class="mobile-menu" id="mobileMenu">
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <nav class="mobile-menu" id="mobileMenu">
     <button class="close-menu" id="closeMenu" aria-label="Fechar menu">&times;</button>
     <ul>
-        <li><a href="{% url 'index' %}">Início</a></li>
-        <li><a href="{% url 'trilha' %}">Sobre o Burnout</a></li>
-        <li><a href="{% url 'sondagem' %}">Sondagem de Burnout</a></li>
-        <li><a href="{% url 'pomodoro' %}">Pomodoro</a></li>
-        <li><a href="{% url 'respiracao_guiada' %}">Respiração Guiada</a></li>
+        <li><a href="{% url 'index' %}" class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}">Início</a></li>
+        <li><a href="{% url 'trilha' %}" class="{% if request.resolver_match.url_name == 'trilha' %}active{% endif %}">Sobre o Burnout</a></li>
+        <li><a href="{% url 'sondagem' %}" class="{% if request.resolver_match.url_name == 'sondagem' %}active{% endif %}">Sondagem de Burnout</a></li>
+        <li><a href="{% url 'pomodoro' %}" class="{% if request.resolver_match.url_name == 'pomodoro' %}active{% endif %}">Pomodoro</a></li>
+        <li><a href="{% url 'respiracao_guiada' %}" class="{% if request.resolver_match.url_name == 'respiracao_guiada' %}active{% endif %}">Respiração Guiada</a></li>
     </ul>
 </nav>
 
