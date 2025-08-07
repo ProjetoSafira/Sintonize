@@ -391,9 +391,3 @@ nav button.active {
   }
 }
 
-/* Ajuste para botões ativos */
-nav button[active="true"] {
-  background-color: #204551;
-  color: #FEFEFE;
-}
-
