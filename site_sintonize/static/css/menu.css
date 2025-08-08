@@ -386,14 +386,16 @@ nav.mobile-menu a.active,
     background: none;
     border: none;
     font-size: 2rem;
-    color: #222;
+    color: #204551; /* ou #222, como preferir */
     position: absolute;
     top: 18px;
     right: 18px;
     cursor: pointer;
     z-index: 1002;
+    font-weight: 300; /* Deixa o X mais fino */
+    font-family: 'Arial', /* Garante fonte fina */
+    line-height: 1;
 }
-
 /* Overlay para fechar ao clicar fora */
 .menu-overlay {
     display: none;
