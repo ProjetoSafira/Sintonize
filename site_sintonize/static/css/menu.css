@@ -280,6 +280,8 @@
 @media (max-width: 480px) {
     .search-container {
         height: 48px;
+        width: 80%;
+        align-items: center;
     }
 
     .search-container input {
@@ -290,6 +292,10 @@
     .search-icon {
         width: 14px;
         height: 14px;
+    }
+
+    .brand img {
+        width: 150px;
     }
 }
 
