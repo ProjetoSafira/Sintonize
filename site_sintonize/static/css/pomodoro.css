@@ -391,3 +391,9 @@ nav button.active {
   }
 }
 
+/* Ajuste para botões ativos */
+.pomodoro-container .pomodoro-timer nav button[active="true"] {
+  background-color: #204551;
+  color: #FEFEFE;
+}
+
