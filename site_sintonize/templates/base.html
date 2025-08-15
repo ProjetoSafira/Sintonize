@@ -7,9 +7,9 @@
     <title>{% block title %}Sintonize{% endblock %}</title>
     <link rel="icon" href="{% static 'images/images_logo/favicon.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Wix+Madefor+Display:wght@400;700&display=swap" rel="stylesheet">
@@ -91,8 +91,15 @@
                 <input type="text" id="searchInput" placeholder="Pesquisa" maxlength="50" aria-label="Pesquisa" autocomplete="off">
                 <img src="{% static 'images/images_menu/lupa.png' %}" alt="Lupa" class="search-icon">
                 <div class="dropdown-options" id="dropdownOptions"></div>
-                <p id="noResultsMessage" style="display:none;"> Nenhum resultado encontrado para sua pesquisa </p> 
+                <p id="noResultsMessage" style="display:none;"> Nenhum resultado encontrado para sua pesquisa </p>
             </div>
+            <div class="hamburger" id="hamburgerMenu" tabindex="0" aria-label="Abrir menu" role="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <path d="M30 14H2C0.895437 14 0 14.4477 0 15C0 15.5523 0.895437 16 2 16H30C31.1046 16 32 15.5523 32 15C32 14.4477 31.1046 14 30 14Z" fill="#204551"/>
+                  <path d="M2 7H30C31.1046 7 32 6.55228 32 6C32 5.44772 31.1046 5 30 5H2C0.895437 5 0 5.44772 0 6C0 6.55228 0.895437 7 2 7Z" fill="#204551"/>
+                  <path d="M30 23H2C0.895437 23 0 23.4477 0 24C0 24.5523 0.895437 25 2 25H30C31.1046 25 32 24.5523 32 24C32 23.4477 31.1046 23 30 23Z" fill="#204551"/>
+                </svg>
+            </div> 
  
             <ul class="menu">
                 <li class="menu-item"><a href="{% url 'index' %}">Início</a></li>
@@ -104,6 +111,23 @@
             </ul>
         </div>
     </div>
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <nav class="mobile-menu" id="mobileMenu">
+        <button class="close-menu" id="closeMenu" aria-label="Fechar menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path d="M17.0971 15.9996L22.7671 10.3296C22.8945 10.1808 22.9611 9.98937 22.9535 9.79362C22.946 9.59787 22.8648 9.41219 22.7263 9.27367C22.5878 9.13515 22.4021 9.054 22.2063 9.04644C22.0106 9.03888 21.8192 9.10547 21.6704 9.23289L16.0004 14.9029L10.3304 9.22511C10.1816 9.09769 9.99023 9.03111 9.79448 9.03867C9.59874 9.04623 9.41305 9.12737 9.27453 9.26589C9.13601 9.40441 9.05487 9.5901 9.0473 9.78584C9.03974 9.98159 9.10633 10.173 9.23375 10.3218L14.9037 15.9996L9.22597 21.6696C9.14455 21.7393 9.07842 21.8251 9.03174 21.9216C8.98505 22.0181 8.95882 22.1232 8.95468 22.2303C8.95054 22.3374 8.96859 22.4442 9.0077 22.544C9.0468 22.6438 9.10611 22.7345 9.18191 22.8103C9.25771 22.8861 9.34835 22.9454 9.44816 22.9845C9.54797 23.0236 9.65478 23.0416 9.7619 23.0375C9.86901 23.0334 9.97412 23.0071 10.0706 22.9605C10.1671 22.9138 10.2529 22.8476 10.3226 22.7662L16.0004 17.0962L21.6704 22.7662C21.8192 22.8936 22.0106 22.9602 22.2063 22.9527C22.4021 22.9451 22.5878 22.864 22.7263 22.7254C22.8648 22.5869 22.946 22.4012 22.9535 22.2055C22.9611 22.0097 22.8945 21.8183 22.7671 21.6696L17.0971 15.9996Z" fill="#204551"/>
+            </svg>
+          </button>
+    <ul>
+        <li><a href="{% url 'index' %}" class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}">Início</a></li>
+        <li><a href="{% url 'trilha' %}" class="{% if request.resolver_match.url_name == 'trilha' %}active{% endif %}">Sobre o Burnout</a></li>
+        <li><a href="{% url 'sondagem' %}" class="{% if request.resolver_match.url_name == 'sondagem' %}active{% endif %}">Sondagem de Burnout</a></li>
+        <li><a href="{% url 'pomodoro' %}" class="{% if request.resolver_match.url_name == 'pomodoro' %}active{% endif %}">Pomodoro</a></li>
+        <li><a href="{% url 'respiracao_guiada' %}" class="{% if request.resolver_match.url_name == 'respiracao_guiada' %}active{% endif %}">Respiração Guiada</a></li>
+    </ul>
+</nav>
+
+
 
     <!-- Conteúdo principal -->
     {% block content %}
@@ -301,6 +325,44 @@
             }
         });
     });
+
+
+
+//Abrir/Fechar Menu Mobile
+    document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.getElementById('hamburgerMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const menuLinks = mobileMenu.querySelectorAll('a');
+
+    function openMenu() {
+        mobileMenu.classList.add('open');
+        menuOverlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeMenuFunc() {
+        mobileMenu.classList.remove('open');
+        menuOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    hamburger.addEventListener('click', openMenu);
+    closeMenu.addEventListener('click', closeMenuFunc);
+    menuOverlay.addEventListener('click', closeMenuFunc);
+
+    // Fecha ao clicar em qualquer item do menu
+    menuLinks.forEach(link => {
+        link.addEventListener('click', closeMenuFunc);
+    });
+
+    // Acessibilidade: fecha com ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === "Escape" && mobileMenu.classList.contains('open')) {
+            closeMenuFunc();
+        }
+    });
+});
     </script>
 
     {% block extra_js %}{% endblock %}
