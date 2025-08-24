@@ -16,7 +16,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-r_kch-g^hhe-ed*$sla36
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = ['sintonize.onrender.com', '127.0.0.1','localhost', 'mediumspringgreen-gnu-497531.hostingersite.com']
+ALLOWED_HOSTS = ['sintonize.onrender.com', '127.0.0.1','localhost', '85.31.62.223']
 
 # Application definition
 
