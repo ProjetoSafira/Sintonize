@@ -115,6 +115,9 @@
         let currentQuestion = 0;
         let totalScore = 0;  // Variável para armazenar a pontuação total
         const questions = document.querySelectorAll('.question');
+        
+        // Array para rastrear quais perguntas já foram visualizadas
+        let questionsViewed = new Array(totalQuestions).fill(false);
 
         function isOptionSelected() {
             const currentQuestionElement = questions[currentQuestion];
@@ -132,6 +135,22 @@
             });
         }
 
+        // Função para rastrear visualização da pergunta (apenas uma vez por pergunta)
+        function trackQuestionView(questionIndex) {
+            if (!questionsViewed[questionIndex]) {
+                questionsViewed[questionIndex] = true;
+                const questionNumber = questionIndex + 1;
+                
+                // Verifica se a função de tracking existe (definida no base.html)
+                if (typeof trackSurveyQuestionView === 'function') {
+                    trackSurveyQuestionView(questionNumber);
+                } else {
+                    // Fallback caso a função não esteja disponível
+                    console.log(`Pergunta ${questionNumber} visualizada`);
+                }
+            }
+        }
+
         function changeQuestion(n) {
             if (n > 0 && !isOptionSelected()) {
                 document.getElementById(`error-${currentQuestion + 1}`).style.display = 'block';
@@ -146,6 +165,10 @@
 
             if (currentQuestion >= 0 && currentQuestion < questions.length) {
                 questions[currentQuestion].classList.add('active');
+                
+                // Rastrear visualização da pergunta atual
+                trackQuestionView(currentQuestion);
+                
                 const sessionIndex = Math.floor(currentQuestion / (totalQuestions / 3));
                 document.getElementById('sessionHeader').innerHTML = `
                     <div class="session-title">Seção ${sessionIndex + 1} de 3</div>
@@ -178,9 +201,9 @@
             // Calcula a pontuação da última questão antes de enviar
             calculateScore();
 
-            // Rastreia a finalização da sondagem
-            if (typeof trackBurnoutSurveyCompletion === 'function') {
-                trackBurnoutSurveyCompletion();
+            // Rastreia a finalização da sondagem com a nova função específica
+            if (typeof trackSurveyFormCompletion === 'function') {
+                trackSurveyFormCompletion();
             }
 
             // Chama a função openModal que fará a requisição para o backend
@@ -231,6 +254,37 @@
         });
 
         changeQuestion(0); // Inicia mostrando a primeira pergunta
+        
+        // Implementar rastreamento avançado com Intersection Observer para casos especiais
+        // (quando usuário rola rapidamente através do formulário)
+        if ('IntersectionObserver' in window) {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5 // 50% da pergunta deve estar visível
+            };
+
+            const questionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const questionElement = entry.target;
+                        const questionId = questionElement.id;
+                        const questionNumber = parseInt(questionId.split('-')[1]);
+                        const questionIndex = questionNumber - 1;
+                        
+                        // Rastrear apenas se não foi rastreado antes
+                        if (questionIndex >= 0 && questionIndex < totalQuestions) {
+                            trackQuestionView(questionIndex);
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Observar todas as perguntas
+            questions.forEach(question => {
+                questionObserver.observe(question);
+            });
+        }
     
 
         const modalContent = document.querySelector('.modal-content');
