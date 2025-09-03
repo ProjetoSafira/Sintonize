@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste - Rastreamento Formulário de Sondagem</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .test-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-button:hover {
+            background: #0056b3;
+        }
+        .test-log {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 10px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .success {
+            color: #28a745;
+        }
+        .error {
+            color: #dc3545;
+        }
+        .info {
+            color: #17a2b8;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Teste de Rastreamento - Formulário de Sondagem</h1>
+        <p>Este arquivo permite testar se os eventos do Google Analytics estão sendo enviados corretamente.</p>
+        
+        <h3>Testes Disponíveis:</h3>
+        <button class="test-button" onclick="testQuestionView(1)">Testar Pergunta 1</button>
+        <button class="test-button" onclick="testQuestionView(5)">Testar Pergunta 5</button>
+        <button class="test-button" onclick="testQuestionView(12)">Testar Pergunta 12</button>
+        <button class="test-button" onclick="testFormCompletion()">Testar Conclusão</button>
+        <button class="test-button" onclick="testAllQuestions()">Testar Todas as Perguntas</button>
+        <button class="test-button" onclick="clearLog()">Limpar Log</button>
+        
+        <div id="testLog" class="test-log">Aguardando testes...\n</div>
+    </div>
+
+    <div class="test-container">
+        <h3>📊 Como Verificar no Google Analytics</h3>
+        <ol>
+            <li><strong>Acesse o Google Analytics</strong>: https://analytics.google.com</li>
+            <li><strong>Vá para</strong>: Relatórios > Tempo Real > Visão Geral</li>
+            <li><strong>Execute os testes</strong> acima e observe os eventos aparecendo em tempo real</li>
+            <li><strong>Verifique na seção</strong>: "Eventos por Nome" se aparecem:
+                <ul>
+                    <li><code>question_view</code></li>
+                    <li><code>form_completion</code></li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <div class="test-container">
+        <h3>🔍 Debug Avançado</h3>
+        <p>Para debug mais detalhado, abra o <strong>Console do Navegador</strong> (F12) e execute os testes.</p>
+        <p>Os eventos também serão logados no console com detalhes completos.</p>
+    </div>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BRR6F0VRZ7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-BRR6F0VRZ7', {
+            debug_mode: true, // Ativa modo debug para testes
+            send_page_view: false // Não enviar page view para não poluir analytics
+        });
+
+        // Funções de tracking (copiadas do base.html)
+        function trackEvent(action, category, label, value) {
+            gtag('event', action, {
+                event_category: category,
+                event_label: label,
+                value: value
+            });
+        }
+
+        function trackSurveyQuestionView(questionNumber) {
+            trackEvent('question_view', 'Formulário de Sondagem', `Pergunta ${questionNumber}`, questionNumber);
+        }
+
+        function trackSurveyFormCompletion() {
+            trackEvent('form_completion', 'Formulário de Sondagem', 'Formulário Concluído', 1);
+        }
+
+        // Funções de teste
+        function log(message, type = 'info') {
+            const logElement = document.getElementById('testLog');
+            const timestamp = new Date().toLocaleTimeString();
+            const className = type === 'success' ? 'success' : type === 'error' ? 'error' : 'info';
+            
+            logElement.innerHTML += `<span class="${className}">[${timestamp}] ${message}</span>\n`;
+            logElement.scrollTop = logElement.scrollHeight;
+            
+            // Também logar no console do navegador
+            console.log(`[Analytics Test] ${message}`);
+        }
+
+        function testQuestionView(questionNumber) {
+            try {
+                trackSurveyQuestionView(questionNumber);
+                log(`✅ Evento 'question_view' enviado para Pergunta ${questionNumber}`, 'success');
+                log(`   - Action: question_view`, 'info');
+                log(`   - Category: Formulário de Sondagem`, 'info');
+                log(`   - Label: Pergunta ${questionNumber}`, 'info');
+                log(`   - Value: ${questionNumber}`, 'info');
+            } catch (error) {
+                log(`❌ Erro ao enviar evento para Pergunta ${questionNumber}: ${error}`, 'error');
+            }
+        }
+
+        function testFormCompletion() {
+            try {
+                trackSurveyFormCompletion();
+                log(`✅ Evento 'form_completion' enviado`, 'success');
+                log(`   - Action: form_completion`, 'info');
+                log(`   - Category: Formulário de Sondagem`, 'info');
+                log(`   - Label: Formulário Concluído`, 'info');
+                log(`   - Value: 1`, 'info');
+            } catch (error) {
+                log(`❌ Erro ao enviar evento de conclusão: ${error}`, 'error');
+            }
+        }
+
+        function testAllQuestions() {
+            log(`🚀 Iniciando teste de todas as perguntas...`, 'info');
+            
+            for (let i = 1; i <= 12; i++) {
+                setTimeout(() => {
+                    testQuestionView(i);
+                    if (i === 12) {
+                        setTimeout(() => {
+                            testFormCompletion();
+                            log(`🎉 Teste completo finalizado!`, 'success');
+                        }, 100);
+                    }
+                }, i * 100); // Pequeno delay entre cada evento
+            }
+        }
+
+        function clearLog() {
+            document.getElementById('testLog').innerHTML = 'Log limpo...\n';
+        }
+
+        // Verificar se Google Analytics carregou
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                if (typeof gtag === 'function') {
+                    log(`✅ Google Analytics carregado com sucesso`, 'success');
+                    log(`🎯 ID de rastreamento: G-BRR6F0VRZ7`, 'info');
+                    log(`🔧 Modo debug ativo`, 'info');
+                } else {
+                    log(`❌ Google Analytics não foi carregado`, 'error');
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
