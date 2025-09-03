@@ -59,6 +59,16 @@
         function trackBurnoutSurveyCompletion() {
             trackEvent('submit_burnout_survey', 'engagement', 'burnout_survey_complete', 1);
         }
+
+        // Função específica para rastrear visualização das perguntas do formulário
+        function trackSurveyQuestionView(questionNumber) {
+            trackEvent('question_view', 'Formulário de Sondagem', `Pergunta ${questionNumber}`, questionNumber);
+        }
+
+        // Função específica para rastrear conclusão do formulário
+        function trackSurveyFormCompletion() {
+            trackEvent('form_completion', 'Formulário de Sondagem', 'Formulário Concluído', 1);
+        }
         
         // Rastrear downloads/exportações
         function trackDownload(filename) {
