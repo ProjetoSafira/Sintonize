@@ -226,6 +226,12 @@
                     return response.json();
                 })
                 .then(data => {
+                    // Rastrear a pontuação apenas após sucesso da requisição
+                    if (typeof trackSurveyScore === 'function') {
+                        trackSurveyScore(total);
+                        console.log(`Pontuação ${total} enviada para Google Analytics`);
+                    }
+                    
                     document.getElementById('modalTitle').innerText = data.title;
                     document.getElementById('modalBody').innerHTML = data.body;
                     document.getElementById('modalImage').src = data.image;

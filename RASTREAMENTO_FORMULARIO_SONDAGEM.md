@@ -31,6 +31,19 @@ Este documento descreve a implementação completa do rastreamento do formulári
 - **Label**: `Formulário Concluído`
 - **Value**: 1
 
+### 3. Rastreamento da Pontuação do Formulário
+
+**Como funciona:**
+- Dispara um evento após o processamento bem-sucedido do formulário no backend
+- Envia a pontuação final calculada como valor do evento
+- Garante que apenas resultados válidos sejam rastreados
+
+**Evento enviado:**
+- **Action**: `survey_score`
+- **Category**: `Formulário de Sondagem`
+- **Label**: `Resultado do Teste`
+- **Value**: Pontuação final (12-60)
+
 ## 📈 Como Monitorar no Google Analytics
 
 ### 1. Acessar os Eventos no GA4
@@ -56,6 +69,7 @@ Filtro: Event Category = "Formulário de Sondagem"
 - ...
 - Pergunta 12: [W] eventos
 - Formulário Concluído: [V] eventos
+- Resultado do Teste: [V] eventos (com pontuações como valores)
 
 #### B. Taxa de Abandono por Pergunta
 
@@ -64,6 +78,28 @@ Para calcular em qual pergunta os usuários mais desistem:
 ```
 Taxa de Abandono = (Visualizações Pergunta N - Visualizações Pergunta N+1) / Visualizações Pergunta N * 100
 ```
+
+#### C. Análise de Pontuações dos Usuários
+
+Para analisar o desempenho e padrões nos resultados:
+
+```
+Dimensão Primária: Event Label (filtrar por "Resultado do Teste")
+Métrica: Event Value (pontuação)
+Métricas adicionais: Event Count, Average Event Value
+Filtro: Event Category = "Formulário de Sondagem" AND Event Label = "Resultado do Teste"
+```
+
+**Métricas relevantes:**
+- **Pontuação média**: Average Event Value
+- **Distribuição de pontuações**: Gráfico de Event Value
+- **Total de testes concluídos**: Event Count
+- **Faixas de risco**:
+  - Baixo risco: 12-20 pontos
+  - Cuidado: 21-30 pontos  
+  - Alerta: 31-40 pontos
+  - Alto risco: 41-50 pontos
+  - Crítico: 51-60 pontos
 
 ### 3. Configurar Conversões
 
