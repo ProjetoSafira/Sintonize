@@ -69,6 +69,11 @@
         function trackSurveyFormCompletion() {
             trackEvent('form_completion', 'Formulário de Sondagem', 'Formulário Concluído', 1);
         }
+
+        // Função específica para rastrear a pontuação do formulário
+        function trackSurveyScore(score) {
+            trackEvent('survey_score', 'Formulário de Sondagem', 'Resultado do Teste', score);
+        }
         
         // Rastrear downloads/exportações
         function trackDownload(filename) {

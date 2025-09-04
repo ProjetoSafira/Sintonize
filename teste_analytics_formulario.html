@@ -63,6 +63,7 @@
         <button class="test-button" onclick="testQuestionView(5)">Testar Pergunta 5</button>
         <button class="test-button" onclick="testQuestionView(12)">Testar Pergunta 12</button>
         <button class="test-button" onclick="testFormCompletion()">Testar Conclusão</button>
+        <button class="test-button" onclick="testSurveyScore(35)">Testar Pontuação (35)</button>
         <button class="test-button" onclick="testAllQuestions()">Testar Todas as Perguntas</button>
         <button class="test-button" onclick="clearLog()">Limpar Log</button>
         
@@ -79,6 +80,7 @@
                 <ul>
                     <li><code>question_view</code></li>
                     <li><code>form_completion</code></li>
+                    <li><code>survey_score</code></li>
                 </ul>
             </li>
         </ol>
@@ -116,6 +118,10 @@
 
         function trackSurveyFormCompletion() {
             trackEvent('form_completion', 'Formulário de Sondagem', 'Formulário Concluído', 1);
+        }
+
+        function trackSurveyScore(score) {
+            trackEvent('survey_score', 'Formulário de Sondagem', 'Resultado do Teste', score);
         }
 
         // Funções de teste
@@ -157,6 +163,19 @@
             }
         }
 
+        function testSurveyScore(score) {
+            try {
+                trackSurveyScore(score);
+                log(`✅ Evento 'survey_score' enviado com pontuação ${score}`, 'success');
+                log(`   - Action: survey_score`, 'info');
+                log(`   - Category: Formulário de Sondagem`, 'info');
+                log(`   - Label: Resultado do Teste`, 'info');
+                log(`   - Value: ${score}`, 'info');
+            } catch (error) {
+                log(`❌ Erro ao enviar evento de pontuação: ${error}`, 'error');
+            }
+        }
+
         function testAllQuestions() {
             log(`🚀 Iniciando teste de todas as perguntas...`, 'info');
             
@@ -166,7 +185,10 @@
                     if (i === 12) {
                         setTimeout(() => {
                             testFormCompletion();
-                            log(`🎉 Teste completo finalizado!`, 'success');
+                            setTimeout(() => {
+                                testSurveyScore(35); // Teste com pontuação de exemplo
+                                log(`🎉 Teste completo finalizado!`, 'success');
+                            }, 100);
                         }, 100);
                     }
                 }, i * 100); // Pequeno delay entre cada evento
