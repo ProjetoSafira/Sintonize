@@ -17,37 +17,64 @@
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <meta name="color-scheme" content="light">
     
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BRR6F0VRZ7"></script>
+    <!-- Google Analytics 4 - Configuração Dinâmica -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ GA_MEASUREMENT_ID }}"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-    
-        // Configurar o ID do Google Analytics
-        {% with url_name=request.resolver_match.url_name|default:"home" %}
+
+        // Configuração apenas para VPN Hostinger
+        const isHostingerVPN = window.location.hostname === '85.31.62.223';
+        const measurementId = '{{ GA_MEASUREMENT_ID }}';
+        
         const config = {
-            page_title: '{% block page_title %}{{ url_name }}{% endblock %}',
+            page_title: '{% block page_title %}{{ request.resolver_match.url_name|default:"home" }}{% endblock %}',
             page_location: window.location.href,
+            // Configurações específicas
+            send_page_view: isHostingerVPN, // Só envia page view na VPN Hostinger
+            anonymize_ip: true, // Para conformidade LGPD
             custom_map: {
                 'custom_parameter_1': 'section'
             }
         };
-    
+
+        // Configurações específicas por ambiente
+        if (isHostingerVPN) {
+            config.debug_mode = false;
+            config.transport_type = 'beacon';
+        } else {
+            config.debug_mode = true;
+            config.send_page_view = false; // Não enviar dados se não for VPN Hostinger
+        }
+
+        // Configuração para páginas especiais
+        {% with url_name=request.resolver_match.url_name|default:"home" %}
         if ('{{ url_name }}' === 'analytics_dashboard' || '{{ url_name }}' === 'login') {
             config.send_page_view = false;
         }
-    
-        gtag('config', 'G-BRR6F0VRZ7', config);
         {% endwith %}
+
+        gtag('config', measurementId, config);
+        
+        // Log para debug
+        if (!isHostingerVPN) {
+            console.log('GA Configurado (apenas para VPN Hostinger):', measurementId, config);
+            console.log('Hostname atual:', window.location.hostname);
+            console.log('Google Analytics ativo:', isHostingerVPN);
+        }
     
-        // Função para rastrear eventos customizados
+        // Função para rastrear eventos customizados (apenas na VPN Hostinger)
         function trackEvent(action, category, label, value) {
-            gtag('event', action, {
-                event_category: category,
-                event_label: label,
-                value: value
-            });
+            if (isHostingerVPN) {
+                gtag('event', action, {
+                    event_category: category,
+                    event_label: label,
+                    value: value
+                });
+            } else {
+                console.log('Evento GA bloqueado (apenas VPN Hostinger):', action, category, label, value);
+            }
         }
         
         // Rastrear cliques no botão de sondagem

@@ -56,6 +56,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'site_sintonize.context_processors.google_analytics',
+                'site_sintonize.context_processors.site_info',
             ],
         },
     },
@@ -140,3 +142,17 @@ X_FRAME_OPTIONS = 'DENY'
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/analytics/'
 LOGOUT_REDIRECT_URL = '/'
+
+# Google Analytics Configuration
+GA_MEASUREMENT_ID = os.environ.get('GA_MEASUREMENT_ID', 'G-BRR6F0VRZ7')
+ENVIRONMENT = os.environ.get('ENVIRONMENT', 'development')
+
+# CORS Headers (para Google Analytics - apenas VPN Hostinger)
+CORS_ALLOWED_ORIGINS = [
+    "http://85.31.62.223:7080",
+    "https://www.googletagmanager.com",
+    "https://analytics.google.com",
+]
+
+# Headers de segurança para Google Analytics
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None
