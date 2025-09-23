@@ -23,3 +23,9 @@ services:
       - ENVIRONMENT=production
       - SECRET_KEY=django-insecure-r_kch-g^hhe-ed*sla36rs102xcg3gae6d0s3fmj=k6_r7j%
       - GA_MEASUREMENT_ID=G-BRR6F0VRZ7
+    networks:
+      - n8nNerdnewsNet
+
+networks:
+  n8nNerdnewsNet:
+    external: true
