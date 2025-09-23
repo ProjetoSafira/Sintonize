@@ -12,7 +12,7 @@ services:
     volumes:
       - static_volume:/app/staticfiles
     networks:
-      - traefik_default
+      - n8nNerdnewsNet
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.sintonize.rule=Host(`sintonize.online`) || Host(`www.sintonize.online`)"
@@ -28,5 +28,5 @@ volumes:
   static_volume:
 
 networks:
-  traefik_default:
+  n8nNerdnewsNet:
     external: true
