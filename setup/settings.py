@@ -159,3 +159,4 @@ CORS_ALLOWED_ORIGINS = [
 
 # Headers de segurança para Google Analytics
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+
