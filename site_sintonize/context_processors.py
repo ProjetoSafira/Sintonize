@@ -42,3 +42,5 @@ def site_info(request):
         'CURRENT_URL': request.build_absolute_uri(),
         'IS_PRODUCTION': not getattr(settings, 'DEBUG', True),
     }
+
+

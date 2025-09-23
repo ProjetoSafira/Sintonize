@@ -16,7 +16,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-r_kch-g^hhe-ed*$sla36
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = ['sintonize.onrender.com', '127.0.0.1','localhost', '85.31.62.223']
+ALLOWED_HOSTS = ['sintonize.onrender.com', '127.0.0.1','localhost', '85.31.62.223', 'sintonize.online', 'www.sintonize.online']
 
 # Application definition
 
@@ -150,6 +150,9 @@ ENVIRONMENT = os.environ.get('ENVIRONMENT', 'development')
 # CORS Headers (para Google Analytics - apenas VPN Hostinger)
 CORS_ALLOWED_ORIGINS = [
     "http://85.31.62.223:7080",
+    "http://sintonize.online",
+    "https://sintonize.online",
+    "https://www.sintonize.online",
     "https://www.googletagmanager.com",
     "https://analytics.google.com",
 ]
