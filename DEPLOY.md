@@ -120,3 +120,34 @@ docker ps | grep sintonize
 - **Projeto**: `/root/sinto/Sintonize`
 - **Aplicação atual**: Gunicorn rodando via systemd
 - **Nova aplicação**: Container Docker integrado com Traefik
+
+
+🚀 Deploy Automático via GitHub + Portainer
+
+  Método 1: Via Portainer (Mais fácil)
+
+  1. No Portainer (http://85.31.62.223:9000):
+
+  - Vá em Stacks → sintonize
+  - Clique em Editor (ícone de lápis)
+  - Build method: Mude para "Git Repository"
+  - Repository URL: https://github.com/ProjetoSafira/Sintonize
+  - Repository reference: main
+  - Compose path: docker-compose-swarm.yml
+  - Auto-redeploy webhook: ✅ Ative esta opção
+  - Save settings
+
+  2. Copiar Webhook URL:
+
+  O Portainer vai gerar uma URL como:
+  http://85.31.62.223:9000/api/webhooks/[ID]
+
+  3. No GitHub:
+
+  - Vá no repositório ProjetoSafira/Sintonize
+  - Settings → Webhooks → Add webhook
+  - Payload URL: Cole a URL do Portainer
+  - Content type: application/json
+  - Which events: Just the push event
+  - Active: ✅
+  - Add webhook
