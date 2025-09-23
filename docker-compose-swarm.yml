@@ -11,12 +11,13 @@ services:
         - "traefik.enable=true"
         - "traefik.http.routers.sintonize.rule=Host(`sintonize.online`) || Host(`www.sintonize.online`)"
         - "traefik.http.routers.sintonize.entrypoints=web"
-        - "traefik.http.services.sintonize.loadbalancer.server.port=8000"
+        - "traefik.http.routers.sintonize.middlewares=redirect-to-https"
         - "traefik.http.routers.sintonize-secure.rule=Host(`sintonize.online`) || Host(`www.sintonize.online`)"
         - "traefik.http.routers.sintonize-secure.entrypoints=websecure"
         - "traefik.http.routers.sintonize-secure.tls.certresolver=letsencrypt"
+        - "traefik.http.routers.sintonize-secure.service=sintonize"
+        - "traefik.http.services.sintonize.loadbalancer.server.port=8000"
         - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
-        - "traefik.http.routers.sintonize.middlewares=redirect-to-https"
     environment:
       - DEBUG=False
       - ENVIRONMENT=production
