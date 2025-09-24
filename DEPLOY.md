@@ -151,3 +151,5 @@ docker ps | grep sintonize
   - Which events: Just the push event
   - Active: ✅
   - Add webhook
+
+  docker exec traefik_traefik.1.bd94hsefc9ri8lsbkg8ikab2l ls -la /etc/traefik/ 2>/dev/null || echo "Sem /etc/traefik"
