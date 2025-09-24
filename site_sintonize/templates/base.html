@@ -24,8 +24,10 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        // Configuração apenas para VPN Hostinger
-        const isHostingerVPN = window.location.hostname === '85.31.62.223';
+        // Configuração para domínios permitidos
+        const isHostingerVPN = window.location.hostname === 'sintonize.online' ||
+                               window.location.hostname === 'www.sintonize.online' ||
+                               window.location.hostname === '85.31.62.223';
         const measurementId = '{{ GA_MEASUREMENT_ID }}';
         
         const config = {
