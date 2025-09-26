@@ -4,29 +4,10 @@ services:
   sintonize:
     build: .
     container_name: sintonize_app
+    ports:
+      - "8000:8000"
     environment:
       - DEBUG=False
       - ENVIRONMENT=production
       - SECRET_KEY=${SECRET_KEY:-django-insecure-r_kch-g^hhe-ed*$sla36rs102xcg3gae6d0s3fmj=k6#_r7j%}
       - GA_MEASUREMENT_ID=${GA_MEASUREMENT_ID:-G-BRR6F0VRZ7}
-    volumes:
-      - static_volume:/app/staticfiles
-    networks:
-      - n8nNerdnewsNet
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.sintonize.rule=Host(`sintonize.online`) || Host(`www.sintonize.online`)"
-      - "traefik.http.routers.sintonize.entrypoints=web"
-      - "traefik.http.services.sintonize.loadbalancer.server.port=8000"
-      - "traefik.http.routers.sintonize-secure.rule=Host(`sintonize.online`) || Host(`www.sintonize.online`)"
-      - "traefik.http.routers.sintonize-secure.entrypoints=websecure"
-      - "traefik.http.routers.sintonize-secure.tls.certresolver=letsencrypt"
-      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
-      - "traefik.http.routers.sintonize.middlewares=redirect-to-https"
-
-volumes:
-  static_volume:
-
-networks:
-  n8nNerdnewsNet:
-    external: true
