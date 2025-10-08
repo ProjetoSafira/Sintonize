@@ -9,9 +9,9 @@
             </div>
             <div class="search-container">
                 <input type="text" id="searchInput" placeholder="Pesquisa" maxlength="50" aria-label="Pesquisa" autocomplete="off">
-                <img src="{% static 'images/images_menu/lupa.png' %}" alt="Lupa" class="search-icon">
+                <img src="{% static 'images/images_menu/lupa.png' %}" alt="Lupa" class="search-icon" id="searchIcon" style="cursor: pointer;">
                 <div class="dropdown-options" id="dropdownOptions"></div>
-                <p id="noResultsMessage" style="display:none;"> Nenhum resultado encontrado para sua pesquisa </p> 
+                <p id="noResultsMessage" style="display:none;"> Nenhum resultado encontrado para sua pesquisa </p>
             </div>
  
             <ul class="menu">
@@ -92,11 +92,37 @@
     document.addEventListener('DOMContentLoaded', function() {
         const searchInput = document.getElementById('searchInput');
         const dropdownOptions = document.getElementById('dropdownOptions');
+        const searchIcon = document.getElementById('searchIcon');
         let selectedIndex = -1; // Índice da opção selecionada
 
         // Limpar o campo de pesquisa e esconder o dropdown ao carregar a página
         searchInput.value = '';
-        dropdownOptions.style.display = 'none';  // Esconde o dropdown        
+        dropdownOptions.style.display = 'none';  // Esconde o dropdown
+
+        // Adicionar evento de clique na lupa
+        searchIcon.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Lupa clicada!');
+            const query = searchInput.value.trim();
+            console.log('Query:', query);
+            if (query.length > 0) {
+                const results = searchMenu(query);
+                console.log('Resultados encontrados:', results.length);
+                if (results.length === 1) {
+                    // Se houver apenas um resultado, redireciona diretamente
+                    window.location.href = results[0].getAttribute('href');
+                } else if (results.length > 1) {
+                    // Se houver múltiplos resultados, mostra o dropdown
+                    updateSearchResults(query);
+                } else {
+                    // Se não houver resultados, mostra mensagem
+                    updateSearchResults(query);
+                }
+            } else {
+                console.log('Campo de pesquisa vazio');
+            }
+        });        
 
         // Limpar o campo de pesquisa ao voltar a página
         window.addEventListener('pageshow', function(){
@@ -175,7 +201,7 @@
 
         // Fechar o dropdown ao clicar fora
         document.addEventListener('click', function(e) {
-            if (!searchInput.contains(e.target) && !dropdownOptions.contains(e.target)) {
+            if (!searchInput.contains(e.target) && !dropdownOptions.contains(e.target) && !searchIcon.contains(e.target)) {
                 dropdownOptions.style.display = 'none';  // Esconde o dropdown
             }
         });

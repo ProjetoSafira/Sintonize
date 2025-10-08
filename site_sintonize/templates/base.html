@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Sintonize{% endblock %}</title>
     <link rel="icon" href="{% static 'images/images_logo/favicon.ico' %}" type="image/x-icon">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     <link rel="stylesheet" href="{% static 'css/menu.css' %}">
@@ -133,7 +133,7 @@
             </div>
             <div class="search-container">
                 <input type="text" id="searchInput" placeholder="Pesquisa" maxlength="50" aria-label="Pesquisa" autocomplete="off">
-                <img src="{% static 'images/images_menu/lupa.png' %}" alt="Lupa" class="search-icon">
+                <img src="{% static 'images/images_menu/lupa.png' %}" alt="Lupa" class="search-icon" id="searchIcon">
                 <div class="dropdown-options" id="dropdownOptions"></div>
                 <p id="noResultsMessage" style="display:none;"> Nenhum resultado encontrado para sua pesquisa </p>
             </div>
@@ -281,11 +281,45 @@
     document.addEventListener('DOMContentLoaded', function() {
         const searchInput = document.getElementById('searchInput');
         const dropdownOptions = document.getElementById('dropdownOptions');
+        const searchIcon = document.getElementById('searchIcon');
         let selectedIndex = -1; // Índice da opção selecionada
+
+        console.log('Elementos encontrados:', {
+            searchInput: !!searchInput,
+            dropdownOptions: !!dropdownOptions,
+            searchIcon: !!searchIcon
+        });
 
         // Limpar o campo de pesquisa e esconder o dropdown ao carregar a página
         searchInput.value = '';
-        dropdownOptions.style.display = 'none';  // Esconde o dropdown        
+        dropdownOptions.style.display = 'none';  // Esconde o dropdown
+
+        // Adicionar evento de clique na lupa
+        if (searchIcon) {
+            console.log('Evento de clique adicionado à lupa');
+            searchIcon.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('Lupa clicada!');
+                const query = searchInput.value.trim();
+                console.log('Query:', query);
+                if (query.length > 0) {
+                    const results = searchMenu(query);
+                    console.log('Resultados:', results.length);
+                    if (results.length === 1) {
+                        window.location.href = results[0].getAttribute('href');
+                    } else if (results.length > 0) {
+                        updateSearchResults(query);
+                    } else {
+                        updateSearchResults(query);
+                    }
+                } else {
+                    console.log('Campo vazio');
+                }
+            });
+        } else {
+            console.error('searchIcon não encontrado!');
+        }
 
         // Limpar o campo de pesquisa ao voltar a página
         window.addEventListener('pageshow', function(){
@@ -364,7 +398,8 @@
 
         // Fechar o dropdown ao clicar fora
         document.addEventListener('click', function(e) {
-            if (!searchInput.contains(e.target) && !dropdownOptions.contains(e.target)) {
+            const isSearchIcon = searchIcon && searchIcon.contains(e.target);
+            if (!searchInput.contains(e.target) && !dropdownOptions.contains(e.target) && !isSearchIcon) {
                 dropdownOptions.style.display = 'none';  // Esconde o dropdown
             }
         });

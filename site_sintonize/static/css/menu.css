@@ -149,7 +149,7 @@
     width: 19.046px;
     height: 19.046px;
     flex-shrink: 0;
-    pointer-events: none;
+    cursor: pointer;
 }
 
 .dropdown-options {
