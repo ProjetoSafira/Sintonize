@@ -129,9 +129,12 @@
         function calculateScore() {
             const currentQuestionElement = questions[currentQuestion];
             const radioButtons = currentQuestionElement.querySelectorAll('input[type="radio"]');
+            let scoreAdded = false;
             radioButtons.forEach(radio => {
-                if (radio.checked) {
+                if (radio.checked && !radio.dataset.counted) {
                     totalScore += parseInt(radio.value);
+                    radio.dataset.counted = 'true';
+                    scoreAdded = true;
                 }
             });
         }
