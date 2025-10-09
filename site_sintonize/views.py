@@ -9,7 +9,7 @@ from django.utils import timezone
 from datetime import datetime, timedelta
 import json
 import csv
-from .analytics_client import get_analytics_client, get_report, get_active_users, get_event_count, format_report_data, PROPERTY_ID
+from .analytics_client import get_analytics_client, get_report, get_active_users, get_event_count, format_report_data, get_form_abandonment_data, PROPERTY_ID
 from google.analytics.data_v1beta.types import Dimension, Metric
 
 
@@ -380,9 +380,11 @@ def analytics_api(request):
         active_users = get_active_users(client, PROPERTY_ID)
 
         # 6. Contagem de eventos específicos
-        sondagem_starts = get_event_count(client, PROPERTY_ID, start_date, end_date, 'click')
-        sondagem_completes = get_event_count(client, PROPERTY_ID, start_date, end_date, 'submit')
+        sondagem_starts = get_event_count(client, PROPERTY_ID, start_date, end_date, 'inicio_teste_burnout')
+        sondagem_completes = get_event_count(client, PROPERTY_ID, start_date, end_date, 'conclusao_formulario')
 
+        # 7. Dados de abandono do formulário
+        abandono_formulario = get_form_abandonment_data(client, PROPERTY_ID, start_date, end_date)
 
         # Monta a resposta final
         data = {
@@ -401,6 +403,7 @@ def analytics_api(request):
                 'sondagem_inicios': sondagem_starts,
                 'sondagem_conclusoes': sondagem_completes,
             },
+            'abandono_formulario': abandono_formulario,
              # Incluir totais para os cartões principais, se necessário (exemplo)
             'visitantes_hoje': get_report(client, PROPERTY_ID, datetime.now().strftime('%Y-%m-%d'), datetime.now().strftime('%Y-%m-%d'), [], [Metric(name='totalUsers')]).rows[0].metric_values[0].value if get_report(client, PROPERTY_ID, datetime.now().strftime('%Y-%m-%d'), datetime.now().strftime('%Y-%m-%d'), [], [Metric(name='totalUsers')]).rows else 0,
             'visitantes_semana': get_report(client, PROPERTY_ID, (datetime.now() - timedelta(days=6)).strftime('%Y-%m-%d'), datetime.now().strftime('%Y-%m-%d'), [], [Metric(name='totalUsers')]).rows[0].metric_values[0].value if get_report(client, PROPERTY_ID, (datetime.now() - timedelta(days=6)).strftime('%Y-%m-%d'), datetime.now().strftime('%Y-%m-%d'), [], [Metric(name='totalUsers')]).rows else 0,
