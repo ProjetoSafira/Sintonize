@@ -153,6 +153,13 @@
     text-decoration-thickness: auto;
     text-underline-offset: auto;
     text-underline-position: from-font;
+    /* Safari fix para links clicáveis */
+    pointer-events: auto;
+    cursor: pointer;
+    position: relative;
+    z-index: 100001;
+    -webkit-user-select: auto;
+    user-select: auto;
 }
 
 .result-text{
