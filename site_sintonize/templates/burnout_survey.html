@@ -305,15 +305,19 @@
         });
 
         // Fix específico para links no Safari - impede propagação e garante navegação
-        document.getElementById('modalBody').addEventListener('click', (event) => {
-            const link = event.target.closest('a');
-            if (link && link.href) {
+        document.addEventListener('click', (event) => {
+            // Verifica se o clique foi em um link dentro do modalBody
+            if (event.target.tagName === 'A' && event.target.closest('#modalBody')) {
                 event.stopPropagation();
-                event.preventDefault();
-                // Navega manualmente para o link
-                window.location.href = link.href;
+                event.stopImmediatePropagation();
+                const href = event.target.getAttribute('href');
+                if (href && href !== '#') {
+                    event.preventDefault();
+                    window.open(href, event.target.getAttribute('target') || '_self');
+                }
+                return false;
             }
-        });
+        }, true);
 
         modalContent.addEventListener('scroll', () => {
             modalContent.style.scrollBehavior = 'smooth';
