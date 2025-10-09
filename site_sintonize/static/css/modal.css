@@ -1,3 +1,12 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+}
+
 .modal-content {
     display: flex;
     flex-direction: column;
@@ -9,6 +18,10 @@
     align-items: flex-start;
     position: relative;
     overflow-y: visible;
+    z-index: 100000;
+    /* Safari fix */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
 
