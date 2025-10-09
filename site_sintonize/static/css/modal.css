@@ -53,6 +53,7 @@
 
     overflow-y: auto; /* Permite a rolagem vertical */
     gap: 10px; /* Espaçamento entre os elementos */
+    position: relative; /* Garante o contexto de empilhamento correto */
 }
 
 .modal-title {

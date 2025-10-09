@@ -246,7 +246,42 @@
 
         <div class="stat-card">
             <div class="stat-number" id="Formulario">0</div>
-            <div class="stat-label">Formulário</div>
+            <div class="stat-label">Formulário Completado</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-number" id="taxa-conclusao">0%</div>
+            <div class="stat-label">Taxa de Conclusão</div>
+        </div>
+    </div>
+
+    <!-- Seção de Análise de Abandono do Formulário -->
+    <div class="chart-container" style="grid-column: 1 / -1; margin-bottom: 30px;">
+        <h3 class="chart-title">📋 Análise de Abandono - Formulário de Burnout</h3>
+        <p style="text-align: center; color: #7f8c8d; margin-bottom: 20px;">
+            Acompanhe em qual pergunta os usuários mais abandonam o formulário
+        </p>
+        <div id="grafico-abandono" style="height: 400px;">
+            <canvas id="chartAbandono"></canvas>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <h4 style="color: #2c3e50; margin-bottom: 15px;">📊 Detalhamento por Pergunta</h4>
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="background: #f8f9fa;">
+                        <th style="padding: 12px; border: 1px solid #ddd; text-align: left;">Pergunta</th>
+                        <th style="padding: 12px; border: 1px solid #ddd; text-align: center;">Visualizações</th>
+                        <th style="padding: 12px; border: 1px solid #ddd; text-align: center;">Taxa de Continuação</th>
+                        <th style="padding: 12px; border: 1px solid #ddd; text-align: center;">Abandonos</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-abandono">
+                    <tr>
+                        <td style="padding: 12px; border: 1px solid #ddd;" colspan="4">Carregando dados...</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
     
@@ -323,7 +358,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 // Variáveis globais
-let chartVisitantes, chartDispositivos;
+let chartVisitantes, chartDispositivos, chartAbandono;
 
 // Função para atualizar dados
 function atualizarDados() {
@@ -342,6 +377,18 @@ function atualizarDados() {
             if (data.eventos) {
                 document.getElementById('sondagem').textContent = data.eventos.sondagem_inicios;
                 document.getElementById('Formulario').textContent = data.eventos.sondagem_conclusoes;
+
+                // Calcular taxa de conclusão
+                const taxaConclusao = data.eventos.sondagem_inicios > 0
+                    ? Math.round((data.eventos.sondagem_conclusoes / data.eventos.sondagem_inicios) * 100)
+                    : 0;
+                document.getElementById('taxa-conclusao').textContent = taxaConclusao + '%';
+            }
+
+            // Atualizar análise de abandono
+            if (data.abandono_formulario) {
+                atualizarGraficoAbandono(data.abandono_formulario);
+                atualizarTabelaAbandono(data.abandono_formulario);
             }
             
             // Atualizar tabela de páginas
@@ -433,10 +480,128 @@ function exportarDados(formato) {
     window.location.href = url;
 }
 
+// Função para atualizar gráfico de abandono
+function atualizarGraficoAbandono(dadosAbandono) {
+    const ctx = document.getElementById('chartAbandono').getContext('2d');
+    if (chartAbandono) chartAbandono.destroy();
+
+    const perguntas = dadosAbandono.map(d => d.pergunta);
+    const visualizacoes = dadosAbandono.map(d => d.visualizacoes);
+
+    chartAbandono = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: perguntas,
+            datasets: [{
+                label: 'Visualizações por Pergunta',
+                data: visualizacoes,
+                backgroundColor: visualizacoes.map((val, idx) => {
+                    // Gradiente de cor: verde para vermelho
+                    const maxVal = Math.max(...visualizacoes);
+                    const ratio = val / maxVal;
+                    if (ratio > 0.8) return '#2ecc71'; // Verde
+                    if (ratio > 0.5) return '#f39c12'; // Laranja
+                    return '#e74c3c'; // Vermelho
+                }),
+                borderColor: '#2c3e50',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Número de Visualizações'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Perguntas do Formulário'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        afterLabel: function(context) {
+                            const idx = context.dataIndex;
+                            const total = visualizacoes[0]; // Primeira pergunta
+                            const atual = visualizacoes[idx];
+                            const taxa = ((atual / total) * 100).toFixed(1);
+                            return `Taxa de continuação: ${taxa}%`;
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
+
+// Função para atualizar tabela de abandono
+function atualizarTabelaAbandono(dadosAbandono) {
+    const tabela = document.getElementById('tabela-abandono');
+    tabela.innerHTML = '';
+
+    const totalInicio = dadosAbandono[0]?.visualizacoes || 0;
+
+    dadosAbandono.forEach((item, idx) => {
+        const row = tabela.insertRow();
+
+        // Pergunta
+        const cellPergunta = row.insertCell(0);
+        cellPergunta.textContent = item.pergunta;
+        cellPergunta.style.padding = '12px';
+        cellPergunta.style.border = '1px solid #ddd';
+
+        // Visualizações
+        const cellVisualizacoes = row.insertCell(1);
+        cellVisualizacoes.textContent = item.visualizacoes;
+        cellVisualizacoes.style.padding = '12px';
+        cellVisualizacoes.style.border = '1px solid #ddd';
+        cellVisualizacoes.style.textAlign = 'center';
+
+        // Taxa de Continuação
+        const cellTaxa = row.insertCell(2);
+        const taxa = totalInicio > 0 ? ((item.visualizacoes / totalInicio) * 100).toFixed(1) : 0;
+        cellTaxa.textContent = taxa + '%';
+        cellTaxa.style.padding = '12px';
+        cellTaxa.style.border = '1px solid #ddd';
+        cellTaxa.style.textAlign = 'center';
+
+        // Cor baseada na taxa
+        if (taxa >= 80) cellTaxa.style.color = '#2ecc71';
+        else if (taxa >= 50) cellTaxa.style.color = '#f39c12';
+        else cellTaxa.style.color = '#e74c3c';
+
+        // Abandonos
+        const cellAbandonos = row.insertCell(3);
+        const abandonos = idx < dadosAbandono.length - 1
+            ? item.visualizacoes - dadosAbandono[idx + 1].visualizacoes
+            : 0;
+        cellAbandonos.textContent = abandonos;
+        cellAbandonos.style.padding = '12px';
+        cellAbandonos.style.border = '1px solid #ddd';
+        cellAbandonos.style.textAlign = 'center';
+
+        if (abandonos > 0) {
+            cellAbandonos.style.color = '#e74c3c';
+            cellAbandonos.style.fontWeight = 'bold';
+        }
+    });
+}
+
 // Carregar dados inicial
 document.addEventListener('DOMContentLoaded', function() {
     atualizarDados();
-    
+
     // Atualizar automaticamente a cada 5 minutos
     setInterval(atualizarDados, 300000);
 });

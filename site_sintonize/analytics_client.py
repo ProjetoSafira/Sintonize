@@ -85,4 +85,61 @@ def format_report_data(response, dimension_key, metric_key, value_type=int):
             dimension_key: row.dimension_values[0].value,
             metric_key: value_type(row.metric_values[0].value)
         })
-    return data 
+    return data
+
+
+def get_form_abandonment_data(client, property_id, start_date, end_date):
+    """
+    Busca dados de visualização de perguntas do formulário para análise de abandono.
+    Retorna uma lista ordenada de perguntas com suas visualizações.
+    """
+    request = RunReportRequest(
+        property=f"properties/{property_id}",
+        dimensions=[
+            Dimension(name="customEvent:event_label")  # Label das perguntas
+        ],
+        metrics=[Metric(name="eventCount")],
+        date_ranges=[DateRange(start_date=start_date, end_date=end_date)],
+        dimension_filter={
+            "filter": {
+                "field_name": "eventName",
+                "string_filter": {
+                    "value": "visualizacao_pergunta",
+                    "match_type": "EXACT"
+                },
+            }
+        },
+    )
+
+    response = client.run_report(request)
+
+    # Processar dados
+    perguntas_dict = {}
+    for row in response.rows:
+        label = row.dimension_values[0].value
+        count = int(row.metric_values[0].value)
+
+        # Extrair número da pergunta (ex: "Pergunta 1" -> 1)
+        if "Pergunta" in label:
+            try:
+                numero = int(label.split()[-1])
+                perguntas_dict[numero] = {
+                    'pergunta': label,
+                    'visualizacoes': count
+                }
+            except (ValueError, IndexError):
+                pass
+
+    # Ordenar por número da pergunta e retornar lista
+    perguntas_ordenadas = []
+    for i in range(1, 13):  # 12 perguntas
+        if i in perguntas_dict:
+            perguntas_ordenadas.append(perguntas_dict[i])
+        else:
+            # Se não houver dados para essa pergunta, adicionar com 0
+            perguntas_ordenadas.append({
+                'pergunta': f'Pergunta {i}',
+                'visualizacoes': 0
+            })
+
+    return perguntas_ordenadas 
