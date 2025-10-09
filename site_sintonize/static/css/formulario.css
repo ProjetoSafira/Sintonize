@@ -87,6 +87,7 @@ body {
     border: 1px solid #B7BAC1;
     background: rgba(254, 254, 254, 0.50);
     backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
     box-sizing: border-box;
 }
 
