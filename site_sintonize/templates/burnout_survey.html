@@ -301,6 +301,17 @@
             event.stopPropagation();
         });
 
+        // Fix específico para links no Safari - impede propagação e garante navegação
+        document.getElementById('modalBody').addEventListener('click', (event) => {
+            const link = event.target.closest('a');
+            if (link && link.href) {
+                event.stopPropagation();
+                event.preventDefault();
+                // Navega manualmente para o link
+                window.location.href = link.href;
+            }
+        });
+
         modalContent.addEventListener('scroll', () => {
             modalContent.style.scrollBehavior = 'smooth';
         });
