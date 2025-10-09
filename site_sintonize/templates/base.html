@@ -29,7 +29,14 @@
                                window.location.hostname === 'www.sintonize.online' ||
                                window.location.hostname === '85.31.62.223';
         const measurementId = '{{ GA_MEASUREMENT_ID }}';
-        
+
+        // Debug: sempre mostrar informações importantes
+        console.log('=== Google Analytics Debug ===');
+        console.log('Measurement ID:', measurementId);
+        console.log('Hostname atual:', window.location.hostname);
+        console.log('GA ativo?', isHostingerVPN);
+        console.log('==============================');
+
         const config = {
             page_title: '{% block page_title %}{{ request.resolver_match.url_name|default:"home" }}{% endblock %}',
             page_location: window.location.href,
@@ -58,7 +65,19 @@
         {% endwith %}
 
         gtag('config', measurementId, config);
-        
+
+        // Debug: enviar evento de teste
+        if (isHostingerVPN) {
+            console.log('Enviando configuração para GA:', measurementId, config);
+            // Enviar um evento de teste para confirmar que está funcionando
+            gtag('event', 'page_view', {
+                page_title: document.title,
+                page_location: window.location.href,
+                page_path: window.location.pathname
+            });
+            console.log('Evento page_view enviado');
+        }
+
         // Log para debug
         if (!isHostingerVPN) {
             console.log('GA Configurado (apenas para VPN Hostinger):', measurementId, config);
