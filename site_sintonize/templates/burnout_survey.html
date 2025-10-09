@@ -296,6 +296,11 @@
 
         const modalContent = document.querySelector('.modal-content');
 
+        // Impede que cliques dentro do conteúdo do modal fechem o modal (Safari fix)
+        modalContent.addEventListener('click', (event) => {
+            event.stopPropagation();
+        });
+
         modalContent.addEventListener('scroll', () => {
             modalContent.style.scrollBehavior = 'smooth';
         });
