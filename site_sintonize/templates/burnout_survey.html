@@ -239,11 +239,6 @@
 
                     const modal = document.getElementById('resultModal');
                     modal.classList.remove('hidden');
-
-                    // IMPORTANTE: Anexa handlers nos links após o conteúdo ser inserido
-                    setTimeout(() => {
-                        attachLinkHandlers();
-                    }, 100);
                 })
                 .catch(error => {
                     console.error('Erro ao obter o resultado:', error);
@@ -258,42 +253,68 @@
 
         document.getElementById('closeModal').addEventListener('click', closeModal);
 
-        // Safari Fix: Event delegation para links
+        let modalLinkHandler = null;
+
+        // Safari Fix: Intercepta TODOS os cliques quando modal está aberto
         function attachLinkHandlers() {
-            const modalBody = document.getElementById('modalBody');
-            if (!modalBody) return;
+            // Remove handler anterior se existir
+            if (modalLinkHandler) {
+                document.removeEventListener('click', modalLinkHandler, true);
+            }
 
-            // Remove event listeners antigos
-            const newModalBody = modalBody.cloneNode(true);
-            modalBody.parentNode.replaceChild(newModalBody, modalBody);
+            // Cria novo handler
+            modalLinkHandler = function(e) {
+                console.log('Clique detectado:', e.target); // Debug geral
 
-            // Adiciona event delegation
-            newModalBody.addEventListener('click', function(e) {
+                const modal = document.getElementById('resultModal');
+                const isModalOpen = !modal.classList.contains('hidden');
+
+                console.log('Modal aberto?', isModalOpen); // Debug
+
+                if (!isModalOpen) return;
+
+                // Verifica se clicou em um link dentro do modalBody
+                const modalBody = document.getElementById('modalBody');
                 const link = e.target.closest('a');
-                if (link) {
+
+                console.log('Link encontrado:', link); // Debug
+
+                if (link && modalBody && modalBody.contains(link)) {
+                    // É um link dentro do modal
+                    console.log('ENTROU NO IF DO LINK!'); // Debug
                     e.preventDefault();
                     e.stopPropagation();
+                    e.stopImmediatePropagation();
 
                     const href = link.getAttribute('href');
                     const target = link.getAttribute('target');
 
-                    if (href && href !== '#') {
+                    console.log('Navegando para:', href); // Debug
+
+                    if (href && href !== '#' && href !== '') {
                         if (target === '_blank') {
+                            console.log('Abrindo em nova aba'); // Debug
                             window.open(href, '_blank');
                         } else {
+                            console.log('Redirecionando...'); // Debug
                             window.location.href = href;
                         }
                     }
+                    return false;
                 }
-            });
+
+                // Verifica se clicou no backdrop para fechar
+                if (e.target.id === 'resultModal') {
+                    closeModal();
+                }
+            };
+
+            // Adiciona no capture phase (antes de tudo)
+            document.addEventListener('click', modalLinkHandler, true);
         }
 
-        // Fechar modal quando clicar no backdrop
-        document.getElementById('resultModal').addEventListener('click', (event) => {
-            if (event.target.id === 'resultModal') {
-                closeModal();
-            }
-        });
+        // Chama uma vez na inicialização
+        attachLinkHandlers();
 
         changeQuestion(0); // Inicia mostrando a primeira pergunta
         
