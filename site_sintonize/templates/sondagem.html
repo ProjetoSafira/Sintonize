@@ -231,12 +231,11 @@
                         const newScript = document.createElement('script');
                         if (script.src) {
                             newScript.src = script.src;
-                            newScript.async = true; // Evita bloqueio de renderização
                         } else {
                             newScript.textContent = script.textContent;
                         }
                         document.body.appendChild(newScript);
-                        document.body.removeChild(newScript); // Remove após execução
+                        // NÃO remove o script para garantir execução no Safari
                     });
                     
                     // Ajusta a posição do formulário após um pequeno atraso

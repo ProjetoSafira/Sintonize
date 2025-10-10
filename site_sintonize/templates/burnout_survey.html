@@ -7,9 +7,9 @@
     <link rel="icon" href="site_sintonize/static/images/images_logo/favicon.ico" type="image/x-icon">
     {% load static %}
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
-    <link rel="stylesheet" href="{% static 'css/formulario.css' %}">
-    <link rel="stylesheet" href="{% static 'css/modal.css' %}">
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}?v=20250110-v2">
+    <link rel="stylesheet" href="{% static 'css/formulario.css' %}?v=20250110-v2">
+    <link rel="stylesheet" href="{% static 'css/modal.css' %}?v=20250110-v2">
     <link
         href="https://fonts.googleapis.com/css2?family=Nunito:wght@400&family=Poppins:wght@400&family=Roboto:wght@400&display=swap"
         rel="stylesheet">
@@ -84,9 +84,9 @@
 
     <!-- Modal -->
     <div id="resultModal"
-        class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
-        style="z-index: 99999;">
-        <div class="modal-content">
+        class="modal hidden"
+        style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 999999 !important;">
+        <div class="modal-content" style="z-index: 9999999 !important; position: relative;">
 
             <!-- Linha acima do título -->
             <div style="width: 440px; height: 1px; background: #E1E1E1;" class="mb-2"></div>
@@ -100,11 +100,11 @@
             </div>
             
 
-            <div class="modal-body mt-4 flex-container">
-                <div id="modalBody" class="result-text">
+            <div class="modal-body mt-4 flex-container" style="position: relative; z-index: 10000000;">
+                <div id="modalBody" class="result-text" style="position: relative; z-index: 10000001; pointer-events: auto;">
                     Resultado será exibido aqui.
                 </div>
-                <img id="modalImage" src="" alt="Resultado da imagem" class="result-image mb-4">
+                <img id="modalImage" src="" alt="Resultado da imagem" class="result-image mb-4" style="position: relative; z-index: 10000000;">
             </div>
        
             
@@ -112,6 +112,8 @@
     </div>
 
     <script>
+        console.log('=== SCRIPT BURNOUT CARREGADO - VERSÃO 2025-01-10 13:00 - NOVA ===');
+
         const totalQuestions = 12; // Total de perguntas
         let currentQuestion = 0;
         let totalScore = 0;  // Variável para armazenar a pontuação total
@@ -240,10 +242,13 @@
                     const modal = document.getElementById('resultModal');
                     modal.classList.remove('hidden');
 
-                    // IMPORTANTE: Anexa handlers nos links após o conteúdo ser inserido
-                    setTimeout(() => {
-                        attachLinkHandlers();
-                    }, 100);
+                    // Debug: verificar se links existem
+                    const modalBody = document.getElementById('modalBody');
+                    const links = modalBody.querySelectorAll('a');
+                    console.log('Links no modal:', links.length);
+                    links.forEach((link, i) => {
+                        console.log(`Link ${i}: ${link.href}`);
+                    });
                 })
                 .catch(error => {
                     console.error('Erro ao obter o resultado:', error);
@@ -256,43 +261,10 @@
             document.getElementById('resultModal').classList.add('hidden');
         }
 
-        document.getElementById('closeModal').addEventListener('click', closeModal);
-
-        // Safari Fix: Event delegation para links
-        function attachLinkHandlers() {
-            const modalBody = document.getElementById('modalBody');
-            if (!modalBody) return;
-
-            // Remove event listeners antigos
-            const newModalBody = modalBody.cloneNode(true);
-            modalBody.parentNode.replaceChild(newModalBody, modalBody);
-
-            // Adiciona event delegation
-            newModalBody.addEventListener('click', function(e) {
-                const link = e.target.closest('a');
-                if (link) {
-                    e.preventDefault();
-                    e.stopPropagation();
-
-                    const href = link.getAttribute('href');
-                    const target = link.getAttribute('target');
-
-                    if (href && href !== '#') {
-                        if (target === '_blank') {
-                            window.open(href, '_blank');
-                        } else {
-                            window.location.href = href;
-                        }
-                    }
-                }
-            });
-        }
-
-        // Fechar modal quando clicar no backdrop
-        document.getElementById('resultModal').addEventListener('click', (event) => {
-            if (event.target.id === 'resultModal') {
-                closeModal();
-            }
+        // Modal fecha APENAS no botão X
+        document.getElementById('closeModal').addEventListener('click', function(e) {
+            e.stopPropagation();
+            closeModal();
         });
 
         changeQuestion(0); // Inicia mostrando a primeira pergunta
