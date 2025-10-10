@@ -177,6 +177,7 @@ def resultado_view(request, score):
     
     # Defina as mensagens para cada pontuação
     mensagens = {
+
         "none": "Ótimo trabalho em cuidar de si! Que tal explorar nossa <a href='/trilha/' target='_blank'>trilha de conhecimento sobre burnout</a>? Ou manter seu bem-estar com uma <a href='/respiracao_guiada/' target='_blank'>sessão de respiração guiada</a> ou um <a href='/pomodoro/' target='_blank'>Pomodoro</a> para manter o foco sem esgotar sua energia?",
         "cuidado": "Pequenos cuidados fazem toda a diferença. Você pode aprender mais na nossa <a href='/trilha/' target='_blank'>trilha de conhecimento</a> ou fazer uma <a href='/respiracao_guiada/' target='_blank'>pausa consciente com a respiração guiada</a>. Nosso <a href='/pomodoro/' target='_blank'>Pomodoro online</a> pode ajudar a evitar sobrecarga.",
         "alerta": "Agora é um ótimo momento para agir! Conheça técnicas eficazes na <a href='/trilha/' target='_blank'>trilha de conhecimento</a>, experimente um <a href='/pomodoro/' target='_blank'>Pomodoro estruturado</a> ou pratique nossa <a href='/respiracao_guiada/' target='_blank'>respiração guiada para relaxar</a>.",
