@@ -260,8 +260,12 @@
 
         // Safari fix - Funções para ocultar/mostrar radio buttons
         function hideRadioButtons() {
-            // Detecta se é Safari
-            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            // Detecta se é Safari (mas não Chrome/Chromium/Edge)
+            const ua = navigator.userAgent.toLowerCase();
+            const isSafari = ua.indexOf('safari') !== -1 && 
+                           ua.indexOf('chrome') === -1 && 
+                           ua.indexOf('chromium') === -1 &&
+                           ua.indexOf('edg') === -1;
             
             if (isSafari) {
                 const formCard = document.querySelector('.form-card');
@@ -273,8 +277,12 @@
         }
 
         function showRadioButtons() {
-            // Detecta se é Safari
-            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            // Detecta se é Safari (mas não Chrome/Chromium/Edge)
+            const ua = navigator.userAgent.toLowerCase();
+            const isSafari = ua.indexOf('safari') !== -1 && 
+                           ua.indexOf('chrome') === -1 && 
+                           ua.indexOf('chromium') === -1 &&
+                           ua.indexOf('edg') === -1;
             
             if (isSafari) {
                 const formCard = document.querySelector('.form-card');
