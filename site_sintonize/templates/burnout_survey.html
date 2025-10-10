@@ -101,9 +101,9 @@
             
 
             <div class="modal-body mt-4 flex-container">
-                <p id="modalBody" class="result-text">
+                <div id="modalBody" class="result-text">
                     Resultado será exibido aqui.
-                </p>
+                </div>
                 <img id="modalImage" src="" alt="Resultado da imagem" class="result-image mb-4">
             </div>
        
@@ -241,6 +241,11 @@
                     modal.classList.remove('hidden');
                     // Ativa pointer-events no backdrop para permitir fechamento ao clicar fora
                     modal.style.pointerEvents = 'auto';
+
+                    // IMPORTANTE: Anexa handlers nos links após o conteúdo ser inserido
+                    setTimeout(() => {
+                        attachLinkHandlers();
+                    }, 200);
                 })
                 .catch(error => {
                     console.error('Erro ao obter o resultado:', error);
@@ -255,30 +260,53 @@
 
         document.getElementById('closeModal').addEventListener('click', closeModal);
 
-        // Interceptar cliques em links dentro do modal (Safari fix)
-        document.addEventListener('click', (event) => {
-            // Verifica se clicou em um link dentro do modalBody
-            const link = event.target.closest('a');
+        // Safari Fix: Adicionar event listeners diretamente nos links quando o modal abrir
+        function attachLinkHandlers() {
             const modalBody = document.getElementById('modalBody');
+            if (!modalBody) return;
 
-            if (link && modalBody && modalBody.contains(link)) {
-                event.preventDefault();
-                event.stopPropagation();
-                event.stopImmediatePropagation();
+            const links = modalBody.querySelectorAll('a');
+            links.forEach(link => {
+                // Remove handlers antigos para evitar duplicação
+                link.replaceWith(link.cloneNode(true));
+            });
 
-                const href = link.getAttribute('href');
-                const target = link.getAttribute('target');
+            // Pega os links novamente após clonar
+            const freshLinks = modalBody.querySelectorAll('a');
+            freshLinks.forEach(link => {
+                // Adiciona múltiplos event listeners para garantir que funcione
+                ['click', 'touchstart', 'touchend'].forEach(eventType => {
+                    link.addEventListener(eventType, function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        e.stopImmediatePropagation();
 
-                if (href && href !== '#') {
-                    if (target === '_blank') {
-                        window.open(href, '_blank');
-                    } else {
-                        window.location.href = href;
-                    }
-                }
-                return false;
-            }
-        }, true);
+                        const href = this.getAttribute('href');
+                        const target = this.getAttribute('target');
+
+                        if (href && href !== '#' && href !== '') {
+                            // Pequeno delay para garantir que o evento seja processado
+                            setTimeout(() => {
+                                if (target === '_blank') {
+                                    window.open(href, '_blank', 'noopener,noreferrer');
+                                } else {
+                                    window.location.href = href;
+                                }
+                            }, 100);
+                        }
+                        return false;
+                    }, { passive: false, capture: true });
+                });
+
+                // Adiciona estilo inline para garantir clicabilidade
+                link.style.pointerEvents = 'auto';
+                link.style.cursor = 'pointer';
+                link.style.position = 'relative';
+                link.style.zIndex = '999999';
+                link.style.display = 'inline';
+                link.style.touchAction = 'manipulation';
+            });
+        }
 
         // Fechar modal quando clicar no backdrop
         document.getElementById('resultModal').addEventListener('click', (event) => {
