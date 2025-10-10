@@ -85,8 +85,8 @@
     <!-- Modal -->
     <div id="resultModal"
         class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
-        style="z-index: 99999; pointer-events: none;">
-        <div class="modal-content" style="pointer-events: auto;">
+        style="z-index: 99999;">
+        <div class="modal-content">
 
             <!-- Linha acima do título -->
             <div style="width: 440px; height: 1px; background: #E1E1E1;" class="mb-2"></div>
@@ -239,13 +239,11 @@
 
                     const modal = document.getElementById('resultModal');
                     modal.classList.remove('hidden');
-                    // Ativa pointer-events no backdrop para permitir fechamento ao clicar fora
-                    modal.style.pointerEvents = 'auto';
 
                     // IMPORTANTE: Anexa handlers nos links após o conteúdo ser inserido
                     setTimeout(() => {
                         attachLinkHandlers();
-                    }, 200);
+                    }, 100);
                 })
                 .catch(error => {
                     console.error('Erro ao obter o resultado:', error);
@@ -260,60 +258,39 @@
 
         document.getElementById('closeModal').addEventListener('click', closeModal);
 
-        // Safari Fix: Adicionar event listeners diretamente nos links quando o modal abrir
+        // Safari Fix: Event delegation para links
         function attachLinkHandlers() {
             const modalBody = document.getElementById('modalBody');
             if (!modalBody) return;
 
-            const links = modalBody.querySelectorAll('a');
-            links.forEach(link => {
-                // Remove handlers antigos para evitar duplicação
-                link.replaceWith(link.cloneNode(true));
-            });
+            // Remove event listeners antigos
+            const newModalBody = modalBody.cloneNode(true);
+            modalBody.parentNode.replaceChild(newModalBody, modalBody);
 
-            // Pega os links novamente após clonar
-            const freshLinks = modalBody.querySelectorAll('a');
-            freshLinks.forEach(link => {
-                // Adiciona múltiplos event listeners para garantir que funcione
-                ['click', 'touchstart', 'touchend'].forEach(eventType => {
-                    link.addEventListener(eventType, function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        e.stopImmediatePropagation();
+            // Adiciona event delegation
+            newModalBody.addEventListener('click', function(e) {
+                const link = e.target.closest('a');
+                if (link) {
+                    e.preventDefault();
+                    e.stopPropagation();
 
-                        const href = this.getAttribute('href');
-                        const target = this.getAttribute('target');
+                    const href = link.getAttribute('href');
+                    const target = link.getAttribute('target');
 
-                        if (href && href !== '#' && href !== '') {
-                            // Pequeno delay para garantir que o evento seja processado
-                            setTimeout(() => {
-                                if (target === '_blank') {
-                                    window.open(href, '_blank', 'noopener,noreferrer');
-                                } else {
-                                    window.location.href = href;
-                                }
-                            }, 100);
+                    if (href && href !== '#') {
+                        if (target === '_blank') {
+                            window.open(href, '_blank');
+                        } else {
+                            window.location.href = href;
                         }
-                        return false;
-                    }, { passive: false, capture: true });
-                });
-
-                // Adiciona estilo inline para garantir clicabilidade
-                link.style.pointerEvents = 'auto';
-                link.style.cursor = 'pointer';
-                link.style.position = 'relative';
-                link.style.zIndex = '999999';
-                link.style.display = 'inline';
-                link.style.touchAction = 'manipulation';
+                    }
+                }
             });
         }
 
         // Fechar modal quando clicar no backdrop
         document.getElementById('resultModal').addEventListener('click', (event) => {
-            const modalContent = document.querySelector('.modal-content');
-
-            // Só fecha se clicar fora do modal-content
-            if (!modalContent.contains(event.target)) {
+            if (event.target.id === 'resultModal') {
                 closeModal();
             }
         });
