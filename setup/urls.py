@@ -19,7 +19,8 @@ urlpatterns = [
     path('resultado/<int:score>/', resultado_view, name='resultado'),
     path('search-options/', search_options, name='search_options'),
     path('respiracao_guiada/', respiracao_guiada, name='respiracao_guiada'),
-    path('pomodoro.html', pomodoro, name='pomodoro'),
+    path('pomodoro/', pomodoro, name='pomodoro'),
+    path('pomodoro.html', pomodoro, name='pomodoro_html'),  # Mantém compatibilidade com links antigos
     
     # URLs do painel de monitoramento
     path('analytics/', analytics_dashboard, name='analytics_dashboard'),
