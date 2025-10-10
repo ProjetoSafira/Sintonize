@@ -148,9 +148,6 @@
                 // Verifica se a função de tracking existe (definida no base.html)
                 if (typeof trackSurveyQuestionView === 'function') {
                     trackSurveyQuestionView(questionNumber);
-                } else {
-                    // Fallback caso a função não esteja disponível
-                    console.log(`Pergunta ${questionNumber} visualizada`);
                 }
             }
         }
@@ -233,14 +230,17 @@
                     // Rastrear a pontuação apenas após sucesso da requisição
                     if (typeof trackSurveyScore === 'function') {
                         trackSurveyScore(total);
-                        console.log(`Pontuação ${total} enviada para Google Analytics`);
                     }
-                    
+
                     document.getElementById('modalTitle').innerText = data.title;
                     document.getElementById('modalBody').innerHTML = data.body;
                     document.getElementById('modalImage').src = data.image;
                     document.getElementById('modalIcon').src = data.icon;
-                    document.getElementById('resultModal').classList.remove('hidden');
+
+                    const modal = document.getElementById('resultModal');
+                    modal.classList.remove('hidden');
+                    // Ativa pointer-events no backdrop para permitir fechamento ao clicar fora
+                    modal.style.pointerEvents = 'auto';
                 })
                 .catch(error => {
                     console.error('Erro ao obter o resultado:', error);
@@ -254,10 +254,20 @@
         }
 
         document.getElementById('closeModal').addEventListener('click', closeModal);
-       
 
+
+        // Fechar modal apenas quando clicar especificamente no backdrop (não nos links)
         window.addEventListener('click', (event) => {
             const modal = document.getElementById('resultModal');
+            const modalContent = document.querySelector('.modal-content');
+
+            // Verifica se o clique foi em um link
+            const clickedLink = event.target.closest('a');
+            if (clickedLink) {
+                return; // Não fecha o modal se clicou em um link
+            }
+
+            // Fecha apenas se clicou no backdrop (fora do modal-content)
             if (event.target === modal) {
                 closeModal();
             }
@@ -298,26 +308,6 @@
     
 
         const modalContent = document.querySelector('.modal-content');
-
-        // Impede que cliques dentro do conteúdo do modal fechem o modal (Safari fix)
-        modalContent.addEventListener('click', (event) => {
-            event.stopPropagation();
-        });
-
-        // Fix específico para links no Safari - impede propagação e garante navegação
-        document.addEventListener('click', (event) => {
-            // Verifica se o clique foi em um link dentro do modalBody
-            if (event.target.tagName === 'A' && event.target.closest('#modalBody')) {
-                event.stopPropagation();
-                event.stopImmediatePropagation();
-                const href = event.target.getAttribute('href');
-                if (href && href !== '#') {
-                    event.preventDefault();
-                    window.open(href, event.target.getAttribute('target') || '_self');
-                }
-                return false;
-            }
-        }, true);
 
         modalContent.addEventListener('scroll', () => {
             modalContent.style.scrollBehavior = 'smooth';
