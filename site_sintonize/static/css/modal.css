@@ -137,23 +137,28 @@
 
 .result-text a,
 .result-text .clickable-link {
-    color: var(--Complementary-Blue-500, #2645AE);
+    color: var(--Complementary-Blue-500, #2645AE) !important;
     font-family: 'Roboto';
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 143%;
     letter-spacing: 0.17px;
-    text-decoration-line: underline;
+    text-decoration-line: underline !important;
     text-decoration-style: solid;
-    cursor: pointer;
+    cursor: pointer !important;
     -webkit-tap-highlight-color: rgba(0,0,0,0.1);
     touch-action: manipulation;
+    pointer-events: auto !important;
+    position: relative !important;
+    z-index: 999999999 !important;
+    display: inline !important;
 }
 
-.result-text .clickable-link:hover {
-    color: #1a3480;
-    text-decoration: underline;
+.result-text .clickable-link:hover,
+.result-text a:hover {
+    color: #1a3480 !important;
+    text-decoration: underline !important;
 }
 
 .result-text{
