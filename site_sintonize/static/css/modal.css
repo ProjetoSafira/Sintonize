@@ -4,7 +4,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 99999;
+    z-index: 999999 !important;
     /* Safari fix - força novo stacking context */
     isolation: isolate;
 }
@@ -20,10 +20,10 @@
     align-items: flex-start;
     position: relative;
     overflow-y: visible;
-    z-index: 100000;
+    z-index: 1000000 !important;
     /* Safari fix - força aceleração de hardware e novo stacking context */
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
+    -webkit-transform: translateZ(999px);
+    transform: translateZ(999px);
     isolation: isolate;
     will-change: transform;
 }

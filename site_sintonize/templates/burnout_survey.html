@@ -238,14 +238,7 @@
                     document.getElementById('modalBody').innerHTML = data.body;
                     document.getElementById('modalImage').src = data.image;
                     document.getElementById('modalIcon').src = data.icon;
-                    
-                    // Safari fix - Oculta radio buttons ANTES de mostrar o modal
-                    hideRadioButtons();
-                    
-                    // Pequeno delay para garantir que o Safari processe a ocultação antes de mostrar o modal
-                    setTimeout(() => {
-                        document.getElementById('resultModal').classList.remove('hidden');
-                    }, 100);
+                    document.getElementById('resultModal').classList.remove('hidden');
                 })
                 .catch(error => {
                     console.error('Erro ao obter o resultado:', error);
@@ -256,54 +249,14 @@
 
         function closeModal() {
             document.getElementById('resultModal').classList.add('hidden');
-            // Safari fix - Mostra radio buttons quando modal está fechado
-            showRadioButtons();
-        }
-
-        // Safari fix - Funções para ocultar/mostrar radio buttons
-        function hideRadioButtons() {
-            // Detecta se é Safari (mas não Chrome/Chromium/Edge)
-            const ua = navigator.userAgent.toLowerCase();
-            const isSafari = ua.indexOf('safari') !== -1 && 
-                           ua.indexOf('chrome') === -1 && 
-                           ua.indexOf('chromium') === -1 &&
-                           ua.indexOf('edg') === -1;
-            
-            if (isSafari) {
-                const formCard = document.querySelector('.form-card');
-                if (formCard) {
-                    // Usa opacity e z-index ao invés de visibility para garantir que o modal apareça
-                    formCard.style.opacity = '0';
-                    formCard.style.pointerEvents = 'none';
-                    formCard.style.zIndex = '-1';
-                }
-            }
-        }
-
-        function showRadioButtons() {
-            // Detecta se é Safari (mas não Chrome/Chromium/Edge)
-            const ua = navigator.userAgent.toLowerCase();
-            const isSafari = ua.indexOf('safari') !== -1 && 
-                           ua.indexOf('chrome') === -1 && 
-                           ua.indexOf('chromium') === -1 &&
-                           ua.indexOf('edg') === -1;
-            
-            if (isSafari) {
-                const formCard = document.querySelector('.form-card');
-                if (formCard) {
-                    formCard.style.opacity = '1';
-                    formCard.style.pointerEvents = 'auto';
-                    formCard.style.zIndex = '';
-                }
-            }
         }
 
 
+        // Listener para o botão X fechar o modal
         document.getElementById('closeModal').addEventListener('click', (event) => {
             event.stopPropagation();
             closeModal();
         });
-       
 
         // Listener para fechar modal ao clicar fora - com fix para Safari
         window.addEventListener('click', (event) => {
@@ -315,11 +268,6 @@
                 closeModal();
             }
         }, false);
-        // Modal fecha APENAS no botão X
-        document.getElementById('closeModal').addEventListener('click', function(e) {
-            e.stopPropagation();
-            closeModal();
-        });
 
         changeQuestion(0); // Inicia mostrando a primeira pergunta
         
@@ -358,7 +306,6 @@
         const modalContent = document.querySelector('.modal-content');
         const modalBody = document.getElementById('modalBody');
 
-erro-Modal
         // Impede que cliques dentro do conteúdo do modal fechem o modal (Safari fix)
         modalContent.addEventListener('click', (event) => {
             event.stopPropagation();
