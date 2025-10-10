@@ -94,6 +94,11 @@ body {
 .form-content .radio-container .radio-label input[type="radio"] {
     width: 20px;
     height: 20px;
+    /* Safari fix - garante que não sobrepõe o modal */
+    position: relative;
+    z-index: 1;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
 .radio-input {

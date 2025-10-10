@@ -238,6 +238,10 @@
                     document.getElementById('modalBody').innerHTML = data.body;
                     document.getElementById('modalImage').src = data.image;
                     document.getElementById('modalIcon').src = data.icon;
+                    document.getElementById('resultModal').classList.remove('hidden');
+                    
+                    // Safari fix - Oculta radio buttons quando modal está aberto
+                    hideRadioButtons();
 
                     const modal = document.getElementById('resultModal');
                     modal.classList.remove('hidden');
@@ -259,8 +263,54 @@
 
         function closeModal() {
             document.getElementById('resultModal').classList.add('hidden');
+            // Safari fix - Mostra radio buttons quando modal está fechado
+            showRadioButtons();
         }
 
+        // Safari fix - Funções para ocultar/mostrar radio buttons
+        function hideRadioButtons() {
+            // Detecta se é Safari
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            
+            if (isSafari) {
+                const formCard = document.querySelector('.form-card');
+                if (formCard) {
+                    formCard.style.visibility = 'hidden';
+                    formCard.style.pointerEvents = 'none';
+                }
+            }
+        }
+
+        function showRadioButtons() {
+            // Detecta se é Safari
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            
+            if (isSafari) {
+                const formCard = document.querySelector('.form-card');
+                if (formCard) {
+                    formCard.style.visibility = 'visible';
+                    formCard.style.pointerEvents = 'auto';
+                }
+            }
+        }
+
+
+        document.getElementById('closeModal').addEventListener('click', (event) => {
+            event.stopPropagation();
+            closeModal();
+        });
+       
+
+        // Listener para fechar modal ao clicar fora - com fix para Safari
+        window.addEventListener('click', (event) => {
+            const modal = document.getElementById('resultModal');
+            const modalContent = document.querySelector('.modal-content');
+            
+            // Verifica se o clique foi no overlay (fora do modal content)
+            if (event.target === modal && !modalContent.contains(event.target)) {
+                closeModal();
+            }
+        }, false);
         // Modal fecha APENAS no botão X
         document.getElementById('closeModal').addEventListener('click', function(e) {
             e.stopPropagation();
@@ -302,6 +352,46 @@
     
 
         const modalContent = document.querySelector('.modal-content');
+        const modalBody = document.getElementById('modalBody');
+
+erro-Modal
+        // Impede que cliques dentro do conteúdo do modal fechem o modal (Safari fix)
+        modalContent.addEventListener('click', (event) => {
+            event.stopPropagation();
+        });
+
+        // Fix específico para links no Safari - impede propagação e garante navegação
+        // Adiciona listener diretamente no modalBody para melhor compatibilidade
+        modalBody.addEventListener('click', (event) => {
+            const target = event.target;
+            // Verifica se o clique foi em um link ou dentro de um link
+            const link = target.tagName === 'A' ? target : target.closest('a');
+            
+            if (link) {
+                event.stopPropagation();
+                event.stopImmediatePropagation();
+                event.preventDefault();
+                
+                const href = link.getAttribute('href');
+                const target = link.getAttribute('target');
+                
+                if (href && href !== '#') {
+                    // Fecha o modal antes de navegar (opcional)
+                    // closeModal();
+                    
+                    // Usa setTimeout para garantir que o Safari processe o clique
+                    setTimeout(() => {
+                        if (target === '_blank') {
+                            window.open(href, '_blank');
+                        } else {
+                            window.location.href = href;
+                        }
+                    }, 100);
+                }
+                
+                return false;
+            }
+        }, true);
 
         modalContent.addEventListener('scroll', () => {
             modalContent.style.scrollBehavior = 'smooth';

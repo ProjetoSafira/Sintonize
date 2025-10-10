@@ -4,7 +4,9 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 999999;
+    z-index: 99999;
+    /* Safari fix - força novo stacking context */
+    isolation: isolate;
 }
 
 .modal-content {
@@ -18,7 +20,12 @@
     align-items: flex-start;
     position: relative;
     overflow-y: visible;
-    z-index: 9999999;
+    z-index: 100000;
+    /* Safari fix - força aceleração de hardware e novo stacking context */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    isolation: isolate;
+    will-change: transform;
 }
 
 
@@ -146,19 +153,20 @@
     letter-spacing: 0.17px;
     text-decoration-line: underline !important;
     text-decoration-style: solid;
-    cursor: pointer !important;
-    -webkit-tap-highlight-color: rgba(0,0,0,0.1);
-    touch-action: manipulation;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+    /* Safari fix para links clicáveis */
     pointer-events: auto !important;
-    position: relative !important;
-    z-index: 999999999 !important;
-    display: inline !important;
-}
-
-.result-text .clickable-link:hover,
-.result-text a:hover {
-    color: #1a3480 !important;
-    text-decoration: underline !important;
+    cursor: pointer !important;
+    position: relative;
+    z-index: 100001;
+    -webkit-user-select: auto;
+    user-select: auto;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
 }
 
 .result-text{
@@ -171,4 +179,20 @@
     font-weight: 400;
     line-height: 143%;
     letter-spacing: 0.17px;
+    position: relative;
+    z-index: 100001;
+}
+
+/* Safari fix - Garante que o modal e seu conteúdo estejam sempre no topo */
+.modal:not(.hidden) {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.modal-body {
+    position: relative;
+    z-index: 100001;
+    isolation: isolate;
 }
