@@ -4,7 +4,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 99999;
+    z-index: 999999;
 }
 
 .modal-content {
@@ -18,7 +18,7 @@
     align-items: flex-start;
     position: relative;
     overflow-y: visible;
-    z-index: 100000;
+    z-index: 9999999;
 }
 
 

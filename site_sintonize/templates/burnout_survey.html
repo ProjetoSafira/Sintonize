@@ -85,8 +85,8 @@
     <!-- Modal -->
     <div id="resultModal"
         class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
-        style="z-index: 99999;">
-        <div class="modal-content">
+        style="z-index: 999999 !important;">
+        <div class="modal-content" style="z-index: 9999999 !important;">
 
             <!-- Linha acima do título -->
             <div style="width: 440px; height: 1px; background: #E1E1E1;" class="mb-2"></div>
@@ -252,26 +252,48 @@
                         span.style.color = '#2645AE';
                         span.style.textDecoration = 'underline';
                         span.style.cursor = 'pointer';
+                        span.style.userSelect = 'none';
+                        span.style.webkitUserSelect = 'none';
+                        span.style.webkitTouchCallout = 'none';
                         span.setAttribute('data-href', href);
                         span.setAttribute('data-target', target || '_self');
                         span.className = 'clickable-link';
+                        span.setAttribute('role', 'button'); // Acessibilidade
+                        span.setAttribute('tabindex', '0'); // Permite foco
 
-                        // Adiciona evento de clique
-                        span.onclick = function(e) {
-                            e.stopPropagation();
-                            const url = this.getAttribute('data-href');
-                            const linkTarget = this.getAttribute('data-target');
+                        // Função de navegação
+                        const navigate = function(e) {
+                            if (e) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                e.stopImmediatePropagation();
+                            }
 
-                            console.log('Span clicado! URL:', url); // Debug
+                            const url = span.getAttribute('data-href');
+                            const linkTarget = span.getAttribute('data-target');
 
-                            if (url && url !== '#') {
-                                if (linkTarget === '_blank') {
-                                    window.open(url, '_blank');
-                                } else {
-                                    window.location.href = url;
-                                }
+                            console.log('Navegando para:', url); // Debug
+
+                            if (url && url !== '#' && url !== '') {
+                                setTimeout(() => {
+                                    if (linkTarget === '_blank') {
+                                        const newWindow = window.open(url, '_blank');
+                                        if (newWindow) newWindow.opener = null;
+                                    } else {
+                                        window.location.href = url;
+                                    }
+                                }, 50);
                             }
                         };
+
+                        // Múltiplos eventos para garantir compatibilidade
+                        span.onclick = navigate;
+                        span.ontouchend = navigate;
+
+                        // Previne o menu de contexto no Safari
+                        span.addEventListener('contextmenu', function(e) {
+                            e.preventDefault();
+                        });
 
                         // Substitui o link pelo span
                         link.parentNode.replaceChild(span, link);
