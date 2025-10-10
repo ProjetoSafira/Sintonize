@@ -237,6 +237,46 @@
                     document.getElementById('modalImage').src = data.image;
                     document.getElementById('modalIcon').src = data.icon;
 
+                    // SAFARI FIX: Transformar links em spans clicáveis
+                    const modalBody = document.getElementById('modalBody');
+                    const links = modalBody.querySelectorAll('a');
+
+                    links.forEach(link => {
+                        const href = link.getAttribute('href');
+                        const target = link.getAttribute('target');
+                        const text = link.textContent;
+
+                        // Cria um span que parece um link
+                        const span = document.createElement('span');
+                        span.textContent = text;
+                        span.style.color = '#2645AE';
+                        span.style.textDecoration = 'underline';
+                        span.style.cursor = 'pointer';
+                        span.setAttribute('data-href', href);
+                        span.setAttribute('data-target', target || '_self');
+                        span.className = 'clickable-link';
+
+                        // Adiciona evento de clique
+                        span.onclick = function(e) {
+                            e.stopPropagation();
+                            const url = this.getAttribute('data-href');
+                            const linkTarget = this.getAttribute('data-target');
+
+                            console.log('Span clicado! URL:', url); // Debug
+
+                            if (url && url !== '#') {
+                                if (linkTarget === '_blank') {
+                                    window.open(url, '_blank');
+                                } else {
+                                    window.location.href = url;
+                                }
+                            }
+                        };
+
+                        // Substitui o link pelo span
+                        link.parentNode.replaceChild(span, link);
+                    });
+
                     const modal = document.getElementById('resultModal');
                     modal.classList.remove('hidden');
                 })
