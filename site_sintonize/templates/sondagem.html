@@ -204,9 +204,7 @@
             } else if (window.innerHeight <= 768) {
                 offsetAjustado = 20; // Offset reduzido para posicionar o formulário mais abaixo
             }
-            
-            console.log(`Ajustando com offset: ${offsetAjustado}px para tela ${window.innerWidth}x${window.innerHeight}`);
-            
+
             window.scrollTo({
                 top: elementTop - offsetAjustado,
                 behavior: 'smooth'
