@@ -7,9 +7,9 @@
     <link rel="icon" href="site_sintonize/static/images/images_logo/favicon.ico" type="image/x-icon">
     {% load static %}
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
-    <link rel="stylesheet" href="{% static 'css/formulario.css' %}">
-    <link rel="stylesheet" href="{% static 'css/modal.css' %}">
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}?v=20250110">
+    <link rel="stylesheet" href="{% static 'css/formulario.css' %}?v=20250110">
+    <link rel="stylesheet" href="{% static 'css/modal.css' %}?v=20250110">
     <link
         href="https://fonts.googleapis.com/css2?family=Nunito:wght@400&family=Poppins:wght@400&family=Roboto:wght@400&display=swap"
         rel="stylesheet">
@@ -112,6 +112,8 @@
     </div>
 
     <script>
+        console.log('=== SCRIPT BURNOUT CARREGADO - VERSÃO 2025-01-10 12:30 ===');
+
         const totalQuestions = 12; // Total de perguntas
         let currentQuestion = 0;
         let totalScore = 0;  // Variável para armazenar a pontuação total
