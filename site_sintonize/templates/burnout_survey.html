@@ -237,70 +237,16 @@
                     document.getElementById('modalImage').src = data.image;
                     document.getElementById('modalIcon').src = data.icon;
 
-                    // SAFARI FIX: Transformar links em spans clicáveis
-                    const modalBody = document.getElementById('modalBody');
-                    const links = modalBody.querySelectorAll('a');
-
-                    links.forEach(link => {
-                        const href = link.getAttribute('href');
-                        const target = link.getAttribute('target');
-                        const text = link.textContent;
-
-                        // Cria um span que parece um link
-                        const span = document.createElement('span');
-                        span.textContent = text;
-                        span.style.color = '#2645AE';
-                        span.style.textDecoration = 'underline';
-                        span.style.cursor = 'pointer';
-                        span.style.userSelect = 'none';
-                        span.style.webkitUserSelect = 'none';
-                        span.style.webkitTouchCallout = 'none';
-                        span.setAttribute('data-href', href);
-                        span.setAttribute('data-target', target || '_self');
-                        span.className = 'clickable-link';
-                        span.setAttribute('role', 'button'); // Acessibilidade
-                        span.setAttribute('tabindex', '0'); // Permite foco
-
-                        // Função de navegação
-                        const navigate = function(e) {
-                            if (e) {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                e.stopImmediatePropagation();
-                            }
-
-                            const url = span.getAttribute('data-href');
-                            const linkTarget = span.getAttribute('data-target');
-
-                            console.log('Navegando para:', url); // Debug
-
-                            if (url && url !== '#' && url !== '') {
-                                setTimeout(() => {
-                                    if (linkTarget === '_blank') {
-                                        const newWindow = window.open(url, '_blank');
-                                        if (newWindow) newWindow.opener = null;
-                                    } else {
-                                        window.location.href = url;
-                                    }
-                                }, 50);
-                            }
-                        };
-
-                        // Múltiplos eventos para garantir compatibilidade
-                        span.onclick = navigate;
-                        span.ontouchend = navigate;
-
-                        // Previne o menu de contexto no Safari
-                        span.addEventListener('contextmenu', function(e) {
-                            e.preventDefault();
-                        });
-
-                        // Substitui o link pelo span
-                        link.parentNode.replaceChild(span, link);
-                    });
-
                     const modal = document.getElementById('resultModal');
                     modal.classList.remove('hidden');
+
+                    // Debug: verificar se links existem
+                    const modalBody = document.getElementById('modalBody');
+                    const links = modalBody.querySelectorAll('a');
+                    console.log('Links no modal:', links.length);
+                    links.forEach((link, i) => {
+                        console.log(`Link ${i}: ${link.href}`);
+                    });
                 })
                 .catch(error => {
                     console.error('Erro ao obter o resultado:', error);
@@ -313,70 +259,11 @@
             document.getElementById('resultModal').classList.add('hidden');
         }
 
-        document.getElementById('closeModal').addEventListener('click', closeModal);
-
-        let modalLinkHandler = null;
-
-        // Safari Fix: Intercepta TODOS os cliques quando modal está aberto
-        function attachLinkHandlers() {
-            // Remove handler anterior se existir
-            if (modalLinkHandler) {
-                document.removeEventListener('click', modalLinkHandler, true);
-            }
-
-            // Cria novo handler
-            modalLinkHandler = function(e) {
-                console.log('Clique detectado:', e.target); // Debug geral
-
-                const modal = document.getElementById('resultModal');
-                const isModalOpen = !modal.classList.contains('hidden');
-
-                console.log('Modal aberto?', isModalOpen); // Debug
-
-                if (!isModalOpen) return;
-
-                // Verifica se clicou em um link dentro do modalBody
-                const modalBody = document.getElementById('modalBody');
-                const link = e.target.closest('a');
-
-                console.log('Link encontrado:', link); // Debug
-
-                if (link && modalBody && modalBody.contains(link)) {
-                    // É um link dentro do modal
-                    console.log('ENTROU NO IF DO LINK!'); // Debug
-                    e.preventDefault();
-                    e.stopPropagation();
-                    e.stopImmediatePropagation();
-
-                    const href = link.getAttribute('href');
-                    const target = link.getAttribute('target');
-
-                    console.log('Navegando para:', href); // Debug
-
-                    if (href && href !== '#' && href !== '') {
-                        if (target === '_blank') {
-                            console.log('Abrindo em nova aba'); // Debug
-                            window.open(href, '_blank');
-                        } else {
-                            console.log('Redirecionando...'); // Debug
-                            window.location.href = href;
-                        }
-                    }
-                    return false;
-                }
-
-                // Verifica se clicou no backdrop para fechar
-                if (e.target.id === 'resultModal') {
-                    closeModal();
-                }
-            };
-
-            // Adiciona no capture phase (antes de tudo)
-            document.addEventListener('click', modalLinkHandler, true);
-        }
-
-        // Chama uma vez na inicialização
-        attachLinkHandlers();
+        // Modal fecha APENAS no botão X
+        document.getElementById('closeModal').addEventListener('click', function(e) {
+            e.stopPropagation();
+            closeModal();
+        });
 
         changeQuestion(0); // Inicia mostrando a primeira pergunta
         
