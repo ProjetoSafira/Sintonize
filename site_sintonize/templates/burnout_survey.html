@@ -85,8 +85,8 @@
     <!-- Modal -->
     <div id="resultModal"
         class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
-        style="z-index: 99999;">
-        <div class="modal-content">
+        style="z-index: 99999; pointer-events: none;">
+        <div class="modal-content" style="pointer-events: auto;">
 
             <!-- Linha acima do título -->
             <div style="width: 440px; height: 1px; background: #E1E1E1;" class="mb-2"></div>
@@ -255,20 +255,37 @@
 
         document.getElementById('closeModal').addEventListener('click', closeModal);
 
+        // Interceptar cliques em links dentro do modal (Safari fix)
+        document.addEventListener('click', (event) => {
+            // Verifica se clicou em um link dentro do modalBody
+            const link = event.target.closest('a');
+            const modalBody = document.getElementById('modalBody');
 
-        // Fechar modal apenas quando clicar especificamente no backdrop (não nos links)
-        window.addEventListener('click', (event) => {
-            const modal = document.getElementById('resultModal');
+            if (link && modalBody && modalBody.contains(link)) {
+                event.preventDefault();
+                event.stopPropagation();
+                event.stopImmediatePropagation();
+
+                const href = link.getAttribute('href');
+                const target = link.getAttribute('target');
+
+                if (href && href !== '#') {
+                    if (target === '_blank') {
+                        window.open(href, '_blank');
+                    } else {
+                        window.location.href = href;
+                    }
+                }
+                return false;
+            }
+        }, true);
+
+        // Fechar modal quando clicar no backdrop
+        document.getElementById('resultModal').addEventListener('click', (event) => {
             const modalContent = document.querySelector('.modal-content');
 
-            // Verifica se o clique foi em um link
-            const clickedLink = event.target.closest('a');
-            if (clickedLink) {
-                return; // Não fecha o modal se clicou em um link
-            }
-
-            // Fecha apenas se clicou no backdrop (fora do modal-content)
-            if (event.target === modal) {
+            // Só fecha se clicar fora do modal-content
+            if (!modalContent.contains(event.target)) {
                 closeModal();
             }
         });
