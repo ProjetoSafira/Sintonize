@@ -51,10 +51,11 @@
 
 .modal-body {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
 
     overflow-y: auto; /* Permite a rolagem vertical */
     gap: 10px; /* Espaçamento entre os elementos */
+    pointer-events: auto; /* Garante que eventos de clique funcionem */
 }
 
 .modal-title {
