@@ -238,21 +238,14 @@
                     document.getElementById('modalBody').innerHTML = data.body;
                     document.getElementById('modalImage').src = data.image;
                     document.getElementById('modalIcon').src = data.icon;
-                    document.getElementById('resultModal').classList.remove('hidden');
                     
-                    // Safari fix - Oculta radio buttons quando modal está aberto
+                    // Safari fix - Oculta radio buttons ANTES de mostrar o modal
                     hideRadioButtons();
-
-                    const modal = document.getElementById('resultModal');
-                    modal.classList.remove('hidden');
-
-                    // Debug: verificar se links existem
-                    const modalBody = document.getElementById('modalBody');
-                    const links = modalBody.querySelectorAll('a');
-                    console.log('Links no modal:', links.length);
-                    links.forEach((link, i) => {
-                        console.log(`Link ${i}: ${link.href}`);
-                    });
+                    
+                    // Pequeno delay para garantir que o Safari processe a ocultação antes de mostrar o modal
+                    setTimeout(() => {
+                        document.getElementById('resultModal').classList.remove('hidden');
+                    }, 100);
                 })
                 .catch(error => {
                     console.error('Erro ao obter o resultado:', error);
@@ -279,8 +272,10 @@
             if (isSafari) {
                 const formCard = document.querySelector('.form-card');
                 if (formCard) {
-                    formCard.style.visibility = 'hidden';
+                    // Usa opacity e z-index ao invés de visibility para garantir que o modal apareça
+                    formCard.style.opacity = '0';
                     formCard.style.pointerEvents = 'none';
+                    formCard.style.zIndex = '-1';
                 }
             }
         }
@@ -296,8 +291,9 @@
             if (isSafari) {
                 const formCard = document.querySelector('.form-card');
                 if (formCard) {
-                    formCard.style.visibility = 'visible';
+                    formCard.style.opacity = '1';
                     formCard.style.pointerEvents = 'auto';
+                    formCard.style.zIndex = '';
                 }
             }
         }
