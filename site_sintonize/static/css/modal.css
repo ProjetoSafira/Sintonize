@@ -20,10 +20,7 @@
     position: relative;
     overflow-y: visible;
     z-index: 100000;
-    pointer-events: auto; /* Restaura eventos de clique no conteúdo do modal */
-    /* Safari fix */
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
+    pointer-events: auto !important; /* Restaura eventos de clique no conteúdo do modal */
 }
 
 
@@ -43,19 +40,21 @@
     display: flex;
     align-items: flex-start;
     gap: 10px;
-    height: 306px;
-    /* Altura fixa */
+    min-height: 306px;
+    /* Altura mínima ao invés de fixa */
     max-height: none;
     overflow-y: visible;
+    pointer-events: auto !important;
 }
 
 .modal-body {
     display: flex;
     flex-direction: column;
-
     overflow-y: auto; /* Permite a rolagem vertical */
     gap: 10px; /* Espaçamento entre os elementos */
-    pointer-events: auto; /* Garante que eventos de clique funcionem */
+    pointer-events: auto !important; /* Garante que eventos de clique funcionem */
+    position: relative;
+    z-index: 1;
 }
 
 .modal-title {
@@ -143,7 +142,7 @@
 }
 
 .result-text a {
-    color: var(--Complementary-Blue-500, #2645AE);
+    color: var(--Complementary-Blue-500, #2645AE) !important;
     font-family: 'Roboto';
     font-size: 14px;
     font-style: normal;
@@ -157,12 +156,15 @@
     text-underline-offset: auto;
     text-underline-position: from-font;
     /* Safari fix para links clicáveis */
-    pointer-events: auto;
-    cursor: pointer;
+    pointer-events: auto !important;
+    cursor: pointer !important;
     position: relative;
-    z-index: 100001;
+    z-index: 100001 !important;
     -webkit-user-select: auto;
     user-select: auto;
+    -webkit-tap-highlight-color: rgba(0,0,0,0.1); /* Feedback visual no Safari iOS */
+    touch-action: manipulation; /* Melhora resposta de toque */
+    display: inline !important;
 }
 
 .result-text{
@@ -175,4 +177,7 @@
     font-weight: 400;
     line-height: 143%;
     letter-spacing: 0.17px;
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 2;
 }
