@@ -103,12 +103,9 @@
         searchIcon.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            console.log('Lupa clicada!');
             const query = searchInput.value.trim();
-            console.log('Query:', query);
             if (query.length > 0) {
                 const results = searchMenu(query);
-                console.log('Resultados encontrados:', results.length);
                 if (results.length === 1) {
                     // Se houver apenas um resultado, redireciona diretamente
                     window.location.href = results[0].getAttribute('href');
@@ -119,8 +116,6 @@
                     // Se não houver resultados, mostra mensagem
                     updateSearchResults(query);
                 }
-            } else {
-                console.log('Campo de pesquisa vazio');
             }
         });        
 

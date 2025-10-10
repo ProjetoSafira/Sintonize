@@ -177,11 +177,11 @@ def resultado_view(request, score):
     
     # Defina as mensagens para cada pontuação
     mensagens = {
-        "none": "Ótimo trabalho em cuidar de si! Que tal explorar nossa <a href='/trilha/' target='_blank'>trilha de conhecimento sobre burnout</a>? Ou manter seu bem-estar com uma <a href='/respiracao_guiada/' target='_blank'> sessão de respiração guiada </a> ou um <a href='/pomodoro.html' target='_blank'> Pomodoro </a> para manter o foco sem esgotar sua energia?",
-        "cuidado": "Pequenos cuidados fazem toda a diferença. Você pode aprender mais na nossa  <a href='/trilha/' target='_blank'>trilha de conhecimento</a> ou fazer uma<a href='/respiracao_guiada/' target='_blank'> pausa consciente com a  respiração guiada </a>. Nosso<a href='/pomodoro.html' target='_blank'> Pomodoro online</a> pode ajudar a evitar sobrecarga.",
-        "alerta": "Agora é um ótimo momento para agir! Conheça técnicas eficazes na <a href='/trilha/' target='_blank'>trilha de conhecimento</a>, experimente um<a href='/pomodoro.html' target='_blank'> Pomodoro estruturado</a> ou pratique nossa<a href='/respiracao_guiada' target='_blank'> respiração guiada para relaxar. </a>",
-        "atencao": "Sabemos que esse momento pode ser difícil. Recomendamos consultar um profissional e, aqui no site, você pode encontrar apoio com a <a href='/trilha/' target='_blank'>trilha de conhecimento</a>,<a href='/respiracao_guiada/' target='_blank'> exercícios de respiração </a> e um <a href='/pomodoro.html' target='_blank'>  Pomodoro adaptado para você </a>.",
-        "critico": "É fundamental procurar ajuda médica agora. Enquanto isso, você pode acessar nossa  <a href='/trilha/' target='_blank'>trilha de conhecimento</a> e, se sentir confortável, usar a <a href='/respiracao_guiada/' target='_blank'> respiração guiada </a> como primeiro passo de autocuidado.",
+        "none": "Ótimo trabalho em cuidar de si! Que tal explorar nossa <a href='/trilha/'>trilha de conhecimento sobre burnout</a>? Ou manter seu bem-estar com uma <a href='/respiracao_guiada/'>sessão de respiração guiada</a> ou um <a href='/pomodoro/'>Pomodoro</a> para manter o foco sem esgotar sua energia?",
+        "cuidado": "Pequenos cuidados fazem toda a diferença. Você pode aprender mais na nossa <a href='/trilha/'>trilha de conhecimento</a> ou fazer uma <a href='/respiracao_guiada/'>pausa consciente com a respiração guiada</a>. Nosso <a href='/pomodoro/'>Pomodoro online</a> pode ajudar a evitar sobrecarga.",
+        "alerta": "Agora é um ótimo momento para agir! Conheça técnicas eficazes na <a href='/trilha/'>trilha de conhecimento</a>, experimente um <a href='/pomodoro/'>Pomodoro estruturado</a> ou pratique nossa <a href='/respiracao_guiada/'>respiração guiada para relaxar</a>.",
+        "atencao": "Sabemos que esse momento pode ser difícil. Recomendamos consultar um profissional e, aqui no site, você pode encontrar apoio com a <a href='/trilha/'>trilha de conhecimento</a>, <a href='/respiracao_guiada/'>exercícios de respiração</a> e um <a href='/pomodoro/'>Pomodoro adaptado para você</a>.",
+        "critico": "É fundamental procurar ajuda médica agora. Enquanto isso, você pode acessar nossa <a href='/trilha/'>trilha de conhecimento</a> e, se sentir confortável, usar a <a href='/respiracao_guiada/'>respiração guiada</a> como primeiro passo de autocuidado.",
     }
 
 
