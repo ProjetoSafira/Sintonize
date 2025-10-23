@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 
-from site_sintonize.views import index, politicas_privacidade, sondagem, sobre_nos, equipe, trilha, diagnostico, tratamento, burnout_survey_view, resultado_view,search_options, pomodoro, respiracao_guiada, analytics_dashboard, analytics_export, analytics_api
+from site_sintonize.views import index, politicas_privacidade, sondagem, sobre_nos, equipe, trilha, diagnostico, tratamento, burnout_survey_view, resultado_view,search_options, pomodoro, respiracao_guiada, analytics_dashboard, analytics_export, analytics_api, cadastro_usuario
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,4 +30,6 @@ urlpatterns = [
     # URLs de autenticação
     path('accounts/login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
     path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('accounts/cadastro/', cadastro_usuario, name='cadastro'),
+    path('cadastro/', cadastro_usuario, name='cadastro_usuario'),
 ]
