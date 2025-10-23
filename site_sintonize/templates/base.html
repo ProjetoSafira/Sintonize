@@ -43,7 +43,7 @@
 
         // Configurações específicas por ambiente
         if (isHostingerVPN) {
-            config.debug_mode = false;
+            config.debug_mode = false; // Produção: debug desativado
             config.transport_type = 'beacon';
         } else {
             config.debug_mode = true;

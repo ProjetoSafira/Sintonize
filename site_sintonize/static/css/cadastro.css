@@ -1,0 +1,328 @@
+/* Estilos do Formulário de Cadastro */
+
+.cadastro-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: #f7fafc;
+}
+
+.cadastro-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    max-width: 470px;
+    width: 100%;
+}
+
+.cadastro-title {
+    font-family: 'Mulish', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 160%;
+    letter-spacing: 0%;
+    color: #2d3748;
+    background: #FFFFFF;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.cadastro-subtitle {
+    font-size: 14px;
+    color: #718096;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 8px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #2d3748;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-control.error {
+    border-color: #f56565;
+}
+
+.form-control.success {
+    border-color: #48bb78;
+}
+
+.password-field {
+    position: relative;
+}
+
+.password-field .form-control {
+    padding-right: 45px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a0aec0;
+    transition: color 0.2s ease;
+}
+
+.toggle-password:hover {
+    color: #667eea;
+}
+
+.toggle-password svg {
+    width: 20px;
+    height: 20px;
+}
+
+.error-message {
+    color: #f56565;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+
+.error-message.show {
+    display: block;
+}
+
+/* Requisitos de Senha */
+.password-requirements {
+    background: #f7fafc;
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 24px;
+}
+
+.requirement {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    color: #a0aec0;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.icon-wrapper {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.requirement .alert-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    stroke: #E84B4B;
+    transition: all 0.3s ease;
+    border: 1.5px solid #E84B4B;
+    border-radius: 6px;
+    padding: 3px;
+    box-sizing: content-box;
+    display: none;
+}
+
+.requirement .check-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    stroke: #a0aec0;
+    transition: all 0.3s ease;
+    border: 2px solid #B7BAC1;
+    border-radius: 6px;
+    padding: 3px;
+    box-sizing: content-box;
+    display: block;
+}
+
+.requirement.invalid {
+    color: #E84B4B;
+}
+
+.requirement.invalid .alert-icon {
+    display: block;
+}
+
+.requirement.invalid .check-icon {
+    display: none;
+}
+
+.requirement.valid {
+    color: #2A6B2D;
+}
+
+.requirement.valid .check-icon {
+    display: block;
+    stroke: #2A6B2D;
+    border-color: #2A6B2D;
+}
+
+/* Botão Cadastrar */
+.btn-cadastrar {
+    width: 411px;
+    max-width: 100%;
+    height: 48px;
+    padding: 8px 24px;
+    background: #BDCCD1;
+    color: white;
+    border: 1px solid #BDCCD1;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-cadastrar:hover {
+    background: #a8bcc4;
+    border-color: #a8bcc4;
+}
+
+.btn-cadastrar:active {
+    background: #9aafb8;
+    border-color: #9aafb8;
+}
+
+.btn-cadastrar:disabled {
+    background: #BDCCD1;
+    border-color: #BDCCD1;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Link para Login */
+.login-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #718096;
+}
+
+.login-link a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.login-link a:hover {
+    color: #764ba2;
+    text-decoration: underline;
+}
+
+/* Mensagens de Feedback */
+.messages {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.messages li {
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.messages .success {
+    background: #c6f6d5;
+    color: #22543d;
+    border-left: 4px solid #48bb78;
+}
+
+.messages .error {
+    background: #fed7d7;
+    color: #742a2a;
+    border-left: 4px solid #f56565;
+}
+
+.messages .info {
+    background: #bee3f8;
+    color: #2c5282;
+    border-left: 4px solid #4299e1;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .cadastro-card {
+        padding: 30px 20px;
+    }
+    
+    .cadastro-title {
+        font-size: 24px;
+    }
+    
+    .form-control {
+        padding: 10px 14px;
+    }
+    
+    .btn-cadastrar {
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cadastro-container {
+        padding: 15px;
+    }
+    
+    .cadastro-card {
+        padding: 25px 15px;
+    }
+    
+    .cadastro-title {
+        font-size: 22px;
+    }
+    
+    .cadastro-subtitle {
+        font-size: 13px;
+    }
+    
+    .requirement {
+        font-size: 13px;
+    }
+}
+

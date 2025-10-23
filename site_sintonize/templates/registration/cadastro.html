@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Cadastro - Sintonize{% endblock %}
+
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/cadastro.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="cadastro-container">
+    <div class="cadastro-card">
+        <h1 class="cadastro-title">Criar Conta</h1>
+        <p class="cadastro-subtitle">Preencha os dados abaixo para se cadastrar</p>
+        
+        <form method="post" id="cadastroForm" novalidate>
+            {% csrf_token %}
+            
+            <!-- Campo E-mail -->
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input 
+                    type="email" 
+                    name="email" 
+                    id="email" 
+                    class="form-control" 
+                    placeholder="meuemail@email.com"
+                    required
+                    value="{{ form.email.value|default:'' }}"
+                >
+                <div class="error-message" id="email-error"></div>
+            </div>
+            
+            <!-- Campo Senha -->
+            <div class="form-group">
+                <label for="password1">Senha</label>
+                <div class="password-field">
+                    <input 
+                        type="password" 
+                        name="password1" 
+                        id="password1" 
+                        class="form-control" 
+                        placeholder="Senha!"
+                        required
+                    >
+                    <button type="button" class="toggle-password" data-target="password1">
+                        <svg class="eye-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                        <svg class="eye-slash-icon" style="display: none;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                            <line x1="1" y1="1" x2="23" y2="23"></line>
+                        </svg>
+                    </button>
+                </div>
+                <div class="error-message" id="password1-error"></div>
+            </div>
+            
+            <!-- Campo Confirmar Senha -->
+            <div class="form-group">
+                <label for="password2">Confirmar senha</label>
+                <div class="password-field">
+                    <input 
+                        type="password" 
+                        name="password2" 
+                        id="password2" 
+                        class="form-control" 
+                        placeholder="Digite sua senha"
+                        required
+                    >
+                    <button type="button" class="toggle-password" data-target="password2">
+                        <svg class="eye-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                        <svg class="eye-slash-icon" style="display: none;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                            <line x1="1" y1="1" x2="23" y2="23"></line>
+                        </svg>
+                    </button>
+                </div>
+                <div class="error-message" id="password2-error"></div>
+            </div>
+            
+            <!-- Validações de Senha -->
+            <div class="password-requirements">
+                <div class="requirement" id="req-length">
+                    <div class="icon-wrapper">
+                        <svg class="alert-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                            <line x1="12" y1="7" x2="12" y2="13"></line>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                        <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                    <span>Use pelo menos 6 caracteres</span>
+                </div>
+                <div class="requirement" id="req-special">
+                    <div class="icon-wrapper">
+                        <svg class="alert-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                            <line x1="12" y1="7" x2="12" y2="13"></line>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                        <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                    <span>Use pelo menos 1 caractere especial</span>
+                </div>
+                <div class="requirement" id="req-case">
+                    <div class="icon-wrapper">
+                        <svg class="alert-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                            <line x1="12" y1="7" x2="12" y2="13"></line>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                        <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                    <span>Misture letras maiúsculas e minúsculas</span>
+                </div>
+            </div>
+            
+            <!-- Botão Cadastrar -->
+            <button type="submit" class="btn-cadastrar" id="btnCadastrar">
+                Cadastrar
+            </button>
+            
+            <!-- Link para Login -->
+            <p class="login-link">
+                Já tem uma conta? <a href="{% url 'login' %}">Faça login</a>
+            </p>
+        </form>
+    </div>
+</div>
+
+<script src="{% static 'js/cadastro.js' %}"></script>
+{% endblock %}
+

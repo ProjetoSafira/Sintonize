@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Google Analytics - Sintonize</title>
+
+    <!-- Google Analytics 4 - TESTE SIMPLES -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BRR6F0VRZ7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-BRR6F0VRZ7', {
+            'debug_mode': true,
+            'send_page_view': true
+        });
+
+        console.log('Google Analytics carregado!');
+        console.log('ID: G-BRR6F0VRZ7');
+        console.log('Hostname:', window.location.hostname);
+        console.log('URL completa:', window.location.href);
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #204551;
+        }
+        .status {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .button {
+            background: #204551;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        .button:hover {
+            background: #163840;
+        }
+        .info {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Teste de Google Analytics - Sintonize</h1>
+
+        <div class="status">
+            <strong>✅ Status:</strong> Página de teste carregada com sucesso!<br>
+            <strong>🆔 ID de Medição:</strong> G-BRR6F0VRZ7<br>
+            <strong>🌐 Domínio:</strong> <span id="hostname"></span><br>
+            <strong>📍 URL:</strong> <span id="url"></span>
+        </div>
+
+        <h2>📋 Instruções de Teste</h2>
+        <ol>
+            <li>Suba este arquivo para o servidor Hostinger (VPN)</li>
+            <li>Acesse via navegador: <code>http://sintonize.online/teste_analytics_simples.html</code></li>
+            <li>Abra o Console do Navegador (F12)</li>
+            <li>Clique nos botões abaixo para enviar eventos de teste</li>
+            <li>Verifique no Google Analytics em: <strong>Relatórios > Tempo Real</strong></li>
+        </ol>
+
+        <h2>🎯 Enviar Eventos de Teste</h2>
+        <button class="button" onclick="enviarEvento('teste_clique', 'botao_1')">
+            Enviar Evento 1
+        </button>
+        <button class="button" onclick="enviarEvento('teste_clique', 'botao_2')">
+            Enviar Evento 2
+        </button>
+        <button class="button" onclick="enviarEvento('teste_clique', 'botao_3')">
+            Enviar Evento 3
+        </button>
+
+        <div class="info">
+            <strong>⏱️ Observação:</strong> Os dados podem levar de 5 a 30 minutos para aparecer nos relatórios em tempo real do Google Analytics.
+        </div>
+
+        <h2>🔍 Checklist de Verificação</h2>
+        <ul>
+            <li>✅ O script do Google Analytics está carregando?</li>
+            <li>✅ Há erros no Console do Navegador (F12)?</li>
+            <li>✅ Você está usando bloqueador de anúncios? (desative temporariamente)</li>
+            <li>✅ O ID de medição G-BRR6F0VRZ7 está ativo no Google Analytics?</li>
+            <li>✅ O domínio sintonize.online está configurado no Google Analytics?</li>
+        </ul>
+
+        <h2>📊 Onde Verificar no Google Analytics</h2>
+        <ol>
+            <li>Acesse: <a href="https://analytics.google.com" target="_blank">https://analytics.google.com</a></li>
+            <li>Selecione a propriedade com ID <code>G-BRR6F0VRZ7</code></li>
+            <li>Vá em: <strong>Relatórios → Tempo Real → Visão Geral</strong></li>
+            <li>Você deve ver:
+                <ul>
+                    <li>Usuários ativos nos últimos 30 minutos</li>
+                    <li>Visualizações de página</li>
+                    <li>Eventos personalizados (quando clicar nos botões acima)</li>
+                </ul>
+            </li>
+        </ol>
+
+        <div id="log" style="background: #f4f4f4; padding: 15px; margin-top: 20px; border-radius: 5px; font-family: monospace; max-height: 200px; overflow-y: auto;">
+            <strong>📝 Log de Eventos:</strong><br>
+            <span id="logContent">Aguardando ações...</span>
+        </div>
+    </div>
+
+    <script>
+        // Exibir informações da página
+        document.getElementById('hostname').textContent = window.location.hostname;
+        document.getElementById('url').textContent = window.location.href;
+
+        // Função para enviar eventos de teste
+        function enviarEvento(action, label) {
+            try {
+                gtag('event', action, {
+                    'event_category': 'Teste',
+                    'event_label': label,
+                    'value': 1
+                });
+
+                adicionarLog(`✅ Evento enviado: ${action} - ${label}`);
+                console.log('Evento enviado:', action, label);
+            } catch (error) {
+                adicionarLog(`❌ Erro ao enviar evento: ${error.message}`);
+                console.error('Erro ao enviar evento:', error);
+            }
+        }
+
+        // Função para adicionar logs
+        function adicionarLog(mensagem) {
+            const logContent = document.getElementById('logContent');
+            const timestamp = new Date().toLocaleTimeString();
+            logContent.innerHTML += `<br>[${timestamp}] ${mensagem}`;
+        }
+
+        // Verificar se gtag foi carregado
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                if (typeof gtag === 'function') {
+                    adicionarLog('✅ Google Analytics carregado com sucesso!');
+                } else {
+                    adicionarLog('❌ Google Analytics NÃO foi carregado! Verifique bloqueadores de anúncios.');
+                }
+            }, 2000);
+        });
+
+        // Enviar evento automático ao carregar a página
+        setTimeout(() => {
+            enviarEvento('page_load', 'teste_automatico');
+        }, 3000);
+    </script>
+</body>
+</html>
