@@ -160,3 +160,11 @@ CORS_ALLOWED_ORIGINS = [
 # Headers de segurança para Google Analytics
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 
+# Configurações CSRF para HTTPS
+CSRF_TRUSTED_ORIGINS = [
+    'https://sintonize.online',
+    'https://www.sintonize.online',
+]
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
