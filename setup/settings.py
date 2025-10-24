@@ -165,6 +165,4 @@ CSRF_TRUSTED_ORIGINS = [
     'https://sintonize.online',
     'https://www.sintonize.online',
 ]
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
 
