@@ -17,107 +17,59 @@
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <meta name="color-scheme" content="light">
     
-    <!-- Google Analytics 4 - Configuração Dinâmica -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ GA_MEASUREMENT_ID }}"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        // Configuração para domínios permitidos
-        const isHostingerVPN = window.location.hostname === 'sintonize.online' ||
-                               window.location.hostname === 'www.sintonize.online' ||
-                               window.location.hostname === '85.31.62.223';
-        const measurementId = '{{ GA_MEASUREMENT_ID }}';
+        gtag('config', '{{ GA_MEASUREMENT_ID }}');
 
-        const config = {
-            page_title: '{% block page_title %}{{ request.resolver_match.url_name|default:"home" }}{% endblock %}',
-            page_location: window.location.href,
-            // Configurações específicas
-            send_page_view: isHostingerVPN, // Só envia page view na VPN Hostinger
-            anonymize_ip: true, // Para conformidade LGPD
-            custom_map: {
-                'custom_parameter_1': 'section'
-            }
-        };
-
-        // Configurações específicas por ambiente
-        if (isHostingerVPN) {
-            config.debug_mode = false; // Produção: debug desativado
-            config.transport_type = 'beacon';
-        } else {
-            config.debug_mode = true;
-            config.send_page_view = false; // Não enviar dados se não for VPN Hostinger
-        }
-
-        // Configuração para páginas especiais
-        {% with url_name=request.resolver_match.url_name|default:"home" %}
-        if ('{{ url_name }}' === 'analytics_dashboard' || '{{ url_name }}' === 'login') {
-            config.send_page_view = false;
-        }
-        {% endwith %}
-
-        gtag('config', measurementId, config);
-
-        // Enviar evento de page_view
-        if (isHostingerVPN) {
-            gtag('event', 'page_view', {
-                page_title: document.title,
-                page_location: window.location.href,
-                page_path: window.location.pathname
-            });
-        }
-    
-        // Função para rastrear eventos customizados (apenas na VPN Hostinger)
-        function trackEvent(action, category, label, value) {
-            if (isHostingerVPN) {
-                gtag('event', action, {
-                    event_category: category,
-                    event_label: label,
-                    value: value
-                });
-            }
-        }
-        
-        // Rastrear cliques no botão de sondagem
+        // Funções de rastreamento customizado para eventos
         function trackBurnoutSurvey() {
-            trackEvent('inicio_teste_burnout', 'engajamento', 'inicio_teste_burnout', 1);
-        }
-
-        // Rastrear finalização da sondagem
-        function trackBurnoutSurveyCompletion() {
-            trackEvent('envio_teste_burnout', 'engajamento', 'teste_burnout_completo', 1);
-        }
-
-        // Função específica para rastrear visualização das perguntas do formulário
-        function trackSurveyQuestionView(questionNumber) {
-            trackEvent('visualizacao_pergunta', 'formulario_sondagem', `Pergunta ${questionNumber}`, questionNumber);
-        }
-
-        // Função específica para rastrear conclusão do formulário
-        function trackSurveyFormCompletion() {
-            trackEvent('conclusao_formulario', 'formulario_sondagem', 'Formulário Concluído', 1);
-        }
-
-        // Função específica para rastrear a pontuação do formulário
-        function trackSurveyScore(score) {
-            trackEvent('pontuacao_teste', 'formulario_sondagem', 'Resultado do Teste', score);
-        }
-        
-        // Rastrear downloads/exportações
-        function trackDownload(filename) {
-            trackEvent('download', 'file', filename, 1);
-        }
-        
-        // Rastrear tempo na página
-        let startTime = Date.now();
-        window.addEventListener('beforeunload', function() {
-            let timeSpent = Math.round((Date.now() - startTime) / 1000);
-            gtag('event', 'timing_complete', {
-                name: 'page_view_time',
-                value: timeSpent
+            gtag('event', 'inicio_teste_burnout', {
+                'event_category': 'engajamento',
+                'event_label': 'inicio_teste_burnout'
             });
-        });
+        }
+
+        function trackBurnoutSurveyCompletion() {
+            gtag('event', 'envio_teste_burnout', {
+                'event_category': 'engajamento',
+                'event_label': 'teste_burnout_completo'
+            });
+        }
+
+        function trackSurveyQuestionView(questionNumber) {
+            gtag('event', 'visualizacao_pergunta', {
+                'event_category': 'formulario_sondagem',
+                'event_label': 'Pergunta ' + questionNumber,
+                'value': questionNumber
+            });
+        }
+
+        function trackSurveyFormCompletion() {
+            gtag('event', 'conclusao_formulario', {
+                'event_category': 'formulario_sondagem',
+                'event_label': 'Formulário Concluído'
+            });
+        }
+
+        function trackSurveyScore(score) {
+            gtag('event', 'pontuacao_teste', {
+                'event_category': 'formulario_sondagem',
+                'event_label': 'Resultado do Teste',
+                'value': score
+            });
+        }
+
+        function trackDownload(filename) {
+            gtag('event', 'download', {
+                'event_category': 'file',
+                'event_label': filename
+            });
+        }
     </script>
     
     {% block extra_css %}{% endblock %}
