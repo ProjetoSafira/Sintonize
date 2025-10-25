@@ -24,7 +24,9 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', '{{ GA_MEASUREMENT_ID }}');
+        gtag('config', '{{ GA_MEASUREMENT_ID }}', {
+            'debug_mode': true
+        });
 
         // Funções de rastreamento customizado para eventos
         function trackBurnoutSurvey() {
